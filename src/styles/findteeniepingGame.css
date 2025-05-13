@@ -1,0 +1,50 @@
+body {
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgb(255, 211, 218);
+  align-items: center;
+  align-content: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: auto;
+  padding: 20px;
+  height: 80vh;
+  width: 100vh;
+
+  background-color: white;
+  border-radius: 20px;
+
+  .game-info-wrapper {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    .game-title {
+      color: hotpink;
+    }
+  }
+  hr {
+    width: 100%;
+    border: 0.3px solid gray;
+  }
+  .game-description {
+    padding: 20px;
+
+    text-align: center;
+    font: bolder;
+    color: white;
+
+    background-color: skyblue;
+    border-radius: 10px;
+  }
+
+  .game-container {
+    border: solid 1px red;
+    flex: 1;
+  }
+}
