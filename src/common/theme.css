@@ -1,0 +1,19 @@
+:root {
+  /* Color styles */
+  --color-white: #ffffff;
+  --color-blue: #365fff;
+
+  /* Font-size */
+  --text-xxs: 9px; /* Extra Extra Small */
+  --text-xs: 10px; /* Extra Small */
+  --text-sm: 11px; /* Small */
+  --text-base: 12px; /* Base (기본 크기) */
+  --text-md: 13px; /* Medium */
+  --text-lg: 14px; /* Large */
+  --text-xl: 15px; /* Extra Large */
+  --text-2xl: 16px;
+  --text-3xl: 18px;
+  --text-4xl: 28px;
+  --text-5xl: 32px;
+  --text-6xl: 40px;
+}
