@@ -3,14 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      type="module"
-      src="/src/typescript/findteenieping/findteeniepingGame.ts"
-    ></script>
+    <script type="module" src="/src/typescript/findGame/findGame.ts"></script>
     <title>티니핑을 찾아라</title>
   </head>
   <body>
-    <!-- http://localhost:5173/src/pages/findteeniepingGame.html -->
+    <!-- http://localhost:5173/src/pages/findGame.html -->
     <div class="main-container">
       <div class="game-info-wrapper">
         <h1 class="game-title">숨은 티니핑을 찾아라</h1>
@@ -25,12 +22,12 @@
         <div class="set" id="set-1">
           <!-- 티니핑 이미지 추가 후, 특정 행동 함수 구현 -->
           <img
-            src="/src/assets/findteeniepingGame/ruruPing.PNG"
+            src="/src/assets/findGame/ruruPing.PNG"
             alt="티니핑"
             class="teenieping"
           />
           <img
-            src="/src/assets/findteeniepingGame/ruruPingCubeOpen.PNG"
+            src="/src/assets/findGame/ruruPingCubeOpen.PNG"
             alt="티니핑 큐브"
             class="teenieping-cube"
           />
@@ -38,12 +35,12 @@
         <div class="set" id="set-2">
           <!-- 티니핑 이미지 추가 후, 특정 행동 함수 구현 -->
           <img
-            src="/src/assets/findteeniepingGame/ruruPing.PNG"
+            src="/src/assets/findGame/ruruPing.PNG"
             alt="티니핑"
             class="teenieping"
           />
           <img
-            src="/src/assets/findteeniepingGame/ruruPingCube.PNG"
+            src="/src/assets/findGame/ruruPingCube.PNG"
             alt="티니핑 큐브"
             class="teenieping-cube"
           />
@@ -51,12 +48,12 @@
         <div class="set" id="set-3">
           <!-- 티니핑 이미지 추가 후, 특정 행동 함수 구현 -->
           <img
-            src="/src/assets/findteeniepingGame/ruruPing.PNG"
+            src="/src/assets/findGame/ruruPing.PNG"
             alt="티니핑"
             class="teenieping"
           />
           <img
-            src="/src/assets/findteeniepingGame/ruruPingCube.PNG"
+            src="/src/assets/findGame/ruruPingCube.PNG"
             alt="티니핑 큐브"
             class="teenieping-cube"
           />
@@ -66,7 +63,7 @@
 
     <dialog class="panel-dialog">
       <h2 class="">아쉽게 틀렸어요!</h2>
-      <img src="/src/assets/findteeniepingGame/ayaPingFail.WEBP" alt="" />
+      <img src="/src/assets/findGame/ayaPingFail.WEBP" alt="" />
       <p>다시 한 번 도전해보세요!</p>
       <button type="button" class="close-dialog">다시하기</button>
     </dialog>
@@ -74,6 +71,7 @@
     <div class="button-container">
       <button id="open-modal-button">실패 모달</button>
       <button id="change-image-button">정답 공개</button>
+      <a href="./main.html">홈으로</a>
     </div>
   </body>
 
@@ -93,8 +91,8 @@
     const changeImageButton = document.querySelector('#change-image-button');
     const imgEl = document.querySelector('.teenieping-cube');
 
-    const openSrc = '/src/assets/findteeniepingGame/ruruPingCubeOpen.PNG';
-    const closeSrc = '/src/assets/findteeniepingGame/ruruPingCube.PNG';
+    const openSrc = '/src/assets/findGame/ruruPingCubeOpen.PNG';
+    const closeSrc = '/src/assets/findGame/ruruPingCube.PNG';
 
     function changeImage(openSrc, closeSrc) {
       if (imgEl.src.endsWith('ruruPingCubeOpen.PNG'))

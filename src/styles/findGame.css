@@ -167,7 +167,8 @@ body {
   right: 20px; /* 오른쪽에서 20px 떨어지게 */
   z-index: 1000; /* 다른 요소들보다 위에 오도록 */
 
-  button {
+  button,
+  a {
     background-color: #ff9edb;
     color: white;
     border: none;
