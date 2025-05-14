@@ -9,6 +9,7 @@ export default defineConfig({
         typeTesthtml: './src/pages/typeTest.html',
         typeTestStarthtml: './src/pages/typeTestStart.html',
         memoryGamehtml: './src/pages/memoryGame.html',
+        memoryGameStarthtml: './src/pages/memoryGameStart.html',
       },
     },
   },
