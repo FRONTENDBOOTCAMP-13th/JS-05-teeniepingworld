@@ -1,0 +1,163 @@
+@import '/src/common/modern-reset.css';
+
+body {
+  background-color: #ddafe4;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #e55982;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 최상단 버튼 + 타이틀 */
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+.top-container h1 {
+  font-size: 24px;
+  color: black;
+}
+
+/* 게임 진행 표시 */
+.game-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #efd2e8;
+  border-radius: 12px;
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 800px;
+  height: 60px; /* 높이 확 줄였어 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.limit-time {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.progress-bar-container {
+  flex: 1;
+  background-color: #cabfbf;
+  border-radius: 8px;
+  height: 12px;
+  overflow: hidden;
+  margin: 0 20px;
+  min-width: 120px;
+}
+
+.progress-bar {
+  background-color: #ea5fa7;
+  height: 100%;
+  width: 80%; /* 예시 */
+  transition: width 0.5s ease;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.progress-info .score,
+.progress-info .find {
+  margin: 2px 0;
+}
+
+.btn {
+  padding: 8px 16px;
+  background-color: #ea5fa7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #9e135b;
+}
+
+.home-btn {
+  background-color: white;
+  color: #ea5fa7;
+  border: 2px solid #ea5fa7;
+}
+
+.home-btn:hover {
+  background-color: #ea5fa7;
+  color: white;
+}
+
+.restart-btn {
+  background-color: #ea5fa7;
+  color: white;
+  border: none;
+}
+
+.restart-btn:hover {
+  background-color: #9e135b;
+}
+
+/* 카드 배치할 곳 */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background: #efd2e8;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+.game-over-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 200, 0.9); /* 반투명한 연노랑 배경 */
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 기본은 숨기기 */
+.hidden {
+  display: none;
+}
+
+/* 배너 안의 버튼들 */
+.banner-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
