@@ -71,7 +71,12 @@ h1 {
   transition: background-color 0.5s ease;
 }
 
-.btn:hover {
+.level-btn:hover {
+  background-color: #9e135b;
+}
+
+/* 클릭했을때 호버효과가 유지되도록 하기 위한 css 추가 */
+.level-btn.active {
   background-color: #9e135b;
 }
 

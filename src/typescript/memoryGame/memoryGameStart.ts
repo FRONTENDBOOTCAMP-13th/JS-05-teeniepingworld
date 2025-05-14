@@ -64,3 +64,116 @@ socore : number -> 점수
 
 
 */
+
+/*
+오늘의 목표
+
+* 저장된 난이도 읽어오기
+* 카드 쌍 개수 설정하기
+* 카드 동적 생성하기 (DOM으로 카드 생성하고 grid 배치?) 
+*/
+'use strict';
+console.log('선택된 난이도', sessionStorage.getItem('level'));
+
+const cardCount = Number(sessionStorage.getItem('level')) || 8; //생성할 카드 개수
+console.log(cardCount);
+
+//카드 타입
+type cardData = {
+  id: number;
+  value: string;
+};
+
+//일단 난이도에 따른 카드를 한쌍씩 생성해 배열로 담아 리턴하는 함수
+function gameInit(count: number): cardData[] {
+  const cards: cardData[] = [];
+
+  for (let i = 1; i <= count; i++) {
+    const value: string = `card-${i}`;
+    cards.push({ id: 2 * i - 1, value: value });
+    cards.push({ id: 2 * i, value: value });
+  }
+
+  return cards;
+}
+
+let cards: cardData[] = gameInit(cardCount);
+console.log(cards);
+
+// 생성된 카드 무작위로 섞는 함수
+function cardShuffle(inputCards: cardData[]): cardData[] {
+  for (let i = inputCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [inputCards[i], inputCards[j]] = [inputCards[j], inputCards[i]];
+  }
+  return inputCards;
+}
+
+cards = cardShuffle(cards);
+console.log(cards);
+
+//야호 카드 섞기 성공!!!!!
+
+//DOM으로 카드 생성
+const cardContainer = document.querySelector('.card-container');
+
+if (cardContainer) {
+  cardContainer.addEventListener('click', function () {
+    console.log('확인');
+  });
+}
+
+function cardSetting(data: cardData[]) {
+  cardContainer?.classList.remove('grid-4', 'grid-autofit');
+  if (cardCount === 6 || cardCount === 8) {
+    cardContainer?.classList.add('grid-4');
+  } else if (cardCount === 12) {
+    cardContainer?.classList.add('grid-autofit');
+  }
+
+  for (let i = 0; i < data.length; i++) {
+    addCard(data[i]);
+  }
+
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flip');
+    });
+  });
+}
+
+function addCard(data: cardData) {
+  const div = document.createElement('div');
+  div.dataset.id = data.id.toString();
+  div.dataset.value = data.value;
+  div.classList.add('card');
+
+  const innerCard = document.createElement('div');
+  innerCard.classList.add('card-inner');
+
+  const cardBack = document.createElement('div');
+  cardBack.classList.add('card-back');
+
+  const cardFront = document.createElement('div');
+  cardFront.classList.add('card-front');
+
+  const imgBack = document.createElement('img');
+  imgBack.src = '../assets/memorygame_img/backCard.png';
+
+  const imgFront = document.createElement('img');
+  imgFront.classList.add('img-front');
+  imgFront.src = '../assets/teenieping_img/hachuPing.png';
+
+  cardBack.appendChild(imgBack);
+  cardFront.appendChild(imgFront);
+
+  innerCard.appendChild(cardBack);
+  innerCard.appendChild(cardFront);
+
+  div.appendChild(innerCard);
+
+  cardContainer?.appendChild(div);
+}
+
+cardSetting(cards);
