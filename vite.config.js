@@ -11,6 +11,7 @@ export default defineConfig({
         memoryGamehtml: './src/pages/memoryGame.html',
         memoryGameStarthtml: './src/pages/memoryGameStart.html',
         worldcupGamehtml: './src/pages/worldcupGame.html',
+        findGamehtml: './src/pages/findGame.html',
       },
     },
   },
