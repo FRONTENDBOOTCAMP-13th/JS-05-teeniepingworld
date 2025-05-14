@@ -10,6 +10,7 @@ export default defineConfig({
         typeTestStarthtml: './src/pages/typeTestStart.html',
         memoryGamehtml: './src/pages/memoryGame.html',
         memoryGameStarthtml: './src/pages/memoryGameStart.html',
+        worldcupGamehtml: './src/pages/worldcupGame.html',
       },
     },
   },
