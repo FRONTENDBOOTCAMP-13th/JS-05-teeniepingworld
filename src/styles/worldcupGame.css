@@ -27,24 +27,36 @@ body {
 }
 
 /* main-page */
+.main-page-left {
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+.main-page-left:hover {
+  box-shadow: 0 0 6px #ec4899;
+}
+
 .title-text {
   color: #ec4899;
   display: flex;
   justify-content: center;
   font-size: var(--text-5xl);
-  margin-block: 15px;
+  margin-bottom: 15px;
 }
 
 /* 게임 페이지와 겹치는 스타일 */
 .worldcup-content-section,
 .game-page-content {
   background-color: var(--bg-color-primary);
-  display: inherit;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
+  border-radius: 4px;
 }
 
 .worldcup-content-section {
