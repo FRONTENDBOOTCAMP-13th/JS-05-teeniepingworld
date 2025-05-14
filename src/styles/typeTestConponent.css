@@ -1,7 +1,7 @@
-@import '../style.css';
-/* TODO minwidth, maxwidth 설정 1차 기능 구현 후 반응형 */
+@import '../common/modern-reset.css';
+@import '../common/theme.css';
 
-/* text component*/
+/* TODO minwidth, maxwidth 설정 1차 기능 구현 후 반응형 */ /* text component*/
 .main-name {
   background-image: linear-gradient(
     90deg,
@@ -11,29 +11,25 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 4.69vw;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 5.2083vw;
 }
 
 /* button component  */
-.base-button {
-  display: inline-flex;
+.base-btn {
+  display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 9999px;
   background: var(--color-pink);
-  border-radius: 999px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
   border: none;
-  padding: 14px 32px;
-  vertical-align: middle;
-  line-height: 150%;
-
-  .base-text {
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-  }
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
