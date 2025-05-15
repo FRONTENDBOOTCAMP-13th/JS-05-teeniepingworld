@@ -1,0 +1,206 @@
+@import url('/src/common/a11y.css');
+@import url('/src/common/modern-reset.css');
+@import url('/src/common/theme.css');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background: linear-gradient(180deg, #fce7f3 0%, #f3e8ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 768px;
+  min-height: 1300px;
+  height: 100vh;
+  margin-inline: auto;
+}
+/* header */
+header {
+  margin-top: 100px;
+  text-align: center;
+
+  .main-name {
+    background: linear-gradient(90deg, #ec4899 0%, #9333ea 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+    font-size: 32px;
+  }
+}
+
+/* main */
+main {
+  width: 700px;
+  margin: 60px 34px;
+  background: var(--color-white);
+  border: 4px solid var(--color-lightpink);
+  border-radius: 16px;
+
+  .section-text {
+    color: #1f2937;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px; /* 156.863% */
+    margin-top: 33px;
+  }
+  .result-ping {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+  }
+  .tab-mbti {
+    margin: 0 auto;
+    width: fit-content; /* 내용물 크기만큼만 너비 가짐 */
+    border-radius: 9999px;
+    background: #f3f4f6;
+    padding: 4px 12px;
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+  .ping-name {
+    margin-block: 8px 4px;
+    text-align: center;
+    color: #16a34a;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 1.2px;
+  }
+  .ping-character {
+    color: #7e22ce;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 23px;
+  }
+  .sub-container {
+    height: 280px;
+    overflow: scroll;
+    border-radius: 24px;
+    border: 2px solid #f9a8d4;
+    text-align: left;
+    padding: 30px;
+    line-height: 2;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .ping-recommend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 23px 0px 0px 0px;
+    gap: 60px;
+
+    .ping-like {
+      p {
+        color: var(--color-pink);
+        text-align: center;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgba(75, 85, 99, 0.5);
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+      .like-img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+    .ping-hate {
+      p {
+        color: var(--color-purple);
+        text-align: center;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgba(75, 85, 99, 0.5);
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+      .hate-img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  }
+  .tab-container {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .tab-button {
+    border-radius: 9999px;
+    background: #dcfce7;
+    padding: 6px 12px;
+    color: #16a34a;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1px;
+  }
+  .bottom-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 32px;
+    gap: 20px;
+
+    .repeat-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 9999px;
+      background: #f3f4f6;
+      border: none;
+      padding: 10px 24px;
+
+      img {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        color: #374151;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px; /* 176.471% */
+      }
+    }
+    .share-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 9999px;
+      background: var(--color-pink);
+      border: none;
+      padding: 10px 24px;
+
+      img {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px; /* 176.471% */
+      }
+    }
+  }
+}
