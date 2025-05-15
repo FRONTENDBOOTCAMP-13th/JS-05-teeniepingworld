@@ -16,16 +16,11 @@
         </div>
       </div>
       <hr />
-      <p class="game-description">루루핑은 어디로 숨었을까요?</p>
+      <p class="game-description">어디로 숨었을까요?</p>
       <!--클릭해서 맞춰보세요!-->
       <div class="game-container">
         <div class="set" id="set-1">
           <!-- 티니핑 이미지 추가 후, 특정 행동 함수 구현 -->
-          <img
-            src="/src/assets/findGame/ruruPing.PNG"
-            alt="티니핑"
-            class="teenieping"
-          />
           <img
             src="/src/assets/findGame/ruruPingCubeOpen.PNG"
             alt="티니핑 큐브"
@@ -35,12 +30,7 @@
         <div class="set" id="set-2">
           <!-- 티니핑 이미지 추가 후, 특정 행동 함수 구현 -->
           <img
-            src="/src/assets/findGame/ruruPing.PNG"
-            alt="티니핑"
-            class="teenieping"
-          />
-          <img
-            src="/src/assets/findGame/ruruPingCube.PNG"
+            src="/src/assets/findGame/ruruPingCubeOpen.PNG"
             alt="티니핑 큐브"
             class="teenieping-cube"
           />
@@ -48,12 +38,7 @@
         <div class="set" id="set-3">
           <!-- 티니핑 이미지 추가 후, 특정 행동 함수 구현 -->
           <img
-            src="/src/assets/findGame/ruruPing.PNG"
-            alt="티니핑"
-            class="teenieping"
-          />
-          <img
-            src="/src/assets/findGame/ruruPingCube.PNG"
+            src="/src/assets/findGame/ruruPingCubeOpen.PNG"
             alt="티니핑 큐브"
             class="teenieping-cube"
           />
@@ -61,47 +46,47 @@
       </div>
     </div>
 
-    <dialog class="panel-dialog">
+    <dialog class="result-dialog">
       <h2 class="">아쉽게 틀렸어요!</h2>
       <img src="/src/assets/findGame/ayaPingFail.WEBP" alt="" />
-      <p>다시 한 번 도전해보세요!</p>
+      <p>다시 한 번 도전해볼까요?</p>
       <button type="button" class="close-dialog">다시하기</button>
     </dialog>
 
     <div class="button-container">
-      <button id="open-modal-button">실패 모달</button>
-      <button id="change-image-button">정답 공개</button>
+      <!-- <button id="open-modal-button">실패 모달</button>
+      <button id="change-image-button">정답 공개</button> -->
       <a href="./main.html">홈으로</a>
     </div>
   </body>
 
   <script>
     // 모달 창 열기
-    const openDialogButton = document.querySelector('#open-modal-button');
-    const closeDialogButton = document.querySelector('.close-dialog');
-    const panelDialog = document.querySelector('.panel-dialog');
+    // const openDialogButton = document.querySelector('#open-modal-button');
+    // const closeDialogButton = document.querySelector('.close-dialog');
+    // const panelDialog = document.querySelector('.panel-dialog');
 
-    const showDialog = () => panelDialog.showModal();
-    const closeDialog = () => panelDialog.close();
+    // const showDialog = () => panelDialog.showModal();
+    // const closeDialog = () => panelDialog.close();
 
-    openDialogButton.addEventListener('click', showDialog);
-    closeDialogButton.addEventListener('click', closeDialog);
+    // openDialogButton.addEventListener('click', showDialog);
+    // closeDialogButton.addEventListener('click', closeDialog);
 
     // 이미지 바꾸기
-    const changeImageButton = document.querySelector('#change-image-button');
-    const imgEl = document.querySelector('.teenieping-cube');
+    // const changeImageButton = document.querySelector('#change-image-button');
+    // const imgEl = document.querySelector('.teenieping-cube');
 
-    const openSrc = '/src/assets/findGame/ruruPingCubeOpen.PNG';
-    const closeSrc = '/src/assets/findGame/ruruPingCube.PNG';
+    // const openSrc = '/src/assets/findGame/ruruPingCubeOpenOpen.PNG';
+    // const closeSrc = '/src/assets/findGame/ruruPingCubeOpen.PNG';
 
-    function changeImage(openSrc, closeSrc) {
-      if (imgEl.src.endsWith('ruruPingCubeOpen.PNG'))
-        imgEl.src = closeSrc; // 이미지 교체
-      else imgEl.src = openSrc;
-    }
+    // function changeImage(openSrc, closeSrc) {
+    //   if (imgEl.src.endsWith('ruruPingCubeOpenOpen.PNG'))
+    //     imgEl.src = closeSrc; // 이미지 교체
+    //   else imgEl.src = openSrc;
+    // }
 
-    changeImageButton.addEventListener('click', () =>
-      changeImage(openSrc, closeSrc),
-    );
+    // changeImageButton.addEventListener('click', () =>
+    //   changeImage(openSrc, closeSrc),
+    // );
   </script>
 </html>
