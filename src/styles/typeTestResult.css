@@ -1,0 +1,261 @@
+@import url('/src/common/a11y.css');
+@import url('/src/common/modern-reset.css');
+@import url('/src/common/theme.css');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* 컨테이너 */
+.container {
+  background: linear-gradient(180deg, #fce7f3 0%, #f3e8ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 768px;
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* 헤더 */
+header {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.main-name {
+  background: linear-gradient(
+    90deg,
+    var(--color-pink) 0%,
+    var(--color-purple) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 메인 */
+main {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 40px;
+  background: var(--color-white);
+  border: 4px solid var(--color-lightpink);
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+/* 제목 텍스트 */
+.section-text {
+  color: var(--color-text);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* 대표 이미지 */
+.result-ping {
+  display: block;
+  margin: 0 auto 16px;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+/* MBTI, 이름, 성격 */
+.tab-mbti {
+  width: fit-content;
+  text-align: center;
+  background: #f3f4f6;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 14px;
+  color: var(--color-text);
+  font-weight: 500;
+  margin: 0 auto 8px;
+}
+
+.ping-name {
+  text-align: center;
+  color: var(--color-green);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ping-character {
+  text-align: center;
+  color: var(--color-purple);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* 설명 박스 */
+.sub-container {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 24px;
+  border: 2px solid var(--color-lightpink);
+  border-radius: 16px;
+  color: var(--color-subtext);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+/* 추천 섹션 */
+.ping-recommend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.ping-like p,
+.ping-hate p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-pink);
+  -webkit-text-stroke: 1px rgba(75, 85, 99, 0.5);
+}
+
+.ping-hate p {
+  color: var(--color-purple);
+}
+
+.like-img,
+.hate-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.like-mbti,
+.hate-mbti {
+  width: fit-content;
+  text-align: center;
+  background: #f3f4f6;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  font-size: 12px;
+  color: var(--color-text);
+  font-weight: 500;
+  margin: 0 auto 10px;
+}
+
+/* 키워드 탭 */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.tab-button {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+/* 버튼 영역 */
+.bottom-btn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.repeat-btn,
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.repeat-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.share-btn {
+  background: var(--color-pink);
+  color: #fff;
+}
+
+.bottom-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .main-name {
+    font-size: 24px;
+  }
+
+  .result-ping {
+    width: 140px;
+    height: 140px;
+  }
+
+  .tab-mbti {
+    font-size: 13px;
+  }
+
+  .ping-name {
+    font-size: 20px;
+  }
+
+  .ping-character {
+    font-size: 13px;
+  }
+
+  .sub-container {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .like-img,
+  .hate-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .tab-button {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .bottom-btn {
+    flex-direction: column;
+  }
+
+  .repeat-btn,
+  .share-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

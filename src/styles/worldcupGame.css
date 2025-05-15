@@ -1,0 +1,339 @@
+@import url('/src/common/a11y.css');
+@import url('/src/common/modern-reset.css');
+@import url('/src/common/theme.css');
+
+/* 기본 세팅 */
+:root {
+  --color-grey-95: #f3e8ff;
+  --color-grey-bar: #e5e7eb;
+
+  --bg-color-primary: var(--color-white);
+  --bg-color-sub: var(--color-grey-95);
+}
+
+body {
+  align-items: center;
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-grey-95, #f3e8ff) 0%,
+      var(--color-grey-95, #f3e8ff) 100%
+    ),
+    var(--bg-color-primary, #fff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* main-page */
+.main-page-left {
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+.main-page-left:hover {
+  box-shadow: 0 0 6px #ec4899;
+}
+
+.title-text {
+  color: #ec4899;
+  display: flex;
+  justify-content: center;
+  font-size: var(--text-5xl);
+  margin-bottom: 15px;
+}
+
+/* 게임 페이지와 겹치는 스타일 */
+.worldcup-content-section,
+.game-page-content {
+  background-color: var(--bg-color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.worldcup-content-section {
+  .cover-img {
+    padding-block: 16px;
+  }
+
+  .content-text {
+    padding-block: 24px;
+    font-size: var(--text-3xl);
+  }
+}
+
+.start-btn {
+  margin-bottom: 24px;
+  width: 40vw;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ec4899;
+  color: var(--bg-color-primary);
+  font-size: var(--text-3xl);
+}
+
+/* game-page */
+.game-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* game-page-title */
+.game-page-title {
+  background-color: var(--bg-color-primary);
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  width: 70%;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+
+  .sub-title {
+    color: #000;
+    font-size: var(--text-2xl);
+    font-weight: bold;
+  }
+
+  .sub-info {
+    color: #4b5563;
+    font-size: var(--text-xs);
+  }
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 5px;
+  margin: 10px auto;
+  list-style: none;
+  padding: 0;
+
+  .bg-bar {
+    position: absolute;
+    background-color: var(--color-grey-bar);
+    height: 5px;
+    width: 100%;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .pg-bar {
+    position: absolute;
+    background-color: #ec4899;
+    height: 5px;
+    width: 6.25%; /* 1/16 진행 상태 */
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+/* game-page-card section */
+.game-page-content {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.game-page-content ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gap: 10px;
+  width: 100%;
+}
+
+.game-page-content li {
+  flex: 1;
+  background-color: var(--bg-color-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.game-page-content li:hover {
+  transform: scale(1.02);
+}
+
+.game-page-content figure {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.game-page-content .cover-img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.game-page-content .content-text {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 960px;
+  padding: 20px;
+}
+
+/* winner-page */
+.winner-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.winner-page-content {
+  background-color: var(--bg-color-primary);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.winner-page-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.winner-page-content .sub-title {
+  color: #000;
+  font-size: var(--text-2xl);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.winner-page-content figure {
+  margin: 0;
+  padding: 0;
+}
+
+.winner-page-content .cover-img {
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.winner-page-content .content-text {
+  font-size: var(--text-xl);
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.character-info p {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.character-info .label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.retry-btn {
+  background-color: #ec4899;
+  color: white;
+}
+
+.home-btn {
+  background-color: white;
+  color: #ec4899;
+  border: 1px solid #ec4899;
+  padding: 8px 20px;
+  margin-top: 20px;
+  font-size: var(--text-md);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.share-btn {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+.rank-btn {
+  background-color: #c74fe8;
+  color: white;
+}
+
+/* rank-page */
+.rank-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

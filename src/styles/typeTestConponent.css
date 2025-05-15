@@ -1,0 +1,35 @@
+@import '../common/modern-reset.css';
+@import '../common/theme.css';
+
+/* TODO minwidth, maxwidth 설정 1차 기능 구현 후 반응형 */ /* text component*/
+.main-name {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-pink) 0%,
+    var(--color-purple) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 5.2083vw;
+}
+
+/* button component  */
+.base-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--color-pink);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
