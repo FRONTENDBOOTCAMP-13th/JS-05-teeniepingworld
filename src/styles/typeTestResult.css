@@ -8,199 +8,254 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* 컨테이너 */
 .container {
   background: linear-gradient(180deg, #fce7f3 0%, #f3e8ff 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 768px;
-  min-height: 1300px;
-  height: 100vh;
+  width: 100%;
+  max-width: 768px;
+  min-height: 100vh;
   margin-inline: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
-/* header */
+
+/* 헤더 */
 header {
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
-
-  .main-name {
-    background: linear-gradient(90deg, #ec4899 0%, #9333ea 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    line-height: 1;
-    vertical-align: middle;
-    font-size: 32px;
-  }
 }
 
-/* main */
+.main-name {
+  background: linear-gradient(
+    90deg,
+    var(--color-pink) 0%,
+    var(--color-purple) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 메인 */
 main {
-  width: 700px;
-  margin: 60px 34px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 40px;
   background: var(--color-white);
   border: 4px solid var(--color-lightpink);
   border-radius: 16px;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
 
-  .section-text {
-    color: #1f2937;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 32px; /* 156.863% */
-    margin-top: 33px;
+/* 제목 텍스트 */
+.section-text {
+  color: var(--color-text);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* 대표 이미지 */
+.result-ping {
+  display: block;
+  margin: 0 auto 16px;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+/* MBTI, 이름, 성격 */
+.tab-mbti {
+  width: fit-content;
+  text-align: center;
+  background: #f3f4f6;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 14px;
+  color: var(--color-text);
+  font-weight: 500;
+  margin: 0 auto 8px;
+}
+
+.ping-name {
+  text-align: center;
+  color: var(--color-green);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ping-character {
+  text-align: center;
+  color: var(--color-purple);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* 설명 박스 */
+.sub-container {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 24px;
+  border: 2px solid var(--color-lightpink);
+  border-radius: 16px;
+  color: var(--color-subtext);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+/* 추천 섹션 */
+.ping-recommend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.ping-like p,
+.ping-hate p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-pink);
+  -webkit-text-stroke: 1px rgba(75, 85, 99, 0.5);
+}
+
+.ping-hate p {
+  color: var(--color-purple);
+}
+
+.like-img,
+.hate-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.like-mbti,
+.hate-mbti {
+  width: fit-content;
+  text-align: center;
+  background: #f3f4f6;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  font-size: 12px;
+  color: var(--color-text);
+  font-weight: 500;
+  margin: 0 auto 10px;
+}
+
+/* 키워드 탭 */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.tab-button {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+/* 버튼 영역 */
+.bottom-btn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.repeat-btn,
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.repeat-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.share-btn {
+  background: var(--color-pink);
+  color: #fff;
+}
+
+.bottom-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .main-name {
+    font-size: 24px;
   }
+
   .result-ping {
-    margin: 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
   }
+
   .tab-mbti {
-    margin: 0 auto;
-    width: fit-content; /* 내용물 크기만큼만 너비 가짐 */
-    border-radius: 9999px;
-    background: #f3f4f6;
-    padding: 4px 12px;
-    color: #1f2937;
     font-size: 13px;
-    font-weight: 500;
-    line-height: 16px;
   }
+
   .ping-name {
-    margin-block: 8px 4px;
-    text-align: center;
-    color: #16a34a;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 33px;
-    letter-spacing: 1.2px;
+    font-size: 20px;
   }
+
   .ping-character {
-    color: #7e22ce;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
-    margin-bottom: 23px;
+    font-size: 13px;
   }
+
   .sub-container {
-    height: 280px;
-    overflow: scroll;
-    border-radius: 24px;
-    border: 2px solid #f9a8d4;
-    text-align: left;
-    padding: 30px;
-    line-height: 2;
-    color: #4b5563;
-    font-size: 14px;
-    font-weight: 400;
+    padding: 16px;
+    font-size: 13px;
   }
-  .ping-recommend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 23px 0px 0px 0px;
-    gap: 60px;
 
-    .ping-like {
-      p {
-        color: var(--color-pink);
-        text-align: center;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: rgba(75, 85, 99, 0.5);
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 32px;
-      }
-      .like-img {
-        width: 180px;
-        height: 180px;
-      }
-    }
-    .ping-hate {
-      p {
-        color: var(--color-purple);
-        text-align: center;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: rgba(75, 85, 99, 0.5);
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 32px;
-      }
-      .hate-img {
-        width: 180px;
-        height: 180px;
-      }
-    }
+  .like-img,
+  .hate-img {
+    width: 120px;
+    height: 120px;
   }
-  .tab-container {
-    margin-top: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
+
   .tab-button {
-    border-radius: 9999px;
-    background: #dcfce7;
-    padding: 6px 12px;
-    color: #16a34a;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 1px;
+    font-size: 11px;
+    padding: 6px 10px;
   }
+
   .bottom-btn {
-    display: flex;
+    flex-direction: column;
+  }
+
+  .repeat-btn,
+  .share-btn {
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    margin-block: 32px;
-    gap: 20px;
-
-    .repeat-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      border-radius: 9999px;
-      background: #f3f4f6;
-      border: none;
-      padding: 10px 24px;
-
-      img {
-        width: 15px;
-        height: 15px;
-      }
-      span {
-        color: #374151;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 24px; /* 176.471% */
-      }
-    }
-    .share-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      border-radius: 9999px;
-      background: var(--color-pink);
-      border: none;
-      padding: 10px 24px;
-
-      img {
-        width: 15px;
-        height: 15px;
-      }
-      span {
-        color: #fff;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 24px; /* 176.471% */
-      }
-    }
   }
 }
