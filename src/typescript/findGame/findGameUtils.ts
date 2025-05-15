@@ -3,7 +3,7 @@ import { type findTeenieping } from '../../types/findGameType.ts';
 export function openCube(set: findTeenieping) {
   const targetImg = set.getDiv?.querySelector('img');
 
-  if (targetImg?.src.endsWith('Cube.PNG')) {
+  if (targetImg?.src.endsWith('Cube.WEBP')) {
     targetImg?.setAttribute('src', targetImg?.src.replace('Cube', 'CubeOpen'));
   }
 }
@@ -11,20 +11,47 @@ export function openCube(set: findTeenieping) {
 export function closeCube(set: findTeenieping) {
   const targetImg = set.getDiv?.querySelector('img');
 
-  if (targetImg?.src.endsWith('CubeOpen.PNG')) {
+  if (targetImg?.src.endsWith('CubeOpen.WEBP')) {
     targetImg?.setAttribute('src', targetImg?.src.replace('CubeOpen', 'Cube'));
   }
 }
 
-export function insertTeenieping(answerSet: findTeenieping) {
+export function setCube(i: number, name: string) {
+  const gameContainer = document.querySelector<HTMLElement>('.game-container');
+
+  const newDiv = document.createElement('div');
+  const newImg = document.createElement('img');
+  newDiv.setAttribute('class', 'set');
+  newDiv.setAttribute('id', `set-${i}`);
+  newImg.setAttribute('src', `/src/assets/findGame/${name}PingCubeOpen.WEBP`);
+  newImg.setAttribute('alt', '티니핑 큐브');
+  newImg.setAttribute('class', 'teenieping-cube');
+
+  newDiv.appendChild(newImg);
+  gameContainer?.appendChild(newDiv);
+}
+
+export function insertTeenieping(
+  answerSet: findTeenieping,
+  name: string,
+  round: number,
+) {
   if (answerSet.getDiv) {
     const targetDiv = answerSet.getDiv;
 
     const newImg = document.createElement('img');
-    newImg.setAttribute('src', '/src/assets/findGame/ruruPing.PNG');
+    newImg.setAttribute('src', `/src/assets/findGame/${name}Ping.WEBP`);
     newImg.setAttribute('alt', '티니핑');
     newImg.setAttribute('class', 'teenieping');
     targetDiv.appendChild(newImg);
+
+    if (round >= 3) {
+      newImg.style.height = '40%';
+      newImg.style.transform = 'translateY(-20%)';
+    }
+    if (round >= 5) {
+      newImg.style.height = '30%';
+    }
   }
 }
 
@@ -114,10 +141,17 @@ export function showResult(
   const dialogP = resultDialog.querySelector('p');
   const dialogButton = resultDialog.querySelector('button');
 
-  if (result === true) {
+  if (round === 5) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
-      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.PNG';
+      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
+    if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
+    if (dialogButton?.textContent) dialogButton.textContent = `결과보기`;
+    result = false;
+  } else if (result === true) {
+    if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
+    if (dialogImg?.src)
+      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
     if (dialogP?.textContent)
       dialogP.textContent = '다음 라운드도 도전해보세요!';
     if (dialogButton?.textContent)

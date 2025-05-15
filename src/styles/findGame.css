@@ -25,12 +25,38 @@ body {
   flex-direction: column;
 
   margin: auto;
-  padding: 40px;
+  padding: 30px 40px;
   height: 80vh;
   width: 100vh;
 
   background-color: var(--w-color);
   border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+  .mac-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+
+    .btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+
+      &.red {
+        background-color: #ff5f57;
+      }
+
+      &.yellow {
+        background-color: #ffbd2e;
+      }
+
+      &.green {
+        background-color: #28c840;
+      }
+    }
+  }
 
   .game-info-wrapper {
     display: flex;
@@ -83,7 +109,6 @@ body {
       .teenieping {
         object-fit: contain;
 
-        width: 50%;
         height: 50%;
 
         z-index: 1;
@@ -181,6 +206,22 @@ body {
     &:hover {
       background-color: #ff78c6;
     }
+  }
+}
+
+.game-start-btn {
+  background-color: #ff9edb;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 5px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #ff78c6;
+    scale: 1.2;
   }
 }
 /* 

@@ -5,6 +5,7 @@ import {
   closeCube,
   handleSelection,
   insertTeenieping,
+  setCube,
   setGameDescription,
   setRound,
   showResult,
@@ -19,13 +20,26 @@ export function playOneRound(round: number) {
 
 async function play(round: number, resolve: () => void) {
   const gameContainer = document.querySelector<HTMLElement>('.game-container');
-  // 라운드 변경
+
+  // 라운드 표시
   setRound(round);
 
   // TODO 라운드에 따라 변경
-  let teeniepingName: string = '';
-  if (round === 1 || round === 2) teeniepingName = '루루핑';
-  else teeniepingName = '빤짝핑';
+  let teeniepingName: string = '루루핑';
+  let teeniepingNameEng: string = 'ruru';
+  if (round >= 3) {
+    teeniepingName = '빤짝핑';
+    teeniepingNameEng = 'bbanzzak';
+  }
+
+  // 큐브 세팅
+  let cubeCount = 3;
+  if (round >= 3) cubeCount++;
+  if (round >= 5) cubeCount++;
+
+  for (let i = 0; i < cubeCount; i++) {
+    setCube(i, teeniepingNameEng);
+  }
 
   setGameDescription(`${teeniepingName}이 큐브 속에 숨었어요!`);
 
@@ -56,7 +70,7 @@ async function play(round: number, resolve: () => void) {
   // TODO 특정 행동(티니핑 넣기) 구현
 
   // 정답 인덱스에 티니핑 넣기
-  insertTeenieping(findTeeniepingArr[answerIdx]);
+  insertTeenieping(findTeeniepingArr[answerIdx], teeniepingNameEng, round);
 
   // 큐브 닫기
   await waitDelay(2000);
@@ -67,8 +81,8 @@ async function play(round: number, resolve: () => void) {
   await waitDelay(1000);
 
   // 위치 바꾸기 (5번)
-  for (let i = 0; i < 5; i++) {
-    if (gameContainer) await animateSwap(1000);
+  for (let i = 0; i < round * 4; i++) {
+    if (gameContainer) await animateSwap(1000 / round);
   }
 
   setGameDescription(`어느 큐브에 ${teeniepingName}이 숨어있을까요?`);
@@ -93,3 +107,14 @@ async function play(round: number, resolve: () => void) {
     showResult(resolve, result, round);
   }
 }
+
+// 뚜껑열기 - 삭제할 기능
+const openBtn = document.querySelector('#dev');
+openBtn?.addEventListener('click', () => {
+  const cubes = document.querySelectorAll<HTMLImageElement>('.teenieping-cube');
+  cubes.forEach((item) => {
+    if (item?.src.endsWith('Cube.WEBP')) {
+      item?.setAttribute('src', item?.src.replace('Cube', 'CubeOpen'));
+    }
+  });
+});

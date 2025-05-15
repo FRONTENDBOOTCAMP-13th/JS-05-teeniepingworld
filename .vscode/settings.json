@@ -101,7 +101,7 @@
       "description": "gitignore 파일 추가/업데이트"
     }
   ],
-  "gitmoji.onlyUseCustomEmoji": true,
-  "workbench.preferredDarkColorTheme": "Default Dark Modern",
-  "workbench.colorTheme": "Tinacious Design"
+  "gitmoji.onlyUseCustomEmoji": true
+  // "workbench.preferredDarkColorTheme": "Default Dark Modern",
+  // "workbench.colorTheme": "Tinacious Design"
 }
