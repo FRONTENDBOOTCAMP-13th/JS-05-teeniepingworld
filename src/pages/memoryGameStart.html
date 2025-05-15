@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>같은 티니핑 친구들을 찾아라!</title>
     <link rel="stylesheet" href="/src/styles/memoryGameStart.css" />
+    <script
+      type="module"
+      src="../typescript/memoryGame/memoryGameStart.js"
+    ></script>
   </head>
   <body>
     <div class="page-container">
       <div class="top-container">
         <button class="home-btn btn" type="button">홈으로</button>
         <h1>같은 티니핑 친구들을 찾아라!</h1>
-        <button class="restart-btn btn" type="button">다시 시작</button>
+        <div>
+          <button class="levelselect-btn btn" type="button">난이도 선택</button>
+          <button class="restart-btn btn" type="button">다시 시작</button>
+        </div>
       </div>
 
       <div class="game-progress">
@@ -22,8 +29,11 @@
         </div>
 
         <div class="progress-info">
-          <div class="score">점수: <span>0</span></div>
-          <div class="find">찾은 쌍: <span>0</span> / <span>8</span></div>
+          <div class="score">점수: <span id="score">0</span></div>
+          <div class="find">
+            찾은 쌍: <span id="findCount">0</span> /
+            <span id="totalCount">8</span>
+          </div>
         </div>
       </div>
 
@@ -35,14 +45,23 @@
     <!-- 게임 종료 시 보여줄 배너 -->
     <div class="game-over-banner hidden">
       <h2>게임 종료!</h2>
-      <p><span id="found-count">1</span>/8 쌍을 찾았어요!</p>
+      <p><span id="found-count"></span></p>
+      <!-- <p><span id="found-count">1</span>/<span>8</span> 쌍을 찾았어요!</p> -->
       <p>
         <strong>최종 점수 : <span id="final-score">100</span></strong>
       </p>
 
       <div class="banner-buttons">
-        <button class="restart-btn btn" type="button">다시 도전하기</button>
-        <button class="reset-level-btn btn" type="button">난이도 재설정</button>
+        <button id="bannerRestartBtn" class="restart-btn btn" type="button">
+          다시 도전하기
+        </button>
+        <button
+          id="bannerLevelSelectBtn"
+          class="reset-level-btn btn"
+          type="button"
+        >
+          난이도 재설정
+        </button>
       </div>
     </div>
   </body>

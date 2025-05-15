@@ -64,3 +64,331 @@ socore : number -> 점수
 
 
 */
+
+/*
+오늘의 목표
+
+* 저장된 난이도 읽어오기
+* 카드 쌍 개수 설정하기
+* 카드 동적 생성하기 (DOM으로 카드 생성하고 grid 배치?) 
+*/
+'use strict';
+console.log('선택된 난이도', sessionStorage.getItem('level'));
+
+const cardCount = Number(sessionStorage.getItem('level')) || 8; //생성할 카드 개수
+console.log(cardCount);
+
+//맞춰야하는 전체 개수
+const totalCount = document.querySelector('#totalCount');
+console.log(totalCount?.textContent);
+if (totalCount) {
+  totalCount.textContent = sessionStorage.getItem('level') || '8';
+}
+
+const findCount = document.querySelector('#findCount');
+
+//카드 타입
+type cardData = {
+  id: number;
+  value: string;
+  src: string;
+};
+
+//티니핑 이미지 접근 경로가 담긴 배열
+const pingSrc: string[] = [
+  '../assets/memorygame_img/aingPing.webp',
+  '../assets/memorygame_img/ajaPing.webp',
+  '../assets/memorygame_img/baebaePing.webp',
+  '../assets/memorygame_img/baroPing.webp',
+  '../assets/memorygame_img/bugguPing.webp',
+  '../assets/memorygame_img/chachaPing.webp',
+  '../assets/memorygame_img/dockdockPing.webp',
+  '../assets/memorygame_img/haePing.webp',
+  '../assets/memorygame_img/haunaPing.webp',
+  '../assets/memorygame_img/heartsPing.webp',
+  '../assets/memorygame_img/kikiPing.webp',
+  '../assets/memorygame_img/kojaPing.webp',
+  '../assets/memorygame_img/moyaPing.webp',
+  '../assets/memorygame_img/mugouPing.webp',
+  '../assets/memorygame_img/raraPing.webp',
+  '../assets/memorygame_img/siruPing.webp',
+];
+
+console.log(pingSrc);
+
+//일단 난이도에 따른 카드를 한쌍씩 생성해 배열로 담아 리턴하는 함수
+function gameInit(count: number): cardData[] {
+  const cards: cardData[] = [];
+
+  for (let i = 1; i <= count; i++) {
+    const value: string = `card-${i}`;
+    const src: string = pingSrc[i];
+    cards.push({ id: 2 * i - 1, value: value, src: src });
+    cards.push({ id: 2 * i, value: value, src: src });
+  }
+
+  return cards;
+}
+
+let cards: cardData[] = gameInit(cardCount);
+console.log(cards);
+
+// 생성된 카드 무작위로 섞는 함수
+function cardShuffle(inputCards: cardData[]): cardData[] {
+  for (let i = inputCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [inputCards[i], inputCards[j]] = [inputCards[j], inputCards[i]];
+  }
+  return inputCards;
+}
+
+//카드를 무작위로 섞는 동작 실행
+cards = cardShuffle(cards);
+console.log(cards);
+
+//야호 카드 섞기 성공!!!!!
+
+//DOM으로 카드 생성
+const cardContainer = document.querySelector('.card-container');
+
+if (cardContainer) {
+  cardContainer.addEventListener('click', function () {
+    console.log('확인');
+  });
+}
+
+//난이도에 따라 동적으로 카드를 생성해주는 함수
+function cardSetting(data: cardData[]) {
+  cardContainer?.classList.remove('grid-4', 'grid-autofit');
+  if (cardCount === 6 || cardCount === 8) {
+    cardContainer?.classList.add('grid-4');
+  } else if (cardCount === 12) {
+    cardContainer?.classList.add('grid-autofit');
+  }
+
+  for (let i = 0; i < data.length; i++) {
+    addCard(data[i]);
+  }
+
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      // card.classList.toggle('flip'); //나중에 add로 바꿔서 여기서는 돌아가게만!! 설정
+    });
+  });
+}
+
+//DOM 제어로 카드를 동적으로 생성해주는 함수
+function addCard(data: cardData) {
+  const div = document.createElement('div');
+  div.dataset.id = data.id.toString();
+  div.dataset.value = data.value;
+  div.classList.add('card');
+
+  const innerCard = document.createElement('div');
+  innerCard.classList.add('card-inner');
+
+  const cardBack = document.createElement('div');
+  cardBack.classList.add('card-back');
+
+  const cardFront = document.createElement('div');
+  cardFront.classList.add('card-front');
+
+  const imgBack = document.createElement('img');
+  imgBack.src = '../assets/memorygame_img/backCard.png';
+
+  const imgFront = document.createElement('img');
+  imgFront.classList.add('img-front');
+  imgFront.src = data.src;
+
+  cardBack.appendChild(imgBack);
+  cardFront.appendChild(imgFront);
+
+  innerCard.appendChild(cardBack);
+  innerCard.appendChild(cardFront);
+
+  div.appendChild(innerCard);
+
+  cardContainer?.appendChild(div);
+}
+
+//난이도에 따라 동적으로 카드를 생성해주는 함수 호출
+cardSetting(cards);
+
+/*
+ *음... 일단 카드 매칭 함수를 오전에 구현해 보자!!
+ 
+검사용 배열을 만든다.
+
+
+
+-> 배열의 length가 2개가 되면 검사를 진행하는데 
+이때 data-value가 동일하면 성공 아니면 자동 뒤집기!
+클릭을 하면 push를 해야하는데 push 조건을 class에 flip이 없어야 한다...
+
+실패라면 flip을 제거해주고 배열 다시 초기화
+성공이라면 flip상태는 유지하고 배열만 초기화..
+
+ */
+let count: number = 0; //현재 매칭된 수
+let flipCheck: HTMLElement[] = []; //매칭 성공 유무를 확인하기 위해 클릭된 카드를 담을 배열
+console.log('flipCheck 확인', flipCheck);
+console.log('count 확인', count);
+
+//클릭한 카드가 현재 검사를 할 카드인지 체크하는 함수
+function cardClick(card: HTMLElement) {
+  if (card.classList.contains('flip') || flipCheck.length >= 2) {
+    return;
+  }
+
+  card.classList.add('flip');
+  flipCheck.push(card);
+
+  if (flipCheck.length === 2) {
+    console.log('매칭 검사 함수 호출');
+    checkMatch();
+  }
+}
+
+//선택된 카드 2개가 일치하는지 검사하는 함수
+function checkMatch() {
+  const [firstCard, secondCard] = flipCheck;
+
+  const firstCardValue: string = firstCard.dataset.value || 'fail1';
+  const secondCardValue: string = secondCard.dataset.value || 'fail2';
+
+  if (firstCardValue === secondCardValue) {
+    console.log('매칭성공!');
+    count += 1; //맞은 개수 1개 증가시키기
+    firstCard.classList.add('checked');
+    secondCard.classList.add('checked');
+    flipCheck = []; //다시 검사해야하니 배열 초기화
+    correct();
+    if (findCount) {
+      findCount.textContent = count.toString();
+    }
+  } else {
+    console.log('매칭 실패!');
+    wrong();
+    setTimeout(() => {
+      firstCard.classList.remove('flip'); //실패하면 다시 돌아가게끔 class 제거
+      secondCard.classList.remove('flip');
+      flipCheck = [];
+    }, 600);
+  }
+
+  if (count === cardCount) {
+    openbanner();
+  }
+  console.log(count, cardCount);
+}
+
+const cardList = document.querySelectorAll('.card');
+cardList.forEach((card) => {
+  card.addEventListener('click', () => cardClick(card as HTMLElement));
+});
+
+/*
+ 1. UI 부분 로직 구현 일단 
+ 점수랑 찾은 쌍 진행사항 구현하기
+ 
+ 점수는 문제당 + 50점 
+ 틀리면 문제당 - 10점 -> 시간남으면 기회로 할까?
+
+*/
+
+const scoreNode = document.querySelector('#score');
+console.log(scoreNode?.textContent);
+
+//매칭 성공시 점수 획득 함수
+function correct() {
+  let beforeScore: number = Number(scoreNode?.textContent);
+  beforeScore += 50;
+  if (scoreNode?.textContent) {
+    scoreNode.textContent = beforeScore.toString();
+  }
+}
+
+//매칭 실패시 점수 감점 함수
+function wrong() {
+  let beforeScore: number = Number(scoreNode?.textContent);
+  if (beforeScore >= 10) {
+    beforeScore -= 10;
+  }
+  if (scoreNode?.textContent) {
+    scoreNode.textContent = beforeScore.toString();
+  }
+}
+
+//리셋 함수
+/*
+배열 초기화
+점수 초기화
+찾을 쌍 초기화
+시간 초기화
+모든 카드에 flip 제거 checked 제거
+... 그냥 페이지 리로드 방법 사용!! 제일 간단하고 페이지가 초기화되어도 상관이 없음..
+*/
+
+const restartBtn = document.querySelector('.restart-btn');
+restartBtn?.addEventListener('click', function () {
+  restartGame();
+});
+
+const levelSelectBtn = document.querySelector('.levelselect-btn');
+levelSelectBtn?.addEventListener('click', function () {
+  levelSelect();
+});
+
+// 게임을 다시 시작하기 위해 페이지를 리로드하는 함수.
+function restartGame() {
+  window.location.reload();
+}
+
+//난이도 선택 페이지로 이동하는 함수
+function levelSelect() {
+  window.location.href = '../pages/memoryGame.html';
+}
+
+/*
+  배너 작업
+게임 완료 or 시간 초과시 현재 까지 상황 알려주는 모달 창 띄우기 작업
+*/
+const banner = document.querySelector('.game-over-banner');
+const bannerRestartBtn = document.querySelector('#bannerRestartBtn');
+const bannerSelectLevelBtn = document.querySelector('#bannerLevelSelectBtn');
+const finalScore = document.querySelector('#final-score');
+const bannerfoundCount = document.querySelector('#found-count');
+const bannerTotalCount = bannerfoundCount?.nextElementSibling;
+
+function openbanner() {
+  if (finalScore) {
+    finalScore.textContent = scoreNode?.textContent || '스코어 오류';
+  }
+
+  if (bannerTotalCount) {
+    bannerTotalCount.textContent = sessionStorage.getItem('level') || '8';
+  }
+
+  if (bannerfoundCount) {
+    let text: string;
+    if (count === cardCount) {
+      text = '티니핑 친구들을 모두 찾았어요!!';
+    } else {
+      text = `${cardCount - count}마리의 티니핑 친구를 아직 못 찾았어요 ㅠㅠ 다시 해줄거죠?`;
+    }
+    bannerfoundCount.textContent = text;
+
+    if (banner) {
+      banner.classList.remove('hidden');
+    }
+  }
+}
+
+bannerRestartBtn?.addEventListener('click', function () {
+  restartGame();
+});
+
+bannerSelectLevelBtn?.addEventListener('click', function () {
+  levelSelect();
+});

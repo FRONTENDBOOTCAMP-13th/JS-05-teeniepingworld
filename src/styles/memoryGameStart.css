@@ -29,6 +29,9 @@ body {
 .top-container h1 {
   font-size: 24px;
   color: black;
+  /* 가운데 정렬하고 싶어서 임시로 포지션으로 지정 */
+  position: relative;
+  left: 40px;
 }
 
 /* 게임 진행 표시 */
@@ -65,7 +68,7 @@ body {
 .progress-bar {
   background-color: #ea5fa7;
   height: 100%;
-  width: 80%; /* 예시 */
+  width: 90%; /* 예시 */
   transition: width 0.5s ease;
 }
 
@@ -121,7 +124,8 @@ body {
 /* 카드 배치할 곳 */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+  justify-content: center;
   gap: 16px;
   width: 100%;
   max-width: 800px;
@@ -132,12 +136,42 @@ body {
   min-height: 400px;
 }
 
+.grid-autofit {
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  max-width: 900px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(110px, 150px));
+}
+
+.card {
+  width: 110px;
+  height: 165px;
+  margin: 0 auto;
+  perspective: 1000px;
+  /* border: 1px solid red; */
+}
+
+.card img {
+  /* width: 100%;
+  height: 100%; */
+  object-fit: cover;
+  border-radius: 16px;
+}
+
 .game-over-banner {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
+  width: 400px;
+  height: 300px;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 200, 0.9); /* 반투명한 연노랑 배경 */
+  background: rgba(255, 255, 200, 0.9);
   padding: 30px;
   border-radius: 16px;
   text-align: center;
@@ -147,6 +181,12 @@ body {
   align-items: center;
   gap: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  font-size: 20px;
+
+  h2 {
+    font-size: 46px;
+  }
 }
 
 /* 기본은 숨기기 */
@@ -160,4 +200,87 @@ body {
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  background: linear-gradient(
+    to bottom,
+    #ffeaf5,
+    #ffd6e7
+  ); /* 은은한 그라데이션 배경 */
+  border-radius: 15px;
+  border: 1px solid #f0c3d8; /* 밝은 핑크 경계선 */
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.15),
+    /* 바깥쪽 자연스러운 메인 그림자 */ 0 4px 6px rgba(0, 0, 0, 0.05),
+    /* 추가 부드러운 얕은 그림자 */ inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    /* 위쪽 광택 느낌 */ inset 0 -4px 8px rgba(0, 0, 0, 0.1); /* 아래쪽 살짝 어두운 느낌 */
+  transition:
+    transform 0.4s,
+    box-shadow 0.4s; /* 움직임 부드럽게 */
+}
+
+.card:hover .card-inner {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.2),
+    0 8px 12px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 기본 상태: 앞면이 보임 (사실은 카드 뒷면 이미지) */
+.card-front,
+.card-back {
+  position: absolute;
+  /* width: 100px;
+  height: 100%; */
+  backface-visibility: hidden;
+}
+
+/* 뒷면 (앞에서 보는 기본 상태) */
+.card-back {
+  transform: rotateY(0deg);
+}
+
+/* 앞면 (회전 후 보이는 면) */
+.card-front {
+  transform: rotateY(180deg);
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .img-front {
+    margin-block: auto;
+  }
+}
+
+/* flip 클래스가 있을 때 */
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+@keyframes matchPop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.95);
+    background-color: #f0f0f0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.card.checked {
+  border: 2px solid greenyellow;
+  border-radius: 15px;
+  animation: matchPop 0.6s ease forwards;
+  transition: all 0.6s ease;
 }
