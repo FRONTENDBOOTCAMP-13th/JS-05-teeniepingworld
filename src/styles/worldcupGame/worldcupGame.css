@@ -43,7 +43,7 @@ body {
   display: flex;
   justify-content: center;
   font-size: var(--text-5xl);
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 /* 게임 페이지와 겹치는 스타일 */
@@ -61,6 +61,7 @@ body {
 
 .worldcup-content-section {
   .cover-img {
+    margin-top: 30px;
     padding-block: 16px;
   }
 
@@ -206,7 +207,7 @@ body {
 .main-content {
   width: 100%;
   max-width: 960px;
-  padding: 20px;
+  padding: 5px 20px;
 }
 
 /* winner-page */
