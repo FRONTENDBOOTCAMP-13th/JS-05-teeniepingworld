@@ -1,6 +1,6 @@
 import { type findTeenieping } from '../../types/findGameType.ts';
 import {
-  changeLocation,
+  animateSwap,
   checkAnswer,
   closeCube,
   handleSelection,
@@ -18,8 +18,7 @@ export function playOneRound(round: number) {
 }
 
 async function play(round: number, resolve: () => void) {
-  const containerDiv = document.querySelector('.game-container');
-
+  const gameContainer = document.querySelector<HTMLElement>('.game-container');
   // 라운드 변경
   setRound(round);
 
@@ -32,7 +31,7 @@ async function play(round: number, resolve: () => void) {
 
   // set 모두 가져오기 (배열로)
   const setArr: NodeListOf<HTMLElement> | undefined =
-    containerDiv?.querySelectorAll('.set');
+    gameContainer?.querySelectorAll('.set');
 
   // 추후 변경 시(티니핑 추가) let으로 변경
   const findTeeniepingArr: findTeenieping[] = [];
@@ -65,9 +64,11 @@ async function play(round: number, resolve: () => void) {
 
   setGameDescription(`빠르게 움직이는 큐브에 집중해주세요!`);
 
+  await waitDelay(1000);
+
   // 위치 바꾸기 (5번)
   for (let i = 0; i < 5; i++) {
-    if (containerDiv) await changeLocation(findTeeniepingArr, containerDiv);
+    if (gameContainer) await animateSwap(1000);
   }
 
   setGameDescription(`어느 큐브에 ${teeniepingName}이 숨어있을까요?`);
