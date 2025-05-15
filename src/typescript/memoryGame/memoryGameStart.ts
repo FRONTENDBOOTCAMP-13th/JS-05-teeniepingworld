@@ -82,7 +82,30 @@ console.log(cardCount);
 type cardData = {
   id: number;
   value: string;
+  src: string;
 };
+
+//티니핑 이미지 접근 경로가 담긴 배열
+const pingSrc: string[] = [
+  '../assets/memorygame_img/aingPing.webp',
+  '../assets/memorygame_img/ajaPing.webp',
+  '../assets/memorygame_img/baebaePing.webp',
+  '../assets/memorygame_img/baroPing.webp',
+  '../assets/memorygame_img/bugguPing.webp',
+  '../assets/memorygame_img/chachaPing.webp',
+  '../assets/memorygame_img/dockdockPing.webp',
+  '../assets/memorygame_img/haePing.webp',
+  '../assets/memorygame_img/haunaPing.webp',
+  '../assets/memorygame_img/heartsPing.webp',
+  '../assets/memorygame_img/kikiPing.webp',
+  '../assets/memorygame_img/kojaPing.webp',
+  '../assets/memorygame_img/moyaPing.webp',
+  '../assets/memorygame_img/mugouPing.webp',
+  '../assets/memorygame_img/raraPing.webp',
+  '../assets/memorygame_img/siruPing.webp',
+];
+
+console.log(pingSrc);
 
 //일단 난이도에 따른 카드를 한쌍씩 생성해 배열로 담아 리턴하는 함수
 function gameInit(count: number): cardData[] {
@@ -90,8 +113,9 @@ function gameInit(count: number): cardData[] {
 
   for (let i = 1; i <= count; i++) {
     const value: string = `card-${i}`;
-    cards.push({ id: 2 * i - 1, value: value });
-    cards.push({ id: 2 * i, value: value });
+    const src: string = pingSrc[i];
+    cards.push({ id: 2 * i - 1, value: value, src: src });
+    cards.push({ id: 2 * i, value: value, src: src });
   }
 
   return cards;
@@ -109,6 +133,7 @@ function cardShuffle(inputCards: cardData[]): cardData[] {
   return inputCards;
 }
 
+//카드를 무작위로 섞는 동작 실행
 cards = cardShuffle(cards);
 console.log(cards);
 
@@ -123,6 +148,7 @@ if (cardContainer) {
   });
 }
 
+//난이도에 따라 동적으로 카드를 생성해주는 함수
 function cardSetting(data: cardData[]) {
   cardContainer?.classList.remove('grid-4', 'grid-autofit');
   if (cardCount === 6 || cardCount === 8) {
@@ -138,11 +164,12 @@ function cardSetting(data: cardData[]) {
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
     card.addEventListener('click', () => {
-      card.classList.toggle('flip');
+      // card.classList.toggle('flip'); //나중에 add로 바꿔서 여기서는 돌아가게만!! 설정
     });
   });
 }
 
+//DOM 제어로 카드를 동적으로 생성해주는 함수
 function addCard(data: cardData) {
   const div = document.createElement('div');
   div.dataset.id = data.id.toString();
@@ -163,7 +190,7 @@ function addCard(data: cardData) {
 
   const imgFront = document.createElement('img');
   imgFront.classList.add('img-front');
-  imgFront.src = '../assets/teenieping_img/hachuPing.png';
+  imgFront.src = data.src;
 
   cardBack.appendChild(imgBack);
   cardFront.appendChild(imgFront);
@@ -176,4 +203,74 @@ function addCard(data: cardData) {
   cardContainer?.appendChild(div);
 }
 
+//난이도에 따라 동적으로 카드를 생성해주는 함수 호출
 cardSetting(cards);
+
+/*
+ *음... 일단 카드 매칭 함수를 오전에 구현해 보자!!
+ 
+검사용 배열을 만든다.
+
+
+
+-> 배열의 length가 2개가 되면 검사를 진행하는데 
+이때 data-value가 동일하면 성공 아니면 자동 뒤집기!
+클릭을 하면 push를 해야하는데 push 조건을 class에 flip이 없어야 한다...
+
+실패라면 flip을 제거해주고 배열 다시 초기화
+성공이라면 flip상태는 유지하고 배열만 초기화..
+
+ */
+let count: number = 0; //현재 매칭된 수
+let flipCheck: HTMLElement[] = []; //매칭 성공 유무를 확인하기 위해 클릭된 카드를 담을 배열
+console.log('flipCheck 확인', flipCheck);
+console.log('count 확인', count);
+
+//클릭한 카드가 현재 검사를 할 카드인지 체크하는 함수
+function cardClick(card: HTMLElement) {
+  if (card.classList.contains('flip') || flipCheck.length >= 2) {
+    return;
+  }
+
+  card.classList.add('flip');
+  flipCheck.push(card);
+
+  if (flipCheck.length === 2) {
+    console.log('매칭 검사 함수 호출');
+    checkMatch();
+  }
+}
+
+//선택된 카드 2개가 일치하는지 검사하는 함수
+function checkMatch() {
+  const [firstCard, secondCard] = flipCheck;
+
+  const firstCardValue: string = firstCard.dataset.value || 'fail1';
+  const secondCardValue: string = secondCard.dataset.value || 'fail2';
+
+  if (firstCardValue === secondCardValue) {
+    console.log('매칭성공!');
+    count += 1; //맞은 개수 1개 증가시키기
+    firstCard.classList.add('checked');
+    secondCard.classList.add('checked');
+    flipCheck = []; //다시 검사해야하니 배열 초기화
+  } else {
+    console.log('매칭 실패!');
+    setTimeout(() => {
+      firstCard.classList.remove('flip'); //실패하면 다시 돌아가게끔 class 제거
+      secondCard.classList.remove('flip');
+      flipCheck = [];
+    }, 800);
+  }
+}
+
+const cardList = document.querySelectorAll('.card');
+cardList.forEach((card) => {
+  card.addEventListener('click', () => cardClick(card as HTMLElement));
+});
+
+/*
+ 1. UI 부분 로직 구현 일단 
+ 점수랑 찾은 쌍 구현하기
+ 
+*/
