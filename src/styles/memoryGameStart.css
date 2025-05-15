@@ -29,6 +29,9 @@ body {
 .top-container h1 {
   font-size: 24px;
   color: black;
+  /* 가운데 정렬하고 싶어서 임시로 포지션으로 지정 */
+  position: relative;
+  left: 40px;
 }
 
 /* 게임 진행 표시 */
@@ -163,10 +166,12 @@ body {
 
 .game-over-banner {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
+  width: 400px;
+  height: 300px;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 200, 0.9); /* 반투명한 연노랑 배경 */
+  background: rgba(255, 255, 200, 0.9);
   padding: 30px;
   border-radius: 16px;
   text-align: center;
@@ -176,6 +181,12 @@ body {
   align-items: center;
   gap: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  font-size: 20px;
+
+  h2 {
+    font-size: 46px;
+  }
 }
 
 /* 기본은 숨기기 */
@@ -248,9 +259,9 @@ body {
   }
 }
 
-/* 여기! flip 클래스가 있을 때 */
+/* flip 클래스가 있을 때 */
 .card.flip .card-inner {
-  transform: rotateY(180deg); /* Y축으로 180도 회전시킴 */
+  transform: rotateY(180deg);
 }
 
 @keyframes matchPop {

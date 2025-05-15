@@ -78,6 +78,15 @@ console.log('선택된 난이도', sessionStorage.getItem('level'));
 const cardCount = Number(sessionStorage.getItem('level')) || 8; //생성할 카드 개수
 console.log(cardCount);
 
+//맞춰야하는 전체 개수
+const totalCount = document.querySelector('#totalCount');
+console.log(totalCount?.textContent);
+if (totalCount) {
+  totalCount.textContent = sessionStorage.getItem('level') || '8';
+}
+
+const findCount = document.querySelector('#findCount');
+
 //카드 타입
 type cardData = {
   id: number;
@@ -254,14 +263,24 @@ function checkMatch() {
     firstCard.classList.add('checked');
     secondCard.classList.add('checked');
     flipCheck = []; //다시 검사해야하니 배열 초기화
+    correct();
+    if (findCount) {
+      findCount.textContent = count.toString();
+    }
   } else {
     console.log('매칭 실패!');
+    wrong();
     setTimeout(() => {
       firstCard.classList.remove('flip'); //실패하면 다시 돌아가게끔 class 제거
       secondCard.classList.remove('flip');
       flipCheck = [];
-    }, 800);
+    }, 600);
   }
+
+  if (count === cardCount) {
+    openbanner();
+  }
+  console.log(count, cardCount);
 }
 
 const cardList = document.querySelectorAll('.card');
@@ -271,6 +290,105 @@ cardList.forEach((card) => {
 
 /*
  1. UI 부분 로직 구현 일단 
- 점수랑 찾은 쌍 구현하기
+ 점수랑 찾은 쌍 진행사항 구현하기
  
+ 점수는 문제당 + 50점 
+ 틀리면 문제당 - 10점 -> 시간남으면 기회로 할까?
+
 */
+
+const scoreNode = document.querySelector('#score');
+console.log(scoreNode?.textContent);
+
+//매칭 성공시 점수 획득 함수
+function correct() {
+  let beforeScore: number = Number(scoreNode?.textContent);
+  beforeScore += 50;
+  if (scoreNode?.textContent) {
+    scoreNode.textContent = beforeScore.toString();
+  }
+}
+
+//매칭 실패시 점수 감점 함수
+function wrong() {
+  let beforeScore: number = Number(scoreNode?.textContent);
+  if (beforeScore >= 10) {
+    beforeScore -= 10;
+  }
+  if (scoreNode?.textContent) {
+    scoreNode.textContent = beforeScore.toString();
+  }
+}
+
+//리셋 함수
+/*
+배열 초기화
+점수 초기화
+찾을 쌍 초기화
+시간 초기화
+모든 카드에 flip 제거 checked 제거
+... 그냥 페이지 리로드 방법 사용!! 제일 간단하고 페이지가 초기화되어도 상관이 없음..
+*/
+
+const restartBtn = document.querySelector('.restart-btn');
+restartBtn?.addEventListener('click', function () {
+  restartGame();
+});
+
+const levelSelectBtn = document.querySelector('.levelselect-btn');
+levelSelectBtn?.addEventListener('click', function () {
+  levelSelect();
+});
+
+// 게임을 다시 시작하기 위해 페이지를 리로드하는 함수.
+function restartGame() {
+  window.location.reload();
+}
+
+//난이도 선택 페이지로 이동하는 함수
+function levelSelect() {
+  window.location.href = '../pages/memoryGame.html';
+}
+
+/*
+  배너 작업
+게임 완료 or 시간 초과시 현재 까지 상황 알려주는 모달 창 띄우기 작업
+*/
+const banner = document.querySelector('.game-over-banner');
+const bannerRestartBtn = document.querySelector('#bannerRestartBtn');
+const bannerSelectLevelBtn = document.querySelector('#bannerLevelSelectBtn');
+const finalScore = document.querySelector('#final-score');
+const bannerfoundCount = document.querySelector('#found-count');
+const bannerTotalCount = bannerfoundCount?.nextElementSibling;
+
+function openbanner() {
+  if (finalScore) {
+    finalScore.textContent = scoreNode?.textContent || '스코어 오류';
+  }
+
+  if (bannerTotalCount) {
+    bannerTotalCount.textContent = sessionStorage.getItem('level') || '8';
+  }
+
+  if (bannerfoundCount) {
+    let text: string;
+    if (count === cardCount) {
+      text = '티니핑 친구들을 모두 찾았어요!!';
+    } else {
+      text = `${cardCount - count}마리의 티니핑 친구를 아직 못 찾았어요 ㅠㅠ 다시 해줄거죠?`;
+    }
+    bannerfoundCount.textContent = text;
+
+    if (banner) {
+      banner.classList.remove('hidden');
+    }
+  }
+}
+
+bannerRestartBtn?.addEventListener('click', function () {
+  restartGame();
+});
+
+bannerSelectLevelBtn?.addEventListener('click', function () {
+  levelSelect();
+});
