@@ -2,6 +2,11 @@
 @import url('/src/common/modern-reset.css');
 @import url('/src/common/theme.css');
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   --primary-color: hotpink;
   --sub-color: skyblue;
@@ -26,12 +31,21 @@ body {
 
   margin: auto;
   padding: 30px 40px;
-  height: 80vh;
-  width: 100vh;
+  min-height: 80%;
+  width: 60%;
 
-  background-color: var(--w-color);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  @media (max-width: 640px) {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+  }
 
   .mac-buttons {
     display: flex;
@@ -64,6 +78,9 @@ body {
     justify-content: space-between;
     align-items: center;
 
+    @media (max-width: 640px) {
+      flex-direction: column;
+    }
     .game-title {
       color: var(--primary-color);
     }
@@ -71,8 +88,14 @@ body {
     .game-round {
       padding: 10px 20px;
 
+      color: var(--color-white);
       background: var(--bg-color);
       border-radius: 20px;
+
+      @media (max-width: 640px) {
+        padding-block: 5px;
+        margin-top: 10px;
+      }
     }
   }
   hr {
@@ -108,6 +131,7 @@ body {
 
       .teenieping {
         object-fit: contain;
+        width: 40%;
       }
 
       .teenieping-cube {

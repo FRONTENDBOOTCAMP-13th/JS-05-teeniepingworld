@@ -68,17 +68,11 @@ export function insertTeenieping(
     newImg.setAttribute('class', 'teenieping');
     targetDiv.appendChild(newImg);
 
-    if (round <= 2) {
-      newImg.style.height = '50%';
-      newImg.style.transform = 'translateY(0)';
-    } else if (round <= 4) {
-      newImg.style.height = '40%';
+    if (round >= 3 && round <= 4) {
       newImg.style.transform = 'translateY(-20%)';
-    } else if (round <= 6) {
-      newImg.style.height = '30%';
+    } else if (4 <= round) {
       newImg.style.transform = 'translateY(-20%)';
-    } else {
-      newImg.style.height = '25%';
+    } else if (6 <= round) {
       newImg.style.transform = 'translateY(-20%)';
     }
   }

@@ -136,3 +136,7 @@ openBtn?.addEventListener('click', () => {
     }
   });
 });
+const goHomeBtn = document.querySelector('#go-to-home-btn');
+goHomeBtn?.addEventListener('click', () => {
+  location.assign('./main.html');
+});
