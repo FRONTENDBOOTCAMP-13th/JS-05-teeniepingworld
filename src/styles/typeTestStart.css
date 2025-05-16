@@ -55,6 +55,8 @@ main {
 }
 
 .bar-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   background: #f3e8ff;
   border-radius: 999px;
   height: 8px;
@@ -63,7 +65,7 @@ main {
 }
 
 .bar {
-  width: 8%;
+  grid-column: span 1;
   height: 100%;
   background-color: var(--color-pink);
   border-radius: 999px;
@@ -136,10 +138,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.pagination-indicator {
-  display: flex;
   gap: 6px;
 }
 
