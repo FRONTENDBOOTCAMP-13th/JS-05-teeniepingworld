@@ -16,7 +16,7 @@ body {
   align-items: center;
   width: 100%;
   max-width: 768px;
-  min-height: 100vh;
+  min-height: 115vh;
   margin-inline: auto;
   padding: 0 16px;
   box-sizing: border-box;
@@ -79,14 +79,12 @@ main {
   padding: 6px 14px;
   border-radius: 9999px;
   font-size: 14px;
-  color: var(--color-text);
   font-weight: 500;
   margin: 0 auto 8px;
 }
 
 .ping-name {
   text-align: center;
-  color: var(--color-green);
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 4px;
@@ -97,7 +95,7 @@ main {
   color: var(--color-purple);
   font-size: 14px;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* 설명 박스 */
@@ -113,26 +111,25 @@ main {
   margin-bottom: 32px;
 }
 
-/* 추천 섹션 */
+/* 추천 티니핑 */
 .ping-recommend {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
+  justify-content: space-around;
   margin-bottom: 32px;
 }
 
-.ping-like p,
-.ping-hate p {
+.like-explain,
+.hate-explain {
   text-align: center;
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--color-pink);
-  -webkit-text-stroke: 1px rgba(75, 85, 99, 0.5);
+  margin-bottom: 10px;
+  color: #1f2937;
 }
-
-.ping-hate p {
+.like-em {
+  color: var(--color-pink);
+}
+.hate-em {
   color: var(--color-purple);
 }
 
@@ -140,6 +137,7 @@ main {
 .hate-img {
   width: 140px;
   height: 140px;
+  margin-bottom: 12px;
   object-fit: contain;
 }
 
@@ -154,6 +152,15 @@ main {
   color: var(--color-text);
   font-weight: 500;
   margin: 0 auto 10px;
+}
+
+.like-name,
+.hate-name {
+  text-align: center;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
 }
 
 /* 키워드 탭 */
@@ -179,7 +186,7 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 5vw;
 }
 
 .repeat-btn,
@@ -187,7 +194,7 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 9999px;
   font-size: 14px;
   font-weight: 500;
@@ -237,7 +244,11 @@ main {
     padding: 16px;
     font-size: 13px;
   }
-
+  .ping-recommend {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
   .like-img,
   .hate-img {
     width: 120px;
@@ -251,11 +262,13 @@ main {
 
   .bottom-btn {
     flex-direction: column;
+    gap: 4vw;
   }
 
   .repeat-btn,
   .share-btn {
-    width: 100%;
+    width: 80%;
     justify-content: center;
+    align-self: center;
   }
 }

@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/styles/typeTestResult.css" />
+    <script
+      type="module"
+      src="../typescript/typeTest/resultTypeTest.ts"
+    ></script>
     <title>typeTestResult</title>
   </head>
   <body>
@@ -21,6 +25,12 @@
         <p class="tab-mbti">ISFJ</p>
         <p class="ping-name">아잉핑</p>
         <p class="ping-character">헌신적인 보호자</p>
+        <div class="tab-container">
+          <div class="tab-button">현신적</div>
+          <div class="tab-button">배려심</div>
+          <div class="tab-button">책임감</div>
+          <div class="tab-button">신뢰성</div>
+        </div>
         <p class="sub-container">
           1. 조용하고 따뜻하며 헌신적임<br />
           &nbsp;&bull; 겉으로는 조용하지만, 가까운 사람들에게 깊은 애정을 가지고
@@ -49,30 +59,31 @@
         </p>
         <section class="ping-recommend">
           <div class="ping-like">
-            <p>나랑 잘 맞는 티니핑</p>
-            <div class="like-mbti">ENTJ</div>
+            <p class="like-explain">
+              나랑 <span class="like-em">잘 맞는</span> 티니핑
+            </p>
             <img
               class="like-img"
               src="../assets/teenieping_img/smartPing.webp"
               alt="똑똑핑"
             />
+            <div class="like-mbti">ENTJ</div>
+            <p class="like-name">똑똑핑</p>
           </div>
           <div class="ping-hate">
-            <p>나랑 잘 안맞는 티니핑</p>
-            <div class="hate-mbti">ENTP</div>
+            <p class="hate-explain">
+              나랑 <span class="hate-em">잘 안맞는</span> 티니핑
+            </p>
             <img
               class="hate-img"
               src="../assets/teenieping_img/repeatPing.webp"
               alt="따라핑"
             />
+            <div class="hate-mbti">ENTP</div>
+            <p class="hate-name">따라핑</p>
           </div>
         </section>
-        <div class="tab-container">
-          <div class="tab-button">현신적</div>
-          <div class="tab-button">배려심</div>
-          <div class="tab-button">책임감</div>
-          <div class="tab-button">신뢰성</div>
-        </div>
+
         <section class="bottom-btn">
           <button class="repeat-btn">
             <img src="../assets/typeTest_img/repeat.png" alt="다시하기" />
@@ -85,9 +96,5 @@
         </section>
       </main>
     </div>
-    <script
-      type="module"
-      src="../typescript/typeTest/resultTypeTest.ts"
-    ></script>
   </body>
 </html>
