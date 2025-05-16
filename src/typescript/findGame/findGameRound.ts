@@ -12,12 +12,24 @@ import {
   waitDelay,
 } from './findGameUtils.ts';
 
+/**
+ * 주어진 라운드를 실행하고 완료 시 Promise를 해결합니다.
+ *
+ * @param {number} round - 실행할 라운드 번호
+ * @returns {Promise<void>} 라운드 실행 완료 시점에 완료되는 Promise
+ */
 export function playOneRound(round: number) {
   return new Promise<void>((resolve) => {
     play(round, resolve);
   });
 }
 
+/**
+ * 한 라운드 게임 진행을 담당하는 비동기 함수입니다.
+ *
+ * @param {number} round - 현재 라운드 번호
+ * @param {() => void} resolve - 라운드 종료 시 호출할 콜백 함수
+ */
 async function play(round: number, resolve: () => void) {
   const gameContainer = document.querySelector<HTMLElement>('.game-container');
 
@@ -36,6 +48,8 @@ async function play(round: number, resolve: () => void) {
   let cubeCount = 3;
   if (round >= 3) cubeCount++;
   if (round >= 5) cubeCount++;
+  if (round >= 7) cubeCount++;
+  if (round >= 9) cubeCount++;
 
   for (let i = 0; i < cubeCount; i++) {
     setCube(i, teeniepingNameEng);
@@ -108,7 +122,11 @@ async function play(round: number, resolve: () => void) {
   }
 }
 
-// 뚜껑열기 - 삭제할 기능
+/**
+ * 개발자용 기능으로, 모든 큐브의 뚜껑을 열어 상태를 확인할 수 있습니다.
+ *
+ * (추후 삭제 예정)
+ */
 const openBtn = document.querySelector('#dev');
 openBtn?.addEventListener('click', () => {
   const cubes = document.querySelectorAll<HTMLImageElement>('.teenieping-cube');

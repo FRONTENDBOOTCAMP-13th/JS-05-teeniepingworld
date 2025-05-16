@@ -1,10 +1,17 @@
 import '../../styles/findGame.css';
 import { playOneRound } from './findGameRound';
 
+const gameStartBtn = document.querySelector('.game-start-btn');
+gameStartBtn?.addEventListener('click', playGame);
+
+/**
+ * 1라운드부터 10라운드까지 게임을 순차적으로 진행하며,
+ * 실패 시 1라운드부터 다시 시작합니다.
+ */
 async function playGame() {
   const gameContainer = document.querySelector('.game-container');
 
-  for (let round = 1; round <= 5; round++) {
+  for (let round = 1; round <= 10; round++) {
     // 게임 화면 세팅
     const getAllSets = gameContainer?.querySelectorAll('div');
     getAllSets?.forEach((item) => {
@@ -23,6 +30,3 @@ async function playGame() {
 
   // TODO 결과보기?: 결과창으로
 }
-
-const gameStartBtn = document.querySelector('.game-start-btn');
-gameStartBtn?.addEventListener('click', playGame);
