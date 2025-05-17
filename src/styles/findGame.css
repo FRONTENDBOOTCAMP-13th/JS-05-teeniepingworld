@@ -142,34 +142,12 @@ body {
   }
 
   .game-container {
-    display: flex;
+    display: none;
     flex-direction: row;
 
     flex: 1;
     align-items: center;
     justify-content: center;
-
-    .game-start-btn-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      .game-btn {
-        background-color: #ff9edb;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        width: 200px;
-        font-size: 14px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        &:hover {
-          background-color: #ff78c6;
-          scale: 1.2;
-        }
-      }
-    }
 
     .set {
       position: relative;
@@ -198,6 +176,91 @@ body {
         &:hover {
           transform: scale(1.05);
         }
+      }
+    }
+  }
+
+  .game-start-btn-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .game-btn {
+      background-color: #ff9edb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 200px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  }
+
+  .game-conclusion {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    color: #333; /* 차콜 느낌 */
+    width: 100%;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 24px;
+      color: var(--primary-color);
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .stat-item {
+      background-color: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      font-size: 16px;
+
+      .label {
+        color: #777;
+
+        .value {
+          font-weight: bold;
+          color: #222;
+        }
+      }
+    }
+
+    .restart-btn {
+      background-color: #ff9edb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ff78c6;
       }
     }
   }
@@ -234,7 +297,7 @@ body {
     margin-bottom: 20px;
   }
 
-  .close-dialog {
+  .dialog-btn {
     background-color: #ff9edb;
     color: white;
     border: none;
@@ -255,32 +318,14 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* 테스트 버튼 - 추후 삭제 */
-.button-container {
-  position: fixed;
-  top: 20px; /* 위에서 20px 떨어지게 */
-  right: 20px; /* 오른쪽에서 20px 떨어지게 */
-  z-index: 1000; /* 다른 요소들보다 위에 오도록 */
-
-  button,
-  a {
-    background-color: #ff9edb;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin: 5px;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #ff78c6;
-    }
-  }
-}
-
 .hidden-toggle {
   display: none;
+}
+.hovered {
+  &:hover {
+    background-color: #ff78c6;
+    scale: 1.05;
+  }
 }
 
 /* 

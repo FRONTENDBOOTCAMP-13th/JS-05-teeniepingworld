@@ -1,6 +1,24 @@
 import '../../styles/findGame.css';
 import { playOneRound } from './findGameRound';
 
+const continueStartBtn =
+  document.querySelector<HTMLButtonElement>('.continue-game-btn');
+const gameStartBtn =
+  document.querySelector<HTMLButtonElement>('.game-start-btn');
+
+let startRound = 1;
+
+// TODO 이전 기록 불러오기 (웹 소켓)
+const history = localStorage.getItem('history');
+if (!history) {
+  if (continueStartBtn) {
+    continueStartBtn.style.backgroundColor = '#e0e0e0';
+    continueStartBtn.style.color = '#999';
+    continueStartBtn.disabled = true;
+    continueStartBtn.classList.remove('hovered');
+  }
+}
+
 // 개발자 기능(시작 라운드 설정하기)
 const yellownBtn = document.querySelector('.yellow');
 const setStartRound =
@@ -9,14 +27,17 @@ yellownBtn?.addEventListener('click', () => {
   setStartRound?.classList.toggle('hidden-toggle');
 });
 
-let startRound = 1;
-startRound = Number(setStartRound?.value);
-if (startRound === 0) startRound++;
-// TODO 이전 기록 불러오기 (웹 소켓)
-
-// 게임 시작
-const gameStartBtn = document.querySelector('.game-start-btn');
+// 게임 시작 (처음부터)
 gameStartBtn?.addEventListener('click', () => {
+  if (setStartRound?.value) startRound = Number(setStartRound?.value);
+
+  playGame(startRound);
+});
+
+// 게임 시작 (이어서)
+continueStartBtn?.addEventListener('click', () => {
+  if (history) startRound = JSON.parse(history);
+
   playGame(startRound);
 });
 
@@ -25,9 +46,16 @@ gameStartBtn?.addEventListener('click', () => {
  * 실패 시 1라운드부터 다시 시작합니다.
  */
 async function playGame(startRound: number) {
-  const gameContainer = document.querySelector('.game-container');
   const gameRound = document.querySelector('.game-round');
+  const gameContainer =
+    document.querySelector<HTMLDivElement>('.game-container');
+  const gameStartBtnContainer = document.querySelector<HTMLDivElement>(
+    '.game-start-btn-container',
+  );
+
   gameRound?.removeAttribute('hidden');
+  if (gameContainer) gameContainer.style.display = 'flex';
+  if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'none';
 
   for (let round = startRound; round <= 10; round++) {
     // 게임 화면 세팅

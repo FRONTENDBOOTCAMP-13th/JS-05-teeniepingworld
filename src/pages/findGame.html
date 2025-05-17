@@ -27,21 +27,43 @@
           ROUND <span id="current-game-round">1</span>
         </div>
       </div>
+
       <hr />
+
       <p class="game-description">큐브 속으로 숨은 티니핑을 찾아보세요!</p>
-      <div class="game-container">
-        <div class="game-start-btn-container">
-          <button class="game-info-btn game-btn">게임설명</button>
-          <button class="game-start-btn game-btn">시작하기</button>
+
+      <div class="game-start-btn-container">
+        <button class="game-info-btn game-btn hovered">게임설명</button>
+        <button class="game-start-btn game-btn hovered">처음부터</button>
+        <button class="continue-game-btn game-btn hovered">이어하기</button>
+      </div>
+
+      <div class="game-container"></div>
+
+      <div class="game-conclusion">
+        <h2>게임 결과</h2>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="label"
+              >성공한 라운드 <span class="value">3</span> / 5</span
+            >
+          </div>
+          <div class="stat-item">
+            <span class="label"
+              >총 시도 횟수 <span class="value">12</span> 번
+            </span>
+          </div>
         </div>
+        <button class="restart-btn">다시 시작하기</button>
       </div>
     </div>
 
     <dialog class="result-dialog">
       <h2 class="">아쉽게 틀렸어요!</h2>
-      <img src="/src/assets/findGame/ayaPingFail.WEBP" alt="" />
+      <img src="" alt="" />
       <p>다시 한 번 도전해볼까요?</p>
-      <button type="button" class="close-dialog">다시하기</button>
+      <button type="button" class="dialog-btn dialog-btn1">도전하기</button>
+      <button type="button" class="dialog-btn dialog-btn2">결과보기</button>
     </dialog>
 
     <div class="button-container">

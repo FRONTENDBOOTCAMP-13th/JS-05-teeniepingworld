@@ -170,19 +170,18 @@ export function setRound(round: number) {
 /**
  * 게임 결과 다이얼로그를 표시하고, 닫기 버튼 클릭 시 결과를 resolve 합니다.
  *
- * @param {(result: boolean) => void} resolve - 결과를 전달하는 Promise의 resolve 함수
+ * @param {() => void} resolve - 결과를 전달하는 Promise의 resolve 함수
  * @param {boolean} result - 현재 라운드 성공 여부
  * @param {number} round - 현재 라운드 번호
  */
 export function showResult(
-  resolve: (result: boolean) => void,
+  resolve: () => void,
   result: boolean,
   round: number,
 ) {
   const resultDialog = document.querySelector(
     '.result-dialog',
   ) as HTMLDialogElement;
-  const closeDialogButton = document.querySelector('.close-dialog');
 
   const showDialog = () => resultDialog?.showModal();
   const closeDialog = () => resultDialog?.close();
@@ -190,14 +189,15 @@ export function showResult(
   const dialogH2 = resultDialog.querySelector('h2');
   const dialogImg = resultDialog.querySelector('img');
   const dialogP = resultDialog.querySelector('p');
-  const dialogButton = resultDialog.querySelector('button');
+  const dialogBtn1 = resultDialog.querySelector('.dialog-btn1');
+  const dialogBtn2 = resultDialog.querySelector('.dialog-btn2');
 
   if (round === 10) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
       dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
-    if (dialogButton?.textContent) dialogButton.textContent = `결과보기`;
+    dialogBtn1?.setAttribute('hidden', '');
     result = false;
   } else if (result === true) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
@@ -205,21 +205,34 @@ export function showResult(
       dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
     if (dialogP?.textContent)
       dialogP.textContent = '다음 라운드도 도전해보세요!';
-    if (dialogButton?.textContent)
-      dialogButton.textContent = `${round + 1}ROUND 도전하기`;
+    if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
   } else {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
     if (dialogImg?.src) dialogImg.src = '/src/assets/findGame/ayaPingFail.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
-    if (dialogButton?.textContent) dialogButton.textContent = '다시하기';
+    dialogBtn1?.setAttribute('hidden', '');
+    localStorage.setItem('history', JSON.stringify(round));
   }
 
   showDialog();
 
-  closeDialogButton?.addEventListener('click', () => {
+  dialogBtn1?.addEventListener('click', () => {
     closeDialog();
-    console.log(result);
-    resolve(result);
+    resolve();
+  });
+  dialogBtn2?.addEventListener('click', () => {
+    closeDialog();
+    // 결과보기
+    const gmaeDescription =
+      document.querySelector<HTMLParagraphElement>('.game-description');
+    const gameContainer =
+      document.querySelector<HTMLDivElement>('.game-container');
+    const gameConclusion =
+      document.querySelector<HTMLDivElement>('.game-conclusion');
+
+    if (gmaeDescription?.style) gmaeDescription.style.display = 'none';
+    if (gameContainer?.style) gameContainer.style.display = 'none';
+    if (gameConclusion?.style) gameConclusion.style.display = 'flex';
   });
 }
 
@@ -319,3 +332,10 @@ export function changeLocation(cube1: HTMLElement, cube2: HTMLElement) {
     parent?.insertBefore(cube2, next1);
   }
 }
+
+// function showGameConclusion() {
+//   const gameDescription = document.querySelector('game-descriptioin');
+//   const gameContainer = document.querySelector('game-container');
+
+//   gameContainer.
+// }
