@@ -8,9 +8,8 @@ const gameStartBtn =
 
 let startRound = 1;
 
-// TODO 이전 기록 불러오기 (웹 소켓)
 const history = localStorage.getItem('history');
-if (!history) {
+if (!Number(history)) {
   if (continueStartBtn) {
     continueStartBtn.style.backgroundColor = '#e0e0e0';
     continueStartBtn.style.color = '#999';
@@ -29,7 +28,11 @@ yellownBtn?.addEventListener('click', () => {
 
 // 게임 시작 (처음부터)
 gameStartBtn?.addEventListener('click', () => {
+  // 개발자 기능(시작 라운드 설정하기)
   if (setStartRound?.value) startRound = Number(setStartRound?.value);
+
+  localStorage.setItem('history', '0');
+  localStorage.setItem('attemptCount', '0');
 
   playGame(startRound);
 });
@@ -57,6 +60,9 @@ async function playGame(startRound: number) {
   if (gameContainer) gameContainer.style.display = 'flex';
   if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'none';
 
+  let attemptCount = Number(localStorage.getItem('attemptCount'));
+  localStorage.setItem('attemptCount', JSON.stringify(++attemptCount));
+
   for (let round = startRound; round <= 10; round++) {
     // 게임 화면 세팅
     const getAllSets = gameContainer?.querySelectorAll('div');
@@ -73,6 +79,9 @@ async function playGame(startRound: number) {
       round = 0;
     }
   }
-
-  // TODO 결과보기?: 결과창으로
 }
+
+const restartBtn = document.querySelector('.restart-btn');
+restartBtn?.addEventListener('click', () => {
+  location.reload();
+});

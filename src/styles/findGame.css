@@ -302,6 +302,7 @@ body {
     color: white;
     border: none;
     padding: 10px 18px;
+    margin-inline: 5px;
     font-size: 14px;
     border-radius: 12px;
     cursor: pointer;

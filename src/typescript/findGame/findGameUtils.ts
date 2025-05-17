@@ -197,8 +197,10 @@ export function showResult(
     if (dialogImg?.src)
       dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
+    if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
+
     dialogBtn1?.setAttribute('hidden', '');
-    result = false;
+    localStorage.setItem('history', JSON.stringify(0));
   } else if (result === true) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
@@ -206,11 +208,13 @@ export function showResult(
     if (dialogP?.textContent)
       dialogP.textContent = '다음 라운드도 도전해보세요!';
     if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
+    localStorage.setItem('history', JSON.stringify(++round));
   } else {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
     if (dialogImg?.src) dialogImg.src = '/src/assets/findGame/ayaPingFail.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
     dialogBtn1?.setAttribute('hidden', '');
+
     localStorage.setItem('history', JSON.stringify(round));
   }
 
@@ -223,16 +227,7 @@ export function showResult(
   dialogBtn2?.addEventListener('click', () => {
     closeDialog();
     // 결과보기
-    const gmaeDescription =
-      document.querySelector<HTMLParagraphElement>('.game-description');
-    const gameContainer =
-      document.querySelector<HTMLDivElement>('.game-container');
-    const gameConclusion =
-      document.querySelector<HTMLDivElement>('.game-conclusion');
-
-    if (gmaeDescription?.style) gmaeDescription.style.display = 'none';
-    if (gameContainer?.style) gameContainer.style.display = 'none';
-    if (gameConclusion?.style) gameConclusion.style.display = 'flex';
+    showGameConclusion(round);
   });
 }
 
@@ -260,7 +255,7 @@ export function animateSwap(duration: number) {
       const loc1 = cube1.getBoundingClientRect();
       const loc2 = cube2.getBoundingClientRect();
 
-      let distance = loc1.left - loc2.left;
+      const distance = loc1.left - loc2.left;
       console.log('distance: ', distance);
 
       cube1.style.zIndex = '1';
@@ -333,9 +328,28 @@ export function changeLocation(cube1: HTMLElement, cube2: HTMLElement) {
   }
 }
 
-// function showGameConclusion() {
-//   const gameDescription = document.querySelector('game-descriptioin');
-//   const gameContainer = document.querySelector('game-container');
+function showGameConclusion(round: number) {
+  const gmaeDescription =
+    document.querySelector<HTMLParagraphElement>('.game-description');
+  const gameContainer =
+    document.querySelector<HTMLDivElement>('.game-container');
+  const gameConclusion =
+    document.querySelector<HTMLDivElement>('.game-conclusion');
 
-//   gameContainer.
-// }
+  const completedRound =
+    gameConclusion?.querySelector<HTMLSpanElement>('.completed-round');
+  const attemptCount =
+    gameConclusion?.querySelector<HTMLSpanElement>('.attempt-count');
+
+  if (gmaeDescription?.style) gmaeDescription.style.display = 'none';
+  if (gameContainer?.style) gameContainer.style.display = 'none';
+  if (gameConclusion?.style) gameConclusion.style.display = 'flex';
+
+  if (completedRound) completedRound.textContent = round.toString();
+
+  const count = localStorage.getItem('attemptCount');
+  if (attemptCount) attemptCount.textContent = count;
+
+  // 10라운드까지 성공하면 시도 횟수 초기화
+  if (round === 10) localStorage.setItem('attemptCount', '0');
+}
