@@ -51,6 +51,7 @@ body {
     display: flex;
     gap: 8px;
     margin-bottom: 20px;
+    align-items: center;
 
     .btn {
       width: 12px;
@@ -68,6 +69,22 @@ body {
 
       &.green {
         background-color: #28c840;
+      }
+    }
+    input {
+      width: 50px;
+      height: 15px;
+      font-size: 12px;
+      padding: 0 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      color: #333;
+      text-align: center;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.2s ease;
+
+      &:focus {
+        border-color: #aaa;
       }
     }
   }
@@ -108,7 +125,6 @@ body {
     border: 0.3px solid var(--g-color);
   }
   .game-description {
-    margin-bottom: 24px;
     font-size: 18px;
     font-weight: 500;
     color: #2c2c2c;
@@ -132,6 +148,28 @@ body {
     flex: 1;
     align-items: center;
     justify-content: center;
+
+    .game-start-btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .game-btn {
+        background-color: #ff9edb;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        width: 200px;
+        font-size: 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #ff78c6;
+          scale: 1.2;
+        }
+      }
+    }
 
     .set {
       position: relative;
@@ -241,21 +279,10 @@ body {
   }
 }
 
-.game-start-btn {
-  background-color: #ff9edb;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 5px;
-  font-size: 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #ff78c6;
-    scale: 1.2;
-  }
+.hidden-toggle {
+  display: none;
 }
+
 /* 
 #set-0 {
   border: 1px solid green;

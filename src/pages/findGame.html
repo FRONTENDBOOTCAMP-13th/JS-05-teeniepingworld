@@ -12,19 +12,27 @@
       <div class="mac-buttons">
         <span class="btn red" id="go-to-home-btn"></span>
         <span class="btn yellow"></span>
+        <input
+          type="number"
+          min="1"
+          max="10"
+          id="set-start-round"
+          class="hidden-toggle"
+        />
         <span class="btn green" id="dev"></span>
       </div>
       <div class="game-info-wrapper">
         <h1 class="game-title">숨은 티니핑을 찾아라</h1>
-        <div class="game-round">
+        <div hidden class="game-round">
           ROUND <span id="current-game-round">1</span>
         </div>
       </div>
       <hr />
       <p class="game-description">큐브 속으로 숨은 티니핑을 찾아보세요!</p>
       <div class="game-container">
-        <div>
-          <button class="game-start-btn">게임 시작하기</button>
+        <div class="game-start-btn-container">
+          <button class="game-info-btn game-btn">게임설명</button>
+          <button class="game-start-btn game-btn">시작하기</button>
         </div>
       </div>
     </div>
