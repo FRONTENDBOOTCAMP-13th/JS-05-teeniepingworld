@@ -9,7 +9,7 @@ interface Teenieping {
 }
 
 // 데이터 구조를 올바르게 정의
-const teenieData = {
+export const teeniepingData = {
   properties: ['no', 'name', 'gender', 'likes', 'dislikes', 'URL'],
   result: [
     {
