@@ -62,8 +62,6 @@ if (cntP > 1) {
 } else {
   mainresult += 'J';
 }
-//TODO
-mainresult = 'ISTJ';
 
 // MBTI 결과에 해당하는 티니핑 정보 찾기
 let pingName = '';
