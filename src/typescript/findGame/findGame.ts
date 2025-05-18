@@ -81,6 +81,7 @@ async function playGame(startRound: number) {
   }
 }
 
+// TODO 수정 예정
 const restartBtn = document.querySelector('.restart-btn');
 restartBtn?.addEventListener('click', () => {
   location.reload();

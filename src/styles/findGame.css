@@ -47,7 +47,7 @@ body {
     border-radius: 0px;
   }
 
-  .mac-buttons {
+  .top-buttons {
     display: flex;
     gap: 8px;
     margin-bottom: 20px;
