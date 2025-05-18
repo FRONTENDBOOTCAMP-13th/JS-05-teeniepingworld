@@ -151,11 +151,11 @@ console.log(cards);
 //DOM으로 카드 생성
 const cardContainer = document.querySelector('.card-container');
 
-if (cardContainer) {
-  cardContainer.addEventListener('click', function () {
-    console.log('확인');
-  });
-}
+// if (cardContainer) {
+//   cardContainer.addEventListener('click', function () {
+//     console.log('확인');
+//   });
+// }
 
 //난이도에 따라 동적으로 카드를 생성해주는 함수
 function cardSetting(data: cardData[]) {
@@ -237,7 +237,11 @@ console.log('count 확인', count);
 
 //클릭한 카드가 현재 검사를 할 카드인지 체크하는 함수
 function cardClick(card: HTMLElement) {
-  if (card.classList.contains('flip') || flipCheck.length >= 2) {
+  if (
+    card.classList.contains('flip') ||
+    card.classList.contains('turn') ||
+    flipCheck.length >= 2
+  ) {
     return;
   }
 
@@ -264,6 +268,7 @@ function checkMatch() {
     secondCard.classList.add('checked');
     flipCheck = []; //다시 검사해야하니 배열 초기화
     correct();
+    showMatchingThanks();
     if (findCount) {
       findCount.textContent = count.toString();
     }
@@ -278,6 +283,7 @@ function checkMatch() {
   }
 
   if (count === cardCount) {
+    clearInterval(timeId);
     openbanner();
   }
   console.log(count, cardCount);
@@ -375,7 +381,7 @@ function openbanner() {
     if (count === cardCount) {
       text = '티니핑 친구들을 모두 찾았어요!!';
     } else {
-      text = `${cardCount - count}마리의 티니핑 친구를 아직 못 찾았어요 ㅠㅠ 다시 해줄거죠?`;
+      text = `${cardCount - count}마리의 티니핑 친구들을 아직 못 찾았어요 ㅠㅠ 다시 해줄거죠?`;
     }
     bannerfoundCount.textContent = text;
 
@@ -392,3 +398,164 @@ bannerRestartBtn?.addEventListener('click', function () {
 bannerSelectLevelBtn?.addEventListener('click', function () {
   levelSelect();
 });
+
+/*
+TODO 전체 돌리기 함수
+function cardAllTurn() : void{}
+
+-일단 개발할때 위치 확인으로 사용하기 위함
+-처음에 전체 한번 보여주는 용도로 사용할 수 도 있고,
+힌트 아이템으로 돌려볼 수 있는 용도로 사용할 수도 있음.\
+*/
+
+const turnBtn = document.querySelector('#turn-btn');
+if (turnBtn) {
+  turnBtn.addEventListener('click', function () {
+    cardAllTurn();
+  });
+}
+
+function cardAllTurn() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    if (!card.classList.contains('flip')) {
+      card.classList.add('turn');
+
+      setTimeout(() => {
+        card.classList.remove('turn');
+      }, 2000);
+    }
+  });
+}
+
+function gameover() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    if (!card.classList.contains('flip')) {
+      card.classList.add('turn');
+    }
+  });
+}
+
+/*
+TODO 제한 시간 만들기
+
+1. 남은 시간 UI 표시 - 1초 단위로 감소
+2. 0초가 되면 게임 종료 처리 - openbanner() 함수를 불러오는 함수에 조건 추가
+3. 게임 시작시 타이머 시작 startTimer()로 컨트롤
+내장 매서드 사용
+setInterval(fn,time) time마다 반복하는 매서드이다.
+-> 1000ms로 해서 1초마다 시간을 줄이는 동작을 반복하다가 0이되면 게임 종료
+
+clearInterval(timerId) -> 위에서 적용한 반복하는 걸 제거해주는 함수
+조건문에서 이 함수를 써야한다. timedId는 종료한 인터벌이 무엇인지 알려주는 값으로
+setInterVal()의 리턴 값이다. 
+*/
+
+const totalTime: number = 600;
+
+const limitTime = document.querySelector('.limit-time span') as HTMLElement;
+limitTime.textContent = totalTime.toString();
+
+// const timeId: number = startTimer(totalTime);
+let timeId: number;
+
+const progressBar = document.querySelector('.progress-bar') as HTMLElement;
+progressBar.style.width = '100%';
+let limitTimePer: number;
+
+//타이머 시작 함수
+function startTimer(time: number): number {
+  const timeId = setInterval(() => {
+    console.log(time);
+
+    limitTimePer = (time / totalTime) * 100;
+    console.log(limitTimePer);
+    progressBar.style.width = `${limitTimePer}%`;
+
+    if (time < 0) {
+      time += 1;
+      clearInterval(timeId);
+      gameover();
+      openbanner();
+    }
+    limitTime.textContent = time.toString();
+    time -= 1;
+  }, 1000);
+
+  return timeId;
+}
+
+/*
+TODO 카드 매칭 성공시 애니메이션 효과!\
+*/
+
+function showMatchingThanks() {
+  const bubble = document.getElementById('thanks-bubble') as HTMLElement;
+  if (!bubble) return;
+
+  bubble.classList.remove('hidden');
+  bubble.classList.add('thanks-bubble');
+
+  // 다시 숨기기 (자동으로 사라지긴 하지만 클래스도 제거해주는 게 깔끔)
+  setTimeout(() => {
+    bubble.classList.add('hidden');
+    bubble.classList.remove('thanks-bubble');
+  }, 1000);
+}
+
+// 게임 시작전 팝업창
+const howPopup = document.getElementById('how-to-play') as HTMLElement;
+const startGameBtn = document.getElementById(
+  'start-game-btn',
+) as HTMLButtonElement;
+const bgm = document.getElementById('bgm') as HTMLAudioElement;
+
+startGameBtn.addEventListener('click', () => {
+  howPopup.style.display = 'none'; // 안내창 숨기기
+  bgm.volume = 0.2;
+  bgm.play().catch((e) => console.warn('BGM 재생 실패:', e));
+
+  // 여기에 게임 시작 로직 연결 (타이머, 카드 생성 등)
+  //게임을 시작하는 함수를 만들어야하네.........
+  timeId = startTimer(totalTime);
+});
+
+/*
+TODO bgm on/off 버튼 만들기
+ */
+
+const bgmBtn = document.querySelector('.bgm-button') as HTMLElement;
+const bgmImage = bgmBtn.firstElementChild;
+let isMuted: boolean = false;
+
+bgmBtn.addEventListener('click', function () {
+  isMuted = !isMuted;
+  bgm.muted = isMuted;
+
+  const text_src = isMuted
+    ? '/src/assets/memorygame_img/bgm_off.png'
+    : '/src/assets/memorygame_img/bgm_on.png';
+  bgmImage?.setAttribute('src', text_src);
+});
+
+/* TODO
+  1. 게임 아이템 넣기 (전체 카드 보기!, 시간추가?) *
+  2. bgm on off 모드 추가 *
+  3. 게임 설명 그림 넣어서 자세하게 알려주기 (코드 개선) *
+  4. 처음 게임 타이틀 페이지 개선 (UI 크기나 캐릭터 애니메이션 추가) 
+  5. 사용자 랭킹 시스템 구현!? 
+  6. 매칭시 효과음? 넣을지 고민.....
+  7. 반응형으로 구현! (모바일 버전)
+  8. 난이도가 점점 높아지는 챌린지 모드 추가!
+  
+  */
+
+const homeBtn = document.querySelector('.home-btn');
+
+if (homeBtn) {
+  homeBtn.addEventListener('click', function () {
+    console.log('홈으로 이동합니다.');
+    window.location.href = '../../index.html';
+  });
+}
