@@ -25,8 +25,14 @@ firstBtn?.addEventListener('click', () => {
     id++; // 다음 질문으로 이동
     nextpage(); // 다음 질문 표시
   } else {
+    const select = answerBtnData[id - 1];
+    const ansData = select.answerData;
+    const person = ansData[0].personality;
+    resultArray[id - 1] = person;
+    localStorage.setItem('resultArray', JSON.stringify(resultArray));
     // 마지막 질문 이후에는 이동(예: 결과 페이지)
-    window.location.href = '#void';
+    //결과 페이지
+    window.location.href = './typeTestResult.html';
   }
 });
 
@@ -42,8 +48,13 @@ secondBtn?.addEventListener('click', () => {
     id++; // 다음 질문으로 이동
     nextpage(); // 다음 질문 표시
   } else {
+    const select = answerBtnData[id - 1];
+    const ansData = select.answerData;
+    const person = ansData[0].personality;
+    resultArray[id - 1] = person;
+    localStorage.setItem('resultArray', JSON.stringify(resultArray));
     // 마지막 질문 이후에는 이동(예: 결과 페이지)
-    window.location.href = '#void';
+    window.location.href = './typeTestResult.html';
   }
 });
 
