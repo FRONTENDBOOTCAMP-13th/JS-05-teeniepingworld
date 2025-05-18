@@ -59,7 +59,7 @@ if (levelBtns) {
 if (homeBtn) {
   homeBtn.addEventListener('click', function () {
     console.log('홈으로 이동합니다.');
-    //window.location.href = '../main.html';
+    window.location.href = '../../index.html';
   });
 }
 
