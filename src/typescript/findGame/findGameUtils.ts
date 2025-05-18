@@ -1,5 +1,10 @@
 import { type findTeenieping } from '../../types/findGameType.ts';
 
+/**
+ * 큐브 이미지를 열린 상태 이미지로 변경합니다.
+ *
+ * @param {findTeenieping} set - 이미지가 포함된 div 요소를 가진 객체
+ */
 export function openCube(set: findTeenieping) {
   const targetImg = set.getDiv?.querySelector('img');
 
@@ -8,6 +13,11 @@ export function openCube(set: findTeenieping) {
   }
 }
 
+/**
+ * 열린 큐브 이미지를 닫힌 상태 이미지로 변경합니다.
+ *
+ * @param {findTeenieping} set - 이미지가 포함된 div 요소를 가진 객체
+ */
 export function closeCube(set: findTeenieping) {
   const targetImg = set.getDiv?.querySelector('img');
 
@@ -16,6 +26,12 @@ export function closeCube(set: findTeenieping) {
   }
 }
 
+/**
+ * 게임 화면에 열린 티니핑 큐브 이미지를 추가합니다.
+ *
+ * @param {number} i - 큐브의 고유 인덱스 (div의 id에 사용됨)
+ * @param {string} name - 티니핑 이름 (이미지 파일 이름에 사용됨)
+ */
 export function setCube(i: number, name: string) {
   const gameContainer = document.querySelector<HTMLElement>('.game-container');
 
@@ -31,6 +47,13 @@ export function setCube(i: number, name: string) {
   gameContainer?.appendChild(newDiv);
 }
 
+/**
+ * 정답 큐브에 티니핑 이미지를 삽입하고 라운드에 따라 크기와 위치를 조정합니다.
+ *
+ * @param {findTeenieping} answerSet - 티니핑을 삽입할 대상 div를 가진 객체
+ * @param {string} name - 티니핑 이름 (이미지 파일 이름에 사용됨)
+ * @param {number} round - 현재 라운드 (이미지 크기 및 위치 조정에 사용됨)
+ */
 export function insertTeenieping(
   answerSet: findTeenieping,
   name: string,
@@ -45,19 +68,21 @@ export function insertTeenieping(
     newImg.setAttribute('class', 'teenieping');
     targetDiv.appendChild(newImg);
 
-    if (round >= 3) {
-      newImg.style.height = '40%';
+    if (round >= 3 && round <= 4) {
       newImg.style.transform = 'translateY(-20%)';
-    }
-    if (round >= 5) {
-      newImg.style.height = '30%';
+    } else if (4 <= round) {
+      newImg.style.transform = 'translateY(-20%)';
+    } else if (6 <= round) {
+      newImg.style.transform = 'translateY(-20%)';
     }
   }
 }
 
 /**
- * 클릭 이벤트 추가 (클릭 시 정답 확인)
- * @TODO 클릭 시 모달 열기
+ * 유저의 선택을 처리하고, 클릭된 요소를 기준으로 큐브를 열거나 복원하며 정답 여부를 출력합니다.
+ *
+ * @param {findTeenieping[]} arr - 선택 가능한 티니핑 객체 배열
+ * @returns {Promise<number>} 선택된 인덱스를 반환하는 Promise
  */
 export function handleSelection(arr: findTeenieping[]) {
   return new Promise((resolve) => {
@@ -91,8 +116,11 @@ export function handleSelection(arr: findTeenieping[]) {
 }
 
 /**
- * 정답 공개 함수
- * @param [] : set 배열
+ * 정답인 티니핑의 큐브를 열고 설명 문구를 출력합니다.
+ *
+ * @param {findTeenieping[]} arr - 티니핑 객체 배열
+ * @param {string} teeniepingName - 정답 티니핑 이름 (설명 문구에 사용됨)
+ * @returns {Promise<void>} 2초 후 정답 큐브를 연 후 완료되는 Promise
  */
 export function checkAnswer(arr: findTeenieping[], teeniepingName: string) {
   return new Promise<void>((resolve) => {
@@ -106,10 +134,21 @@ export function checkAnswer(arr: findTeenieping[], teeniepingName: string) {
   });
 }
 
+/**
+ * 지정한 시간(ms)만큼 대기합니다.
+ *
+ * @param {number} delay - 대기할 시간 (밀리초)
+ * @returns {Promise<void>} 지정한 시간 후에 완료되는 Promise
+ */
 export function waitDelay(delay: number) {
   return new Promise((resolve) => setTimeout(resolve, delay));
 }
 
+/**
+ * 게임 설명 텍스트를 갱신합니다.
+ *
+ * @param {string} msg - 화면에 표시할 설명 메시지
+ */
 export function setGameDescription(msg: string) {
   const gameDescription = document.querySelector('.game-description');
 
@@ -118,20 +157,31 @@ export function setGameDescription(msg: string) {
   }
 }
 
+/**
+ * 현재 라운드 번호를 화면에 표시합니다.
+ *
+ * @param {number} round - 표시할 라운드 번호
+ */
 export function setRound(round: number) {
   const roundSpan = document.querySelector('#current-game-round');
   if (roundSpan?.textContent) roundSpan.textContent = `${round}`;
 }
 
+/**
+ * 게임 결과 다이얼로그를 표시하고, 닫기 버튼 클릭 시 결과를 resolve 합니다.
+ *
+ * @param {() => void} resolve - 결과를 전달하는 Promise의 resolve 함수
+ * @param {boolean} result - 현재 라운드 성공 여부
+ * @param {number} round - 현재 라운드 번호
+ */
 export function showResult(
-  resolve: (result: boolean) => void,
+  resolve: () => void,
   result: boolean,
   round: number,
 ) {
   const resultDialog = document.querySelector(
     '.result-dialog',
   ) as HTMLDialogElement;
-  const closeDialogButton = document.querySelector('.close-dialog');
 
   const showDialog = () => resultDialog?.showModal();
   const closeDialog = () => resultDialog?.close();
@@ -139,102 +189,54 @@ export function showResult(
   const dialogH2 = resultDialog.querySelector('h2');
   const dialogImg = resultDialog.querySelector('img');
   const dialogP = resultDialog.querySelector('p');
-  const dialogButton = resultDialog.querySelector('button');
+  const dialogBtn1 = resultDialog.querySelector('.dialog-btn1');
+  const dialogBtn2 = resultDialog.querySelector('.dialog-btn2');
 
-  if (round === 5) {
+  if (round === 10) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
       dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
-    if (dialogButton?.textContent) dialogButton.textContent = `결과보기`;
-    result = false;
+    if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
+
+    dialogBtn1?.setAttribute('hidden', '');
+    localStorage.setItem('history', JSON.stringify(0));
   } else if (result === true) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
       dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
     if (dialogP?.textContent)
       dialogP.textContent = '다음 라운드도 도전해보세요!';
-    if (dialogButton?.textContent)
-      dialogButton.textContent = `${round + 1}ROUND 도전하기`;
+    if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
+    localStorage.setItem('history', JSON.stringify(++round));
   } else {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
     if (dialogImg?.src) dialogImg.src = '/src/assets/findGame/ayaPingFail.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
-    if (dialogButton?.textContent) dialogButton.textContent = '다시하기';
+    dialogBtn1?.setAttribute('hidden', '');
+
+    localStorage.setItem('history', JSON.stringify(round));
   }
 
   showDialog();
 
-  closeDialogButton?.addEventListener('click', () => {
+  dialogBtn1?.addEventListener('click', () => {
     closeDialog();
-    console.log(result);
-    resolve(result);
+    resolve();
+  });
+  dialogBtn2?.addEventListener('click', () => {
+    closeDialog();
+    // 결과보기
+    showGameConclusion(round);
   });
 }
 
 /**
- * 두 큐브의 위치를 애니메이션으로 교체하는 함수
+ * 게임 내 큐브 두 개를 랜덤으로 선택하여 지정된 시간 동안 위치를 교환하는 애니메이션을 실행합니다.
+ *
+ * @param {number} duration - 애니메이션 지속 시간 (밀리초)
+ * @returns {Promise<void>} 애니메이션 종료 시점에 완료되는 Promise
  */
-// export function animateSwap(duration: number) {
-//   return new Promise<void>((resolve) => {
-//     const gameContainer =
-//       document.querySelector<HTMLElement>('.game-container');
-
-//     const sets = gameContainer?.querySelectorAll<HTMLElement>(
-//       '.set',
-//     ) as NodeListOf<HTMLElement>;
-
-//     const num1 = Math.floor(Math.random() * sets.length);
-//     const num2 =
-//       (num1 + Math.ceil(Math.random() * (sets.length - 1))) % sets.length;
-
-//     const cube1 = sets[num1];
-//     const cube2 = sets[num2];
-
-//     const loc1 = cube1.getBoundingClientRect();
-//     const loc2 = cube2.getBoundingClientRect();
-
-//     const distance = loc1.left - loc2.left;
-
-//     const startTime = performance.now();
-
-//     const startX = 0;
-//     const endX = distance;
-
-//     const startScale = 1;
-//     const endScale = 1.5;
-
-//     function step(currentTime: number) {
-//       const elapsed = currentTime - startTime;
-//       const t = Math.min(elapsed / duration, 1);
-
-//       const easedTranslate = easeOut(t);
-//       const easedScale = easeInOut(t);
-
-//       const translateX = startX + (endX - startX) * easedTranslate;
-//       const scale = startScale + (endScale - startScale) * easedScale;
-
-//       cube1.style.transform = `translateX(${-translateX}px) scale(${scale})`;
-//       cube2.style.transform = `translateX(${translateX}px) scale(${scale})`;
-
-//       if (t < 1) {
-//         requestAnimationFrame(step);
-//       } else {
-//         resolve();
-//       }
-//     }
-//     requestAnimationFrame(step);
-//   });
-// }
-
-// function easeOut(t: number): number {
-//   return 1 - (1 - t) ** 3;
-// }
-
-// function easeInOut(t: number): number {
-//   return t < 0.5 ? 2 * t ** 2 : 1 - (-2 * t + 2 ** 2) / 2;
-// }
-
 export function animateSwap(duration: number) {
   return new Promise<void>((resolve) => {
     const gameContainer =
@@ -253,7 +255,7 @@ export function animateSwap(duration: number) {
       const loc1 = cube1.getBoundingClientRect();
       const loc2 = cube2.getBoundingClientRect();
 
-      let distance = loc1.left - loc2.left;
+      const distance = loc1.left - loc2.left;
       console.log('distance: ', distance);
 
       cube1.style.zIndex = '1';
@@ -303,6 +305,12 @@ export function animateSwap(duration: number) {
   });
 }
 
+/**
+ * 두 큐브의 DOM 위치를 서로 교환합니다.
+ *
+ * @param {HTMLElement} cube1 - 위치를 교환할 첫 번째 큐브 요소
+ * @param {HTMLElement} cube2 - 위치를 교환할 두 번째 큐브 요소
+ */
 export function changeLocation(cube1: HTMLElement, cube2: HTMLElement) {
   const parent = cube1.parentElement;
   const next1 = cube1.nextElementSibling;
@@ -318,4 +326,30 @@ export function changeLocation(cube1: HTMLElement, cube2: HTMLElement) {
     parent?.appendChild(cube1);
     parent?.insertBefore(cube2, next1);
   }
+}
+
+function showGameConclusion(round: number) {
+  const gmaeDescription =
+    document.querySelector<HTMLParagraphElement>('.game-description');
+  const gameContainer =
+    document.querySelector<HTMLDivElement>('.game-container');
+  const gameConclusion =
+    document.querySelector<HTMLDivElement>('.game-conclusion');
+
+  const completedRound =
+    gameConclusion?.querySelector<HTMLSpanElement>('.completed-round');
+  const attemptCount =
+    gameConclusion?.querySelector<HTMLSpanElement>('.attempt-count');
+
+  if (gmaeDescription?.style) gmaeDescription.style.display = 'none';
+  if (gameContainer?.style) gameContainer.style.display = 'none';
+  if (gameConclusion?.style) gameConclusion.style.display = 'flex';
+
+  if (completedRound) completedRound.textContent = round.toString();
+
+  const count = localStorage.getItem('attemptCount');
+  if (attemptCount) attemptCount.textContent = count;
+
+  // 10라운드까지 성공하면 시도 횟수 초기화
+  if (round === 10) localStorage.setItem('attemptCount', '0');
 }
