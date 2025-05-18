@@ -9,36 +9,61 @@
   <body>
     <!-- http://localhost:5173/src/pages/findGame.html -->
     <div class="main-container">
-      <div class="mac-buttons">
-        <span class="btn red"></span>
+      <div class="top-buttons">
+        <span class="btn red" id="go-to-home-btn"></span>
         <span class="btn yellow"></span>
-        <span class="btn green"></span>
+        <input
+          type="number"
+          min="1"
+          max="10"
+          id="set-start-round"
+          class="hidden-toggle"
+        />
+        <span class="btn green" id="dev"></span>
       </div>
       <div class="game-info-wrapper">
         <h1 class="game-title">숨은 티니핑을 찾아라</h1>
-        <div class="game-round">
-          <span id="current-game-round">1</span> ROUND
+        <div hidden class="game-round">
+          ROUND <span id="current-game-round">1</span>
         </div>
       </div>
+
       <hr />
+
       <p class="game-description">큐브 속으로 숨은 티니핑을 찾아보세요!</p>
-      <div class="game-container">
-        <div>
-          <button class="game-start-btn">게임 시작하기</button>
+
+      <div class="game-start-btn-container">
+        <button class="game-info-btn game-btn hovered">게임설명</button>
+        <button class="game-start-btn game-btn hovered">처음부터</button>
+        <button class="continue-game-btn game-btn hovered">이어하기</button>
+      </div>
+
+      <div class="game-container"></div>
+
+      <div class="game-conclusion">
+        <h2>게임 결과</h2>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="label"
+              >성공한 라운드 <span class="completed-round">3</span> / 10</span
+            >
+          </div>
+          <div class="stat-item">
+            <span class="label"
+              >총 시도 횟수 <span class="attempt-count">12</span> 번
+            </span>
+          </div>
         </div>
+        <button class="restart-btn">다시 시작하기</button>
       </div>
     </div>
 
     <dialog class="result-dialog">
       <h2 class="">아쉽게 틀렸어요!</h2>
-      <img src="/src/assets/findGame/ayaPingFail.WEBP" alt="" />
+      <img src="" alt="" />
       <p>다시 한 번 도전해볼까요?</p>
-      <button type="button" class="close-dialog">다시하기</button>
+      <button type="button" class="dialog-btn dialog-btn1">도전하기</button>
+      <button type="button" class="dialog-btn dialog-btn2">결과보기</button>
     </dialog>
-
-    <div class="button-container">
-      <button id="dev">뚜껑열기</button>
-      <a href="./main.html">홈으로</a>
-    </div>
   </body>
 </html>
