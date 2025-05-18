@@ -24,6 +24,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  user-select: none;
 }
 
 /* main-page */
@@ -80,6 +81,10 @@ body {
   background-color: #ec4899;
   color: var(--bg-color-primary);
   font-size: var(--text-3xl);
+}
+
+.modal-content {
+  user-select: none;
 }
 
 /* game-page */
@@ -176,6 +181,9 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .game-page-content li:hover {
@@ -195,6 +203,13 @@ body {
   object-fit: contain;
   padding: 20px;
   box-sizing: border-box;
+
+  /*drag 안되게 설정하는 코드*/
+  -webkit-user-drag: none; /* Safari에서 드래그 방지 */
+  -khtml-user-drag: none; /* 구형 브라우저 지원 */
+  -moz-user-drag: none; /* Firefox */
+  -o-user-drag: none; /* Opera */
+  pointer-events: none; /* 이미지에 대한 마우스 이벤트 방지 */
 }
 
 .game-page-content .content-text {
