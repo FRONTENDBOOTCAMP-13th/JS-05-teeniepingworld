@@ -22,7 +22,7 @@
       </div>
 
       <div class="game-progress">
-        <div class="limit-time">남은 시간: <span>46초</span></div>
+        <div class="limit-time">남은 시간: <span></span><span>초</span></div>
 
         <div class="progress-bar-container">
           <div class="progress-bar"></div>
@@ -35,6 +35,11 @@
             <span id="totalCount">8</span>
           </div>
         </div>
+      </div>
+      <div class="item-container">
+        <strong>아이템 :</strong>
+        <button id="" type="button">시간 추가</button>
+        <button id="turn-btn" type="button">티니핑 찬스</button>
       </div>
 
       <div class="card-container">
@@ -60,9 +65,52 @@
           class="reset-level-btn btn"
           type="button"
         >
-          난이도 재설정
+          난이도 선택
         </button>
       </div>
     </div>
+
+    <!-- 카드 매칭되면 나오는 귀여운 애니메이션 (일단 넣고 나중에 제거할지 결정)  -->
+    <div class="hidden" id="thanks-bubble">
+      <img src="/src/assets/memorygame_img/raraPing.webp" alt="고마워요!" />
+      <p>고마워요~</p>
+    </div>
+
+    <!-- 게임 시작전 게임 설명 창! (bgm 넣기 위함) -->
+    <!-- 게임 설명 모달 -->
+    <div id="how-to-play" class="how-popup">
+      <div class="how-popup-content">
+        <h2>🧠 게임 방법</h2>
+        <p>같은 티니핑 친구를 짝지어 찾아주세요!</p>
+        <p>제한 시간 안에 모두 찾으면 성공!</p>
+        <video
+          src="/src/assets/memorygame_video/howtoplay.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+        <div class="item-explain">
+          <h3>아이템 : 티니핑 찬스</h3>
+          <div>
+            <p>2초간 모든 카드의 위치를 확인할 수 있어요.</p>
+            <p>기회는 한번 뿐이니 신중하게 사용하세요!</p>
+          </div>
+        </div>
+        <button id="start-game-btn">게임 시작</button>
+      </div>
+    </div>
+
+    <!-- 오디오 -->
+    <audio
+      id="bgm"
+      src="/src/assets/memorygame_bgm/memorygamebgm_main.mp3"
+      loop
+    ></audio>
+
+    <button class="bgm-button">
+      <img src="/src/assets/memorygame_img/bgm_on.png" alt="" />
+      <p>배경음악 ON/OFF</p>
+    </button>
   </body>
 </html>

@@ -14,8 +14,12 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  width: 500px;
+  width: auto;
+  height: 100vh;
+  max-width: 1200px;
   margin-inline: auto;
+
+  border: 5px solid red;
 }
 
 .title-container {
@@ -24,8 +28,9 @@ body {
   padding: 40px 30px;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
+  /* max-width: 500px; */
+  width: 80%;
+  height: 60%;
   text-align: center;
   display: flex;
   flex-direction: column;
