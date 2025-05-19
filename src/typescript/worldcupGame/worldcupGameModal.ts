@@ -18,24 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ) as HTMLDialogElement;
 
   // 페이지 로드시 dialog close
-  if (worldcupDialog && worldcupDialog.open) {
-    try {
-      worldcupDialog.close();
-    } catch (error) {
-      console.error('다이얼로그 초기 닫기 오류:', error);
-    }
+  if (worldcupDialog) {
+    worldcupDialog.close();
   }
-  // ESC 키 방지 (필요한 경우)
-  worldcupDialog?.addEventListener('cancel', (event) => {
-    event.preventDefault();
-  });
-
-  // 모달 외부 클릭 처리 (필요한 경우)
-  worldcupDialog?.addEventListener('click', (event) => {
-    if (event.target === worldcupDialog) {
-      event.preventDefault();
-    }
-  });
 
   // 함수
   /**
@@ -93,18 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('게임을 시작할 수 없습니다. 페이지를 새로고침해 주세요.');
     }
   }
-
-  /**
-   * // 다시테스트 하기 버튼 누르면 메인 화면으로 돌아가기
-const typeTestBtn = document.querySelector('.repeat-btn');
-if (typeTestBtn) {
-  typeTestBtn.addEventListener('click', function () {
-    console.log('첫화면으로 이동합니다');
-    window.location.href = './typeTest.html';
-  });
-}
-   * 
-   */
 
   // 이벤트 리스너 등록
   if (openModalBtn) {
