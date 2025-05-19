@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`${selectedRound}강 게임을 시작합니다.`);
 
     // 모듈 로드 확인 후 함수 호출
-    if (typeof window.startGame === 'function') {
-      window.startGame(selectedRound);
+    if (typeof startGame === 'function') {
+      startGame(selectedRound);
     } else {
       console.error('게임 시작 함수를 찾을 수 없습니다.');
       alert('게임을 시작할 수 없습니다. 페이지를 새로고침해 주세요.');
@@ -90,13 +90,4 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmModalBtn.addEventListener('click', handleGameStart);
   }
 });
-
-// 전역 인터페이스 선언 (TypeScript용)
-declare global {
-  interface Window {
-    startGame?: (roundCount: number) => void;
-  }
-}
-
-// worldcupGame-start.ts에서 import할 함수들 재export
-export { startGame };
+console.log('hi');

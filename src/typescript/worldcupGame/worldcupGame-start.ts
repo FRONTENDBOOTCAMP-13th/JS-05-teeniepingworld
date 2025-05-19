@@ -1,12 +1,9 @@
-//import { teeniepingData } from '../dataBase';
-//import { startGame } from './worldcupGameModal.ts';
-
 /* 이상형 월드컵 게임 알고리즘
   TODO
-  - [ ] 라운드 수 대로 랜덤 객체 2개씩 배치, 배열 생성
-  - [ ] 각 라운드 당, selected, unselected 객체 구분하여 배열 반환
-  - [ ] 우승한 객체 반환
-  - [ ] 유저 선택했던 우승 결과 저장 및 통계 페이지 
+  - [x] 라운드 수 대로 랜덤 객체 2개씩 배치, 배열 생성
+  - [x] 각 라운드 당, selected, unselected 객체 구분하여 배열 반환
+  - [x] 우승한 객체 반환
+  - [x] 유저 선택했던 우승 결과 저장 및 통계 페이지 
 
   flow
   1. worldcupGameModal.ts
@@ -45,6 +42,19 @@ interface GameState {
 interface GameHistory {
   matchups: MatchupResult[];
   finalWinner?: Teenieping;
+}
+
+interface GameResult {
+  winner: string | number;
+  date: string;
+  roundCount: number;
+  matchups: MatchupData[];
+}
+
+interface MatchupData {
+  round: number;
+  winner: string | number;
+  loser: string | number;
 }
 
 interface MatchupResult {
@@ -219,20 +229,44 @@ function createGamePage(): void {
  * 현 매치 표시 함수
  */
 function displayCurrentMatch(): void {
-  //game 끝났는지 확인
-  if (gameState.winners.length === 1 && gameState.players.length === 0) {
-    displayWinner(gameState.winners[0]);
-    return;
-  }
-
   //round 끝났는지 확인
   if (gameState.matchIndex >= gameState.players.length / 2) {
     //next round 준비
     prepareNextRound();
   }
 
+  //game 끝났는지 확인
+  if (gameState.winners.length === 1 && gameState.players.length === 0) {
+    displayWinner(gameState.winners[0]);
+    return;
+  }
+
+  /*
+  최종 우승자 결정되었는지 확인(winners에 하나만 남고 players가 비어 있을 때)
+  if (gameState.players.length === 1 && gameState.winners.length === 0) {
+    displayWinner(gameState.players[0]);
+    return;
+  }
+    */
+
+  //마지막 라운드 마지막 매치 체크
+  if (
+    gameState.totalRounds === Math.pow(2, gameState.currentRound - 1) &&
+    gameState.winners.length === 1
+  ) {
+    displayWinner(gameState.winners[0]);
+    return;
+  }
+
   //현재 match index 계산
   const idx = gameState.matchIndex * 2;
+
+  //배열 범위 체크 추가
+  if (idx + 1 >= gameState.players.length) {
+    console.error('매치 인덱스 오류: 배열 범위 초과');
+    return;
+  }
+
   const character1 = gameState.players[idx];
   const character2 = gameState.players[idx + 1];
 
@@ -246,7 +280,6 @@ function displayCurrentMatch(): void {
 /**
  * 매치 UI 업데이트 함수
  */
-
 function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
   const characterMatch = document.querySelector(
     '.character-match',
@@ -310,6 +343,7 @@ function handleCharacterSelection(event: Event): void {
 
   //위너 배열에 추가
   gameState.winners.push(winner);
+  console.log(`winner: ${winner}`);
 
   //게임 기록 업데이트
   gameState.gameHistory.matchups.push({
@@ -320,6 +354,17 @@ function handleCharacterSelection(event: Event): void {
 
   //다음 매치로 이동
   gameState.matchIndex++;
+
+  //현 round status 확인
+  const isLastRound =
+    gameState.totalRounds / Math.pow(2, gameState.currentRound - 1) === 2;
+  const isLastMatch = gameState.matchIndex >= gameState.players.length / 2;
+
+  if (isLastRound && isLastMatch && gameState.winners.length === 1) {
+    //최종 우승자 표시
+    displayWinner(gameState.winners[0]);
+    return;
+  }
 
   //다음 매치 표시
   displayCurrentMatch();
@@ -332,22 +377,35 @@ function prepareNextRound(): void {
   //round 업데이트
   gameState.currentRound++;
 
+  //현 round에 맞는 이름 계산
+  const roundName =
+    gameState.totalRounds / Math.pow(2, gameState.currentRound - 1);
+  console.log(`Next round prepared: ${roundName}강`);
+
+  //sub-title update
+  const subTitle = document.querySelector('.sub-title') as HTMLElement;
+  if (subTitle) {
+    //결승전 시 처리
+    if (roundName === 2) {
+      subTitle.textContent = '결승';
+    } else {
+      subTitle.textContent = `${roundName}강`;
+    }
+  }
+
+  //sub-info update
+  const subInfo = document.querySelector('.sub-info') as HTMLElement;
+  if (subInfo) {
+    const totalMatches = gameState.players.length / 2;
+    subInfo.textContent = `(1/${totalMatches})`;
+  }
+
   //player 배열 업데이트
   gameState.players = [...gameState.winners];
   gameState.winners = [];
 
   //match index 초기화
   gameState.matchIndex = 0;
-
-  //subtitle 업데이트
-  const roundName = Math.pow(
-    2,
-    gameState.totalRounds - gameState.currentRound + 1,
-  );
-  const subTitle = document.querySelector('.sub-title') as HTMLElement;
-  if (subTitle) {
-    subTitle.textContent = `${roundName}강`;
-  }
 }
 
 /**
@@ -487,7 +545,7 @@ function addWinnerPageEventListeners(): void {
 function saveGameResult(winner: Teenieping): void {
   try {
     //기존 결과 가져오기
-    const gameResult = JSON.parse(
+    const gameResult: GameResult[] = JSON.parse(
       localStorage.getItem('teeniepingWorldcupResults') || '[]',
     );
 
@@ -543,7 +601,7 @@ function calculateRankingData(): {
 }[] {
   try {
     //게임 결과 가져오기
-    const gameResults = JSON.parse(
+    const gameResults :GameResult[] = JSON.parse(
       localStorage.getItem('teeniepingWorldcupResults') || '[]',
     );
 
@@ -713,4 +771,4 @@ function goToHomePage(): void {
 }
 
 //worldcupGameModal.ts에서 startGame 함수를 export
-export { startGame, GameState, Teenieping, calculateRankingData };
+export type { startGame, GameState, Teenieping, calculateRankingData };
