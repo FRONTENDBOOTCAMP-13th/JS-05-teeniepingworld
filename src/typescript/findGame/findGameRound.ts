@@ -36,6 +36,9 @@ async function play(round: number, resolve: () => void) {
   // 라운드 표시
   setRound(round);
 
+  // localStorage에 라운드 저장
+  localStorage.setItem('history', JSON.stringify(round));
+
   // TODO 라운드에 따라 변경
   let teeniepingName: string = '루루핑';
   let teeniepingNameEng: string = 'ruru';
@@ -121,22 +124,3 @@ async function play(round: number, resolve: () => void) {
     showResult(resolve, result, round);
   }
 }
-
-/**
- * 개발자용 기능으로, 모든 큐브의 뚜껑을 열어 상태를 확인할 수 있습니다.
- *
- * (추후 삭제 예정)
- */
-const openBtn = document.querySelector('#dev');
-openBtn?.addEventListener('click', () => {
-  const cubes = document.querySelectorAll<HTMLImageElement>('.teenieping-cube');
-  cubes.forEach((item) => {
-    if (item?.src.endsWith('Cube.WEBP')) {
-      item?.setAttribute('src', item?.src.replace('Cube', 'CubeOpen'));
-    }
-  });
-});
-const goHomeBtn = document.querySelector('#go-to-home-btn');
-goHomeBtn?.addEventListener('click', () => {
-  location.assign('./main.html');
-});

@@ -9,17 +9,20 @@
   <body>
     <!-- http://localhost:5173/src/pages/findGame.html -->
     <div class="main-container">
-      <div class="top-buttons">
-        <span class="btn red" id="go-to-home-btn"></span>
-        <span class="btn yellow"></span>
-        <input
-          type="number"
-          min="1"
-          max="10"
-          id="set-start-round"
-          class="hidden-toggle"
-        />
-        <span class="btn green" id="dev"></span>
+      <div class="top-container">
+        <div class="top-buttons">
+          <span class="btn red"></span>
+          <span class="btn yellow"></span>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="set-start-round"
+            class="hidden-toggle"
+          />
+          <span class="btn green"></span>
+        </div>
+        <button class="settings-btn">⚙️ settings</button>
       </div>
       <div class="game-info-wrapper">
         <h1 class="game-title">숨은 티니핑을 찾아라</h1>
@@ -56,12 +59,6 @@
         </div>
         <button class="restart-btn">다시 시작하기</button>
       </div>
-      <audio controls>
-        <source
-          src="../assets/memorygame_bgm/memoryGameBGM.mp3"
-          type="audio/mpeg"
-        />
-      </audio>
     </div>
 
     <dialog class="result-dialog">
@@ -73,7 +70,7 @@
     </dialog>
 
     <dialog class="tutorial-dialog">
-      <button type="button" class="tutorial-close-btn">X</button>
+      <button type="button" class="tutorial-close-btn">x</button>
 
       <h2 class="">티니핑이 사라졌어요!</h2>
       <p>
@@ -98,5 +95,22 @@
         <li>- 게임이 끝나면 성공한 라운드 수, 총 시도 횟수를 볼 수 있어요.</li>
       </ul>
     </dialog>
+
+    <dialog class="settings-dialog">
+      <button type="button" class="settings-close-btn">x</button>
+      <h2 class="">환경설정</h2>
+      <div class="settings-options">
+        <button type="button" class="bgm-btn">
+          배경 음악 <span class="bgm-toggle">OFF</span>
+        </button>
+        <!-- (수정 가능) 티니핑 찾기 게임 화면, 메인 화면으로 이동 -->
+        <!-- <button type="button" class="retry-btn">다시하기</button> -->
+        <button type="button" class="go-start-btn">시작 화면</button>
+      </div>
+    </dialog>
+
+    <audio autoplay loop>
+      <source src="../assets/memorygame_bgm/memoryGameBGM.mp3" />
+    </audio>
   </body>
 </html>
