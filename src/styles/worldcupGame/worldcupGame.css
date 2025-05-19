@@ -292,13 +292,13 @@ body {
 
 .character-info p {
   margin: 5px 0;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 180px;
 }
 
 .character-info .label {
   font-weight: bold;
-  margin-right: 10px;
+  width: 170px;
 }
 
 .button-group {
@@ -341,9 +341,14 @@ body {
   color: white;
 }
 
+.sns-share-btn {
+  display: none;
+}
+
 .rank-btn {
   background-color: #c74fe8;
   color: white;
+  display: none;
 }
 
 /* rank-page */
