@@ -39,7 +39,10 @@ export function setCube(i: number, name: string) {
   const newImg = document.createElement('img');
   newDiv.setAttribute('class', 'set');
   newDiv.setAttribute('id', `set-${i}`);
-  newImg.setAttribute('src', `/src/assets/findGame/${name}PingCubeOpen.WEBP`);
+  newImg.setAttribute(
+    'src',
+    `/src/assets/findgame_img/${name}PingCubeOpen.WEBP`,
+  );
   newImg.setAttribute('alt', '티니핑 큐브');
   newImg.setAttribute('class', 'teenieping-cube');
 
@@ -63,7 +66,7 @@ export function insertTeenieping(
     const targetDiv = answerSet.getDiv;
 
     const newImg = document.createElement('img');
-    newImg.setAttribute('src', `/src/assets/findGame/${name}Ping.WEBP`);
+    newImg.setAttribute('src', `/src/assets/findgame_img/${name}Ping.WEBP`);
     newImg.setAttribute('alt', '티니핑');
     newImg.setAttribute('class', 'teenieping');
     targetDiv.appendChild(newImg);
@@ -195,7 +198,7 @@ export function showResult(
   if (round === 10) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
-      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
+      dialogImg.src = '/src/assets/findgame_img/ayaPingSuccess.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
     if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
 
@@ -204,14 +207,15 @@ export function showResult(
   } else if (result === true) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
-      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
+      dialogImg.src = '/src/assets/findgame_img/ayaPingSuccess.WEBP';
     if (dialogP?.textContent)
       dialogP.textContent = '다음 라운드도 도전해보세요!';
     if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
     localStorage.setItem('history', JSON.stringify(++round));
   } else {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
-    if (dialogImg?.src) dialogImg.src = '/src/assets/findGame/ayaPingFail.WEBP';
+    if (dialogImg?.src)
+      dialogImg.src = '/src/assets/findgame_img/ayaPingFail.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
     dialogBtn1?.setAttribute('hidden', '');
 

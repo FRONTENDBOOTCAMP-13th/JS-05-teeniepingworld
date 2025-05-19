@@ -1,10 +1,17 @@
 import '../../styles/findGame.css';
 import { playOneRound } from './findGameRound';
 
+const gameInfoBtn = document.querySelector<HTMLButtonElement>('.game-info-btn');
 const continueStartBtn =
   document.querySelector<HTMLButtonElement>('.continue-game-btn');
 const gameStartBtn =
   document.querySelector<HTMLButtonElement>('.game-start-btn');
+
+const tutorialDialog =
+  document.querySelector<HTMLDialogElement>('.tutorial-dialog');
+const tutorialClosBtn = document.querySelector<HTMLButtonElement>(
+  '.tutorial-close-btn',
+);
 
 let startRound = 1;
 
@@ -24,6 +31,16 @@ const setStartRound =
   document.querySelector<HTMLInputElement>('#set-start-round');
 yellownBtn?.addEventListener('click', () => {
   setStartRound?.classList.toggle('hidden-toggle');
+});
+
+// 튜토리얼
+gameInfoBtn?.addEventListener('click', () => {
+  tutorialDialog?.showModal();
+  tutorialDialog?.setAttribute('display', 'flex');
+});
+tutorialClosBtn?.addEventListener('click', () => {
+  tutorialDialog?.close();
+  tutorialDialog?.removeAttribute('display');
 });
 
 // 게임 시작 (처음부터)
