@@ -39,10 +39,10 @@ gameStartBtn?.addEventListener('click', () => {
 });
 
 // 게임 시작 (이어서)
-const history = localStorage.getItem('history');
 continueStartBtn?.addEventListener('click', () => {
-  if (history) startRound = JSON.parse(history);
+  const history = localStorage.getItem('history');
 
+  if (history) startRound = JSON.parse(history);
   playGame(startRound);
 });
 

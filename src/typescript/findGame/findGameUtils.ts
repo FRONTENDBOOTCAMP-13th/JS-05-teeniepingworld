@@ -400,12 +400,12 @@ export function setContinueButtonDisabled() {
       continueStartBtn.style.backgroundColor = '#e0e0e0';
       continueStartBtn.style.color = '#999';
       continueStartBtn.disabled = true;
-      continueStartBtn.classList.toggle('hovered');
+      continueStartBtn.classList.remove('hovered');
     } else {
       continueStartBtn.style.backgroundColor = '#ff9edb';
       continueStartBtn.style.color = 'white';
       continueStartBtn.disabled = false;
-      continueStartBtn.classList.toggle('hovered');
+      continueStartBtn.classList.add('hovered');
     }
   }
 }
