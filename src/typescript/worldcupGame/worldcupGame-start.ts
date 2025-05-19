@@ -601,7 +601,7 @@ function calculateRankingData(): {
 }[] {
   try {
     //게임 결과 가져오기
-    const gameResults :GameResult[] = JSON.parse(
+    const gameResults: GameResult[] = JSON.parse(
       localStorage.getItem('teeniepingWorldcupResults') || '[]',
     );
 
@@ -771,4 +771,5 @@ function goToHomePage(): void {
 }
 
 //worldcupGameModal.ts에서 startGame 함수를 export
-export type { startGame, GameState, Teenieping, calculateRankingData };
+export { startGame, calculateRankingData };
+export type { GameState, Teenieping };
