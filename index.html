@@ -102,29 +102,64 @@
         <h2>팀원 소개</h2>
         <div>
           <section class="find-game card">
-            <img
-              src="/src/assets/teenieping-local-img/6-happying.webp"
-              alt=""
-            />
-            <h3>오서현</h3>
+            <div class="card-inner">
+              <div class="card-front">
+                <img
+                  src="/src/assets/teenieping-local-img/6-happying.webp"
+                  alt=""
+                />
+                <h3>오서현</h3>
+              </div>
+              <div class="card-back">
+                <p>Team Leader</p>
+                <p>티니핑 유형 테스트</p>
+              </div>
+            </div>
           </section>
           <section class="find-game card">
-            <img
-              src="/src/assets/teenieping-local-img/7-kikiping.webp"
-              alt=""
-            />
-            <h3>김재현</h3>
+            <div class="card-inner">
+              <div class="card-front">
+                <img
+                  src="/src/assets/teenieping-local-img/7-kikiping.webp"
+                  alt=""
+                />
+                <h3>김재현</h3>
+              </div>
+              <div class="card-back">
+                <p>Scrum Master</p>
+                <p>티니핑 카드게임</p>
+              </div>
+            </div>
           </section>
           <section class="find-game card">
-            <img
-              src="/src/assets/teenieping-local-img/8-charmping.webp"
-              alt=""
-            />
-            <h3>김태우</h3>
+            <div class="card-inner">
+              <div class="card-front">
+                <img
+                  src="/src/assets/teenieping-local-img/12-dreamping.webp"
+                  alt=""
+                />
+                <h3>김태우</h3>
+              </div>
+              <div class="card-back">
+                <p>Documentation</p>
+                <p>티니핑 이상형 월드컵</p>
+              </div>
+            </div>
           </section>
           <section class="find-game card">
-            <img src="/src/assets/teenieping-local-img/9-shyping.webp" alt="" />
-            <h3>유시원</h3>
+            <div class="card-inner">
+              <div class="card-front">
+                <img
+                  src="/src/assets/teenieping-local-img/8-charmping.webp"
+                  alt=""
+                />
+                <h3>유시원</h3>
+              </div>
+              <div class="card-back">
+                <p>Documentation</p>
+                <p>티니핑을 찾아라</p>
+              </div>
+            </div>
           </section>
         </div>
       </section>
@@ -207,8 +242,13 @@
       </section>
     </div>
     <footer>
-      <p>TeeniepingWorld | GitHub | 프로젝트 문서</p>
-      <p>© 2025 Type5cript JS Project Team. All Rights Reserved.</p>
+      <p>
+        &copy; 2025 <strong>티니핑 월드</strong>. Crafted with by
+        <span>type5cript</span> @ 멋쟁이사자처럼.
+      </p>
+      <p class="footer-sub">
+        이 프로젝트는 멋쟁이사자처럼 부트캠프의 팀 프로젝트로 제작되었습니다.
+      </p>
     </footer>
 
     <script>
@@ -234,11 +274,12 @@
 
       // TODO 카드 뒤집기
       const aboutMember = document.querySelector('.about-member');
-      const card = aboutMember.querySelector('.card');
-      console.log(card);
-      card.addEventListener('click', () => {
-        card.classList.add('turn');
-        console.log(card.classList);
+      const cards = aboutMember.querySelectorAll('.card');
+      console.log(cards);
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flip');
+        });
       });
     </script>
   </body>

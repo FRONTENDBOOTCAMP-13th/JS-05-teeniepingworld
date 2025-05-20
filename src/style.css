@@ -97,23 +97,6 @@ button {
   }
 }
 
-/* TODO 확인 */
-.card {
-  transition: all 0.3s ease;
-  transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    transition: all 0.6s ease;
-  }
-}
-
-.turn {
-  transform: rotateY(180deg);
-}
-
 .about-project {
   div {
     display: grid;
@@ -126,6 +109,18 @@ button {
 
     p {
       align-self: center;
+    }
+
+    .card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        transition: all 0.6s ease;
+      }
     }
   }
 }
@@ -171,12 +166,17 @@ button {
       grid-template-columns: 1fr;
     }
 
-    section {
-      display: flex;
-      flex-direction: column;
+    .card {
       margin-bottom: 0;
       justify-items: center;
       align-items: center;
+
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      perspective: 1000px;
+      height: 300px;
 
       img {
         width: 50%;
@@ -184,6 +184,60 @@ button {
       h3 {
         margin-block: 20px;
       }
+
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        transition: all 0.6s ease;
+      }
+
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+    }
+
+    .card.flip .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fff;
+
+      padding: 2rem;
+      margin-bottom: 2rem;
+
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* safari */
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+      h2 {
+        margin-block: 20px;
+      }
+      img {
+        width: 50%;
+      }
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
     }
   }
 }
