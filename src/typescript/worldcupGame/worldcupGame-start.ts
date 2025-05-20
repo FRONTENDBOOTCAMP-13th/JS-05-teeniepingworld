@@ -21,12 +21,15 @@
 
 // 티니핑 data type 정의
 interface Teenieping {
-  no: string | number;
+  no: number | string;
   name: string;
+  nameEng: string;
+  imgName: string;
   gender: string;
-  likes: string | string[];
-  dislikes: string | string[];
+  likes: string[] | string;
+  dislikes: string[] | string;
   URL: string;
+  imgLink: string;
 }
 
 // 게임 관련 type 정의
@@ -69,8 +72,8 @@ let teeniepingData: { properties: string[]; result: Teenieping[] };
 try {
   // 실무에서는 import, 혹은 fetch 사용 가능
   import('../dataBase.ts')
-    .then((moduleData) => {
-      teeniepingData = moduleData.teeniepingData;
+    .then(({teeniepingData: importedData}) => {
+      teeniepingData = importedData;
     })
     .catch((error) => {
       console.error('database Load Error:', error);
@@ -124,7 +127,7 @@ function getRandomTeeniepings(count: number): Teenieping[] {
     //배열에 표준화된 객체 추가
     selected.push(standardizeTeenieping(character));
   }
-  console.log(selected);
+  console.log({ ...selected });
   return selected;
 }
 
@@ -290,13 +293,13 @@ function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
   characterMatch.innerHTML = `
   <li data-no="${character1.no}" class="character-option">
       <figure>
-        <img class="cover-img" src="${character1.URL}" alt="${character1.name}" />
+        <img class="cover-img" src="${character1.imgLink}" alt="${character1.name}" />
         <figcaption class="content-text">${character1.name}</figcaption>
       </figure>
     </li>
     <li data-no="${character2.no}" class="character-option">
       <figure>
-        <img class="cover-img" src="${character2.URL}" alt="${character2.name}" />
+        <img class="cover-img" src="${character2.imgLink}" alt="${character2.name}" />
         <figcaption class="content-text">${character2.name}</figcaption>
       </figure>
     </li>
@@ -343,7 +346,7 @@ function handleCharacterSelection(event: Event): void {
 
   //위너 배열에 추가
   gameState.winners.push(winner);
-  console.log(`winner: ${winner}`);
+  console.log(`winner: ${winner.name}`);
 
   //게임 기록 업데이트
   gameState.gameHistory.matchups.push({
@@ -469,7 +472,7 @@ function createWinnerPage(winner: Teenieping): void {
         <li class="sub-title">💕💗 나의 최애 티니핑은.. 💗💕</li>
         <li>
           <figure>
-            <img class="cover-img" src="${winner.URL}" alt="${winner.name}" />
+            <img class="cover-img" src="${winner.imgLink}" alt="${winner.name}" />
             <figcaption class="content-text">${winner.name}</figcaption>
           </figure>
         </li>
@@ -482,19 +485,24 @@ function createWinnerPage(winner: Teenieping): void {
 
       <div class="button-group">
         <button class="action-btn retry-btn" type="button">
-          <span><img src=".././assets/worldcupGame_img/left-arrow.svg" alt="다시 선택하기" /></span>
-          다시 선택하기
+        <img src="../assets/typeTest_img/repeat.png" alt="다시하기" />
+        <span>
+          다시 선택하기</span>
         </button>
         <button class="action-btn rank-btn" type="button">
           <span><img src=".././assets/worldcupGame_img/rank.svg" alt="이상형 랭킹" /></span>
           랭킹보기
         </button>
-        <button class="action-btn share-btn" type="button">
+        <button class="action-btn share-btn sns-share-btn" type="button">
           <span>🔗</span> 공유하기
+        </button>
+
+        <button class="action-btn share-btn fb-share-btn" type="button" onclick="shareFacebook()">
+          <span>facebook</span> 공유하기
         </button>
       </div>
     </div>
-    <button class="home-btn" type="button">홈으로</button>
+    <button class="home-btn" type="button">이상형 월드컵으로 돌아가기</button>
   `;
 
   //페이지에 추가
@@ -597,7 +605,7 @@ function calculateRankingData(): {
   name: string;
   winCount: number;
   winRate: number;
-  URL: string;
+  imgLink: string;
 }[] {
   try {
     //게임 결과 가져오기
@@ -611,7 +619,7 @@ function calculateRankingData(): {
         wins: number;
         matches: number;
         name: string;
-        URL: string;
+        imgLink: string;
       };
     } = {};
 
@@ -621,7 +629,7 @@ function calculateRankingData(): {
         wins: 0,
         matches: 0,
         name: character.name,
-        URL: character.URL,
+        imgLink: character.imgLink,
       };
     });
     //우승 데이터 처리
@@ -649,7 +657,7 @@ function calculateRankingData(): {
         name: stats.name,
         winCount: stats.wins,
         winRate: stats.matches > 0 ? (stats.wins / stats.matches) * 100 : 0,
-        URL: stats.URL,
+        imgLink: stats.imgLink,
       };
     });
 
@@ -672,7 +680,7 @@ function createRankingPage(
     name: string;
     winCount: number;
     winRate: number;
-    URL: string;
+    imgLink: string;
   }[],
 ): void {
   //랭킹 페이지 요소 생성
@@ -703,7 +711,7 @@ function createRankingPage(
               <td>${index + 1}</td>
               <td>
                 <div class="character-cell">
-                  <img src="${character.URL}" alt="${character.name}" class="rank-img" />
+                  <img src="${character.imgLink}" alt="${character.name}" class="rank-img" />
                   <span>${character.name}</span>
                 </div>
               </td>
