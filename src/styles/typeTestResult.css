@@ -236,6 +236,100 @@ main {
   height: 16px;
 }
 
+/* 모달창 */
+.share-modal {
+  width: auto;
+  height: auto;
+  max-width: 80vw; /* 너무 커지지 않도록 최대값 지정 */
+  max-height: 80vh;
+  border: 4px solid var(--color-pink);
+  border-radius: 25px;
+}
+.modal-content {
+  position: relative;
+
+  .modal-close {
+    position: absolute;
+    top: -50px;
+    right: 10px;
+    background: url(../assets/typeTest_img/close.png) no-repeat center/cover;
+    width: 3vw;
+    height: 3vw;
+    border: none;
+    cursor: pointer;
+  }
+  p {
+    margin-top: 55px;
+    color: #1f2937;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  img {
+    margin: 0 auto;
+    margin-block: 30px;
+    width: 180px;
+    height: 180px;
+  }
+  .modal-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    .copy {
+      background: url(../assets/typeTest_img/copy.svg) no-repeat center/cover;
+      width: 80px;
+      height: 80px;
+      border: none;
+
+      .share-link {
+        display: none;
+      }
+    }
+    .facebook {
+      background: url(../assets/typeTest_img/facebook.png) no-repeat
+        center/cover;
+      width: 80px;
+      height: 80px;
+      border: none;
+    }
+    .instagram {
+      background: url(../assets/typeTest_img/instagram.png) no-repeat
+        center/cover;
+      width: 80px;
+      height: 80px;
+      border: none;
+    }
+    .kakao {
+      background: url(../assets/typeTest_img/kakao.png) no-repeat center/cover;
+      width: 80px;
+      height: 80px;
+      border: none;
+    }
+  }
+  .modal-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-block: 30px 50px;
+    .repeat-modal-btn,
+    .home-modal-btn {
+      min-width: 180px;
+      padding: 8px 60px;
+      background: var(--color-pink);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+  }
+}
 /* 반응형 */
 @media (max-width: 480px) {
   .main-name {

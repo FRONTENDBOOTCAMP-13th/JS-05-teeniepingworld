@@ -52,6 +52,18 @@ main {
   color: #7e22ce;
   font-size: 12px;
   margin-bottom: 10px;
+
+  .format {
+    color: #c08cf8;
+    border: none;
+    border-radius: 25px;
+    background: #fff;
+    cursor: pointer;
+  }
+  .format:hover {
+    color: #7e22ce;
+    /* color: #7e22ce; */
+  }
 }
 
 .bar-container {

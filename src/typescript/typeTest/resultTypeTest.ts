@@ -10,59 +10,6 @@ if (typeTestBtn) {
   });
 }
 
-// TODO결과 공유하기 버튼
-
-// 로컬스토리지에서 사용자의 선택 결과(personality 배열) 불러오기
-const result = JSON.parse(localStorage.getItem('resultArray') || '[]');
-
-// 각 성향별(E/N/F/P) 카운트 변수 초기화
-let cntE = 0;
-let cntN = 0;
-let cntF = 0;
-let cntP = 0;
-
-// 사용자의 선택 결과를 순회하며 각 성향 카운트
-for (let i = 0; i < 12; i++) {
-  if (result[i] === 'E') {
-    cntE++;
-  }
-  if (result[i] === 'N') {
-    cntN++;
-  }
-  if (result[i] === 'F') {
-    cntF++;
-  }
-  if (result[i] === 'P') {
-    cntP++;
-  }
-}
-
-// 각 성향별 카운트가 2개 이상이면 해당 알파벳, 아니면 반대 알파벳으로 MBTI 조합 생성
-let mainresult = '';
-if (cntE > 1) {
-  mainresult += 'E';
-} else {
-  mainresult += 'I';
-}
-
-if (cntN > 1) {
-  mainresult += 'N';
-} else {
-  mainresult += 'S';
-}
-
-if (cntF > 1) {
-  mainresult += 'F';
-} else {
-  mainresult += 'T';
-}
-
-if (cntP > 1) {
-  mainresult += 'P';
-} else {
-  mainresult += 'J';
-}
-
 // MBTI 결과에 해당하는 티니핑 정보 찾기
 let pingName = '';
 let pingImg = '';
@@ -70,8 +17,14 @@ let pingChar = '';
 let pingTagCon: TabContainer = { tab1: '', tab2: '', tab3: '', tab4: '' };
 let likePing = '';
 let hatePing = '';
+
+console.log(location.search);
+
+const params = new URLSearchParams(window.location.search);
+const mbti = params.get('mbti');
+
 for (let i = 0; i < 16; i++) {
-  if (mainresult === pingData[i].mbti) {
+  if (mbti === pingData[i].mbti) {
     pingName = pingData[i].name;
     pingImg = pingData[i].img;
     pingChar = pingData[i].char;
@@ -82,7 +35,6 @@ for (let i = 0; i < 16; i++) {
 }
 console.log(pingName);
 console.log(pingImg);
-console.log(result);
 
 //각종 DOM 요소 선택
 const myPing = document.querySelector('.result-ping') as HTMLImageElement;
@@ -94,7 +46,7 @@ const firstTab = tabContainer!.querySelector('.tab-button');
 
 // 결과 화면에 티니핑 이미지, MBTI, 이름 등 표시
 myPing!.src = pingImg;
-myMbti!.textContent = mainresult;
+myMbti!.textContent = mbti;
 myPingName!.textContent = pingName;
 myPingChar!.textContent = pingChar;
 firstTab!.textContent = pingTagCon.tab1;
@@ -136,7 +88,7 @@ hatePingName!.textContent = hatePing;
 //.sub-container바꾸기
 const myPingExp = document.querySelector('.sub-container');
 myPingExp!.innerHTML = ''; // 기존에 있는 걸 지워버림
-const exp = pingExpData.find((item) => item.mbti === mainresult);
+const exp = pingExpData.find((item) => item.mbti === mbti);
 const ol = document.createElement('ol');
 myPingExp?.appendChild(ol);
 
