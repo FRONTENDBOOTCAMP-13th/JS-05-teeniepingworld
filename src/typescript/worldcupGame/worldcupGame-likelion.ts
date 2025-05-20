@@ -52,7 +52,7 @@ function setupLikelionClickListener(): void {
   if (likelionElement) {
     likelionElement.addEventListener('click', () => {
       isLikelionClicked = true;
-      console.log('🦁 clicked, we are lions!');
+      console.log('🦁 We are lions! 이스터에그가 활성되었습니다!');
     });
   }
 }
