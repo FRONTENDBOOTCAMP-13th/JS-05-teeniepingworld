@@ -8,6 +8,7 @@ export default defineConfig({
         mainhtml: './src/pages/main.html',
         typeTesthtml: './src/pages/typeTest.html',
         typeTestStarthtml: './src/pages/typeTestStart.html',
+        typeTestResulthtml: './src/pages/typeTestResult.html',
         memoryGamehtml: './src/pages/memoryGame.html',
         memoryGameStarthtml: './src/pages/memoryGameStart.html',
         worldcupGamehtml: './src/pages/worldcupGame.html',

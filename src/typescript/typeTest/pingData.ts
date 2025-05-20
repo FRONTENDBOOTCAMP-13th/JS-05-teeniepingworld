@@ -17,7 +17,7 @@ export interface TabContainer {
 export const pingData: PingData[] = [
   {
     name: '파티핑',
-    img: '../assets/teenieping_img/partying.webp',
+    img: '/teenieping_img/partyping.webp',
     mbti: 'ENFP',
     char: '열정적인 활동가',
     tabContainer: {
@@ -31,7 +31,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '샤샤핑',
-    img: '../assets/teenieping_img/shashaping.webp',
+    img: '/teenieping_img/shashaping.webp',
     mbti: 'ENFJ',
     char: '정의로운 리더',
     tabContainer: {
@@ -45,7 +45,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '똑똑핑',
-    img: '../assets/teenieping_img/smartping.webp',
+    img: '/teenieping_img/smartpping.webp',
     mbti: 'ENTP',
     char: '창의적인 발명가',
     tabContainer: {
@@ -59,7 +59,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '아자핑',
-    img: '../assets/teenieping_img/azaping.webp',
+    img: '/teenieping_img/azaping.webp',
     mbti: 'ENTJ',
     char: '단호한 통솔자',
     tabContainer: {
@@ -73,7 +73,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '홀라핑',
-    img: '../assets/teenieping_img/holaping.webp',
+    img: '/teenieping_img/holaping.webp',
     mbti: 'ESFP',
     char: '자유로운 연예인',
     tabContainer: {
@@ -87,7 +87,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '나눔핑',
-    img: '../assets/teenieping_img/nanumPing.webp',
+    img: '/teenieping_img/nanummping.webp',
     mbti: 'ESFJ',
     char: '따뜻한 돌봄 제공자',
     tabContainer: {
@@ -101,7 +101,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '씽씽핑',
-    img: '../assets/teenieping_img/singsingPing.webp',
+    img: '/teenieping_img/singsingpping.webp',
     mbti: 'ESTP',
     char: '현실의 모험가',
     tabContainer: {
@@ -115,7 +115,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '찌릿핑',
-    img: '../assets/teenieping_img/eleping.webp',
+    img: '/teenieping_img/eleping.webp',
     mbti: 'ESTJ',
     char: '현실적 리더',
     tabContainer: {
@@ -129,7 +129,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '토닥핑',
-    img: '../assets/teenieping_img/pattping.webp',
+    img: '/teenieping_img/pattping.webp',
     mbti: 'INFP',
     char: '이상주의 감성주의자',
     tabContainer: {
@@ -143,7 +143,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '요거핑',
-    img: '../assets/teenieping_img/yogaping.webp',
+    img: '/teenieping_img/yogaping.webp',
     mbti: 'INFJ',
     char: '이상주의 전략가',
     tabContainer: {
@@ -157,7 +157,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '아라핑',
-    img: '../assets/teenieping_img/arapping.webp',
+    img: '/teenieping_img/arapping.webp',
     mbti: 'INTP',
     char: '논리적 탐구자',
     tabContainer: {
@@ -171,7 +171,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '싹싹핑',
-    img: '../assets/teenieping_img/snapping.webp',
+    img: '/teenieping_img/snapping.webp',
     mbti: 'INTJ',
     char: '조용한 계획자',
     tabContainer: {
@@ -185,7 +185,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '그림핑',
-    img: '../assets/teenieping_img/drawping.webp',
+    img: '/teenieping_img/drawping.webp',
     mbti: 'ISFP',
     char: '감성적인 아티스트',
     tabContainer: {
@@ -199,7 +199,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '포실핑',
-    img: '../assets/teenieping_img/fossilPing.webp',
+    img: '/teenieping_img/fosilping.webp',
     mbti: 'ISFJ',
     char: '헌신적인 보호자',
     tabContainer: {
@@ -213,7 +213,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '코자핑',
-    img: '../assets/teenieping_img/cojaping.webp',
+    img: '/teenieping_img/cojaping.webp',
     mbti: 'ISTP',
     char: '논리적 해결사',
     tabContainer: {
@@ -227,7 +227,7 @@ export const pingData: PingData[] = [
   },
   {
     name: '삐뽀핑',
-    img: '../assets/teenieping_img/beepping.webp',
+    img: '/teenieping_img/beepping.webp',
     mbti: 'ISTJ',
     char: '원칙 있는 실천가',
     tabContainer: {
