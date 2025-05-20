@@ -10,6 +10,7 @@ export function initSettings() {
     '.settings-close-btn',
   );
   const bgmBtn = document.querySelector<HTMLButtonElement>('.bgm-btn');
+  // const bgmBtn2 = document.querySelector<HTMLButtonElement>('.music-btn');
   const bgmToggle = document.querySelector<HTMLSpanElement>('.bgm-toggle');
   // 오디오 태그
   const audio = document.querySelector<HTMLAudioElement>('audio');
@@ -23,15 +24,16 @@ export function initSettings() {
   });
   bgmBtn?.addEventListener('click', () => {
     if (bgmToggle?.textContent) {
-      if (bgmToggle.textContent === 'OFF') {
-        bgmToggle.textContent = 'ON';
+      if (bgmToggle.textContent === '🔇') {
+        bgmToggle.textContent = '🔉';
         audio?.play();
       } else {
-        bgmToggle.textContent = 'OFF';
+        bgmToggle.textContent = '🔇';
         audio?.pause();
       }
     }
   });
+
   goStartBtn?.addEventListener('click', () => {
     resetToStartScreen();
     settingsDialog?.close();
