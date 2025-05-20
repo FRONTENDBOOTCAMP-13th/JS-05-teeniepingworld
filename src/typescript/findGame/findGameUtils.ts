@@ -432,3 +432,7 @@ export function getImage(imgName: string) {
   const imgPath = images[`/src/assets/findgame_img/${imgName}.WEBP`] as string;
   return imgPath;
 }
+
+export function waitForNextPaint(): Promise<void> {
+  return new Promise((resolve) => requestAnimationFrame(() => resolve()));
+}
