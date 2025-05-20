@@ -21,7 +21,7 @@ let hatePing = '';
 console.log(location.search);
 
 const params = new URLSearchParams(window.location.search);
-const mbti = params.get('mbti');
+const mbti = params.get('mbti')?.toUpperCase() || '';
 
 for (let i = 0; i < 16; i++) {
   if (mbti === pingData[i].mbti) {
