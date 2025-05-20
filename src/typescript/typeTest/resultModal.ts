@@ -57,12 +57,12 @@ if (repeatBtn) {
   });
 }
 
-//TODO홈화면을 누르면 홈화면으로 돌아가기
+// 홈화면을 누르면 홈화면으로 돌아가기
 const homeBtn = document.querySelector('.home-modal-btn');
 if (homeBtn) {
   homeBtn.addEventListener('click', function () {
     console.log('다시 테스트하기');
-    window.location.href = '#void';
+    window.location.href = './main.html';
   });
 }
 
@@ -93,7 +93,7 @@ copyBtn?.addEventListener('click', () => {
 //   }
 // });
 
-//TODO 페이스북 공유
+// 페이스북 공유
 const facebookBtn = document.querySelector('.facebook') as HTMLAnchorElement;
 const resultUrl = window.location.href;
 const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(resultUrl)}`;
@@ -101,7 +101,7 @@ if (facebookBtn) {
   facebookBtn.href = facebookShareUrl;
 }
 
-//TODO 카카오톡 공유
+// 카카오톡 공유
 const kakaoBtn = document.querySelector('.kakao');
 if (kakaoBtn) {
   kakaoBtn.addEventListener('click', () => {

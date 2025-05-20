@@ -24,11 +24,21 @@ body {
 
 /* 헤더 */
 header {
-  margin-top: 80px;
-  text-align: center;
+  position: relative;
+}
+.home-btn {
+  position: absolute;
+  right: 400px;
+  top: 50px;
+  display: inline-block;
+  background: url(../assets/typeTest_img/pinkhome.png) no-repeat center/cover;
+  width: 100px;
+  height: 100px;
 }
 
 .main-name {
+  margin-top: 80px;
+  text-align: center;
   background: linear-gradient(
     90deg,
     var(--color-pink) 0%,
