@@ -1,5 +1,13 @@
 import '../../styles/findGame.css';
 import { playOneRound } from './findGameRound';
+import {
+  initSettings,
+  initTutorialDialog,
+  saveGameAttempt,
+  showGameScreen,
+} from './findGameMainUI';
+import { goToMainPage, openCubeAll, setStartRound } from './findGameDevTools';
+import { setContinueButtonDisabled } from './findGameUtils';
 
 const continueStartBtn =
   document.querySelector<HTMLButtonElement>('.continue-game-btn');
@@ -7,31 +15,24 @@ const gameStartBtn =
   document.querySelector<HTMLButtonElement>('.game-start-btn');
 
 let startRound = 1;
+setContinueButtonDisabled();
 
-const history = localStorage.getItem('history');
-if (!Number(history)) {
-  if (continueStartBtn) {
-    continueStartBtn.style.backgroundColor = '#e0e0e0';
-    continueStartBtn.style.color = '#999';
-    continueStartBtn.disabled = true;
-    continueStartBtn.classList.remove('hovered');
-  }
-}
+initSettings();
+initTutorialDialog();
 
-// 개발자 기능(시작 라운드 설정하기)
-const yellownBtn = document.querySelector('.yellow');
-const setStartRound =
-  document.querySelector<HTMLInputElement>('#set-start-round');
-yellownBtn?.addEventListener('click', () => {
-  setStartRound?.classList.toggle('hidden-toggle');
-});
+// 개발자 기능
+goToMainPage();
+setStartRound();
+openCubeAll();
 
 // 게임 시작 (처음부터)
 gameStartBtn?.addEventListener('click', () => {
   // 개발자 기능(시작 라운드 설정하기)
+  const setStartRound =
+    document.querySelector<HTMLInputElement>('#set-start-round');
   if (setStartRound?.value) startRound = Number(setStartRound?.value);
 
-  localStorage.setItem('history', '0');
+  localStorage.setItem('history', JSON.stringify(0));
   localStorage.setItem('attemptCount', '0');
 
   playGame(startRound);
@@ -39,8 +40,9 @@ gameStartBtn?.addEventListener('click', () => {
 
 // 게임 시작 (이어서)
 continueStartBtn?.addEventListener('click', () => {
-  if (history) startRound = JSON.parse(history);
+  const history = localStorage.getItem('history');
 
+  if (history) startRound = JSON.parse(history);
   playGame(startRound);
 });
 
@@ -49,19 +51,11 @@ continueStartBtn?.addEventListener('click', () => {
  * 실패 시 1라운드부터 다시 시작합니다.
  */
 async function playGame(startRound: number) {
-  const gameRound = document.querySelector('.game-round');
   const gameContainer =
     document.querySelector<HTMLDivElement>('.game-container');
-  const gameStartBtnContainer = document.querySelector<HTMLDivElement>(
-    '.game-start-btn-container',
-  );
 
-  gameRound?.removeAttribute('hidden');
-  if (gameContainer) gameContainer.style.display = 'flex';
-  if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'none';
-
-  let attemptCount = Number(localStorage.getItem('attemptCount'));
-  localStorage.setItem('attemptCount', JSON.stringify(++attemptCount));
+  showGameScreen();
+  saveGameAttempt();
 
   for (let round = startRound; round <= 10; round++) {
     // 게임 화면 세팅
@@ -80,9 +74,3 @@ async function playGame(startRound: number) {
     }
   }
 }
-
-// TODO 수정 예정
-const restartBtn = document.querySelector('.restart-btn');
-restartBtn?.addEventListener('click', () => {
-  location.reload();
-});
