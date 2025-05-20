@@ -91,7 +91,7 @@ async function play(round: number, resolve: () => void) {
 
   // 큐브 닫기
   await waitDelay(2000);
-  findTeeniepingArr.forEach(closeCube);
+  findTeeniepingArr.forEach((item) => closeCube(item, teeniepingNameEng));
 
   setGameDescription(`빠르게 움직이는 큐브에 집중해주세요!`);
 
@@ -105,7 +105,7 @@ async function play(round: number, resolve: () => void) {
   setGameDescription(`어느 큐브에 ${teeniepingName}이 숨어있을까요?`);
 
   // 클릭 이벤트 추기 (정답 맞추기)
-  const selectIdx = await handleSelection(findTeeniepingArr);
+  const selectIdx = await handleSelection(findTeeniepingArr, teeniepingNameEng);
   let result = false;
 
   if (selectIdx === answerIdx) {
@@ -118,7 +118,7 @@ async function play(round: number, resolve: () => void) {
     // 정답 확인하기 틀린 경우만
     setGameDescription(`앗, 여긴 아니었네요!`);
 
-    await checkAnswer(findTeeniepingArr, teeniepingName);
+    await checkAnswer(findTeeniepingArr, teeniepingName, teeniepingNameEng);
 
     await waitDelay(2000);
     showResult(resolve, result, round);
