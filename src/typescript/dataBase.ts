@@ -40,7 +40,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '생크림 딸기 케이크,딸기',
       dislikes: '신맛이 나는 모든 것',
       URL: 'https://i.namu.wiki/i/HKDxtP33XiKScqBNpMiOqjtMEEWHLw_bz46VFvkphveVIzc7D1e3E9QtmBXoYCQH0YYf4uUEvKWfMY8VFlBgQJLUcgUwpbkjSQHcc04Qe1-jioV0v9gsE3ZDwByL3snjQs3BAXLK2E0F8kSRjHxBaw.webp',
-      imgLink: '/src/assets/teenieping-local-img/1-heartsping.webp',
+      imgLink: '/teenieping-local-img/1-heartsping.webp',
     },
     {
       no: '2',
@@ -51,7 +51,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '깔끔하게 정돈된 환경,독서,공부,뭔가를 가르치기',
       dislikes: '늦잠,게으름,무질서한 상태,더러운 환경',
       URL: 'https://i.namu.wiki/i/UuxCFnRo15d0bWdcMu2ZTZkl5PM3vqMPy7Aoue2WpWBugDiqUlzdiwMXI0N9sdvJeNIp2zbfuy4JcA_DYMP4ISudVowLF0dCoPVSyZBIgI68gpZ5kVNtnvY-5ENoa2nmi_aUdRwVCpihLiibbKL3Vg.webp',
-      imgLink: '/src/assets/teenieping-local-img/2-dadaping.webp',
+      imgLink: '/teenieping-local-img/2-dadaping.webp',
     },
     {
       no: '3',
@@ -62,7 +62,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '체력 단련,격투기 및 액션 영화 보기,하츄핑',
       dislikes: '두려움,도망치기,포기하기',
       URL: 'https://i.namu.wiki/i/hS9pu8B681ALMvNpD_tnE8us62SsCMYX_QVObdQw9mc28J6G9BKaG3LSDDu0QVk2BB31JQ2b6QUirPrYCwzZGXOPDsqu8TPyuO0K-kTa6wgeH0-YQO-1UcWHDSaeNhnLnsVvHX_I01Ioy628uqBbRw.webp',
-      imgLink: '/src/assets/teenieping-local-img/3-gogoping.webp',
+      imgLink: '/teenieping-local-img/3-gogoping.webp',
     },
     {
       no: '4',
@@ -73,7 +73,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '화초에 물 주기,식물 보살피기,꽃 향기 맡기,격려하기',
       dislikes: '꽃을 꺾거나 잔디를 밟는 등의 행동,부정적인 말과 행동',
       URL: 'https://i.namu.wiki/i/vh8yYqH98WGSByWGunns8zow74N_AuRUIREoy-KEzIvPk5i1QiNBXnfwd2eON1rGD2lnw1V9uAFYHANRI9MVDefaopiXvwmBOymHK-x2PCvtmwOTpHE9K1EDipIGNnKEOjO0vsJp9vlkhZ9icUcDbQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/4-chachaping.webp',
+      imgLink: '/teenieping-local-img/4-chachaping.webp',
     },
     {
       no: '5',
@@ -84,7 +84,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '노래와 춤,신나는 놀이,수다',
       dislikes: '심각한 분위기,지루한 것',
       URL: 'https://i.namu.wiki/i/GG380PkDBwpOoWKojm24XcYCtM50JOKr7Hk0eIKK8AQNW3Q8cuutudlb7Edknx3EOSuhxyCEet0N3qgQz6CytOqLaxjGwM-FgEUx2dTYSdQFu_E1Z9797YBQeEfwJxtvKp2Clgy31_UTXEBVNz0ljQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/5-lalaping.webp',
+      imgLink: '/teenieping-local-img/5-lalaping.webp',
     },
     {
       no: '6',
@@ -95,7 +95,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '비눗방울 놀이,낙서하기,다른 티니핑 행동 따라하기',
       dislikes: '더 놀고 싶은데 자야 하는 것',
       URL: 'https://i.namu.wiki/i/xNEFBvXY9vzsLorsTYH-5uas06RzOiUM02eP_lsYdzSpHmd115wjinZTaPOqbG8hn7JhKGAXr6mZB_JbfFR-cvqU9L7baAptigiiB0WpboRtByabe9aisMPTzKir_wJRQXMfNTeSrlRkiHI9Zopdzg.webp',
-      imgLink: '/src/assets/teenieping-local-img/6-happying.webp',
+      imgLink: '/teenieping-local-img/6-happying.webp',
     },
     {
       no: '7',
@@ -106,7 +106,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '재미있는 것,장난',
       dislikes: '심심한 것,지루한 것',
       URL: 'https://i.namu.wiki/i/lRAZICMdVnLekUxz0k9uIh41ivRxbIjhUHuPOqI9XfR-THzJZTj8SAvYdFzi-KKmYYrC1rYowOTnD4E9CALyLrWQ4Rwfou3CxyU18kgg2CVknrsya6Ydwu2I8gcStgDFIrG9fNyKtAOJc57qwr_pPA.webp',
-      imgLink: '/src/assets/teenieping-local-img/7-kikiping.webp',
+      imgLink: '/teenieping-local-img/7-kikiping.webp',
     },
     {
       no: '8',
@@ -117,7 +117,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '솜사탕',
       dislikes: '심각한 상황',
       URL: 'https://i.namu.wiki/i/7ZyWebmU3gyPmj6cIvFONKDzpj8hay9MlWbVe6oeWUzord2r6kvS5nfYcKF82ZP40t6YTNjNpM4hsXhmgwsnDWOJS69eK0EEvBfGJvYiNpWzanBjTyrCI1S202HehYYOGmjVQBwyI6H6Gue0t3_xoQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/8-charmping.webp',
+      imgLink: '/teenieping-local-img/8-charmping.webp',
     },
     {
       no: '9',
@@ -128,7 +128,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '숨바꼭질',
       dislikes: '주목 받는 것',
       URL: 'https://i.namu.wiki/i/2mK2cIa_xg_4Y1BkNGCzNk1E1LPWoK__htAbADA9s-LVuu0JzIuxSr3vDo2G9SYpbIdC4gXF6AcWMNuZMcI4dRjqvldlvVD5fcND9NTlf5waNxmT-1o_2bE1lPd9MDhsA1gdg8Ldfm1woZCQnmmy8w.webp',
-      imgLink: '/src/assets/teenieping-local-img/9-shyping.webp',
+      imgLink: '/teenieping-local-img/9-shyping.webp',
     },
     {
       no: '10',
@@ -139,7 +139,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '대결,경쟁,승부',
       dislikes: '느릿느릿하고 느긋한 것',
       URL: 'https://i.namu.wiki/i/g-2F2oiDFIoGbpj_ijjh5XfL7RfQw_h5nG2ORxCs-3N4kunT1m52_v2KoJ0TKIsmyxzrmB-y0zP9yJ_6dRpCI_2Aixuky9Q8E7t14UXDtf9f5irThHj4-op_8evrUEk9K3MTNa78Dy0SmlihKJY-JA.webp',
-      imgLink: '/src/assets/teenieping-local-img/10-dareping.webp',
+      imgLink: '/teenieping-local-img/10-dareping.webp',
     },
     {
       no: '11',
@@ -150,7 +150,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '여유,느긋함',
       dislikes: '정확한 규율과 규칙,바로핑의 잔소리!',
       URL: 'https://i.namu.wiki/i/gakvkHBCY8CLTZJc_J0UG1ClazSUC5mbx5tvmyvyfLA7NbcNP6G4-C47c3_sgijv07_kulFbm8pCS4nkC2zc2-u1EY--EwlCwelmHbOQo4CuPA7IYkKpv-6_2tdh8PZ_l7arGS8dx9UJOu3hydUpFA.webp',
-      imgLink: '/src/assets/teenieping-local-img/11-blankping.webp',
+      imgLink: '/teenieping-local-img/11-blankping.webp',
     },
     {
       no: '12',
@@ -161,7 +161,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '재미있고 엉뚱한 상상하기',
       dislikes: '상상력을 제한하는 모든 것!',
       URL: 'https://i.namu.wiki/i/2b00-8Lo4MADWIMDL7wqgI4AtVReUHhVz8KWhu43PphBoq8KeyQpbQD-hh6jbbd76BEVuPAZ_-zbN-jhT9sGIXUqHrpwBknvTc5VENDKAIC5j0B23mXQFTR-N--8J783I_ae-PyYB4AiAtCn0vPxOQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/12-dreamping.webp',
+      imgLink: '/teenieping-local-img/12-dreamping.webp',
     },
     {
       no: '13',
@@ -172,7 +172,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '다양한 맛의 눈물사탕,비',
       dislikes: '소란스러운 것',
       URL: 'https://i.namu.wiki/i/V5WVMRnIx4FPRcRN28BO3G-4y6FEm4h7Dp9Tj-G75ThLk1aEdL_lBODP2Oq3FxW2cEhXn715mTIsbcGWknBvSKWGMQeJSssCY73vMyXWMhz0pLxaftFIVw-q3c5ptBvlVS5MfKrhLUOjtgnZZ_TYgQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/13-weeping.webp',
+      imgLink: '/teenieping-local-img/13-weeping.webp',
     },
     {
       no: '14',
@@ -183,7 +183,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '낮잠,주말,그리고 모순적이지만 빠른 자동차!',
       dislikes: '별 것 아닌데 말 시키는 것,바로핑의 잔소리',
       URL: 'https://i.namu.wiki/i/qniyf4K1A8bBGbyUoY604_ezjJ5SPDuh-CW9g5Y6YGsGyWVC_Ju50FYTG1Wus-h7Nn9AHP2Sd7pOHcdmno6Mnq2vJlwdDttOW5_lw6-nmIYEp6m6E_0qiquuRhLxHmg5501efW8j_vOYEHFuBedUNQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/14-moseyping.webp',
+      imgLink: '/teenieping-local-img/14-moseyping.webp',
     },
     {
       no: '15',
@@ -195,7 +195,7 @@ export const teeniepingData: TeeniepingDataType = {
       dislikes:
         '약 올렸는데 반응이 없을 때!(자주 깜빡하는 깜빡핑에게는 장난치지 않는다)',
       URL: 'https://i.namu.wiki/i/T2xxpqwuWa6PaMapeKArj69ekwVqJ1uz8eusHUyG1Wtb6wSSIt9NQwYBIh4C1vmHsKqdHZdVAOo3GH-rbSIdwqLqwEo_s1yrTwWVGixYOVNCIkgPtaHPdhrxLyDHQBRJjNwJpDSy3jo6hZMh7JOYHA.webp',
-      imgLink: '/src/assets/teenieping-local-img/15-mimicping.webp',
+      imgLink: '/teenieping-local-img/15-mimicping.webp',
     },
     {
       no: '16',
@@ -206,7 +206,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '뷰티(외모관리),아름다운 것',
       dislikes: '자신이 보기에 아름답지 않은 것',
       URL: 'https://i.namu.wiki/i/ytIjcPB8JuQSHw9Pp8fL3M8OITCt4xabh1ft3DRkRzH20sjZdHheEPHGPC46NiFrcPTbW-BZhJFkBHWSzTEfI750QRjsIrydVXoNW8e-G_ne0zwDo0UgofF1QCJe5b0_Jh_3qzZ6tcM-R3YD2TUpeA.webp',
-      imgLink: '/src/assets/teenieping-local-img/16-narrping.webp',
+      imgLink: '/teenieping-local-img/16-narrping.webp',
     },
     {
       no: '17',
@@ -217,7 +217,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '할로윈 호박,남들의 놀란 얼굴을 찍은 사진',
       dislikes: '겁쟁이라는 것을 들키는 것,무시무시한 거미!',
       URL: 'https://i.namu.wiki/i/BV7XHMIZGbE_5bGcsvUvvXfThWUFaP7TBHVeYvxMBZ1jz7AiebqrOOUEJ1jW2oYyjovNitaQ3aih7DC7NZ7vrBKTq41cq0ulsi9fKR5mNjz2ORUgiCj1lIPiqkLUQyKYjB51VZaAx4rpRjzOTcTUWw.webp',
-      imgLink: '/src/assets/teenieping-local-img/17-spookping.webp',
+      imgLink: '/teenieping-local-img/17-spookping.webp',
     },
     {
       no: '18',
@@ -228,7 +228,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '레몬 타르트,화장하기,꾸미기,그리고 로미공주님♥!',
       dislikes: '로미공주님이 자기보다 예뻐하는 것',
       URL: 'https://i.namu.wiki/i/qfOyeF9yescfs7k5raoXkoqevLYX8MvRFj1jrgs-coNBYt-rUBjhUo4ilCOjmIz1cDugI8ZqiHw-2nXQchi2MvTC82CaZuZ4XFfuWDo65NqQnbnRLh-AX8b1h0Jtzeri7rLSzMNsFdbbjuRAnPxNKQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/18-tutuping.webp',
+      imgLink: '/teenieping-local-img/18-tutuping.webp',
     },
     {
       no: '19',
@@ -239,7 +239,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '다른 사람 도와주기,(도장을 찍어줄) 착한 아이',
       dislikes: '도움을 필요로 하는 사람을 외면하는 것,나쁜 아이',
       URL: 'https://i.namu.wiki/i/b7xzNpzs_75qFcRAGd6hgXbQazTEl5TiEZKE-lWjQk-pNFcKqbOc_I-v7buhsSbS1oSLXhSMIrdmLtkipxLQxknhaEZvnPSNkgJwFJIXd6xw04t8KjES6fS9T7kDmZBiH1fzKWGKCSiK0sAW_2Ny6g.webp',
-      imgLink: '/src/assets/teenieping-local-img/19-goodping.webp',
+      imgLink: '/teenieping-local-img/19-goodping.webp',
     },
     {
       no: '20',
@@ -250,7 +250,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '수다',
       dislikes: '침묵,도서관',
       URL: 'https://i.namu.wiki/i/7e1-1YtYTL7a5njFzOOBXiP5S_VMkttZiL046jKN0xdrxDhtbVFPD0SrgAKldwXDHpeFs719N30uk9GybnkVJoObehx8dfGUZnRSkVzYPI0gGaHG_izpAhXAy2xQYONUL97657wdI17ep4LYhanypw.webp',
-      imgLink: '/src/assets/teenieping-local-img/20-tweetping.webp',
+      imgLink: '/teenieping-local-img/20-tweetping.webp',
     },
     {
       no: '21',
@@ -261,7 +261,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '맛있는 것과 반짝이는 것',
       dislikes: '칙칙하거나 우울한 것,검은색이나 회색',
       URL: 'https://i.namu.wiki/i/1UVkLpVsuyTqla3iVqVJ71vqhhRTou7voSjlWtO4oVAjz4sWkqC0ZEOZKtZeRoU4Rzmy6udIVhjdnmn9hfmwR3quy3nvinmb5MNu0cU0c1bjJT5MDNY4UxBhomx6NpyBrRCKhsnZlExhjp1Xv0W34g.webp',
-      imgLink: '/src/assets/teenieping-local-img/21-allmineping.webp',
+      imgLink: '/teenieping-local-img/21-allmineping.webp',
     },
     {
       no: '22',
@@ -272,7 +272,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '화나는 것',
       dislikes: '화나는 게 화낭!',
       URL: 'https://i.namu.wiki/i/3uICi1s3g1d4sCm3HISIVpKAzEyYsR97eBV9OaTrutJZtWOw7DanBYuGrD4hErWHkD1dVNadv2ydZAgGY2nchsXICi5TamQZ1EunwFN1GCIQS2mztxXDU9M_fxX0ltHYzv6pSgBP2f0nfvtkAWpT2w.webp',
-      imgLink: '/src/assets/teenieping-local-img/22-roarping.webp',
+      imgLink: '/teenieping-local-img/22-roarping.webp',
     },
     {
       no: '23',
@@ -283,7 +283,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '상대의 말에 반대하기,브로콜리',
       dislikes: '다수결',
       URL: 'https://i.namu.wiki/i/EWw5f6VIplsrLVcsg9tkCFj0HNHGqcynIowXf0iD0EDzN8DRTDAJgCCxs5XHyFK4jL-H120X3mvXPOmyxrjZ226M0gslJoq8viLhPn2ZiwQHtiEBOxRn2VLb24RQI-4d6D_svPHqAjeDzZ4Xsfr6sQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/23-nonoping.webp',
+      imgLink: '/teenieping-local-img/23-nonoping.webp',
     },
     {
       no: '24',
@@ -294,7 +294,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '하트 모양,빨간색',
       dislikes: '불평하고 서로 싸우는 것,사랑이 깨지는 것',
       URL: 'https://i.namu.wiki/i/HdnR4vYAV6pvhGZDx7ZM8V1qzG9X4iCRMPo12Ug1PVsPYhE4g_Ec9sc9tyM9KoSOhuiova-1Ot_CXoiGRQ-GxMGEaNlCnw4teDXjJoVoDRmURxgPjwaMpERmTXCPuSOUkWaVNN4V7cl4oEx_BcV4hw.webp',
-      imgLink: '/src/assets/teenieping-local-img/24-luvping.webp',
+      imgLink: '/teenieping-local-img/24-luvping.webp',
     },
     {
       no: '25',
@@ -305,7 +305,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '차가운 것',
       dislikes: '뜨거운 것,더운 것',
       URL: 'https://i.namu.wiki/i/u8-qHeR34WEMuwSwzgOak8V5bwvbIO-46sKSso8VUKGrVKg696u7676CkhrftVQ9QsbnT28INJb6qCW36flIiwTBDAJ_yF93qA7VusoOa9z99NQFiZPX7SPZYtXdaorMKUuEm4q0fuLhOmXxwQ41jQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/25-coolping.webp',
+      imgLink: '/teenieping-local-img/25-coolping.webp',
     },
     {
       no: '26',
@@ -316,7 +316,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '아름다운 것(예술)',
       dislikes: '아름답지 않은 것',
       URL: 'https://i.namu.wiki/i/Ot8LnMdC1YazBIPiVKmpI2wUGv9XpyjRBPONH6Aw1Qotlg7go0gqzvjMbRdDshQfaoYCCh13RVJPpLEIb0iwEDmTKLvBHWqx1810ke3RjtwAbP57XCwRvqO0QRWRX7iLR8rai9o2Op43NFC3e8qpAQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/26-artping.webp',
+      imgLink: '/teenieping-local-img/26-artping.webp',
     },
     {
       no: '27',
@@ -327,7 +327,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '멋진 포즈를 취하기',
       dislikes: '가볍게 촐싹대는 것(떠벌핑과 함께 있는 것을 선호하지 않는 편!)',
       URL: 'https://i.namu.wiki/i/IF5UDokpmkDmDhdr-nhkTDCXYdUUzkIeSBVoYhAnLVmuRCX8MQo77z-XXXegNSlHImjvsGIMYivpu9l1vHKaMhkVAcR2abGM9QAWXEd7B7OWQ9LIU9bv_AH9LBmsyfHV327ZBki3h9m0AoOoJ6mCQw.webp',
-      imgLink: '/src/assets/teenieping-local-img/27-heavyping.webp',
+      imgLink: '/teenieping-local-img/27-heavyping.webp',
     },
     {
       no: '28',
@@ -338,7 +338,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '피망,당근 등의 채소',
       dislikes: '달콤한 것',
       URL: 'https://i.namu.wiki/i/E8XTu5Xia_qGBDy1Z1u4w50Xn9s3GyXzR9A6GDzGndf-SUEvN0ajI6Bd44zbqYhRJ_2e0ehTHSmmHUNWWH8DX4m4FotxeEGAfaHmwoRBGE3c02nBIdYI6j3R9XUGvq3CO-FVbiNear2Aup26dRBwmg.webp',
-      imgLink: '/src/assets/teenieping-local-img/28-oppoping.webp',
+      imgLink: '/teenieping-local-img/28-oppoping.webp',
     },
     {
       no: '29',
@@ -349,7 +349,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '제트기 등의 빠른 것',
       dislikes: '거북이,달팽이 등 느린 것',
       URL: 'https://i.namu.wiki/i/aObprbiNGsrAvSUM7zfsspR1GoTlPb3mNMECETWfm04m8R50FM7cT-1W2kHjs_HY6-MPOji4ekMOgZvxpW9pxAwgvTgkt0FQuahU-h_vlnLXeoFDuQvrv2soRHsCS6mLY28c6TsbTmdLgxGR2DaD2g.webp',
-      imgLink: '/src/assets/teenieping-local-img/29-zipping.webp',
+      imgLink: '/teenieping-local-img/29-zipping.webp',
     },
     {
       no: '30',
@@ -360,7 +360,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '아기,자장가',
       dislikes: '어른,자는 데 깨우는 것',
       URL: 'https://i.namu.wiki/i/z3jYSJltkJLKcgXNZogwKd2SSOZRb54hEtqpEpThXQ_lDwR5wfCoxSm1NAq5fJMbWaUdLIZYqKculYscJrfAsvcBClsuSzZZmKI_eV6WXhPkgVEhMCTSpnNLifbiK3_JFGxryAkujrOQWKigkJT7sg.webp',
-      imgLink: '/src/assets/teenieping-local-img/30-bebeping.webp',
+      imgLink: '/teenieping-local-img/30-bebeping.webp',
     },
     {
       no: '31',
@@ -371,7 +371,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '반짝이는 꿈젤리',
       dislikes: '악몽젤리',
       URL: 'https://i.namu.wiki/i/Qns5r5mO_aQbwTqltMz1x7d3NGB5zrl2pl6IywJkgk6oWpKAApDOESDDwkl8zPH5l73v7gHwd6X9Onkt_Ku9fM-MG0qJQeUowpGZRX-iCQ7pKw_g_j1Mt8Juk0Ux5ev6i8_hvY71HBP3H2n1Qke7Zg.webp',
-      imgLink: '/src/assets/teenieping-local-img/31-sleeping.webp',
+      imgLink: '/teenieping-local-img/31-sleeping.webp',
     },
     {
       no: '32',
@@ -382,7 +382,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '사이좋게 지내는 것',
       dislikes: '서로 싸우는 것',
       URL: 'https://i.namu.wiki/i/qZKLEjrxAAdXiPH2GPGD9dFMFsLgV6oshPqnflVCKIxr6d2RQEdxePtGyCQY1lNCuwxvq5JFcOdbbLKGZbMGWYaoAj1YMHOYrAb7zxfQSbY10UKJrcF1cXH6eYLeFsB1xV2O6YJqkFEAOG2sYJ4YeA.webp',
-      imgLink: '/src/assets/teenieping-local-img/32-stickping.webp',
+      imgLink: '/teenieping-local-img/32-stickping.webp',
     },
     {
       no: '33',
@@ -393,7 +393,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '호기심을 자극하는 모든 것',
       dislikes: '궁금증이 풀리지 않는 답답한 상황(모야모야모야! 도대체 모야!)',
       URL: 'https://i.namu.wiki/i/6wbDHTpBnBJUdnmJYaQqoPjQ6aSRvbp0zOirQtt-ePEKM1V4enTVRKuLr4ZxsfX4ufS9k04tuyds8ADWkix59P7iuVOgrpNngh3exk8FjYFlmS-T5A8sm-Pa4SXK6gxGtBIy0EbT84MyrCnqMmQ6oQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/33-curieping.webp',
+      imgLink: '/teenieping-local-img/33-curieping.webp',
     },
     {
       no: '34',
@@ -404,7 +404,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '장난감,재밌는 것',
       dislikes: '독서,지루한 것',
       URL: 'https://i.namu.wiki/i/0JQXQqpedoRlbIUcclijtFKeJiK51NviHqVAQ4E7yU46fLmEJ8TMlPQrxxV08LdN22TZJedj8zlxPT-r4XDoW6qKWHpWeJff5mia0cKX-L8R935BRhb_SLma5FrAOipkOcQyPZXfJaaDqXFYsbTtGQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/34-toyping.webp',
+      imgLink: '/teenieping-local-img/34-toyping.webp',
     },
     {
       no: '35',
@@ -415,7 +415,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '쌍둥이,성대모사,남 따라하기',
       dislikes: '누가 자신을 따라하는 것(따라핑!)',
       URL: 'https://i.namu.wiki/i/HjkoNjjpnTU-6X_sYNHDJwe5Ph1bqFxOi1fVbh2ploGR8k571h7ibdOJrxuuVBe8sqqgd0Zs4QzcvZxs4c4ptrJhGVn9KRmNepGh2pxyzB38VYZxCkqWH4ZEaVLUC_1rTaoLaGERsGNX0AznNaQDlw.webp',
-      imgLink: '/src/assets/teenieping-local-img/35-poofping.webp',
+      imgLink: '/teenieping-local-img/35-poofping.webp',
     },
     {
       no: '36',
@@ -426,7 +426,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '장미,해바라기,튤립 등',
       dislikes: '곤충,벌레',
       URL: 'https://i.namu.wiki/i/nHyt9UIxFyX3rf_xaLUD5FTRT720113LC_1jJ1NIpAAgWyLQPthqarbGe5-30VLv7OmOReln-_Zw-RNc9-S-6hExKA-KJ-wv7FWGqdC0WY9RzIfy5ezB9XfYqb3PzQn5D2-JMm2w81yT8rz5hCo_Zg.webp',
-      imgLink: '/src/assets/teenieping-local-img/36-floraping.webp',
+      imgLink: '/teenieping-local-img/36-floraping.webp',
     },
     {
       no: '37',
@@ -437,7 +437,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '놀이터,장난감,게임기,노리핑',
       dislikes: '공부,일찍 자기',
       URL: 'https://i.namu.wiki/i/bzkhKiEsYsjG0n7qDiEihW12pV3FTbAK49gSoogxyYNqW7eBMpI_Bmxunewf9LNDZaK9GmM2ulG27hbvLst_qOTi-dWRNDSyOXGxszPcN6KD8Khn9XYxdUi6hQ6kLewhWnLuLjlbT0x4M61qf4ghFw.webp',
-      imgLink: '/src/assets/teenieping-local-img/37-noraping.webp',
+      imgLink: '/teenieping-local-img/37-noraping.webp',
     },
     {
       no: '38',
@@ -448,7 +448,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '노라핑,우유,단 두 개 뿐인 소중한 이빨!,초콜릿',
       dislikes: '상한 우유',
       URL: 'https://i.namu.wiki/i/bzkhKiEsYsjG0n7qDiEihW12pV3FTbAK49gSoogxyYNqW7eBMpI_Bmxunewf9LNDZaK9GmM2ulG27hbvLst_qOTi-dWRNDSyOXGxszPcN6KD8Khn9XYxdUi6hQ6kLewhWnLuLjlbT0x4M61qf4ghFw.webp',
-      imgLink: '/src/assets/teenieping-local-img/38-noriping.webp',
+      imgLink: '/teenieping-local-img/38-noriping.webp',
     },
     {
       no: '39',
@@ -459,7 +459,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '포기,우울한 생각하기',
       dislikes: '즐거운 생각하기',
       URL: 'https://i.namu.wiki/i/5K7TkeBzgzVh76zfAM0CTra2pkUVaGNJLMjigQ4t-WttD4zUTs4rpOqzyVSBg_Rj-9Ts0Rf0nKDywuYLyudbXN0jJtDvI6LZLrl1Lnf8eyIZcNAU1L_0LRVR4ZdW9BuRRpwIWOcfegID0m9lMohyIA.webp',
-      imgLink: '/src/assets/teenieping-local-img/39-sighping.webp',
+      imgLink: '/teenieping-local-img/39-sighping.webp',
     },
     {
       no: '40',
@@ -470,7 +470,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '공부,조용한 곳',
       dislikes: '놀기,시끄러운 곳',
       URL: 'https://i.namu.wiki/i/-ZKDwCqLmEyggEAO-qIgiAgDqR-nUJWPE85o4d6W_ccRuXaGV7VuMYyjYm_OMkQsuDKrB_cXGvT5WgnmDUlQSN1bSAX2hWLTG7FbH-n23iWvh-GAjmUc2qVDDuGUwrwpNVvD0gSblyp3mP0Uz1W3ig.webp',
-      imgLink: '/src/assets/teenieping-local-img/40-shushping.webp',
+      imgLink: '/teenieping-local-img/40-shushping.webp',
     },
     {
       no: '41',
@@ -481,7 +481,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '겨울,눈사람,빙수',
       dislikes: '여름,더운 곳,난로',
       URL: 'https://i.namu.wiki/i/XqHKKJ3cRIx2soHL_xQ8sYVurPumuHUvzobEog9SK0TfrIVbaSPMADYS_bVBXOBOF1GGgXRk2hn522eWJp5i3bQ-C8Ko7sWTacY_ZhHvchDotu1cosCe51fmfnZHGlhKThU5iyst8bvxBzcL--QCAg.webp',
-      imgLink: '/src/assets/teenieping-local-img/41-freezeping.webp',
+      imgLink: '/teenieping-local-img/41-freezeping.webp',
     },
     {
       no: '42',
@@ -492,7 +492,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '전기,전구,천둥,번개',
       dislikes: '정전,고장난 전구,무료함',
       URL: 'https://i.namu.wiki/i/DlIQpuhbPO1WyGzpdSTWslQw0o_3d6ENNm_HepB6bBc6UfZDyjv3PI2BYLohS7J3LGo5PtoO1QQhp9l8pahYVOfI-68LYrz6jLIXl3rZ3gtEGsIh95J1AQH6q42vP7zNpgNEFCMgz48ZMd_oj5LDCw.webp',
-      imgLink: '/src/assets/teenieping-local-img/42-sparkping.webp',
+      imgLink: '/teenieping-local-img/42-sparkping.webp',
     },
     {
       no: '43',
@@ -503,7 +503,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '아무도 없는 곳',
       dislikes: '떠들썩한 분위기',
       URL: 'https://i.namu.wiki/i/dk4c3DkEC1w9IIfCXR5QBIpHSAbV1ArcYqHESCNYBoVgxKjFbJaMQmYczkw17Sso-kwYlBMAkwVZ80LLw4oLAxLRoiga6dxeGZFje4iFWw0lQYvB4vwGgZubfd6tDkKFvtR1-Lk_UZEkupbBLPD2RA.webp',
-      imgLink: '/src/assets/teenieping-local-img/43-aloneping.webp',
+      imgLink: '/teenieping-local-img/43-aloneping.webp',
     },
     {
       no: '44',
@@ -514,7 +514,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '장난치기,골탕 먹이기',
       dislikes: '간섭 받는 것,명령 받는 것',
       URL: 'https://i.namu.wiki/i/_Y-_plnBNwC9-y2isDNYxebI6HwqIKRNoKsZsIM6I0g02Y-jpzsUeo0Ht3C1e1LcKHjv5tT-c_k2TMk12zODa8_e-MeIH7cjicJUX3W0eNo_wgcuHAI-SErA9g61TcEn6wQ04UoJhXsiw7itzgGRYw.webp',
-      imgLink: '/src/assets/teenieping-local-img/44-giggleping.webp',
+      imgLink: '/teenieping-local-img/44-giggleping.webp',
     },
     {
       no: '45',
@@ -525,7 +525,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '엉망진창,자유,강한 것',
       dislikes: '질서,봉인되는 것,약한 것',
       URL: 'https://i.namu.wiki/i/2x6pKY-_E2ozd7ZdfxZsxzxYirPkhWySZO4WmJ5pCqbve5BZvdydP8GOuEmR1MYfMRb0d1wUj2oZQ25L43Kx8pGm5-SM-WLXO-MRf2rmXAqRgiK20zgrtnkPGN_vDk0pVpqeAxdFQu4tS9ZV1UgoXw.webp',
-      imgLink: '/src/assets/teenieping-local-img/45-egoping.webp',
+      imgLink: '/teenieping-local-img/45-egoping.webp',
     },
     {
       no: '46',
@@ -536,7 +536,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '차 마시기,하프 치기',
       dislikes: '억지로 잠을 깨우는 것,갑자기 깜짝 놀라게 하는 것',
       URL: 'https://i.namu.wiki/i/UZAY4lfc3QDkrdR5bSblAXE2Jmg39pNYTLlJlYGYPY5uHCRp-sWR_W2ItN4oFEm4hedeMDPeLjpXIP3TVv0jv14esG3UnEckobMNcAKUFjiBUqaEt2iuJ-YKHlgTSzj_t0WZFkoMqZEgwkspbGHEPw.webp',
-      imgLink: '/src/assets/teenieping-local-img/46-dia-heartsping.webp',
+      imgLink: '/teenieping-local-img/46-dia-heartsping.webp',
     },
     {
       no: '47',
@@ -547,7 +547,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '마카롱',
       dislikes: '매운 것',
       URL: 'https://i.namu.wiki/i/6hy-35jFfOSnKtUL0FHE2By2iRq-DDFLIrkLh575ny6SnX89mSPvDrgVkwq-O0payyKgsLiSHXUAvCHIVq5R0uzMn6drXkgutFfFU5igMyMPjktqNVoelGnBQiqD_sqjis7LAwo2qPhwNmyGalcJOg.webp',
-      imgLink: '/src/assets/teenieping-local-img/47-joahping.webp',
+      imgLink: '/teenieping-local-img/47-joahping.webp',
     },
     {
       no: '48',
@@ -558,7 +558,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '민트 초코 케이크',
       dislikes: '쿠키!(가루를 흘리면 하츄핑이 잔소리를 한다구,방글!)',
       URL: 'https://i.namu.wiki/i/2qEL1TGN6tmW6zqtfXigUTO55uU5-fIutAtHAbMRhlw-vmwDMpOT5DikcsNh5MkInA-oGHGUbCraazhpP-RzV0SPiOipWr7VF03u4MjocdL63wdiv6sUTL1QZpXkkOzAYWhRuR875iIaWASsUVPxvw.webp',
-      imgLink: '/src/assets/teenieping-local-img/48-teeheeping.webp',
+      imgLink: '/teenieping-local-img/48-teeheeping.webp',
     },
     {
       no: '49',
@@ -569,7 +569,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '초코볼',
       dislikes: '건포도',
       URL: 'https://i.namu.wiki/i/-AcHVhL6otet4OGoQ-aDpj9PW4j57yRUMJu1VX6iyj-KSsqBAIKMnP9dsm95-00zswL1TNRa_qZokK9RsdrMkhyCRBTHLI1wNLlLjyG2SKOUuaQ1QcrWmWoqYpRrD6r-U9A12G6JrVlMHnbyUuV0xA.webp',
-      imgLink: '/src/assets/teenieping-local-img/49-trustping.webp',
+      imgLink: '/teenieping-local-img/49-trustping.webp',
     },
     {
       no: '50',
@@ -580,7 +580,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '간지럼 태우기',
       dislikes: '누군가가 간지럼을 참는 것',
       URL: 'https://i.namu.wiki/i/eQHS-sLXcO_u69qi6Lpi6FkZOK1LqmKq_FEMWiVPEXtzi2K3I4qH6dxLrKuRCzOxmww1dAjpQI52_iMmS4kEUu0ruBWxbUW8K_4Nbw-RnCOKBC0BFV_iA-gNAhqhcIdRZdQjSLAAP6pfz_RSuEFd3A.webp',
-      imgLink: '/src/assets/teenieping-local-img/50-tickleping.webp',
+      imgLink: '/teenieping-local-img/50-tickleping.webp',
     },
     {
       no: '51',
@@ -591,7 +591,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '안 아픈 것,우리 집(보석숲!)',
       dislikes: '아픈 것,병원,보석숲을 떠나는 것',
       URL: 'https://i.namu.wiki/i/7eoLQilk0iNz322BMX0mLEBFKIK2beSYB6p3vIO3xKMJjTLh8uevy5HmA4Y1Xs8zZ-wD3vwASAJdEQ0lIw8hPD5_6bzYQiZY4n_xYWu8aWoPSriXCHnWiMH6-gnR1wlUr9kzzuCrWi0IZ-6ts4wa8g.webp',
-      imgLink: '/src/assets/teenieping-local-img/51-owwping.webp',
+      imgLink: '/teenieping-local-img/51-owwping.webp',
     },
     {
       no: '52',
@@ -602,7 +602,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '우유,친구들,소원 들어주기',
       dislikes: '거짓말,남을 다치게 하는 것',
       URL: 'https://i.namu.wiki/i/ce3_IqujHI0Iwjy3ybU6t-6iTOEfaRThmwtoMovAEN464c_FSl1psw7acQheyERtAtd3KjZ1KQD9lkbvy12qZ79psgWFcc2JJjOECi0uNdvmo91Nie1AxH6nK_24zD4oHY3QgWCNbpeD7-y7hGdvYw.webp',
-      imgLink: '/src/assets/teenieping-local-img/52-wishping.webp',
+      imgLink: '/teenieping-local-img/52-wishping.webp',
     },
     {
       no: '53',
@@ -613,7 +613,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '위로하기,격려하기,포기하지 않기',
       dislikes: '좌절,절망,포기',
       URL: 'https://i.namu.wiki/i/uWmOT6jjnbm3SEqP-7xduCz3OGUpKaoqlGEfXLShh6SmsyF2HQIxtiEigX_yq47XuuBZ85MxO8wB8C2LSBlqOfFHGuFAtzvPI1DZrfEbfzPAsATzoz7BqglgaaXNK77tfuScEhsgCJfHI-OELQM1Ng.webp',
-      imgLink: '/src/assets/teenieping-local-img/53-patping.webp',
+      imgLink: '/teenieping-local-img/53-patping.webp',
     },
     {
       no: '54',
@@ -624,7 +624,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '숨바꼭질,친구들',
       dislikes: '대범한 행동,민폐 끼치기',
       URL: 'https://i.namu.wiki/i/g8OCyAeKbHXMEF9Jz5gkK7Jgii1fwYrQbDbGIz6iqDpK3JVcRJcKYf5CC8fH6tnyk8FESpV0O0adV9qoXlJ73nikwYN2q1y0rTcwmXPsSg3hx3IxN9xDV9q7rFnlvXel5Vdy2WEGB2MysCsCgkxEBw.webp',
-      imgLink: '/src/assets/teenieping-local-img/54-timidping.webp',
+      imgLink: '/teenieping-local-img/54-timidping.webp',
     },
     {
       no: '55',
@@ -635,7 +635,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '깨끗한 것,청소,정리정돈',
       dislikes: '더러운 것,지저분한 것,어질러진 것',
       URL: 'https://i.namu.wiki/i/OZGg46VsJ_Nx-gHoKECRQzU-R3IMxGLXsctW-AfxddOKrYFYLALQ5kpOdMBE71rW0qsf09cLgGNZ-YosUNYYWkC4_MOBuZtLefG37I6jLeZzbzMp1ngMeiPFwrS1z2T8QozWnYD17K_cd9XYnXrK8g.webp',
-      imgLink: '/src/assets/teenieping-local-img/55-tidyping.webp',
+      imgLink: '/teenieping-local-img/55-tidyping.webp',
     },
     {
       no: '56',
@@ -646,7 +646,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '요리하기,맛있는 음식',
       dislikes: '맛없는 음식',
       URL: 'https://i.namu.wiki/i/TX4YHpHxGNvpqhGsSYR6XqxZ2i80acq6nZ27VVaD4fWBq1jg1pQOjXxPHfi5qDAEZhqc7D7hGFwiApQueZ8RCSr26qaHRMQ2ZQw13nTpWjfMUEFl5xkLVeKB8uBzTg0oyePKUEcbp3OOcphFM18Maw.webp',
-      imgLink: '/src/assets/teenieping-local-img/56-yummyping.webp',
+      imgLink: '/teenieping-local-img/56-yummyping.webp',
     },
     {
       no: '57',
@@ -657,7 +657,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '뜨개질,포근한 것',
       dislikes: '딱딱한 것,차가운 것,날카로운 것',
       URL: 'https://i.namu.wiki/i/T3XUvp_4Detv2FNnC24CEld4C4ie70utq8QNZhQ5JGMJqkmMDMQ2q02rfJRoMzO6fTaeTVzTuaOaAUCEVrVpXN3W_Utq1AIN4tSj_vpgIO-2Ioahr-T4aVU3gmBGZeyxLTyRTQqvhT-YU69MvWiOhQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/57-cozyping.webp',
+      imgLink: '/teenieping-local-img/57-cozyping.webp',
     },
     {
       no: '58',
@@ -668,7 +668,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '메모하기,관심,친구들',
       dislikes: '무관심',
       URL: 'https://i.namu.wiki/i/3zPlJG6ADqriStPgWyaOryGsjSB9_wNBA64k-yvgK0epvDXaOrCiVOqpHGdXahY-YSgM_x_-lToNwZVz8OpNX6SdQnZgMDN4Oygk8sMoJx_mHqTbNcHd9LRD1RQe7Eh6fWIYsosbbuyDRlmRGd0_Iw.webp',
-      imgLink: '/src/assets/teenieping-local-img/58-memoping.webp',
+      imgLink: '/teenieping-local-img/58-memoping.webp',
     },
     {
       no: '59',
@@ -679,7 +679,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '공주,우아한 것,나의 왕국,나의 백성들',
       dislikes: '촌스러운 것,못된 마법사',
       URL: 'https://i.namu.wiki/i/lWCsmvagTguEr60Dlw_MJbo5NmIgDQQiHFM7eFQhsrf1KEMCyR97ki1LE-6_GSwMfFpjGbRcxOo9Y6zAbvdykQL5fi-lzP0F9I0fapOYSuPFElvSKonlg-4nGXtUrN4g3BqF8hUWcKcVwLlAYpyclA.webp',
-      imgLink: '/src/assets/teenieping-local-img/59-ladyping.webp',
+      imgLink: '/teenieping-local-img/59-ladyping.webp',
     },
     {
       no: '60',
@@ -690,7 +690,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '둘씩 짝지어진 모든 것,짝수',
       dislikes: '하나인 것,짝 잃은 양말,홀수',
       URL: 'https://i.namu.wiki/i/0ziaTl32UW6fdzlCz0ifoIbBFSS3Jf3YQQKOeF-94enmL4x9vuL6CYF_ipX7IRlOgZF82IyIhfsd1T7RqhVvc4SbP6QrA4kKw_pS8w5HK8bTSJg6X-aRJGapEWrcYZ3-3IHYh9YkxHJuNXV1E3vDNg.webp',
-      imgLink: '/src/assets/teenieping-local-img/60-buddyping.webp',
+      imgLink: '/teenieping-local-img/60-buddyping.webp',
     },
     {
       no: '61',
@@ -701,7 +701,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '선물 주기,착한 일',
       dislikes: '선물을 못 주는 것',
       URL: 'https://i.namu.wiki/i/lAfWrLuVZhcb_gLd5h8Y-6BPTr-7rrfRRj-0CA1zcOrs53mEp-iMd6CuZG67C5CLxEgIF7aLlwDzkAPhcKLuOPYdmMU3OsmuzJiWANyYydsWr6uLBkipcmEl8ONuwVbexZauMEwKcTrCcW9OeqhUGg.webp',
-      imgLink: '/src/assets/teenieping-local-img/61-giftping.webp',
+      imgLink: '/teenieping-local-img/61-giftping.webp',
     },
     {
       no: '62',
@@ -712,7 +712,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '멋진 조각들,걸작,반짝반짝(영감)!',
       dislikes: '볼품 없는 것',
       URL: 'https://i.namu.wiki/i/Yryk_c4PTbopX9Tosd0j2mwTzEyIAOk2yoHE0k4c-avFz0e3gjBe3kIAW3U2T0ahR9hiwOiEvqy60vIdI7C0SJPzeEYY4njZjOEUKVhS6xc10Lr7v5AUbcUFQw3bFR2xvc0bRaqUAKrGF2zyycLE5g.webp',
-      imgLink: '/src/assets/teenieping-local-img/62-sculptping.webp',
+      imgLink: '/teenieping-local-img/62-sculptping.webp',
     },
     {
       no: '63',
@@ -723,7 +723,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '발레',
       dislikes: '딱딱한 것',
       URL: 'https://i.namu.wiki/i/7epipnoCkKKhr15BnXHBC2TVhHWvSqbhaqiHvhcLoKZFVpN-pgqvJAvWRQ0L1d15kI543bjJajPVgeF6Wj8N5tz66Ng--XuBHe-hD3mEOWAAYGfeGen0cHgMlyQEoBH0gJz2inS1bxapJJKHlen4yw.webp',
-      imgLink: '/src/assets/teenieping-local-img/63-balletping.webp',
+      imgLink: '/teenieping-local-img/63-balletping.webp',
     },
     {
       no: '64',
@@ -734,7 +734,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '히어로,정의',
       dislikes: '악당,불의',
       URL: 'https://i.namu.wiki/i/k7jV-9fOSsCqJumkGZ0F3b3SR0soYszztY94S4cMg6IOZj6ZtmIt6zZ5qyJa9h7bkrFFNaobqMqNUejtV1yV1M_d3Lly9Q076pBeIm3Hlu-CIVZurUzezONVvaQOI2LXIjE2FE8pY8_Orcfi5mMidQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/64-wonderping.webp',
+      imgLink: '/teenieping-local-img/64-wonderping.webp',
     },
     {
       no: '65',
@@ -745,7 +745,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '불명',
       dislikes: '불명',
       URL: 'https://i.namu.wiki/i/-GA5BXL9MmRGbtw1Mkhi1HaJlSXtZgP9-a6sr7oVg3eppjHYiHRbmfTpRTw3PQKaqv0jx_YVpdLDWr2ETXM73V4oByaCWJ5xGYYf3r2nypN-MVb1FSqvbO8EKHK1gQ6Ix1422bVq22VWfEW-0-Sq7w.webp',
-      imgLink: '/src/assets/teenieping-local-img/65-maskping.webp',
+      imgLink: '/teenieping-local-img/65-maskping.webp',
     },
     {
       no: '66',
@@ -756,7 +756,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '로미와 함께 있는 매 순간,평화로운 안정감',
       dislikes: '신맛이 나는 모든 것',
       URL: 'https://i.namu.wiki/i/jtvOBBv3jPPaZm6Rz8HdEAfDiayYen0WBrseND47Xyc6YTyjDrdHNjv_xZXMuxyOyhzQdzjdoGh0V-KNTYlmAD2uaNhQAKLWdAIAttAIGyK0n4TMc4C-xPVHKvCgizSWOuQAewGdAK45nysFFcNTAA.webp',
-      imgLink: '/src/assets/teenieping-local-img/66-flora-heartsping.webp',
+      imgLink: '/teenieping-local-img/66-flora-heartsping.webp',
     },
     {
       no: '67',
@@ -767,7 +767,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '낮잠자기,간식타임,추운 날,눈 오는 날',
       dislikes: '다툼,혼란한 상황',
       URL: 'https://i.namu.wiki/i/7dQfoySE6985ZpTADCcZyobz2guZy4tGfzKJt4ZgwMQAPzRNwKIKJkbipxeXJ5XSxZIphdEUYJKmTjJZvggonaPrGpGF-GVczqQidGv4XnZ21LwZNM5BSz-WNUu8959-puxZ4_Hxp0WLBKbrOW5zDA.webp',
-      imgLink: '/src/assets/teenieping-local-img/67-okeydokeyping.webp',
+      imgLink: '/teenieping-local-img/67-okeydokeyping.webp',
     },
     {
       no: '68',
@@ -778,7 +778,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '따뜻한 곳,햇빛 쨍한 날,나!',
       dislikes: '대충하는 것,의기소침한 분위기',
       URL: 'https://i.namu.wiki/i/_UATJ4dZozdJ7TnGoYY5EC56zB9QY0f_6oLrhxt9zkwndYh417-_3Bjj-Y6BiL0gIBgMnSH5iB3ylCHY7MMnQCMkSn5GXc741TZdNdsVt2tN4EBX1eP6LU2Cfubht0An6XQ_n3VWr47tNR1joYfc9g.webp',
-      imgLink: '/src/assets/teenieping-local-img/68-nanaping.webp',
+      imgLink: '/teenieping-local-img/68-nanaping.webp',
     },
     {
       no: '69',
@@ -789,7 +789,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '놀고 먹고 자기,비 오는 날,구름이 많은 하늘',
       dislikes: '거짓말,답답하고 불편한 것',
       URL: 'https://i.namu.wiki/i/kRTXdtyR5gA5W5Joo7bouVeEgiXlypZ-E3Zdpy78H2eruwtfUsX6b6fEi_2N6-Nm810bzrDvTvcxWSurw7XUieivsdcdur9xg0qg3PdI7cv2FE-6uUAKIKJ0H1ExKSpLBfjJs2bsAqvLJPosorv40w.webp',
-      imgLink: '/src/assets/teenieping-local-img/69-trueping.webp',
+      imgLink: '/teenieping-local-img/69-trueping.webp',
     },
     {
       no: '70',
@@ -800,7 +800,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '재촉하기,바쁜 것',
       dislikes: '느긋함,게으름,빙판',
       URL: 'https://i.namu.wiki/i/EA2b-N5iX1l4Tj3nP6fj2CYDym3yTtIYOCnO5aGbQSd-xAxHNcj1fF9J3dYiBjUvor6S-PQ4RAafzCqijhqz7jbp9VMW2RFmVnLT_crjTIokQ9wSt2AOT4MvxCs-pfIOnPlWfo5xxcNNB3ich3D_RA.webp',
-      imgLink: '/src/assets/teenieping-local-img/70-hurryping.webp',
+      imgLink: '/teenieping-local-img/70-hurryping.webp',
     },
     {
       no: '71',
@@ -811,7 +811,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '맛있는 음식,같이 먹기',
       dislikes: '배고픔,음식이 없을 때',
       URL: 'https://i.namu.wiki/i/x3gRoCOqgCnpZUN4CMYR9fNw4yujofhxsc9SIGGDjcN692Wn5ubOpm1zJn7MM14KwasQrDn5rgM1tNSt0okcDeFIJYXIYUCUefHv1nG-8Z4j4zWolVUcJ_BrQpoKFn-rIBkG6gctWMrOHHSsylnByQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/71-yumyumping.webp',
+      imgLink: '/teenieping-local-img/71-yumyumping.webp',
     },
     {
       no: '72',
@@ -822,7 +822,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '불 끄기,안전관리,바비큐 요리,마시멜로',
       dislikes: '불,뜨거운 것',
       URL: 'https://i.namu.wiki/i/kN24aUJK1hz3XNMqtjwWpxGkOXRo7y0ilpGSwXLBklQ2x1TJMHW7xmTXJSzgLhEHQIXyWUqbX3AOy30uHKT7bhwn8JUIu9oQhOlsbRgOpDJASSC06Ud5ZBdLRR612TrLl_RZ-We0ggy9COP_4ZzVEg.webp',
-      imgLink: '/src/assets/teenieping-local-img/72-hotping.webp',
+      imgLink: '/teenieping-local-img/72-hotping.webp',
     },
     {
       no: '73',
@@ -833,7 +833,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '치료,진료기록카드 모으기',
       dislikes: '‘엉터리 의사’ 라는 말',
       URL: 'https://i.namu.wiki/i/-zt8tOatgJrayTvhVZ6-lGN6RWM1c8WRnLMLkE0nMsZQkGZQ7DZzbOAPEjdMm7kcIcXMY_bIrqVheCwR1hmhRbLRX7y3UlY7efe-AbPS-OOPN6YincgkdePoiBso7dearATYvGdelbZcrXQ6DBPprA.webp',
-      imgLink: '/src/assets/teenieping-local-img/73-cureping.webp',
+      imgLink: '/teenieping-local-img/73-cureping.webp',
     },
     {
       no: '74',
@@ -844,7 +844,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '응원,치어리딩',
       dislikes: '힘든 것,포기',
       URL: 'https://i.namu.wiki/i/iJHfvtHZi4a1biQuE9xA5sU7ceVJ74yx-AxZ4NiOlS6YwxzI19-03nk7L3FGjOynWtY5w0ECHU49FkwZOd0DRpvDZxkfnp3UHRryB89dW4jGdJ9tdoHL_5gy5YgjPvZBZZMhTbdO99eZYqL7A6BNWw.webp',
-      imgLink: '/src/assets/teenieping-local-img/74-cheeryping.webp',
+      imgLink: '/teenieping-local-img/74-cheeryping.webp',
     },
     {
       no: '75',
@@ -855,7 +855,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '고장 난 물건 수리하기,공구들',
       dislikes: '고장 난 물건',
       URL: 'https://i.namu.wiki/i/TlOjWIkuvikt4udatSMqsEgzyh21VSc4XQRJgwTR5la12W_rn5gYHnGFWY1rVwMwkVZ7p0Y5oUzA1PVD_xIqSdi_3g0QQZOWyHloaJv3SxcazkzwWp0ArAE-CdaePZPonwV03OneeqX57HQK2y4N0A.webp',
-      imgLink: '/src/assets/teenieping-local-img/75-handyping.webp',
+      imgLink: '/teenieping-local-img/75-handyping.webp',
     },
     {
       no: '76',
@@ -866,7 +866,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '실험하기,발명품들',
       dislikes: '실험을 방해받는 것',
       URL: 'https://i.namu.wiki/i/comaxo8_aL74stUWc-5lN5SBlYIH61EEUG4q0u2alFoeggMBiD6y2cEJcPnaIPYJ7kUknmUjJAtohk8Vjvlp6m0ddzKRIRVFUyFCEZEfiCmwc0z69y_R3p5UFufi3hL2LE1rUS7qUMjGXph-BUal-w.webp',
-      imgLink: '/src/assets/teenieping-local-img/76-wizping.webp',
+      imgLink: '/teenieping-local-img/76-wizping.webp',
     },
     {
       no: '77',
@@ -877,7 +877,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '옷 만들기,코디해주기,패션쇼',
       dislikes: '촌스러운 패션,진부한 옷',
       URL: 'https://i.namu.wiki/i/VSn-LKYrcupFOmWQc8sT6fDpaBuHqrd5wCFbwswWuyIgRDG4Mw-Pll9eGspZq7plA-EF-AMEYmlKJf87bUcdTXAwm-794iOPNJ5WNSTU4DJo9tYlNTtQ1K5zBBf1pwGLIyUaM0MprvMK96kZ8dD_3A.webp',
-      imgLink: '/src/assets/teenieping-local-img/77-fashionping.webp',
+      imgLink: '/teenieping-local-img/77-fashionping.webp',
     },
     {
       no: '78',
@@ -888,7 +888,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '순찰하기,범인잡기,성대모사',
       dislikes: '나쁜 짓 하는 녀석들',
       URL: 'https://i.namu.wiki/i/QHnXJLRNWAwkMONxXAQpMbXtuqxjrHffITrPlXWyvmyNEWVBM_X1fjBQqQNkb2oBQzQPe7M2DX4GN_nTjGxBPbkJ_A0p1KF-Y5Gqx_SN8qxgCBVXGs26UNXCt2vOtEwVwYE5FiUC3tJWSoWtvbAPag.webp',
-      imgLink: '/src/assets/teenieping-local-img/78-justiceping.webp',
+      imgLink: '/teenieping-local-img/78-justiceping.webp',
     },
     {
       no: '79',
@@ -899,7 +899,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '수영하기,핑크돌고래',
       dislikes: '그물,억압받는 것',
       URL: 'https://i.namu.wiki/i/7ttD-G25MsGXipBMpQ8a-skMEMc5C6il2ap8wgeLuzqQJw5X0s-HK-YKGNOtpOfI9N-0iRYQuJuuK9sLfV42fFYCciaklVyRYZ_Xv8in-agLt7ob-UxASGcnk2ocruPJAkYocnJiCartk_f1NkYMXg.webp',
-      imgLink: '/src/assets/teenieping-local-img/79-splashping.webp',
+      imgLink: '/teenieping-local-img/79-splashping.webp',
     },
     {
       no: '80',
@@ -910,7 +910,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '화려한 파티,놀기,풍선',
       dislikes: '자기만 빼고 파티하는 것',
       URL: 'https://i.namu.wiki/i/jhN_lIIIUtkNxFyTpnryuJnIgHUhmu4ID8_FvrbWr7PGwUpYXa5lDcIjpQe9pNU0TLYD93MnM7LQsAgsMhQT2yo3b8ZX3GVBrwMipnSw5Ef_32Ln_xHYH8vs5WU75xGR7kLx6JM-zd4yJJSUnggtTg.webp',
-      imgLink: '/src/assets/teenieping-local-img/80-partyping.webp',
+      imgLink: '/teenieping-local-img/80-partyping.webp',
     },
     {
       no: '81',
@@ -921,7 +921,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '비비,예쁜 머리 해주기,빗질하기',
       dislikes: '못난 머리 스타일',
       URL: 'https://i.namu.wiki/i/S4hRANMoZJDVnyCanxCI4Ydp7YYXuZLI05U6XEDIBu3wbZAu80u5Ox0AcKaj3SVQHPp7VrNL1KwGgu7OqRVrdd2JrzZn2TvX0ORALbnSWPeBvL_OdtxFE2IcpfOlQuUB4j5ASkdiRhCy13gjIgugJg.webp',
-      imgLink: '/src/assets/teenieping-local-img/81-styleping.webp',
+      imgLink: '/teenieping-local-img/81-styleping.webp',
     },
     {
       no: '82',
@@ -932,7 +932,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '관심받기,사랑받기',
       dislikes: '자신의 마음을 몰라주는 것',
       URL: 'https://i.namu.wiki/i/QUPda4mZQDDfUlheeFMOrDUGni42xoRvavhyqXwRLjfSPQfWSW4dSBvmZBO3uKCAuEQT3DNJIi-PnIoDPE3a-F0iF91sFf2LtjZiPWWNVtpM_qHMhGHB5mscLInHnPT4RRO_2mLOsh355S0Y5mXHng.webp',
-      imgLink: '/src/assets/teenieping-local-img/82-huffyping.webp',
+      imgLink: '/teenieping-local-img/82-huffyping.webp',
     },
     {
       no: '83',
@@ -943,7 +943,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '노래 부르기,바이올린 연주하기',
       dislikes: '노래를 제대로 부를 수 없는 것',
       URL: 'https://i.namu.wiki/i/B-AIqdohEQKD-wEXmrdf-zuT7jT_-S2FoZwDa7PnK-ai5dKdUE2XMQMpABqAA3vjNdXR8ThlqFfGv3nXuZKKjQOwZV92lViCTiV2NkVGBZw6EDq6hcrn5NaUYMf1GOLGoIwOBICAr-s0F2_rEHm_Qw.webp',
-      imgLink: '/src/assets/teenieping-local-img/83-ariaping.webp',
+      imgLink: '/teenieping-local-img/83-ariaping.webp',
     },
     {
       no: '84',
@@ -954,7 +954,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '피겨 스케이팅,빙판',
       dislikes: '피겨 스케이팅에 진지하지 않은 것,더운 것',
       URL: 'https://i.namu.wiki/i/8ZBMhv5vghmPR2wn-7BFuELh9bC_8ZvlPn4ExCUgDJTdXDjfy4_UOH36zcTcKRmufByhyv-reu3CVrLazzTz4xs_V3lqaDdY0lEJBrYoMaHCSwQQ07TPMvEbXqnzJubFwg2HM5Wow35VVMeNv4S2Gg.webp',
-      imgLink: '/src/assets/teenieping-local-img/84-twirlping.webp',
+      imgLink: '/teenieping-local-img/84-twirlping.webp',
     },
     {
       no: '85',
@@ -965,7 +965,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '행운 나눠주기,산책하기,빼빼로',
       dislikes: '불운,좁고 답답한 곳',
       URL: 'https://i.namu.wiki/i/sqRrRKDO3H0-qbW39KgVrjpKfj-GDXhH9B9CWehSJnjxPHNNx4_KACPMTCTVkuCbTKX9MxLyV5KUTyr7eWsuZzktTy-AWbdPGjr7B5xcHEhxXAm13FRfrEUwAQ5Ec4BmpiONARDmcDriP6y6LTKw7w.webp',
-      imgLink: '/src/assets/teenieping-local-img/85-luckyping.webp',
+      imgLink: '/teenieping-local-img/85-luckyping.webp',
     },
     {
       no: '86',
@@ -976,7 +976,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '제니,제니와 함께하는 시간 전부',
       dislikes: '제니에게 무례한 사람이나 행동',
       URL: 'https://i.namu.wiki/i/qCwm_c9R0bAQnCwmgOLaSb9ZNrQQGy-Y4E4wTKc6kp--oV5zsMeNDtD3mG9lm3OHhhiCE69wNC6O3Gif96xOVhM-6SHgjq6zRbXrIowR1jABzEYsol0Qq2KSpZ5FT5VofZTkJ4JOQhXG5495b0eobQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/86-onlyping.webp',
+      imgLink: '/teenieping-local-img/86-onlyping.webp',
     },
     {
       no: '87',
@@ -987,7 +987,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '생크림 딸기 케이크,딸기',
       dislikes: '신맛이 나는 모든 것',
       URL: 'https://i.namu.wiki/i/Oc83rLk0FtRDZBSFQF6DMRX90II6WgHyoxtqucBCwKxzKyCFq2QChp0sKKv-BhhTOWE-9s15lVUbKzwRkH31U7kywAOn0Kkg3g2ezUqD-EhAJ49yth9h2PqmqNhvAR3mB-kpXYGTqYPdK440E-xl0g.webp',
-      imgLink: '/src/assets/teenieping-local-img/87-berry-heartsping.webp',
+      imgLink: '/teenieping-local-img/87-berry-heartsping.webp',
     },
     {
       no: '88',
@@ -998,7 +998,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '음식을 만들어서 나눠주기,이야기를 들어주기,밝은 분위기',
       dislikes: '좌절,실망,포기,어두운 분위기',
       URL: 'https://i.namu.wiki/i/djH7s1ioZulH1-A2t2iSWuUA8RjAiMoVq8amfwELAMvfRPmlur5E8joxZ4zF4m2ns92MNjhHsGpCWInLGWlwHO-h-hzbJ009-vYQKH7IXuabPzXHlIDJLXuudYc4koL8cqDQP8DqG0S2RP_Yt-ZpHQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/88-shashaping.webp',
+      imgLink: '/teenieping-local-img/88-shashaping.webp',
     },
     {
       no: '89',
@@ -1009,7 +1009,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '풍경 보기,간식타임,잠자기,멍하게 생각에 잠기기,초콜릿',
       dislikes: '맛없는 음식,빨리빨리 하는 것,거짓말',
       URL: 'https://i.namu.wiki/i/ih-wwYU-MI-Qb0JG8rT_apj38ZJ8a_G4hNLJBcWLfk3C2tpGADRToIjHXJzqhSXAnMB6eEhi6tTOWHto-mWl1y1WGw0NCwN2fCxLu2EWV63smZNQrazAbWOpl3IKf2Alqag5l8vyC56fRcLuOYrerA.webp',
-      imgLink: '/src/assets/teenieping-local-img/89-fluffyping.webp',
+      imgLink: '/teenieping-local-img/89-fluffyping.webp',
     },
     {
       no: '90',
@@ -1020,7 +1020,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '놀이,운동,새로운 것',
       dislikes: '지루한 분위기',
       URL: 'https://i.namu.wiki/i/Ik49_PWIyzvLRKOuB0Qy7fZsjflXKh74a2u7j2-dOjsvBVh9_OF_jXeTFOWb_5TuaDmHlioKTF9jToR4Wf64FLjc9OrvrjiuzpAxC8qg-wT2DCXQfTZnQxelaxAKR39NyQ6Xp4y0Ag3xGT6kmw_iQA.webp',
-      imgLink: '/src/assets/teenieping-local-img/90-jellyping.webp',
+      imgLink: '/teenieping-local-img/90-jellyping.webp',
     },
     {
       no: '91',
@@ -1031,7 +1031,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '칭찬하기,달콤한 말',
       dislikes: '싸움,상처 주는 말,부정적인 말',
       URL: 'https://i.namu.wiki/i/jNP1rG3Qj9sfjGc5qWsdrvwiUjBQoDS_3vrTzO9xeeOE7gC4s8CMCdSgSGJlf_DZ3bBBGe5kN6zP83Rx3R0veC-8n78FkcsXqbyUOSQSqVs646mMhEBmE0CeS1uMcZsNG1Hz9YTPMgUMF82meOCnOg.webp',
-      imgLink: '/src/assets/teenieping-local-img/91-candyping.webp',
+      imgLink: '/teenieping-local-img/91-candyping.webp',
     },
     {
       no: '92',
@@ -1042,7 +1042,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '머랭 장식하기,화려하고 예쁜 것',
       dislikes: '수수한 것,어둡고 칙칙한 것',
       URL: 'https://i.namu.wiki/i/EGNZOLgfcuycfywjuuFd8MrI6Sby0-_d-wvktityg_i6sYHTuX8qlvfTQAgEn-vkPncSxnpwNGovVhTWifjcJS0RLTBN413w5v0Y_bxuHZuaBck0ALHEIqHW4mixaiS4AC1fKczsAbrSoKQboN7sPA.webp',
-      imgLink: '/src/assets/teenieping-local-img/92-meringueping.webp',
+      imgLink: '/teenieping-local-img/92-meringueping.webp',
     },
     {
       no: '93',
@@ -1053,7 +1053,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '크림으로 샌드하기,빈틈 찾아 채우기',
       dislikes: '샌드쿠키를 반으로 갈라 먹는 것',
       URL: 'https://i.namu.wiki/i/rdDIWJL6XR397w00_6-0H6MkAm_hlXyhGtpj8XJ97_vZIy7t2Bog01E72e5Zpp129sRhK2BgWV0T2DMlgP6cyg1Vgped9K3pz0kz4b0G9ZRZdeCVotAzLvR5Z3xkcVJ_mFhgzHA-RbaEULSFZfuO6w.webp',
-      imgLink: '/src/assets/teenieping-local-img/93-sandping.webp',
+      imgLink: '/teenieping-local-img/93-sandping.webp',
     },
     {
       no: '94',
@@ -1064,7 +1064,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '로미,예쁨 받기,칭찬,그림 그리기,구멍 뚫기',
       dislikes: '어린애 취급받는 것,무시당하는 것',
       URL: 'https://i.namu.wiki/i/OOlDarWD1NbsGg3wiqO4nR5JxqvmRQ9--JsKbDisQ--TjY23P7Mb_KZ0NeclpyUlaujHJEIKqa5QOlnUMYgQz6Souli9vG7jfv2__EN4mHcQ9lFCGZXbXg6uFBeKStbvdvFKQ9KsR-OYKv4OSwPslg.webp',
-      imgLink: '/src/assets/teenieping-local-img/94-donutping.webp',
+      imgLink: '/teenieping-local-img/94-donutping.webp',
     },
     {
       no: '95',
@@ -1075,7 +1075,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '납작하게 만들기,장난치기',
       dislikes: '참기,가만히 멈춰있기',
       URL: 'https://i.namu.wiki/i/OU8tPjrnO-TZdYa7F28t2_QMXPwEiJ38fGmQCVa0Tz475ZPR9sAQ2PiRCAgOJDQbpiXUoLNsrmDSvet3eds33VD5RKHdoeu1aM8-KQoYQ2es7sKja5cEVSvqrFIB-iY69q885CEpv1Dd6zl0QMfgHQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/95-waffleping.webp',
+      imgLink: '/teenieping-local-img/95-waffleping.webp',
     },
     {
       no: '96',
@@ -1086,7 +1086,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '빙빙 돌아가는 것,회전시키기,루카',
       dislikes: '친구가 슬픈 것,정지된 사물',
       URL: 'https://i.namu.wiki/i/Iu3aA4qBxVkCKKMBBU20qySbMkY8OXyrTg1opOSf7ZM_uK6g9UXfT0vFOaBTBBGiCSeP2sgrUEcIGMZrlOdSu8sMkA5A7u91Pb0NOxcWJgeUNSgHE-tMxZxW8MECjLI0UtLCR_-1MRtDyAcbV2ceoA.webp',
-      imgLink: '/src/assets/teenieping-local-img/96-lolliping.webp',
+      imgLink: '/teenieping-local-img/96-lolliping.webp',
     },
     {
       no: '97',
@@ -1097,7 +1097,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '알록달록한 것,색깔 바꾸기',
       dislikes: '단조로움,어둡고 칙칙한 색',
       URL: 'https://i.namu.wiki/i/JFCv3JE3py4yRg2OpGsebLeQ8oGUQ7kgd2GXiBboBZuagsLo0jDZ7ykwy_8AX532mNkfZ3w4iiGI0rHzis8NE8IFpIamJex9xZqBOsZA7jU0SWuePJYJI5BRUIDD0drnLs0YyHuUQ6BmjCeDbpQDMg.webp',
-      imgLink: '/src/assets/teenieping-local-img/97-macaping.webp',
+      imgLink: '/teenieping-local-img/97-macaping.webp',
     },
     {
       no: '98',
@@ -1108,7 +1108,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '쌓기,남을 돕는 것,노력하는 사람',
       dislikes: '마구잡이로 흩어져 있는 것',
       URL: 'https://i.namu.wiki/i/W6xOUQ-tBYCznsHcPCfF4lvs8m9OgergXxAacwfF-lxoOeLYov39FcAOMS6ujGYTnmmKKTzNbSJiTK3MzP4C0Hu9HjD2T0moDZ2jSBiafcuUinqn37hCyhoDzG8pNYWL7V0k7S9XbQ__jKs-mCu5Zw.webp',
-      imgLink: '/src/assets/teenieping-local-img/98-pancakeping.webp',
+      imgLink: '/teenieping-local-img/98-pancakeping.webp',
     },
     {
       no: '99',
@@ -1119,7 +1119,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '쪽쪽이,둘이 함께 있기,술래잡기,우스꽝스러운 상황',
       dislikes: '혼나는 것,쪽쪽이를 빼앗기는 것,배고픈 것,꾸중을 듣는 것',
       URL: 'https://i.namu.wiki/i/4KCJzAIa-qDraQ2xuqmj7n17ZVX4yvkFQuzj-3Oe10gdMrQPviBy2eeVzzwRsSHf6OzAps0QaZQSQg2PqHkLAxNEPbfafVkH7X7lJdVJEmQNo1x9YLZm4bKAuidSQ10dQGpBew2R6F8RsnWd2NC_gg.webp',
-      imgLink: '/src/assets/teenieping-local-img/99-cupping.webp',
+      imgLink: '/teenieping-local-img/99-cupping.webp',
     },
     {
       no: '100',
@@ -1130,7 +1130,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '쪽쪽이,둘이 함께 있기,술래잡기,우스꽝스러운 상황',
       dislikes: '혼나는 것,쪽쪽이를 빼앗기는 것,배고픈 것,꾸중을 듣는 것',
       URL: 'https://i.namu.wiki/i/4KCJzAIa-qDraQ2xuqmj7n17ZVX4yvkFQuzj-3Oe10gdMrQPviBy2eeVzzwRsSHf6OzAps0QaZQSQg2PqHkLAxNEPbfafVkH7X7lJdVJEmQNo1x9YLZm4bKAuidSQ10dQGpBew2R6F8RsnWd2NC_gg.webp',
-      imgLink: '/src/assets/teenieping-local-img/100-muffping.webp',
+      imgLink: '/teenieping-local-img/100-muffping.webp',
     },
     {
       no: '101',
@@ -1141,7 +1141,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '푹 재워주는 것,요거트양들,요거트 만들어 나눠주기,요들 부르기',
       dislikes: '잠을 안 자는 사람,잠의 중요성을 모르는 사람',
       URL: 'https://i.namu.wiki/i/X729CCMFHCf6OPG_rdy6Je24ocOQG0m4Wv9YWyJXsUG8GB0Ehr62rPjK-88yGC_MrO14V6gigCgXwye38jPOrW749s6bX0yH7aUj23mjcafIIobiaMzn42dgqB9iuG11sfLqRHi9fmER91TqTDSXnQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/101-yogurtping.webp',
+      imgLink: '/teenieping-local-img/101-yogurtping.webp',
     },
     {
       no: '102',
@@ -1152,7 +1152,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '눈썰매 타기,친구 사귀기',
       dislikes: '돌발상황,친구를 아프게 하는 것,조절이 서툰 마법능력',
       URL: 'https://i.namu.wiki/i/R78uCoU_MClb-rcOfsD7e-Gy0F6d9Lx0kQnmhIdBzJsnlMdNexOatS8deSU5v8z9FUoILBvXJAlWBJo2RWE0tkkgL6PDXYOY7XSexdsq8wZroZmEaf9fG-zXmi1BXlzQJ39pYDLeGwJ-cv-3yWvbzQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/102-iceflakeping.webp',
+      imgLink: '/teenieping-local-img/102-iceflakeping.webp',
     },
     {
       no: '103',
@@ -1163,7 +1163,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '신나는 음악,춤추기,푸딩 만들어 나눠주기',
       dislikes: '비웃음받는 것,춤을 가지고 놀리는 것',
       URL: 'https://i.namu.wiki/i/EkK7_0pxgnxnrI2Q9RE60oS6K8zACME2Gkz6vlTJuDjwgQeE0mCc5sMQUqdLDB94ANTywA9-ZuUy8ylPzWNustSmmcnId5bv2A9rjZA3JbT5NHOciXkngA5p7H6j7VOqH_BeW15QVgx4dwya_JCyfQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/103-puddingping.webp',
+      imgLink: '/teenieping-local-img/103-puddingping.webp',
     },
     {
       no: '104',
@@ -1174,7 +1174,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '폭신한 것,상냥한 사람',
       dislikes: '딱딱한 것,높은 곳',
       URL: 'https://i.namu.wiki/i/ypPDTfH7K2_eBusN8P1uPrsyxtEaV2S95i5r1uKAcxGV1mHG0Fdr8Bbpy4roQzF0_noV3GcpnAYnbS_-p5dowbcuqa_0-WZOrs-G6ozySYZuvWhyG7DYCg1WQOskeurLETmQsxMBttWbKVw9n2rTLw.webp',
-      imgLink: '/src/assets/teenieping-local-img/104-mallowping.webp',
+      imgLink: '/teenieping-local-img/104-mallowping.webp',
     },
     {
       no: '105',
@@ -1185,7 +1185,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '사이좋은 친구들,다정한 사람',
       dislikes: '싸우는 친구들,미워하는 것',
       URL: 'https://i.namu.wiki/i/BydEgp6bU-0U7Xhw2j24pQbY68iVdO3Zud6iD_T_S4tbBw2F4T5JJciSJSqUWdddCXx6MPPjjFKqTDDgkUZ-JvjWK6-WQ5dvEyNEApjJsphnE73nb0fUuIDiR21ZQwOG37SO90MEw-tmGzS9LNHKEg.webp',
-      imgLink: '/src/assets/teenieping-local-img/105-chocoping.webp',
+      imgLink: '/teenieping-local-img/105-chocoping.webp',
     },
     {
       no: '106',
@@ -1197,7 +1197,7 @@ export const teeniepingData: TeeniepingDataType = {
       dislikes:
         '자기만 빼고 즐거운 것,자기 것을 빼앗기는 것,외로움,자기만 빼고 친하게 지내는 친구들,고독감,자신의 속마음을 들키는 것',
       URL: 'https://i.namu.wiki/i/bOw0yg3R3-QT_c-XjwMuNP-3YDuAunYgsLUWEm7vk4zEO7In0yFi6CS-xm3633NjcTq-kMQf3OXOfLIKuUs1V357BrISqr3pXuPq6OBAAqvhvUI8OTb6Vl3IPpe1sFNikiLFeOUgYCXygiGdRMfPLw.webp',
-      imgLink: '/src/assets/teenieping-local-img/106-puffping.webp',
+      imgLink: '/teenieping-local-img/106-puffping.webp',
     },
     {
       no: '107',
@@ -1208,7 +1208,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '새콤한 것,쪽지 쓰기,케이크 만들기',
       dislikes: '새콤함을 싫어하는 사람',
       URL: 'https://i.namu.wiki/i/fjUrIQ5RMufeVYUR0XsL5XbnUl2nhrIkMt7DACD8VhjP2m1ihMHSgm_kOsvYw2T5eMWQaFyyr7etjR1SQZEKqfpT2c-r19nmucjo0LunKF2cVPy4wrNd3KYhV2pmqp0mmxMFWeYurBr-0PNOookqsA.webp',
-      imgLink: '/src/assets/teenieping-local-img/107-tangyping.webp',
+      imgLink: '/teenieping-local-img/107-tangyping.webp',
     },
     {
       no: '108',
@@ -1219,7 +1219,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '달콤한 것,쪽지 쓰기,케이크 만들기',
       dislikes: '달콤함을 싫어하는 사람',
       URL: 'https://i.namu.wiki/i/rtvnZWg51SsY3UWIsFmL-BdISe7sJM69cc-PmlP6mYPNhnCo-IU-V_2cBB063ozfgFX18m4zc3TG-jSFeYxrCtZjC0pPEui9HkwsbGUUMHQq_K6BIQojvooY1bvngWYOVy7k6tjsVfCogpWSpi2OJg.webp',
-      imgLink: '/src/assets/teenieping-local-img/108-sweetping.webp',
+      imgLink: '/teenieping-local-img/108-sweetping.webp',
     },
     {
       no: '109',
@@ -1230,7 +1230,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '생크림 딸기 케이크,딸기',
       dislikes: '신맛이 나는 모든 것',
       URL: 'https://i.namu.wiki/i/M-NypygnofWkXDZg8Xk7dXDBMvAJx_BwXiFIVCpuYoEI478peR-7HyfNkwSBkK7hHBUIDLtdBZFLnGofovtyIq5exOZzO2yosFmJ95jkf3ncbtbCJ5sPCRCYIND_RZWqrK8if3rM_3lRZKbd6cKwEw.webp',
-      imgLink: '/src/assets/teenieping-local-img/109-star-heartsping.webp',
+      imgLink: '/teenieping-local-img/109-star-heartsping.webp',
     },
     {
       no: '110',
@@ -1241,7 +1241,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '내 모자,책,밝은 조명,밝은 날,웃음',
       dislikes: '심각한 분위기,책에 침 흘리기,책 찢기,낙서',
       URL: 'https://i.namu.wiki/i/IiECXhZ7uBU9IxqX92I7tVFp6rNSh_lRUFfcSxs-fMOjwSMrHsyvEGn5Mpz8GuUUUdg2wr9H4nywMNyn6fG2Kud0MrpxVlg-KEDaHUQeqSawRawwQN20UvYD4yAntm03ARiGb79TAnOhDJTglX6Dyg.webp',
-      imgLink: '/src/assets/teenieping-local-img/110-twinkleping.webp',
+      imgLink: '/teenieping-local-img/110-twinkleping.webp',
     },
     {
       no: '111',
@@ -1252,7 +1252,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '???',
       dislikes: '???',
       URL: 'https://i.namu.wiki/i/PiDthO0WYv3zNLmeSzaAjvvusilf66V_Tw5FQQQSrhWGOba4FqD5M0102CdV8Pnn6oSnkH4E5a0aIvTgrdxTZck_KvDGRF8oYnTIE2jbwFzj-dglH2rhpCrPFy-LjZ7fzHW5IpdmtJXqc9L6AX0UnA.webp',
-      imgLink: '/src/assets/teenieping-local-img/111-shimmerping.webp',
+      imgLink: '/teenieping-local-img/111-shimmerping.webp',
     },
     {
       no: '112',
@@ -1263,7 +1263,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '나 자신,거울에 비친 나,황금별',
       dislikes: '자책,자기비하,비난,어두운 것',
       URL: 'https://i.namu.wiki/i/5o1zgN7ixGsTLLc2i9yv1MIPV9PPN-MVX5qsAHGaxw-2kl0OSLRSThZZ91bCqB971dFpDewOUw1sSpHYeaj1sqpkuXNGmpCs5u48oLUmnGbdkQBuBpD_sR7ojcDhoCie-uxDyXanpVY26B5O24Bz4A.webp',
-      imgLink: '/src/assets/teenieping-local-img/112-sparkleping.webp',
+      imgLink: '/teenieping-local-img/112-sparkleping.webp',
     },
     {
       no: '113',
@@ -1274,7 +1274,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '별,우주,약속을 지키는 것',
       dislikes: '소홀함,약속을 어기는 것',
       URL: 'https://i.namu.wiki/i/25uuYgh2GGGq3BJhSNi8QasxkSACMbZnmLJAXTuXocr6InuhaHF2nTyKoOEbTlo4_l8AmLRXPGE_ZHzZip97r_DVojiJcy6uqoRJEWtLHQaIqqKiDLuYd_JMH1xI_MA-6KAS-UrWUIRI5zwJtciIMw.webp',
-      imgLink: '/src/assets/teenieping-local-img/113-auroraping.webp',
+      imgLink: '/teenieping-local-img/113-auroraping.webp',
     },
     {
       no: '114',
@@ -1285,7 +1285,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '떠돌아 다니며 별 낚기,배 타기',
       dislikes: '얽매이는 것',
       URL: 'https://i.namu.wiki/i/X-Ew-UIpRrv9U6gHcE3HGrclrxD9BlemmG_bd2YyQF5LQS0Tqwqzt6hgqOJAAbipG7VT_8-tIibCrp9uC1W1Plbqe2e8gEwk-SRn6DTTVqucNjSAcilN9mzCcRczlIe811CdvcBvJp2vwzCebSKf9Q.webp',
-      imgLink: '/src/assets/teenieping-local-img/114-petitping.webp',
+      imgLink: '/teenieping-local-img/114-petitping.webp',
     },
     {
       no: '115',
@@ -1296,7 +1296,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '배달하기,날아다니기,새로운 곳 가기',
       dislikes: '배달 실수,비 오는 날',
       URL: 'https://i.namu.wiki/i/hB_bGl_jSVwLT3ny4GZLpvV1shaptP6-DJXutHubY_Nbmg3XlKehqA_uy9WjEuPj_qhLbsEHasKNDZyy_hGmRfOJ2s6Ut0ebmTy88uOkwosssXFNWpEa49nHwsCsMXt3lshR8fUN_Q9UGkYoDgvvSQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/115-dingdongping.webp',
+      imgLink: '/teenieping-local-img/115-dingdongping.webp',
     },
     {
       no: '116',
@@ -1307,7 +1307,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '언니,자그마한 물건,놀이터,공',
       dislikes: '언니를 슬프게 하는 것,무서운 이야기',
       URL: 'https://i.namu.wiki/i/CURf5cwbsVJfyE6ClpYuAmm5QbDETjUoancTQom2iu53Er7BXUh4essBa7SgjOT3i7ftMRSHU8eAy_aFy4WBp3Fsb6YBqfE7cFgw3egbyWXDYtQ3r3OOn9KfRjT6mVl3ZoNTSHzoilcl8DBUTLhNww.webp',
-      imgLink: '/src/assets/teenieping-local-img/116-bellaping.webp',
+      imgLink: '/teenieping-local-img/116-bellaping.webp',
     },
     {
       no: '117',
@@ -1318,7 +1318,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '여동생,커다란 물건,거울 보기',
       dislikes: '여동생이 우는 것,옷이 더렵혀지는 것',
       URL: 'https://i.namu.wiki/i/iVHTEVq00vILc0rkF4-0BkVXDv_I0ixvY5s6hgZNVHJFV4oVqcFchkWAqLhN9ccwEu9DJbARWD6c_tZCKEoicS7xOUOaDV1Gr9S_KdcWj4fk8xe8UeztLpKRPfyLNKsbyqIHH5V8A8JQsuH95q7ThA.webp',
-      imgLink: '/src/assets/teenieping-local-img/117-ellaping.webp',
+      imgLink: '/teenieping-local-img/117-ellaping.webp',
     },
     {
       no: '118',
@@ -1329,7 +1329,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '꿀,힘 쓰는 일',
       dislikes: '화내는 사람,채소',
       URL: 'https://i.namu.wiki/i/kU5wRjnOOy5M4ue_cYVST-M1n2nQJ8vLdEDEdXFWv1quUsgANhQ_br57r7nIz4BUQlYoHO3KKs1blYWxJq6MIXAprxoz2fzHmFJaKuWuLvjXstuYBV0ZJR-_hwProGIgb2KeOelkF1rXrSuWk8oF7A.webp',
-      imgLink: '/src/assets/teenieping-local-img/118-mightyping.webp',
+      imgLink: '/teenieping-local-img/118-mightyping.webp',
     },
     {
       no: '119',
@@ -1340,7 +1340,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '햇볕에 잘 마른 빨래,뽀송뽀송한 곳',
       dislikes: '축축한 곳,장마철',
       URL: 'https://i.namu.wiki/i/1saW_kyyiRr7mE2NexlTlyDKjq3nzX9gQT3TrT4W7DYxdBG9y7BDoP36eD266FJTyZYjKU5r5ZtY6tCi2tbB7P9-H4TtjbNizoVmo8lhPeul9BB_TUSfItvnAgV-SbuG31Pqi86KUzrUvxwW7fddTQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/119-snuggyping.webp',
+      imgLink: '/teenieping-local-img/119-snuggyping.webp',
     },
     {
       no: '120',
@@ -1351,7 +1351,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '운전,줄넘기,뜀틀,당근주스',
       dislikes: '넘어지고 안 일어나는 것,포기',
       URL: 'https://i.namu.wiki/i/cPucvySnvcrhQfXpF5rNGhW0dsaTkS0JB0q7Z2S7Fd0iyP1QEtkB0miGiXIzhwVlIFgiuls_0GydwGIR8NMDb9HA3en2nsqu5mpy5ECCwCsdogASMzIADelwnX6WvUwnITDpnN7n-cBKrkQ7GlmouA.webp',
-      imgLink: '/src/assets/teenieping-local-img/120-hopping.webp',
+      imgLink: '/teenieping-local-img/120-hopping.webp',
     },
     {
       no: '121',
@@ -1362,7 +1362,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '장난,재미있는 상황,놀래키기',
       dislikes: '꼬리 잡히기,목욕',
       URL: 'https://i.namu.wiki/i/r2eHM3fHXhaWykhlDub6KOKCQIXicl3cQaHjpJqgu0UXtnSVyPQ_hxtfGM5v8rUXP1szWf0GMP9ui_LT9ZE43J76LApw1le0Blc2gWSo3SfhvrT0p8iYqpHdUR0zkvYv8c28PdsRHLhE4oF51MUVxQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/121-allureping.webp',
+      imgLink: '/teenieping-local-img/121-allureping.webp',
     },
     {
       no: '122',
@@ -1373,7 +1373,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '스티커 모으기,스티커로 꾸미기,예쁘고 귀여운 것',
       dislikes: '단조로운 것,스티커를 훼손하는 것',
       URL: 'https://i.namu.wiki/i/nUopWWyk-2wPae2m-0SDrxsJvoJHvdt-nmTa6vQgOIZcJrAwhcXmfbQqTsICW0YZUXkv77LpmD-AMEKR0oQxoigj-v5Krg5e-5XUvRAs8zal5pPmGzL_dojoOP6SphcVHa6rBZFsd9BxjGe-m_3s1A.webp',
-      imgLink: '/src/assets/teenieping-local-img/122-stickerping.webp',
+      imgLink: '/teenieping-local-img/122-stickerping.webp',
     },
     {
       no: '123',
@@ -1384,7 +1384,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '훌라후프 돌리기,고리 끼우기',
       dislikes: '네모,고리를 못 끼우게 하는 것',
       URL: 'https://i.namu.wiki/i/8O0A1ouaIkNpSddOJ7Fj2j-OIG_9GPLxXlUD4Y9DeUQy77VCd1nAGprTdz17BtS_DJ5Nh0QA7j5QayIS4r_AiPDOhBm8xNVv_Kk3xy2LrIpQjaKxh9BLXC8G9olLMchjMElCQE5pFwgqwXw4Yh6kgw.webp',
-      imgLink: '/src/assets/teenieping-local-img/123-hulaping.webp',
+      imgLink: '/teenieping-local-img/123-hulaping.webp',
     },
     {
       no: '124',
@@ -1395,7 +1395,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '영원한 약속,천체 관측',
       dislikes: '이별,다툼,품위를 잃는 것',
       URL: 'https://i.namu.wiki/i/Vf3bu32EOpqaqsBf_bpBcS7TKZc4i5P6q7fP_FNE4DgJGNRywHl2NFcAZM7DE9bb6cVYCEAsVri6hWquSofsmvM0HizqZhwzidmFb4GK-LFu1Dk0qHj0GQULfuWHwGs-gIiAklJrHNv5ntEfxaFFcQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/124-princeping.webp',
+      imgLink: '/teenieping-local-img/124-princeping.webp',
     },
     {
       no: '125',
@@ -1406,7 +1406,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '롤러스케이트 타고 달리기,술래잡기',
       dislikes: '가만히 있기,느리게 걷기',
       URL: 'https://i.namu.wiki/i/sP1hgVKymCIic3Tf1ENEy917v4Bzj-1zsUMWh6qdun6PWE-HqAACPSd2j666rDhswWomFtSN7FK_t7LqXuy83Mz7TEUyPatDzwg1j6gOogxKloCtHSghK0cUjGgzmoravYV9MLsY1bxMxttMc1NfpA.webp',
-      imgLink: '/src/assets/teenieping-local-img/125-dazzleping.webp',
+      imgLink: '/teenieping-local-img/125-dazzleping.webp',
     },
     {
       no: '126',
@@ -1417,7 +1417,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '다 같이 하기,친구들,왁자지껄한 분위기',
       dislikes: '혼자인 것,협동하지 않는 것',
       URL: 'https://i.namu.wiki/i/Vp74q1HnLxqFPDCMKltvpZHpKFIPpSH5A6OarqiPDj7HEZ1-8Ohj51z4nL1tCCW6qg0FYIRpGyriyfJPvhpBy5F-wzDBvbOIs-9Imfj7TUixRWnEVSONJoV-K8LNG28w2sLtmfF254wRq84jzUtXgQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/126-togetherping.webp',
+      imgLink: '/teenieping-local-img/126-togetherping.webp',
     },
     {
       no: '127',
@@ -1428,7 +1428,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '남의 마음 들여다보기,몰래 가져가기',
       dislikes: '내 것 빼앗기기',
       URL: 'https://i.namu.wiki/i/sExEEfnFjcHj-hD36908fsF-Gr-if4Y87TRSU4gEi_ow-Zjr0nRoI23f8wRoDGWvPrwvXvKANi4R5e6SZe57QVTNBgyPtZ_MG5n-vcvpD3Sk7osmO7H3VqQUHE5Ky50E6csk3GEzM6K_-JQBrg6otg.webp',
-      imgLink: '/src/assets/teenieping-local-img/127-sneakyping.webp',
+      imgLink: '/teenieping-local-img/127-sneakyping.webp',
     },
     {
       no: '128',
@@ -1439,7 +1439,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '유리로 된 모든 것,조용한 곳,솔직함',
       dislikes: '높은 곳,다치는 것',
       URL: 'https://i.namu.wiki/i/wcXAQEjhIj9e2QORLGURHntl2Jc9C1SLUzNHnHkrH2jyWpsvjIBHcTmJyhMcdK8c0AKf3rPtwsIKU8-fjq4GOXgs8LG4UVebGP7WC3QYP7ADlO5DHcNjRgoT3CPBk_jM1fOaZETJXcSE45Q0pXSSkA.webp',
-      imgLink: '/src/assets/teenieping-local-img/128-lucyping.webp',
+      imgLink: '/teenieping-local-img/128-lucyping.webp',
     },
     {
       no: '129',
@@ -1450,7 +1450,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '조이,춤추기,춤추게 하기,흥겨운 음악',
       dislikes: '조용한 곳,가만히 있기',
       URL: 'https://i.namu.wiki/i/b91NvQKazc5EfNSJfFdgoEMPg-lBjN6aqkgz9gWlYSkI7ef6CINrhPAVjQs2nSxWGM6Jk_JKM4lfCb3p-wpue6VUxRmsJ36hlRHwpOLgl8-VPyOgWTfANU2HUwfH06yYUAGEZUkuoMYhKPPip5LU7w.webp',
-      imgLink: '/src/assets/teenieping-local-img/129-swayping.webp',
+      imgLink: '/teenieping-local-img/129-swayping.webp',
     },
     {
       no: '130',
@@ -1461,7 +1461,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '노래하기,노래듣기,팬',
       dislikes: '노래가 없는 상황',
       URL: 'https://i.namu.wiki/i/Tj_ytQk5klxpNzzJ9fN4KN2NzzKozkZErJqBlnScMN2jbZNMErOXU-INzvxth_yfQpryrAvrqFKc3D_qsFo0H2HUcLKF97G5a1ApRXYO4kEFmbY2OUv2OFB0N1d_FBgHpFKym0x_zg0cqeUVCMz5GQ.webp',
-      imgLink: '/src/assets/teenieping-local-img/130-doremiping.webp',
+      imgLink: '/teenieping-local-img/130-doremiping.webp',
     },
     {
       no: '131',
@@ -1472,7 +1472,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '모든 존재들,순수함,쪽쪽이',
       dislikes: '거짓말,나쁜 마음,고함소리',
       URL: 'https://i.namu.wiki/i/yO_FxAv4RLlzm9rcpU52c01vtKjuq02cfTR-rnjKvSS065V2foZvikU71pFtWCxLG47Z5MwU7VfdU4pVwYdFAu6RlPqi2eqnlHlnFXV38zYq5uVLVEcivOLja0EQR75c_MltOJUAkziR6rsRPMOMzg.webp',
-      imgLink: '/src/assets/teenieping-local-img/131-kissyping.webp',
+      imgLink: '/teenieping-local-img/131-kissyping.webp',
     },
     {
       no: '132',
@@ -1483,7 +1483,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '이야기 들어주기,나눠주기,공감하기',
       dislikes: '좌절,부정적인 감정이나 상황',
       URL: 'https://i.namu.wiki/i/kiYsQgoufm8DJV-P63fKXnqUuCwY9_aLlbHq8M6mgTuAOPVIVRCSuNF7EQFGJ3SFq-6L_E98tc8bLdPmLFlJN1L0AXz5Jz8EnYcaP_BKX1aBsVVu0KvSXHFxYVysmeZx9lOQOeAaC8Gktbx0TX-WmA.webp',
-      imgLink: '/src/assets/teenieping-local-img/132-giverping.webp',
+      imgLink: '/teenieping-local-img/132-giverping.webp',
     },
     {
       no: '133',
@@ -1494,7 +1494,7 @@ export const teeniepingData: TeeniepingDataType = {
       likes: '쿠키,마들렌',
       dislikes: '잠을 깨우는 것과 놀라게 하는 것',
       URL: 'https://i.namu.wiki/i/vk_3oOplnZD4HI6yqufLpCFZNIfBXhJPwOB2s4lHsg14pQQ384qhhNHdlkh1veA-lvZEhWgENVxhUVoogAsLg8h49VbIM5kq7_WqIDeDUeCdQ1RpqA0ATJw722Q7Ngd4V5YDpqlrk2gXVxp2-2mSuw.webp',
-      imgLink: '/src/assets/teenieping-local-img/133-romiping.webp',
+      imgLink: '/teenieping-local-img/133-romiping.webp',
     },
   ],
 };

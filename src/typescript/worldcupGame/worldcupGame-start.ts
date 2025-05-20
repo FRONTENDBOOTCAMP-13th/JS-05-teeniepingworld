@@ -72,7 +72,7 @@ let teeniepingData: { properties: string[]; result: Teenieping[] };
 try {
   // 실무에서는 import, 혹은 fetch 사용 가능
   import('../dataBase.ts')
-    .then(({teeniepingData: importedData}) => {
+    .then(({ teeniepingData: importedData }) => {
       teeniepingData = importedData;
     })
     .catch((error) => {
@@ -485,7 +485,7 @@ function createWinnerPage(winner: Teenieping): void {
 
       <div class="button-group">
         <button class="action-btn retry-btn" type="button">
-        <img src="../assets/typeTest_img/repeat.png" alt="다시하기" />
+        <img src="/typeTest_img/repeat.png" alt="다시하기" />
         <span>
           다시 선택하기</span>
         </button>
