@@ -73,6 +73,7 @@ socore : number -> 점수
 * 카드 동적 생성하기 (DOM으로 카드 생성하고 grid 배치?) 
 */
 'use strict';
+
 console.log('선택된 난이도', sessionStorage.getItem('level'));
 
 const cardCount = Number(sessionStorage.getItem('level')) || 8; //생성할 카드 개수
@@ -97,30 +98,30 @@ type cardData = {
 
 //티니핑 이미지 접근 경로가 담긴 배열
 const pingSrc: string[] = [
-  '../assets/memorygame_img/aingPing.webp',
-  '../assets/memorygame_img/ajaPing.webp',
-  '../assets/memorygame_img/baebaePing.webp',
-  '../assets/memorygame_img/baroPing.webp',
-  '../assets/memorygame_img/bugguPing.webp',
-  '../assets/memorygame_img/chachaPing.webp',
-  '../assets/memorygame_img/dockdockPing.webp',
-  '../assets/memorygame_img/haePing.webp',
-  '../assets/memorygame_img/haunaPing.webp',
-  '../assets/memorygame_img/heartsPing.webp',
-  '../assets/memorygame_img/kikiPing.webp',
-  '../assets/memorygame_img/kojaPing.webp',
-  '../assets/memorygame_img/moyaPing.webp',
-  '../assets/memorygame_img/mugouPing.webp',
-  '../assets/memorygame_img/raraPing.webp',
-  '../assets/memorygame_img/siruPing.webp',
+  '/memorygame_img/aingPing.webp',
+  '/memorygame_img/ajaPing.webp',
+  '/memorygame_img/baebaePing.webp',
+  '/memorygame_img/baroPing.webp',
+  '/memorygame_img/bugguPing.webp',
+  '/memorygame_img/chachaPing.webp',
+  '/memorygame_img/dockdockPing.webp',
+  '/memorygame_img/haePing.webp',
+  '/memorygame_img/haunaPing.webp',
+  '/memorygame_img/heartsPing.webp',
+  '/memorygame_img/kikiPing.webp',
+  '/memorygame_img/kojaPing.webp',
+  '/memorygame_img/moyaPing.webp',
+  '/memorygame_img/mugouPing.webp',
+  '/memorygame_img/raraPing.webp',
+  '/memorygame_img/siruPing.webp',
 ];
 
 //게임 시작 텍스트 경로 배열
 const bgmSrc: string[] = [
-  '/src/assets/memorygame_bgm/startText.wav',
-  '/src/assets/memorygame_bgm/startText2.wav',
-  '/src/assets/memorygame_bgm/startText3.wav',
-  '/src/assets/memorygame_bgm/startText4.wav',
+  '/memorygame_bgm/startText.wav',
+  '/memorygame_bgm/startText2.wav',
+  '/memorygame_bgm/startText3.wav',
+  '/memorygame_bgm/startText4.wav',
 ];
 
 console.log(pingSrc);
@@ -204,7 +205,7 @@ function addCard(data: cardData) {
   cardFront.classList.add('card-front');
 
   const imgBack = document.createElement('img');
-  imgBack.src = '../assets/memorygame_img/backCard.png';
+  imgBack.src = '/memorygame_img/backCard.png';
 
   const imgFront = document.createElement('img');
   imgFront.classList.add('img-front');
@@ -563,8 +564,8 @@ bgmBtn.addEventListener('click', function () {
   bgm.muted = isMuted;
 
   const text_src = isMuted
-    ? '/src/assets/memorygame_img/bgm_off.png'
-    : '/src/assets/memorygame_img/bgm_on.png';
+    ? '/memorygame_img/bgm_off.png'
+    : '/memorygame_img/bgm_on.png';
   bgmImage?.setAttribute('src', text_src);
 });
 
