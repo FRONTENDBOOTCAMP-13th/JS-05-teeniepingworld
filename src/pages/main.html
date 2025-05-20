@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>티니핑 월드</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <img src="/public/teenieping_img/hachuuping.png" alt="" />
+        <h1>티니핑 월드</h1>
+      </div>
+      <p>
+        신나는 미니게임 4가지로 가득한 환상적인 세계에 오신 것을 환영합니다!
+      </p>
+    </header>
+    <main>
+      <!-- 게임별 카드 섹션 -->
+      <section class="pink">
+        <div class="img-contain">
+          <img src="/public/teenieping_img/hachuuping.png" alt="" />
+        </div>
+        <div class="game-context">
+          <div class="game-title">
+            <h2>티니핑 유형테스트</h2>
+            <button>></button>
+          </div>
+          <p>당신의 티니핑 유형은?</p>
+        </div>
+      </section>
+
+      <section class="blue">
+        <div class="img-contain">
+          <img
+            src="/public/teenieping-local-img/67-okeydokeyping.webp"
+            alt=""
+          />
+        </div>
+        <div class="game-context">
+          <div class="game-title">
+            <h2>티니핑 카드게임</h2>
+            <button>></button>
+          </div>
+          <p>같은 티니핑 친구들을 찾아라~~!</p>
+        </div>
+      </section>
+
+      <section class="green">
+        <div class="img-contain">
+          <img src="/public/teenieping-local-img/89-fluffyping.webp" alt="" />
+        </div>
+        <div class="game-context">
+          <div class="game-title">
+            <h2>티니핑을 찾아라</h2>
+            <button>></button>
+          </div>
+          <p>도망간 티니핑을 찾아라!</p>
+        </div>
+      </section>
+
+      <section class="yellow">
+        <div class="img-contain">
+          <img src="/public/teenieping-local-img/58-memoping.webp" alt="" />
+        </div>
+        <div class="game-context">
+          <div class="game-title">
+            <h2>티니핑 이상형 월드컵</h2>
+            <button>></button>
+          </div>
+          <p>가장 마음에 드는 티니핑을 찾아보세요!</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <p>
+          &copy; 2025 <strong>티니핑 월드</strong>. Crafted with by
+          <span>type5cript</span> @ 멋쟁이사자처럼.
+        </p>
+        <p class="footer-sub">
+          이 프로젝트는 멋쟁이사자처럼 부트캠프의 팀 프로젝트로 제작되었습니다.
+        </p>
+      </div>
+    </footer>
+
+    <div id="popup-overlay">
+      <div id="popup-content">
+        <h2>저작권 안내</h2>
+        <p>
+          본 사이트 <strong>“티니핑 월드”</strong>는
+          <strong>멋쟁이사자처럼 프론트엔드 부트캠프</strong>의 팀 프로젝트로
+          제작된 교육용 웹사이트입니다.<br /><br />
+          상업적 목적이 전혀 없으며, 티니핑 캐릭터는<br />
+          <strong>비영리적 교육 목적</strong>으로만 활용되었습니다.<br /><br />
+          팀명: <strong>type5cript</strong>
+        </p>
+
+        <div class="popup-footer">
+          <button id="popup-close">확인했습니다</button>
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="dont-show-today" />
+            <label for="dont-show-today">오늘 그만 보기</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
