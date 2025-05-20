@@ -39,7 +39,10 @@ export function setCube(i: number, name: string) {
   const newImg = document.createElement('img');
   newDiv.setAttribute('class', 'set');
   newDiv.setAttribute('id', `set-${i}`);
-  newImg.setAttribute('src', `/src/assets/findGame/${name}PingCubeOpen.WEBP`);
+  newImg.setAttribute(
+    'src',
+    `/src/assets/findgame_img/${name}PingCubeOpen.WEBP`,
+  );
   newImg.setAttribute('alt', '티니핑 큐브');
   newImg.setAttribute('class', 'teenieping-cube');
 
@@ -63,7 +66,7 @@ export function insertTeenieping(
     const targetDiv = answerSet.getDiv;
 
     const newImg = document.createElement('img');
-    newImg.setAttribute('src', `/src/assets/findGame/${name}Ping.WEBP`);
+    newImg.setAttribute('src', `/src/assets/findgame_img/${name}Ping.WEBP`);
     newImg.setAttribute('alt', '티니핑');
     newImg.setAttribute('class', 'teenieping');
     targetDiv.appendChild(newImg);
@@ -195,27 +198,30 @@ export function showResult(
   if (round === 10) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
-      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
+      dialogImg.src = '/src/assets/findgame_img/ayaPingSuccess.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
     if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
 
     dialogBtn1?.setAttribute('hidden', '');
-    localStorage.setItem('history', JSON.stringify(0));
+    localStorage.setItem('history', '0');
   } else if (result === true) {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src)
-      dialogImg.src = '/src/assets/findGame/ayaPingSuccess.WEBP';
+      dialogImg.src = '/src/assets/findgame_img/ayaPingSuccess.WEBP';
     if (dialogP?.textContent)
       dialogP.textContent = '다음 라운드도 도전해보세요!';
+    dialogBtn1?.removeAttribute('hidden');
+
     if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
-    localStorage.setItem('history', JSON.stringify(++round));
+    // localStorage.setItem('history', JSON.stringify(++round));
   } else {
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
-    if (dialogImg?.src) dialogImg.src = '/src/assets/findGame/ayaPingFail.WEBP';
+    if (dialogImg?.src)
+      dialogImg.src = '/src/assets/findgame_img/ayaPingFail.WEBP';
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
     dialogBtn1?.setAttribute('hidden', '');
 
-    localStorage.setItem('history', JSON.stringify(round));
+    // localStorage.setItem('history', JSON.stringify(round));
   }
 
   showDialog();
@@ -329,7 +335,7 @@ export function changeLocation(cube1: HTMLElement, cube2: HTMLElement) {
 }
 
 function showGameConclusion(round: number) {
-  const gmaeDescription =
+  const gameDescription =
     document.querySelector<HTMLParagraphElement>('.game-description');
   const gameContainer =
     document.querySelector<HTMLDivElement>('.game-container');
@@ -341,7 +347,7 @@ function showGameConclusion(round: number) {
   const attemptCount =
     gameConclusion?.querySelector<HTMLSpanElement>('.attempt-count');
 
-  if (gmaeDescription?.style) gmaeDescription.style.display = 'none';
+  if (gameDescription?.style) gameDescription.style.display = 'none';
   if (gameContainer?.style) gameContainer.style.display = 'none';
   if (gameConclusion?.style) gameConclusion.style.display = 'flex';
 
@@ -352,4 +358,54 @@ function showGameConclusion(round: number) {
 
   // 10라운드까지 성공하면 시도 횟수 초기화
   if (round === 10) localStorage.setItem('attemptCount', '0');
+
+  const restartBtn = document.querySelector('.restart-btn');
+  restartBtn?.addEventListener('click', () => {
+    resetToStartScreen();
+  });
+}
+
+export function resetToStartScreen() {
+  const gameStartBtnContainer = document.querySelector<HTMLDivElement>(
+    '.game-start-btn-container',
+  );
+  const gameConclusion =
+    document.querySelector<HTMLDivElement>('.game-conclusion');
+  const gameRound = document.querySelector<HTMLDivElement>('.game-round');
+  const gameContainer =
+    document.querySelector<HTMLDivElement>('.game-container');
+  const gameDescription =
+    document.querySelector<HTMLParagraphElement>('.game-description');
+
+  if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'flex';
+  if (gameConclusion) gameConclusion.style.display = 'none';
+  if (gameContainer) gameContainer.style.display = 'none';
+
+  if (gameDescription) {
+    gameDescription.style.removeProperty('display');
+    setGameDescription('큐브 속으로 숨은 티니핑을 찾아보세요!');
+  }
+
+  gameRound?.setAttribute('hidden', '');
+  setContinueButtonDisabled();
+}
+
+export function setContinueButtonDisabled() {
+  const history = localStorage.getItem('history');
+  const continueStartBtn =
+    document.querySelector<HTMLButtonElement>('.continue-game-btn');
+
+  if (continueStartBtn) {
+    if (Number(history) < 2) {
+      continueStartBtn.style.backgroundColor = '#e0e0e0';
+      continueStartBtn.style.color = '#999';
+      continueStartBtn.disabled = true;
+      continueStartBtn.classList.remove('hovered');
+    } else {
+      continueStartBtn.style.backgroundColor = '#ff9edb';
+      continueStartBtn.style.color = 'white';
+      continueStartBtn.disabled = false;
+      continueStartBtn.classList.add('hovered');
+    }
+  }
 }

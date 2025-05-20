@@ -86,6 +86,7 @@ if (totalCount) {
 }
 
 const findCount = document.querySelector('#findCount');
+let teeniepingChance: number = 0;
 
 //카드 타입
 type cardData = {
@@ -112,6 +113,14 @@ const pingSrc: string[] = [
   '../assets/memorygame_img/mugouPing.webp',
   '../assets/memorygame_img/raraPing.webp',
   '../assets/memorygame_img/siruPing.webp',
+];
+
+//게임 시작 텍스트 경로 배열
+const bgmSrc: string[] = [
+  '/src/assets/memorygame_bgm/startText.wav',
+  '/src/assets/memorygame_bgm/startText2.wav',
+  '/src/assets/memorygame_bgm/startText3.wav',
+  '/src/assets/memorygame_bgm/startText4.wav',
 ];
 
 console.log(pingSrc);
@@ -411,11 +420,14 @@ function cardAllTurn() : void{}
 const turnBtn = document.querySelector('#turn-btn');
 if (turnBtn) {
   turnBtn.addEventListener('click', function () {
-    cardAllTurn();
+    if (teeniepingChance < 1) {
+      cardAllTurn();
+      teeniepingChance += 1;
+    }
   });
 }
 
-function cardAllTurn() {
+function cardAllTurn(setTime: number = 1500) {
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
     if (!card.classList.contains('flip')) {
@@ -423,7 +435,7 @@ function cardAllTurn() {
 
       setTimeout(() => {
         card.classList.remove('turn');
-      }, 2000);
+      }, setTime);
     }
   });
 }
@@ -452,7 +464,7 @@ clearInterval(timerId) -> 위에서 적용한 반복하는 걸 제거해주는 �
 setInterVal()의 리턴 값이다. 
 */
 
-const totalTime: number = 600;
+const totalTime: number = 60;
 
 const limitTime = document.querySelector('.limit-time span') as HTMLElement;
 limitTime.textContent = totalTime.toString();
@@ -466,15 +478,20 @@ let limitTimePer: number;
 
 //타이머 시작 함수
 function startTimer(time: number): number {
+  limitTimePer = (time / totalTime) * 100;
+  console.log(limitTimePer);
+  progressBar.style.width = `${limitTimePer}%`;
+  time -= 1;
+
   const timeId = setInterval(() => {
     console.log(time);
 
     limitTimePer = (time / totalTime) * 100;
-    console.log(limitTimePer);
     progressBar.style.width = `${limitTimePer}%`;
 
     if (time < 0) {
       time += 1;
+      progressBar.style.width = '0%';
       clearInterval(timeId);
       gameover();
       openbanner();
@@ -509,16 +526,28 @@ const howPopup = document.getElementById('how-to-play') as HTMLElement;
 const startGameBtn = document.getElementById(
   'start-game-btn',
 ) as HTMLButtonElement;
-const bgm = document.getElementById('bgm') as HTMLAudioElement;
+const startBgm = document.getElementById('start_bgm') as HTMLAudioElement; //스타트 bgm
+const bgm = document.getElementById('bgm') as HTMLAudioElement; //타이틀 bgm
 
 startGameBtn.addEventListener('click', () => {
   howPopup.style.display = 'none'; // 안내창 숨기기
-  bgm.volume = 0.2;
-  bgm.play().catch((e) => console.warn('BGM 재생 실패:', e));
 
+  const randomInt = Math.floor(Math.random() * 4);
+  const bgm_str = bgmSrc[randomInt];
+
+  startBgm.setAttribute('src', bgm_str);
+  startBgm.volume = 0.5;
+  startBgm.play();
+  bgm.play();
+  bgm.volume = 0.01;
+  setTimeout(() => {
+    bgm.volume = 0.03;
+    timeId = startTimer(totalTime);
+  }, 4500);
   // 여기에 게임 시작 로직 연결 (타이머, 카드 생성 등)
   //게임을 시작하는 함수를 만들어야하네.........
-  timeId = startTimer(totalTime);
+
+  cardAllTurn(4200);
 });
 
 /*

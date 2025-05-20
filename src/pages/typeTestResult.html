@@ -8,6 +8,8 @@
       type="module"
       src="../typescript/typeTest/resultTypeTest.ts"
     ></script>
+    <script type="module" src="../typescript/typeTest/resultModal.ts"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <title>typeTestResult</title>
   </head>
   <body>
@@ -127,6 +129,40 @@
           </button>
         </section>
       </main>
+      <!-- 결과 공유하기 모달창 -->
+      <dialog class="share-modal">
+        <div class="modal-content">
+          <button class="modal-close"></button>
+          <p>결과를 친구에게 공유해보세요!</p>
+          <img
+            class="modal-img"
+            src="../assets/teenieping_img/kurapping.webp"
+            alt="꾸래핑"
+          />
+          <div class="modal-btn">
+            <button class="copy">
+              <input
+                class="share-link"
+                type="text"
+                readonly
+                value="https://yourteeniepingtype.com"
+              />
+            </button>
+            <a
+              class="facebook"
+              href="https://www.facebook.com/sharer/sharer.php?u=https://your-site.com"
+              target="_blank"
+            >
+            </a>
+            <!-- <button class="instagram"></button> -->
+            <button class="kakao"></button>
+          </div>
+          <div class="modal-bottom">
+            <button class="repeat-modal-btn">다시하기</button>
+            <button class="home-modal-btn">홈으로</button>
+          </div>
+        </div>
+      </dialog>
     </div>
   </body>
 </html>

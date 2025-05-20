@@ -1,3 +1,4 @@
+
 // 인터페이스 정의 - 세미콜론이 아닌 콜론을 사용하고 배열 타입은 인터페이스 바깥에 적용합니다
 interface Teenieping {
   no: number | string;

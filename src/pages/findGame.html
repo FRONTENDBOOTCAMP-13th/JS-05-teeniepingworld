@@ -9,17 +9,20 @@
   <body>
     <!-- http://localhost:5173/src/pages/findGame.html -->
     <div class="main-container">
-      <div class="top-buttons">
-        <span class="btn red" id="go-to-home-btn"></span>
-        <span class="btn yellow"></span>
-        <input
-          type="number"
-          min="1"
-          max="10"
-          id="set-start-round"
-          class="hidden-toggle"
-        />
-        <span class="btn green" id="dev"></span>
+      <div class="top-container">
+        <div class="top-buttons">
+          <span class="btn red"></span>
+          <span class="btn yellow"></span>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="set-start-round"
+            class="hidden-toggle"
+          />
+          <span class="btn green"></span>
+        </div>
+        <button class="settings-btn">⚙️ settings</button>
       </div>
       <div class="game-info-wrapper">
         <h1 class="game-title">숨은 티니핑을 찾아라</h1>
@@ -65,5 +68,49 @@
       <button type="button" class="dialog-btn dialog-btn1">도전하기</button>
       <button type="button" class="dialog-btn dialog-btn2">결과보기</button>
     </dialog>
+
+    <dialog class="tutorial-dialog">
+      <button type="button" class="tutorial-close-btn">x</button>
+
+      <h2 class="">티니핑이 사라졌어요!</h2>
+      <p>
+        큐브 속에 숨어버린 티니핑을 찾아보세요!<br />큐브가 뚜껑이 닫히면 큐브가
+        섞이기 시작해요. 집중해서 위치를 기억하고, 티니핑이 숨어있는 큐브를
+        선택해보세요!
+      </p>
+      <h2 class="">어떻게 플레이하나요?</h2>
+      <ol>
+        <li>1. 티니핑이 한 큐브 안에 랜덤으로 숨어요.</li>
+        <li>2. 큐브가 모두 닫히고, 순서가 섞여요.</li>
+        <li>3. 기억을 더듬어 정답일 것 같은 큐브를 선택하세요.</li>
+        <li>4. 정답이면 다음 라운드로, 오답이면 시도 획수가 올라가요.</li>
+        <li>5. 모든 라운드가 끝나면 최종 결과가 보여요.</li>
+      </ol>
+      <h2 class="">결과 안내</h2>
+      <ul>
+        <li>- 정답을 고르면 다음 라운드에 도전할 수 있어요.</li>
+        <li>
+          - 틀려도 해당 라운드부터 재도전할 수 있어요. (시도 횟수는 증가해요.)
+        </li>
+        <li>- 게임이 끝나면 성공한 라운드 수, 총 시도 횟수를 볼 수 있어요.</li>
+      </ul>
+    </dialog>
+
+    <dialog class="settings-dialog">
+      <button type="button" class="settings-close-btn">x</button>
+      <h2 class="">환경설정</h2>
+      <div class="settings-options">
+        <button type="button" class="bgm-btn">
+          배경 음악 <span class="bgm-toggle">OFF</span>
+        </button>
+        <!-- (수정 가능) 티니핑 찾기 게임 화면, 메인 화면으로 이동 -->
+        <!-- <button type="button" class="retry-btn">다시하기</button> -->
+        <button type="button" class="go-start-btn">시작 화면</button>
+      </div>
+    </dialog>
+
+    <audio loop>
+      <source src="../assets/memorygame_bgm/memoryGameBGM.mp3" />
+    </audio>
   </body>
 </html>
