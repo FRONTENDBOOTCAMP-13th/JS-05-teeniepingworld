@@ -1,4 +1,5 @@
 /* 게임 시작 모달 관리 */
+import { setupLikelionClickListener } from './worldcupGame-likelion';
 import { startGame } from './worldcupGame-start';
 
 /* 기본 세팅 */
@@ -16,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const worldcupDialog = document.querySelector(
     '.main-page-modal',
   ) as HTMLDialogElement;
+
+  //.likelion click event setup
+  setupLikelionClickListener();
 
   // 페이지 로드시 dialog close
   if (worldcupDialog) {

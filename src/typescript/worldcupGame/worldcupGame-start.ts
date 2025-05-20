@@ -19,6 +19,11 @@
   winner: [] -> selected 객체를 담는 배열
   */
 
+import {
+  getIsLikelionClicked,
+  getSpecialCharacters,
+} from './worldcupGame-likelion.ts';
+
 // 티니핑 data type 정의
 interface Teenieping {
   no: number | string;
@@ -97,6 +102,21 @@ let gameState: GameState = {
   },
 };
 
+/** 배열 셔플 함수 (Fisher-Yates 알고리즘)
+ * @param array 셔플할 배열
+ * @returns 셔플된 배열
+ */
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled: T[] = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j: number = Math.floor(Math.random() * (i + 1));
+    const temp = shuffled[i];
+    shuffled[i] = shuffled[j];
+    shuffled[j] = temp;
+  }
+  return shuffled;
+}
+
 /**
  * 객체 랜덤 선택 함수
  * @param count 선택할 객체 수
@@ -109,26 +129,50 @@ function getRandomTeeniepings(count: number): Teenieping[] {
     return [];
   }
 
-  //원본 배열 복사
-  const allCharacters = [...teeniepingData.result];
-
-  //요청 수가 전체 케릭터보다 많을 경우 전체 반환
-  if (count >= allCharacters.length) {
-    return allCharacters;
-  }
-
-  //랜덤 선택
   const selected: Teenieping[] = [];
-  for (let i = 0; i < count; i++) {
-    //남은 케릭터 중 랜덤 선택
-    const randomIndex = Math.floor(Math.random() * allCharacters.length);
-    const character = allCharacters.splice(randomIndex, 1)[0];
 
-    //배열에 표준화된 객체 추가
-    selected.push(standardizeTeenieping(character));
+  //.likelion click 시, hidden character joined
+  if (getIsLikelionClicked()) {
+    const specialCharacters = getSpecialCharacters();
+
+    //hidden character를 selected array에 우선 추가
+    specialCharacters.forEach((character) => {
+      selected.push(standardizeTeenieping(character));
+    });
+
+    console.log('🦁 clicked, hidden teeniepings are coming!');
+    console.log(
+      '선택된 특별 캐릭터:',
+      specialCharacters.map((char) => char.name),
+    );
   }
-  console.log({ ...selected });
-  return selected;
+
+  // 남은 slot에 기타 객체 선택
+  const remainingCount = count - selected.length;
+
+  // 요청 수가 히든케보다 적거나 같으면 히든케만 반환
+  if (remainingCount <= 0) {
+    const result = shuffleArray(selected.slice(0, count));
+    console.log('요청 수가 적어서 히든 케릭으로만 구성');
+    return result;
+  }
+
+  // 일반 케릭터들에서 남은 만큼 랜덤 선택
+  const allCharacters = [...teeniepingData.result];
+  const shuffledCharacters = shuffleArray(allCharacters);
+
+  // 남은 수만큼 일반 케릭터 추가
+  for (let i = 0; i < remainingCount && i < shuffledCharacters.length; i++) {
+    selected.push(standardizeTeenieping(shuffledCharacters[i]));
+  }
+
+  // 최종 배열 셔플
+  const finalResult = shuffleArray(selected);
+  console.log(
+    '최종 players',
+    finalResult.map((char) => char.name),
+  );
+  return finalResult;
 }
 
 /**
@@ -158,8 +202,6 @@ function standardizeTeenieping(teenieping: Teenieping): Teenieping {
  * @param roundCount 라운드 수 (8, 16, 32, 64)
  */
 function startGame(roundCount: number): void {
-  console.log(`${roundCount}강 게임을 시작합니다.`);
-
   //게임 상태 초기화
   gameState = {
     currentRound: 1,
@@ -236,6 +278,7 @@ function displayCurrentMatch(): void {
   if (gameState.matchIndex >= gameState.players.length / 2) {
     //next round 준비
     prepareNextRound();
+
   }
 
   //game 끝났는지 확인
@@ -243,14 +286,6 @@ function displayCurrentMatch(): void {
     displayWinner(gameState.winners[0]);
     return;
   }
-
-  /*
-  최종 우승자 결정되었는지 확인(winners에 하나만 남고 players가 비어 있을 때)
-  if (gameState.players.length === 1 && gameState.winners.length === 0) {
-    displayWinner(gameState.players[0]);
-    return;
-  }
-    */
 
   //마지막 라운드 마지막 매치 체크
   if (
@@ -267,11 +302,20 @@ function displayCurrentMatch(): void {
   //배열 범위 체크 추가
   if (idx + 1 >= gameState.players.length) {
     console.error('매치 인덱스 오류: 배열 범위 초과');
+    console.error('현재 players:', gameState.players);
+    console.error('matchIndex:', gameState.matchIndex);
+    console.error('idx:', idx);
     return;
   }
 
   const character1 = gameState.players[idx];
   const character2 = gameState.players[idx + 1];
+
+  //케릭터 유효성 검사
+  if (!character1 || !character2) {
+    console.error('character is undefined.', { character1, character2 });
+    return;
+  }
 
   //매치 ui 업데이트
   updateMatchUI(character1, character2);
@@ -330,8 +374,20 @@ function handleCharacterSelection(event: Event): void {
 
   //현재 매치 가져오기
   const idx = gameState.matchIndex * 2;
+
+  //배열 범위 체크
+  if (idx + 1 >= gameState.players.length) {
+    console.error('배열 범위 초과:', {
+      idx,
+      playersLength: gameState.players.length,
+    });
+    return;
+  }
+
   const character1 = gameState.players[idx];
   const character2 = gameState.players[idx + 1];
+
+  console.log(`매치: ${character1.name} vs ${character2.name}`);
 
   //선택된 캐릭터, 탈락 캐릭터 결정
   let winner: Teenieping, loser: Teenieping;
@@ -344,9 +400,14 @@ function handleCharacterSelection(event: Event): void {
     loser = character1;
   }
 
+  console.log(`승자: ${winner.name}, 패자: ${loser.name}`);
+
   //위너 배열에 추가
   gameState.winners.push(winner);
-  console.log(`winner: ${winner.name}`);
+  console.log(
+    `현재 winners 배열:`,
+    gameState.winners.map((w) => w.name),
+  );
 
   //게임 기록 업데이트
   gameState.gameHistory.matchups.push({
@@ -399,12 +460,12 @@ function prepareNextRound(): void {
   //sub-info update
   const subInfo = document.querySelector('.sub-info') as HTMLElement;
   if (subInfo) {
-    const totalMatches = gameState.players.length / 2;
+    const totalMatches = gameState.winners.length / 2;
     subInfo.textContent = `(1/${totalMatches})`;
   }
 
   //player 배열 업데이트
-  gameState.players = [...gameState.winners];
+  gameState.players = shuffleArray([...gameState.winners]);
   gameState.winners = [];
 
   //match index 초기화
