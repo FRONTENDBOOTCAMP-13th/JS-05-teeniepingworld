@@ -90,4 +90,3 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmModalBtn.addEventListener('click', handleGameStart);
   }
 });
-console.log('hi');
