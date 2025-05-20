@@ -11,3 +11,8 @@ export interface findTeenieping {
   status: boolean;
   cloneDiv?: HTMLElement;
 }
+
+export interface getImage {
+  eager: boolean;
+  import: string;
+}
