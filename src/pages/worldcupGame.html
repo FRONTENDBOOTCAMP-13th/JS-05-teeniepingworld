@@ -15,6 +15,19 @@
       src="/src/typescript/worldcupGame/worldcupGameModal.ts"
       defer
     ></script>
+    <script defer>
+      // Facebook
+      function shareFacebook() {
+        const title = 'Facebook으로 공유하기';
+        const url = 'https://teeniepingworld.netlify.app/';
+        window.open(
+          'http://www.facebook.com/sharer/sharer.php?u=' +
+            url +
+            '&title=' +
+            title,
+        );
+      }
+    </script>
   </head>
   <body>
     <!-- 월드컵 게임 main 페이지 -->
@@ -52,7 +65,7 @@
             alt="티니핑 이상형 월드컵"
           />
           <figcaption class="content-text">
-            귀여운 티니핑 친구들 중 당신의 마음을 사로잡을 캐릭터는?
+            귀여운 티니핑 친구들 중 내 마음을 사로잡을 캐릭터는?
           </figcaption>
         </figure>
         <button class="start-btn" type="button">시작하기</button>
