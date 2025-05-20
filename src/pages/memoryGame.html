@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>티니핑 친구들을 찾아라</title>
     <link rel="stylesheet" href="../styles/memoryGame.css" />
+    <script
+      type="module"
+      src="../typescript/memoryGame/memoryGameTitle.js"
+      defer
+    ></script>
   </head>
   <body>
     <div class="page-container">
-      <button class="home-btn btn" type="button">홈으로</button>
+      <button id="home" class="home-btn btn" type="button">홈으로</button>
 
       <div class="title-container">
         <h1>같은 티니핑 친구들을 찾아라!</h1>
@@ -18,18 +23,27 @@
           <p>기억력을 발휘해 티니핑 친구들을 모두 찾아주세요!</p>
         </div>
 
+        <img src="/memorygame_img/moyaPing.webp" alt="" />
+
         <div class="level-container">
           <h2>난이도 선택</h2>
           <div class="btn-container">
-            <button class="level-btn btn" type="button">쉬움 (6쌍)</button>
-            <button class="level-btn btn" type="button">보통 (8쌍)</button>
-            <button class="level-btn btn" type="button">어려움 (12쌍)</button>
+            <button id="easy" class="level-btn btn" type="button">
+              쉬움 (6쌍)
+            </button>
+            <button id="common" class="level-btn btn" type="button">
+              보통 (8쌍)
+            </button>
+            <button id="hard" class="level-btn btn" type="button">
+              어려움 (12쌍)
+            </button>
           </div>
         </div>
 
-        <button class="start-btn btn" type="button">게임 시작하기</button>
+        <button id="start" class="start-btn btn" type="button">
+          티니핑 구하러 출발!!
+        </button>
       </div>
     </div>
-    <a href="./memoryGameStart.html">임시 이동 장치</a>
   </body>
 </html>

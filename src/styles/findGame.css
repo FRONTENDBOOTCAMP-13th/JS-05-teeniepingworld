@@ -2,6 +2,11 @@
 @import url('/src/common/modern-reset.css');
 @import url('/src/common/theme.css');
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   --primary-color: hotpink;
   --sub-color: skyblue;
@@ -25,12 +30,76 @@ body {
   flex-direction: column;
 
   margin: auto;
-  padding: 40px;
-  height: 80vh;
-  width: 100vh;
+  padding: 30px 40px;
+  min-height: 80%;
+  width: 60%;
 
-  background-color: var(--w-color);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  @media (max-width: 640px) {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  .top-container {
+    display: flex;
+    justify-content: space-between;
+
+    .top-buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      align-items: center;
+
+      .btn {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+
+        &.red {
+          background-color: #ff5f57;
+        }
+
+        &.yellow {
+          background-color: #ffbd2e;
+        }
+
+        &.green {
+          background-color: #28c840;
+        }
+      }
+      input {
+        width: 50px;
+        height: 15px;
+        font-size: 12px;
+        padding: 0 6px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        color: #333;
+        text-align: center;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.2s ease;
+
+        &:focus {
+          border-color: #aaa;
+        }
+      }
+    }
+
+    .settings-btn {
+      background: none;
+      border: none;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+  }
 
   .game-info-wrapper {
     display: flex;
@@ -38,15 +107,28 @@ body {
     justify-content: space-between;
     align-items: center;
 
+    @media (max-width: 640px) {
+      flex-direction: column;
+    }
     .game-title {
       color: var(--primary-color);
     }
 
     .game-round {
-      padding: 10px 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
 
-      background: var(--bg-color);
+      background: white;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
       border-radius: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 640px) {
+        margin-top: 10px;
+      }
     }
   }
   hr {
@@ -55,22 +137,30 @@ body {
     border: 0.3px solid var(--g-color);
   }
   .game-description {
-    padding: 20px;
-
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c2c2c;
     text-align: center;
-    color: var(--w-color);
 
-    background-color: var(--sub-color);
-    border-radius: 10px;
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--sub-color);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
   }
 
   .game-container {
-    display: flex;
+    display: none;
     flex-direction: row;
 
     flex: 1;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     .set {
       position: relative;
@@ -82,11 +172,7 @@ body {
 
       .teenieping {
         object-fit: contain;
-
-        width: 50%;
-        height: 50%;
-
-        z-index: 1;
+        width: 40%;
       }
 
       .teenieping-cube {
@@ -97,7 +183,7 @@ body {
         object-fit: contain;
         position: absolute;
 
-        z-index: 2;
+        z-index: 1;
         transition: transform 0.3s ease;
 
         &:hover {
@@ -106,9 +192,98 @@ body {
       }
     }
   }
+
+  .game-start-btn-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .game-btn {
+      background-color: #ff9edb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 200px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  }
+
+  .game-conclusion {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    color: #333; /* 차콜 느낌 */
+    width: 100%;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 24px;
+      color: var(--primary-color);
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .stat-item {
+      background-color: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      font-size: 16px;
+
+      .label {
+        color: #777;
+
+        .value {
+          font-weight: bold;
+          color: #222;
+        }
+      }
+    }
+
+    .restart-btn {
+      background-color: #ff9edb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ff78c6;
+      }
+    }
+  }
+  audio {
+    display: block;
+    margin: 32px auto 0 auto;
+  }
 }
 
-.panel-dialog {
+.result-dialog {
   position: fixed;
 
   width: 280px;
@@ -118,7 +293,6 @@ body {
   background-color: #fff7fb;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
-  font-family: 'Helvetica Neue', sans-serif;
 
   h2 {
     font-size: 20px;
@@ -139,11 +313,12 @@ body {
     margin-bottom: 20px;
   }
 
-  .close-dialog {
+  .dialog-btn {
     background-color: #ff9edb;
     color: white;
     border: none;
     padding: 10px 18px;
+    margin-inline: 5px;
     font-size: 14px;
     border-radius: 12px;
     cursor: pointer;
@@ -155,31 +330,145 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tutorial-dialog {
+  border: none;
+  border-radius: 20px;
+  min-width: 320px;
+  max-width: 420px;
+  padding: 24px 20px;
+  background-color: #fff9fc;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 20px;
+    color: #ff6bac;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  p,
+  ol,
+  ul {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #3b3b3b;
+    margin-bottom: 20px;
+    text-align: center;
+
+    li {
+      margin-bottom: 6px;
+    }
+  }
+
+  img {
+    display: block;
+    width: 85%;
+    max-width: 280px;
+    margin: 12px auto 20px;
+    padding: 10px;
+    background-color: #fceef5;
+    border-radius: 12px;
+  }
+
+  .tutorial-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.settings-dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 24px;
+  background-color: #fff0f5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  min-width: 320px;
+  max-width: 420px;
+
+  h2 {
+    color: #ff66a3;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .settings-options {
+    button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px 16px;
+      background-color: #ffd1e9;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #ffadd6;
+      }
+    }
+  }
+
+  .settings-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
 /* dialog 백드롭 */
 ::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* 테스트 버튼 - 추후 삭제 */
-.button-container {
-  position: fixed;
-  top: 20px; /* 위에서 20px 떨어지게 */
-  right: 20px; /* 오른쪽에서 20px 떨어지게 */
-  z-index: 1000; /* 다른 요소들보다 위에 오도록 */
+.hidden-toggle {
+  display: none;
+}
 
-  button,
-  a {
-    background-color: #ff9edb;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin: 5px;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #ff78c6;
-    }
+.hovered {
+  &:hover {
+    background-color: #ff78c6;
+    scale: 1.05;
   }
 }

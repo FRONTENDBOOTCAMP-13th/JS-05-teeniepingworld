@@ -5,26 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>typeTestStart</title>
     <link rel="stylesheet" href="/src/styles/typeTestStart.css" />
+    <script
+      type="module"
+      src="/src/typescript/typeTest/typeTestStart.ts"
+    ></script>
   </head>
   <body>
+    <!-- TODO 맨 처음시작 -->
     <div class="container">
       <header>
         <h1 class="main-name">티니핑 성격 유형 테스트</h1>
       </header>
       <main>
-        <section>
-          <div class="progress-rate">
-            <span>질문</span>
-            <span>8%</span>
-            <div class="statistics"></div>
-          </div>
+        <div class="progress-rate">
+          <span class="question-rate">질문 1/12</span>
+          <!-- <span class="statistics">8%</span> -->
+           <button class="format">처음부터 다시하기</button>
+        </div>
+        <section class="bar-container">
+          <div class="bar"></div>
         </section>
-        <span>모임에서 당신은...</span>
-        <button>여러 사람들과 대화하며 에너지를 얻는다.</button>
-        <button>소수의 친한 사람들과 깊은 대화를 나누는 것을 선호한다.</button>
+        <p class="section-text">프로젝트에서 갑자기 리더를 맡아달라는 말을 들었다. 당신의 속마음은?</p>
+        <section class="choice-btn">
+          <button class="choice-first">
+            왜 하필 나야..? 리더는 부담스러운데...😓
+          </button>
+          <button class="choice-second">
+            오..할 기회가 생겼네? 잘 해보자!😎
+          </button>
+        </section>
         <section class="bottom-bar">
-          <button>이전</button>
-          <div class="flow-circle"></div>
+          <button class="previous-btn">
+            <img src="../assets/typeTest_img/Frame.png" alt="이전으로" />
+            <span>이전</span>
+          </button>
+          <div class="pagination-container">
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
         </section>
       </main>
     </div>

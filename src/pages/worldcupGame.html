@@ -5,13 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>티니핑 이상형 월드컵</title>
     <link rel="stylesheet" href="/src/common/theme.css" />
-    <link rel="stylesheet" href="/src/styles/worldcupGame.css" />
-    <!-- <script src="/src/typescript/worldcupGame.ts" async></script> -->
+    <link rel="stylesheet" href="/src/styles/worldcupGame/worldcupGame.css" />
+    <link
+      rel="stylesheet"
+      href="/src/styles/worldcupGame/worldcupGameModal.css"
+    />
+    <script
+      type="module"
+      src="/src/typescript/worldcupGame/worldcupGameModal.ts"
+      defer
+    ></script>
+    <script defer>
+      // Facebook
+      function shareFacebook() {
+        const title = 'Facebook으로 공유하기';
+        const url = 'https://teeniepingworld.netlify.app/';
+        window.open(
+          'http://www.facebook.com/sharer/sharer.php?u=' +
+            url +
+            '&title=' +
+            title,
+        );
+      }
+    </script>
   </head>
   <body>
     <!-- 월드컵 게임 main 페이지 -->
-
     <section class="main-content main-page">
+      <div class="main-page-left">
+        <a
+          class="main-page-left-icon"
+          href="javascript:history.back()"
+          aria-label="이전 페이지로 이동"
+          tabindex="0"
+        >
+          <svg
+            width="9"
+            height="14"
+            viewBox="0 0 9 14"
+            fill="var(--contents-primary-color)"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.94219 12.8079C8.00026 12.866 8.04632 12.9349 8.07775 13.0108C8.10918 13.0867 8.12535 13.168 8.12535 13.2501C8.12535 13.3322 8.10918 13.4135 8.07775 13.4894C8.04632 13.5653 8.00026 13.6342 7.94219 13.6923C7.88412 13.7504 7.81518 13.7964 7.73931 13.8278C7.66344 13.8593 7.58213 13.8755 7.5 13.8755C7.41788 13.8755 7.33656 13.8593 7.26069 13.8278C7.18482 13.7964 7.11588 13.7504 7.05782 13.6923L0.807816 7.44229C0.749705 7.38425 0.703606 7.31531 0.672154 7.23944C0.640701 7.16357 0.624512 7.08224 0.624512 7.0001C0.624512 6.91797 0.640701 6.83664 0.672154 6.76077C0.703606 6.68489 0.749705 6.61596 0.807816 6.55792L7.05782 0.307916C7.17509 0.19064 7.33415 0.124756 7.5 0.124756C7.66586 0.124756 7.82492 0.19064 7.94219 0.307916C8.05947 0.425191 8.12535 0.584251 8.12535 0.750103C8.12535 0.915956 8.05947 1.07502 7.94219 1.19229L2.1336 7.0001L7.94219 12.8079Z"
+              fill="var(--contents-primary-color)"
+            />
+          </svg>
+        </a>
+      </div>
       <div class="main-page-title">
         <h1 class="title-text">티니핑 이상형 월드컵</h1>
       </div>
@@ -24,12 +65,51 @@
             alt="티니핑 이상형 월드컵"
           />
           <figcaption class="content-text">
-            32명의 티니핑 캐릭터 중 당신의 최애 캐릭터를 선택해보세요!
+            귀여운 티니핑 친구들 중 내 마음을 사로잡을 캐릭터는?
           </figcaption>
         </figure>
         <button class="start-btn" type="button">시작하기</button>
       </div>
     </section>
+
+    <!-- main 페이지 모달창 -->
+    <dialog
+      id="main-page-modal"
+      class="main-page-modal"
+      role="dialog"
+      aria-labelledby="worldcupGame modal-title"
+      aria-describedby="worldcupGame modal"
+    >
+      <div class="modal-content">
+        <h2 id="modal-title" class="modal-title-text">티니핑 이상형 월드컵</h2>
+        <div id="modal-content">
+          <b id="modal-desc">총 라운드를 선택하세요.</b>
+          <select name="round" id="월드컵 라운드 수 선택" class="modal-select">
+            <option value="64">64강</option>
+            <option value="32" selected>32강</option>
+            <option value="16">16강</option>
+            <option value="8">8강</option>
+          </select>
+        </div>
+
+        <div class="modal-btn-wrapper">
+          <button
+            id="modal-confirm-btn"
+            class="modal-confirm-btn"
+            aria-label="확인하고 게임 페이지로 진입"
+          >
+            Start!
+          </button>
+          <button
+            id="modal-close-btn"
+            class="modal-close-btn"
+            aria-label="모달창 닫기"
+          >
+            돌아가기
+          </button>
+        </div>
+      </div>
+    </dialog>
 
     <!-- 월드컵 게임 game 페이지 -->
     <!-- <section class="main-content game-page">
@@ -54,6 +134,8 @@
                 class="cover-img"
                 src=".././assets/worldcupGame_img/joaPing.png"
                 alt="조아핑"
+                dragable='false'                
+                oncontextmenu="return false;"
               />
               <figcaption class="content-text">조아핑</figcaption>
             </figure>
@@ -64,6 +146,8 @@
                 class="cover-img"
                 src=".././assets/worldcupGame_img/banggeulPing.png"
                 alt="방글핑"
+                dragable='false'
+                oncontextmenu="return false;"
               />
               <figcaption class="content-text">방글핑</figcaption>
             </figure>
@@ -81,7 +165,7 @@
       TODO 내부 콘텐츠 객체값으로 수정
       <div class="winner-page-content">
         <ul>
-          <li class="sub-title">🎉 우승자 🎉</li>
+          <li class="sub-title">💕💗 나의 최애 티니핑은.. 💗💕</li>
           <li>
             <figure>
               <img

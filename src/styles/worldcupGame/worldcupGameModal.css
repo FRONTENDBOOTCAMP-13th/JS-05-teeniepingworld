@@ -1,0 +1,102 @@
+/* 기본 세팅 */
+:root {
+  --color-grey-95: #f3e8ff;
+  --bgc-primary: linear-gradient(
+    180deg,
+    var(--color-grey-95, #f3e8ff) 0%,
+    var(--color-grey-95, #f3e8ff) 100%
+  );
+}
+
+.main-page-modal[open] {
+  border: none;
+  border-radius: 10px;
+  background: var(--bgc-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  width: 70%;
+  height: 60%;
+  padding: 30px;
+}
+
+.main-page-modal::backdrop {
+  background-color: rgba(var(--color-grey-95), 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modal-title-text {
+  color: #ec4899;
+  font-size: var(--text-5xl);
+  margin-block: 20px;
+}
+
+#modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 요소들 수평 중앙 정렬 */
+  gap: 20px; /* 내부 요소들 간격 */
+  width: 100%;
+}
+
+#modal-desc {
+  text-align: center;
+  font-size: var(--text-lg, 1.125rem);
+}
+
+.modal-select {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  width: 300px; /* 선택 요소의 폭 */
+  text-align: center;
+  font-size: var(--text-3xl, 1rem);
+}
+
+.modal-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* 버튼 사이 간격 */
+  margin-top: 40px; /* 선택 요소와 버튼 사이 간격 */
+  width: 100%;
+}
+
+.modal-confirm-btn,
+.modal-close-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-confirm-btn {
+  background-color: #ec4899;
+  color: white;
+}
+
+.modal-close-btn {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.modal-confirm-btn:hover {
+  background-color: #db2777;
+}
+
+.modal-close-btn:hover {
+  background-color: #d1d5db;
+}
