@@ -7,30 +7,16 @@
 import { getImage } from './findGameUtils';
 
 export function openCubeAll() {
-  // const images: Record<string, unknown> = import.meta.glob(
-  //   '/src/assets/findgame_img/*.WEBP',
-  //   {
-  //     eager: true,
-  //     import: 'default',
-  //   },
-  // );
-
   const openBtn = document.querySelector('.green');
   openBtn?.addEventListener('click', () => {
     const cubes =
       document.querySelectorAll<HTMLImageElement>('.teenieping-cube');
     cubes.forEach((item) => {
       if (item?.src.includes('ruru')) {
-        // const imgPath = images[
-        //   `/src/assets/findgame_img/ruruPingCubeOpen.WEBP`
-        // ] as string;
         const imgPath = getImage(`ruruPingCubeOpen`);
         item?.setAttribute('src', imgPath);
       }
       if (item?.src.includes('bbanzzak')) {
-        // const imgPath = images[
-        //   `/src/assets/findgame_img/bbanzzakPingCubeOpen.WEBP`
-        // ] as string;
         const imgPath = getImage(`bbanzzakPingCubeOpen`);
         item?.setAttribute('src', imgPath);
       }

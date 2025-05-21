@@ -6,17 +6,6 @@ import { type findTeenieping } from '../../types/findGameType.ts';
  * @param {findTeenieping} set - 이미지가 포함된 div 요소를 가진 객체
  */
 export function openCube(set: findTeenieping, name: string) {
-  // const images: Record<string, unknown> = import.meta.glob(
-  //   '/src/assets/findgame_img/*.WEBP',
-  //   {
-  //     eager: true,
-  //     import: 'default',
-  //   },
-  // );
-  // const imgPath = images[
-  //   `/src/assets/findgame_img/${name}PingCubeOpen.WEBP`
-  // ] as string;
-
   const imgPath = getImage(`${name}PingCubeOpen`);
 
   const targetImg = set.getDiv?.querySelector('img');
@@ -32,17 +21,6 @@ export function openCube(set: findTeenieping, name: string) {
  * @param {findTeenieping} set - 이미지가 포함된 div 요소를 가진 객체
  */
 export function closeCube(set: findTeenieping, name: string) {
-  // const images: Record<string, unknown> = import.meta.glob(
-  //   '/src/assets/findgame_img/*.WEBP',
-  //   {
-  //     eager: true,
-  //     import: 'default',
-  //   },
-  // );
-  // const imgPath = images[
-  //   `/src/assets/findgame_img/${name}PingCube.WEBP`
-  // ] as string;
-
   const imgPath = getImage(`${name}PingCube`);
 
   const targetImg = set.getDiv?.querySelector('img');
@@ -59,17 +37,6 @@ export function closeCube(set: findTeenieping, name: string) {
  * @param {string} name - 티니핑 이름 (이미지 파일 이름에 사용됨)
  */
 export function setCube(i: number, name: string) {
-  // const images: Record<string, unknown> = import.meta.glob(
-  //   '/src/assets/findgame_img/*.WEBP',
-  //   {
-  //     eager: true,
-  //     import: 'default',
-  //   },
-  // );
-  // const imgPath = images[
-  //   `/src/assets/findgame_img/${name}PingCubeOpen.WEBP`
-  // ] as string;
-
   const imgPath = getImage(`${name}PingCubeOpen`);
 
   const gameContainer = document.querySelector<HTMLElement>('.game-container');
@@ -78,10 +45,7 @@ export function setCube(i: number, name: string) {
   const newImg = document.createElement('img');
   newDiv.setAttribute('class', 'set');
   newDiv.setAttribute('id', `set-${i}`);
-  // newImg.setAttribute(
-  //   'src',
-  //   `/src/assets/findgame_img/${name}PingCubeOpen.WEBP`,
-  // );
+
   newImg.setAttribute('src', imgPath);
   newImg.setAttribute('alt', '티니핑 큐브');
   newImg.setAttribute('class', 'teenieping-cube');
@@ -104,16 +68,6 @@ export function insertTeenieping(
 ) {
   if (answerSet.getDiv) {
     const targetDiv = answerSet.getDiv;
-    // const images: Record<string, unknown> = import.meta.glob(
-    //   '/src/assets/findgame_img/*.WEBP',
-    //   {
-    //     eager: true,
-    //     import: 'default',
-    //   },
-    // );
-    // const imgPath = images[
-    //   `/src/assets/findgame_img/${name}Ping.WEBP`
-    // ] as string;
 
     const imgPath = getImage(`${name}Ping`);
 
@@ -239,14 +193,6 @@ export function showResult(
   result: boolean,
   round: number,
 ) {
-  // const images: Record<string, unknown> = import.meta.glob(
-  //   '/src/assets/findgame_img/*.WEBP',
-  //   {
-  //     eager: true,
-  //     import: 'default',
-  //   },
-  // );
-
   const resultDialog = document.querySelector(
     '.result-dialog',
   ) as HTMLDialogElement;
@@ -261,9 +207,6 @@ export function showResult(
   const dialogBtn2 = resultDialog.querySelector('.dialog-btn2');
 
   if (round === 10) {
-    // const imgPath = images[
-    //   `/src/assets/findgame_img/ayaPingSuccess.WEBP`
-    // ] as string;
     const imgPath = getImage(`ayaPingSuccess`);
 
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
@@ -274,9 +217,6 @@ export function showResult(
     dialogBtn1?.setAttribute('hidden', '');
     localStorage.setItem('history', '0');
   } else if (result === true) {
-    // const imgPath = images[
-    //   `/src/assets/findgame_img/ayaPingSuccess.WEBP`
-    // ] as string;
     const imgPath = getImage(`ayaPingSuccess`);
 
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
@@ -286,19 +226,13 @@ export function showResult(
     dialogBtn1?.removeAttribute('hidden');
 
     if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
-    // localStorage.setItem('history', JSON.stringify(++round));
   } else {
-    // const imgPath = images[
-    //   `/src/assets/findgame_img/ayaPingFail.WEBP`
-    // ] as string;
     const imgPath = getImage(`ayaPingFail`);
 
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
     if (dialogImg?.src) dialogImg.src = imgPath;
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
     dialogBtn1?.setAttribute('hidden', '');
-
-    // localStorage.setItem('history', JSON.stringify(round));
   }
 
   showDialog();
@@ -497,4 +431,8 @@ export function getImage(imgName: string) {
   );
   const imgPath = images[`/src/assets/findgame_img/${imgName}.WEBP`] as string;
   return imgPath;
+}
+
+export function waitForNextPaint(): Promise<void> {
+  return new Promise((resolve) => requestAnimationFrame(() => resolve()));
 }
