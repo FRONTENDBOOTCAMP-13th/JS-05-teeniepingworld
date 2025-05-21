@@ -10,6 +10,7 @@ import {
   setRound,
   showResult,
   waitDelay,
+  waitForNextPaint,
 } from './findGameUtils.ts';
 
 /**
@@ -57,6 +58,8 @@ async function play(round: number, resolve: () => void) {
   for (let i = 0; i < cubeCount; i++) {
     setCube(i, teeniepingNameEng);
   }
+
+  await waitForNextPaint();
 
   setGameDescription(`${teeniepingName}이 큐브 속에 숨었어요!`);
 

@@ -10,9 +10,9 @@
 티니핑 월드는 4개의 미니게임으로 구성된 웹 기반 게임 프로젝트입니다.  
 어린이와 가족 단위 사용자가 즐길 수 있는 인터랙티브한 콘텐츠를 제공합니다.
 
-### 배포 사이트
+<!-- ### 배포 사이트
 
-🎮 [Teenieping World 바로가기](https://teeniepingworld.netlify.app/)
+🎮 [Teenieping World 바로가기]() -->
 
 ### 미니게임 구성
 
@@ -44,10 +44,10 @@
 
 ### 역할 및 구현 페이지
 
-- **오서현** ![Team Leader](https://img.shields.io/badge/Team%20Leader-FF5733?style=flat) : 티니핑 월드컵
-- **김재현** ![Scrum Master](https://img.shields.io/badge/Scrum%20Master-1E90FF?style=flat) : 같은 티니핑 카드 찾기
-- **김태우** ![Documentation](https://img.shields.io/badge/Documentation-4CAF50?style=flat) : 티니핑 심리 테스트
-- **유시원** ![Documentation](https://img.shields.io/badge/Documentation-4CAF50?style=flat) : 숨은 티니핑 찾기
+- **오서현** ![Team Leader](https://img.shields.io/badge/Team%20Leader-FF5733?style=flat) : 티니핑 유형테스트
+- **김재현** ![Scrum Master](https://img.shields.io/badge/Scrum%20Master-1E90FF?style=flat) : 티니핑 카드게임
+- **김태우** ![Documentation](https://img.shields.io/badge/Documentation-4CAF50?style=flat) : 티니핑 이상형 월드컴
+- **유시원** ![Documentation](https://img.shields.io/badge/Documentation-4CAF50?style=flat) : 티니핑을 찾아라
 
 ## 기술 스택
 
