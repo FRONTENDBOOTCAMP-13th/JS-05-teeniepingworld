@@ -59,14 +59,27 @@ body {
 }
 
 /* main-page */
+.main-page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+/* 기존 main-page-left 스타일 수정 */
+.main-page-left {
+  position: static;
+  padding: 0;
+  margin-right: auto; /* 왼쪽으로 밀어내기 */
+}
+
 .home-btn-icon {
   padding: 0;
   border-radius: 8px;
   width: 50px;
   height: 50px;
-  position: absolute;
-  left: 30px;
-  top: 20px;
   transition: box-shadow 0.2s ease;
 
   /* background-image 속성들 */
@@ -76,8 +89,8 @@ body {
   background-repeat: no-repeat;
 
   /* 링크 스타일 초기화 */
-  display: block;
   text-decoration: none;
+  display: block;
 }
 
 .home-btn-icon:hover {
@@ -86,12 +99,12 @@ body {
 
 .title-text {
   color: var(--yellow-dark);
-  display: flex;
-  justify-content: center;
   font-size: var(--text-5xl);
-  margin-bottom: 30px;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(202, 138, 4, 0.1);
+  margin: 0;
+  text-align: center;
+  flex: 1;
 }
 
 /* 게임 페이지와 겹치는 스타일 */
