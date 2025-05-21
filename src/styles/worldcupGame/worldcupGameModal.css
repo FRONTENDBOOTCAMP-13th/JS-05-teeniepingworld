@@ -1,28 +1,49 @@
-/* 기본 세팅 */
+@import '/src/common/font.css';
+
+/* 기본 세팅 - 노란색 테마 */
 :root {
-  --color-grey-95: #f3e8ff;
+  /* 노란색 계열 색상 팔레트 */
+  --color-yellow-95: #fefce8;
+  --color-yellow-90: #fef3c7;
+  --color-yellow-80: #fde68a;
+  --color-yellow-70: #fcd34d;
+  --color-yellow-60: #fbbf24;
+  --color-yellow-50: #f59e0b;
+  --color-yellow-40: #d97706;
+  --color-yellow-30: #b45309;
+
+  /* 주요 색상 변수 */
+  --yellow-color: #ca8a04;
+  --yellow-bg: linear-gradient(90deg, #facc15 0%, #ca8a04 100%);
+  --yellow-border: #fde047;
+  --yellow-hover: #eab308;
+  --yellow-dark: #a16207;
+
   --bgc-primary: linear-gradient(
     180deg,
-    var(--color-grey-95, #f3e8ff) 0%,
-    var(--color-grey-95, #f3e8ff) 100%
+    var(--color-yellow-95, #fefce8) 0%,
+    var(--color-yellow-90, #fef3c7) 100%
   );
 }
 
 .main-page-modal[open] {
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--bgc-primary);
   display: flex;
+  font-family: 'titleFont', sans-serif;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   width: 70%;
   height: 60%;
   padding: 30px;
+  box-shadow: 0 12px 32px rgba(202, 138, 4, 0.25);
+  border: 2px solid var(--yellow-border);
 }
 
 .main-page-modal::backdrop {
-  background-color: rgba(var(--color-grey-95), 0.7);
+  background-color: rgba(202, 138, 4, 0.15);
   backdrop-filter: blur(8px);
 }
 
@@ -37,32 +58,57 @@
 }
 
 .modal-title-text {
-  color: #ec4899;
+  color: var(--yellow-dark);
   font-size: var(--text-5xl);
   margin-block: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(202, 138, 4, 0.1);
 }
 
 #modal-content {
   display: flex;
   flex-direction: column;
   align-items: center; /* 내부 요소들 수평 중앙 정렬 */
-  gap: 20px; /* 내부 요소들 간격 */
+  gap: 25px; /* 내부 요소들 간격 */
   width: 100%;
 }
 
 #modal-desc {
   text-align: center;
   font-size: var(--text-lg, 1.125rem);
+  color: var(--yellow-30);
+  font-weight: 600;
+}
+
+.likelion {
+  font-size: var(--text-4xl);
+  filter: drop-shadow(0 2px 4px rgba(202, 138, 4, 0.2));
 }
 
 .modal-select {
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  background-color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--yellow-border);
+  background: linear-gradient(135deg, white 0%, var(--color-yellow-95) 100%);
   width: 300px; /* 선택 요소의 폭 */
   text-align: center;
   font-size: var(--text-3xl, 1rem);
+  color: var(--yellow-dark);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(202, 138, 4, 0.1);
+}
+
+.modal-select:hover {
+  border-color: var(--yellow-color);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.2);
+}
+
+.modal-select:focus {
+  outline: none;
+  border-color: var(--yellow-color);
+  box-shadow: 0 0 0 3px rgba(202, 138, 4, 0.2);
 }
 
 .modal-btn-wrapper {
@@ -75,28 +121,47 @@
 
 .modal-confirm-btn,
 .modal-close-btn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   border: none;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  font-size: var(--text-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .modal-confirm-btn {
-  background-color: #ec4899;
+  background: var(--yellow-bg);
   color: white;
 }
 
 .modal-close-btn {
-  background-color: #e5e7eb;
-  color: #374151;
+  background: linear-gradient(
+    135deg,
+    var(--color-yellow-80) 0%,
+    var(--color-yellow-70) 100%
+  );
+  color: var(--yellow-dark);
+  border: 2px solid var(--yellow-border);
 }
 
 .modal-confirm-btn:hover {
-  background-color: #db2777;
+  background: linear-gradient(
+    90deg,
+    var(--yellow-hover) 0%,
+    var(--yellow-dark) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(202, 138, 4, 0.3);
 }
 
 .modal-close-btn:hover {
-  background-color: #d1d5db;
+  background: linear-gradient(
+    135deg,
+    var(--color-yellow-70) 0%,
+    var(--color-yellow-60) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.2);
 }

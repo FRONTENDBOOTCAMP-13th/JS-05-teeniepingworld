@@ -1,14 +1,35 @@
 @import url('/src/common/a11y.css');
 @import url('/src/common/modern-reset.css');
 @import url('/src/common/theme.css');
+@import '/src/common/font.css';
 
-/* 기본 세팅 */
+/* 기본 세팅 - 노란색 테마 */
 :root {
-  --color-grey-95: #f3e8ff;
-  --color-grey-bar: #e5e7eb;
+  /* 기존 회색/보라색 계열을 노란색 계열로 변경 */
+  --color-yellow-95: #fefce8;
+  --color-yellow-90: #fef3c7;
+  --color-yellow-80: #fde68a;
+  --color-yellow-70: #fcd34d;
+  --color-yellow-60: #fbbf24;
+  --color-yellow-50: #f59e0b;
+  --color-yellow-40: #d97706;
+  --color-yellow-30: #b45309;
+  --color-yellow-20: #92400e;
+  --color-yellow-10: #78350f;
+
+  /* 주요 색상 변수 */
+  --yellow-color: #ca8a04;
+  --yellow-bg: linear-gradient(90deg, #facc15 0%, #ca8a04 100%);
+  --yellow-border: #fde047;
+  --yellow-hover: #eab308;
+  --yellow-dark: #a16207;
+
+  /* 배경색 업데이트 */
+  --color-grey-95: var(--color-yellow-95);
+  --color-grey-bar: #fde68a;
 
   --bg-color-primary: var(--color-white);
-  --bg-color-sub: var(--color-grey-95);
+  --bg-color-sub: var(--color-yellow-95);
 }
 
 body {
@@ -16,59 +37,107 @@ body {
   background:
     linear-gradient(
       180deg,
-      var(--color-grey-95, #f3e8ff) 0%,
-      var(--color-grey-95, #f3e8ff) 100%
+      var(--color-yellow-95, #fefce8) 0%,
+      var(--color-yellow-90, #fef3c7) 100%
     ),
     var(--bg-color-primary, #fff);
   display: flex;
+  font-family: 'titleFont', sans-serif;
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
   user-select: none;
 }
 
-/* main-page */
-.main-page-left {
-  padding: 20px;
-  border-radius: 8px;
-  position: absolute;
-  left: 30px;
-  top: 20px;
+.cover-img {
+  /*drag 안되게 설정하는 코드*/
+  -webkit-user-drag: none; /* Safari에서 드래그 방지 */
+  -khtml-user-drag: none; /* 구형 브라우저 지원 */
+  -moz-user-drag: none; /* Firefox */
+  -o-user-drag: none; /* Opera */
+  pointer-events: none; /* 이미지에 대한 마우스 이벤트 방지 */
 }
-.main-page-left:hover {
-  box-shadow: 0 0 6px #ec4899;
+
+/* main-page */
+.main-page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+/* 기존 main-page-left 스타일 수정 */
+.main-page-left {
+  position: static;
+  padding: 0;
+  margin-right: auto; /* 왼쪽으로 밀어내기 */
+}
+
+.home-btn-icon {
+  padding: 0;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  transition: box-shadow 0.2s ease;
+
+  /* background-image 속성들 */
+  background-image: url('/worldcupGame_img/home-tnp.png');
+  background-size: contain; /* 또는 contain */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* 링크 스타일 초기화 */
+  text-decoration: none;
+  display: block;
+}
+
+.home-btn-icon:hover {
+  box-shadow: 0 0 6px var(--yellow-dark);
 }
 
 .title-text {
-  color: #ec4899;
-  display: flex;
-  justify-content: center;
+  color: var(--yellow-dark);
   font-size: var(--text-5xl);
-  margin-bottom: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(202, 138, 4, 0.1);
+  margin: 0;
+  text-align: center;
+  flex: 1;
 }
 
 /* 게임 페이지와 겹치는 스타일 */
 .worldcup-content-section,
 .game-page-content {
-  background-color: var(--bg-color-primary);
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-primary) 0%,
+    var(--color-yellow-95) 100%
+  );
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 12px;
+  border: 2px solid var(--yellow-border);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.15);
 }
 
 .worldcup-content-section {
   .cover-img {
     margin-top: 30px;
     padding-block: 16px;
+    filter: drop-shadow(0 4px 8px rgba(202, 138, 4, 0.2));
   }
 
   .content-text {
     padding-block: 24px;
     font-size: var(--text-3xl);
+    color: var(--yellow-dark);
+    font-weight: 600;
   }
 }
 
@@ -77,10 +146,24 @@ body {
   width: 40vw;
   height: 48px;
   border: none;
-  border-radius: 8px;
-  background-color: #ec4899;
-  color: var(--bg-color-primary);
+  border-radius: 12px;
+  background: var(--yellow-bg);
+  color: var(--color-white);
   font-size: var(--text-3xl);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.3);
+}
+
+.start-btn:hover {
+  background: linear-gradient(
+    90deg,
+    var(--yellow-hover) 0%,
+    var(--yellow-dark) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(202, 138, 4, 0.4);
 }
 
 .modal-content {
@@ -97,32 +180,40 @@ body {
 
 /* game-page-title */
 .game-page-title {
-  background-color: var(--bg-color-primary);
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-primary) 0%,
+    var(--color-yellow-95) 100%
+  );
   margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 12px;
   width: 70%;
+  border: 2px solid var(--yellow-border);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.15);
 }
 
 .text-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 5px 0;
+  margin: 8px 0;
 
   .sub-title {
-    color: #000;
+    color: var(--yellow-dark);
     font-size: var(--text-2xl);
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(202, 138, 4, 0.1);
   }
 
   .sub-info {
-    color: #4b5563;
+    color: var(--yellow-30);
     font-size: var(--text-xs);
+    font-weight: 500;
   }
 }
 
@@ -130,15 +221,15 @@ body {
   position: relative;
   width: 100%;
   max-width: 600px;
-  height: 5px;
-  margin: 10px auto;
+  height: 6px;
+  margin: 12px auto;
   list-style: none;
   padding: 0;
 
   .bg-bar {
     position: absolute;
-    background-color: var(--color-grey-bar);
-    height: 5px;
+    background-color: var(--color-yellow-80);
+    height: 6px;
     width: 100%;
     border-radius: 20px;
     top: 0;
@@ -148,20 +239,22 @@ body {
 
   .pg-bar {
     position: absolute;
-    background-color: #ec4899;
-    height: 5px;
+    background: var(--yellow-bg);
+    height: 6px;
     width: 6.25%; /* 1/16 진행 상태 */
     border-radius: 20px;
     top: 0;
     left: 0;
     z-index: 2;
+    box-shadow: 0 0 8px rgba(202, 138, 4, 0.4);
+    transition: width 0.3s ease;
   }
 }
 
 /* game-page-card section */
 .game-page-content {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .game-page-content ul {
@@ -170,24 +263,32 @@ body {
   padding: 0;
   margin: 0;
   list-style: none;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
 }
 
 .game-page-content li {
   flex: 1;
-  background-color: var(--bg-color-primary);
-  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-primary) 0%,
+    var(--color-yellow-95) 100%
+  );
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 2px solid var(--yellow-border);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.1);
 }
 
 .game-page-content li:hover {
-  transform: scale(1.02);
+  transform: scale(1.05) translateY(-3px);
+  border-color: var(--yellow-color);
+  box-shadow: 0 8px 20px rgba(202, 138, 4, 0.25);
 }
 
 .game-page-content figure {
@@ -203,20 +304,21 @@ body {
   object-fit: contain;
   padding: 20px;
   box-sizing: border-box;
-
-  /*drag 안되게 설정하는 코드*/
-  -webkit-user-drag: none; /* Safari에서 드래그 방지 */
-  -khtml-user-drag: none; /* 구형 브라우저 지원 */
-  -moz-user-drag: none; /* Firefox */
-  -o-user-drag: none; /* Opera */
-  pointer-events: none; /* 이미지에 대한 마우스 이벤트 방지 */
+  transition: filter 0.3s ease;
 }
 
 .game-page-content .content-text {
-  padding: 10px;
+  padding: 15px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 0;
+  color: var(--yellow-dark);
+  background: linear-gradient(
+    90deg,
+    var(--yellow-border) 0%,
+    var(--color-yellow-90) 100%
+  );
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .main-content {
@@ -234,16 +336,20 @@ body {
 }
 
 .winner-page-content {
-  background-color: var(--bg-color-primary);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-primary) 0%,
+    var(--color-yellow-95) 100%
+  );
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(202, 138, 4, 0.2);
+  border: 2px solid var(--yellow-border);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   width: 100%;
   max-width: 500px;
-  margin-bottom: 20px;
 }
 
 .winner-page-content ul {
@@ -255,10 +361,11 @@ body {
 }
 
 .winner-page-content .sub-title {
-  color: #000;
+  color: var(--yellow-dark);
   font-size: var(--text-2xl);
   margin-bottom: 20px;
   font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(202, 138, 4, 0.1);
 }
 
 .winner-page-content figure {
@@ -272,6 +379,8 @@ body {
   height: auto;
   margin: 0 auto;
   display: block;
+  filter: drop-shadow(0 4px 12px rgba(202, 138, 4, 0.2));
+  border-radius: 8px;
 }
 
 .winner-page-content .content-text {
@@ -279,6 +388,8 @@ body {
   font-weight: bold;
   margin-top: 10px;
   margin-bottom: 20px;
+  color: var(--yellow-dark);
+  text-shadow: 1px 1px 2px rgba(202, 138, 4, 0.1);
 }
 
 .character-info {
@@ -288,57 +399,99 @@ body {
   width: 100%;
   text-align: left;
   margin-top: 10px;
+  background: var(--color-yellow-95);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--yellow-border);
 }
 
 .character-info p {
-  margin: 5px 0;
+  margin: 8px 0;
   display: grid;
   grid-template-columns: 1fr 180px;
+  color: var(--yellow-dark);
 }
 
 .character-info .label {
   font-weight: bold;
   width: 170px;
+  color: var(--yellow-30);
 }
 
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin-top: 20px;
   width: 100%;
 }
 
 .action-btn {
-  padding: 8px 16px;
+  padding: 10px 18px;
   border: none;
   border-radius: 8px;
   font-size: var(--text-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .retry-btn {
-  background-color: #ec4899;
+  background: var(--yellow-bg);
   color: white;
+}
+
+.retry-btn:hover {
+  background: linear-gradient(
+    90deg,
+    var(--yellow-hover) 0%,
+    var(--yellow-dark) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.3);
 }
 
 .home-btn {
-  background-color: white;
-  color: #ec4899;
-  border: 1px solid #ec4899;
-  padding: 8px 20px;
-  margin-top: 20px;
+  background-color: var(--bg-color-primary);
+  color: var(--yellow-dark);
+  border: 2px solid var(--yellow-color);
+  padding: 10px 24px;
+  margin-top: 10px;
   font-size: var(--text-md);
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  background: var(--yellow-bg);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.3);
 }
 
 .share-btn {
-  background-color: #8b5cf6;
+  background: linear-gradient(
+    90deg,
+    var(--color-yellow-50) 0%,
+    var(--color-yellow-40) 100%
+  );
   color: white;
+}
+
+.share-btn:hover {
+  background: linear-gradient(
+    90deg,
+    var(--color-yellow-40) 0%,
+    var(--color-yellow-30) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
 .sns-share-btn {
@@ -346,9 +499,23 @@ body {
 }
 
 .rank-btn {
-  background-color: #c74fe8;
+  background: linear-gradient(
+    90deg,
+    var(--color-yellow-60) 0%,
+    var(--color-yellow-50) 100%
+  );
   color: white;
   display: none;
+}
+
+.rank-btn:hover {
+  background: linear-gradient(
+    90deg,
+    var(--color-yellow-50) 0%,
+    var(--color-yellow-40) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
 }
 
 /* rank-page */
@@ -357,4 +524,81 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.rank-page-title {
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-primary) 0%,
+    var(--color-yellow-95) 100%
+  );
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid var(--yellow-border);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.15);
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.rank-page-content {
+  background: linear-gradient(
+    135deg,
+    var(--bg-color-primary) 0%,
+    var(--color-yellow-95) 100%
+  );
+  border-radius: 12px;
+  border: 2px solid var(--yellow-border);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.15);
+  padding: 20px;
+  width: 100%;
+}
+
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-color-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(202, 138, 4, 0.1);
+}
+
+.rank-table th,
+.rank-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--yellow-border);
+}
+
+.rank-table th {
+  background: var(--yellow-bg);
+  color: white;
+  font-weight: bold;
+}
+
+.rank-table td {
+  color: var(--yellow-dark);
+}
+
+.rank-table tr:nth-child(even) {
+  background: var(--color-yellow-95);
+}
+
+.rank-table tr:hover {
+  background: var(--color-yellow-90);
+}
+
+.character-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.rank-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--yellow-border);
 }
