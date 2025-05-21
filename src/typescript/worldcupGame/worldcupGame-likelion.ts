@@ -17,7 +17,7 @@ let isLikelionClicked = false;
 /**
  * hidden character
  */
-const specialCharacters: Teenieping[] = [
+const defaultSpecialCharacters: Teenieping[] = [
   {
     no: '134',
     name: '슬비핑',
@@ -43,6 +43,11 @@ const specialCharacters: Teenieping[] = [
 ];
 
 /**
+ * 현재 활성화된 특별 캐릭터 배열
+ */
+let specialCharacters: Teenieping[] = [];
+
+/**
  * .likelion click event
  */
 
@@ -52,6 +57,9 @@ function setupLikelionClickListener(): void {
   if (likelionElement) {
     likelionElement.addEventListener('click', () => {
       isLikelionClicked = true;
+
+      //click 시 기본 캐릭터 활성화
+      specialCharacters = [...defaultSpecialCharacters];
       console.log('🦁 We are lions! 이스터에그가 활성되었습니다!');
     });
   }
@@ -76,8 +84,10 @@ function getSpecialCharacters(): Teenieping[] {
 /**
  * .likelion click status 초기화 함수
  */
-function resetLikelionState(): void {
+function resetLikelionState(): Teenieping[] {
   isLikelionClicked = false;
+  specialCharacters = [];
+  return specialCharacters;
 }
 
 export {

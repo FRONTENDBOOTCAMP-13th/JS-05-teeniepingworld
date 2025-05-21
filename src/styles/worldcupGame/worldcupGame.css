@@ -602,3 +602,107 @@ body {
   object-fit: cover;
   border: 2px solid var(--yellow-border);
 }
+
+/* 로딩 오버레이 관련 CSS */
+.game-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--yellow-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.game-loading-overlay.visible {
+  opacity: 1;
+}
+
+.game-loading-overlay.fade-out {
+  opacity: 0;
+}
+
+.game-loading-overlay .loading-content {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--color-yellow-80);
+  border-top: 4px solid var(--color-yellow-50);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-title {
+  font-size: 1.5rem;
+  color: #374151;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 10px 0 0 0;
+}
+
+/* 캐릭터 표시 애니메이션 */
+.character-option {
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.character-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.character-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 이미지 로딩 최적화 */
+.cover-img {
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+/* 성능 최적화 */
+.character-option {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* GPU 가속 활용 */
+.character-option.character-visible,
+.character-option.selected,
+.character-option.defeated {
+  transform: translateZ(0);
+}
