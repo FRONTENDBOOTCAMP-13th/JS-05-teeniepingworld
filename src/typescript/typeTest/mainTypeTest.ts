@@ -23,11 +23,11 @@ mp3Btn?.addEventListener('click', function () {
   mp3.muted = isMuted;
 
   if (isMuted!) {
-    mp3Img?.setAttribute('src', '/typeTest_img/volume_off.png');
+    mp3Img?.setAttribute('src', '/typeTest_img/mp3off.png');
     localStorage.setItem('isMuted', 'true');
   } else {
     localStorage.setItem('isMuted', 'false');
-    mp3Img?.setAttribute('src', '/typeTest_img/volume_up.png');
+    mp3Img?.setAttribute('src', '/typeTest_img/mp3on.png');
 
     // 음소거 해제 시 재생 중이 아니라면 재생 시작
     if (!isPlaying && mp3) {
@@ -49,11 +49,11 @@ export async function playAudio(resume: boolean) {
       if (!isMuted) {
         await mp3.play();
       } else {
-        mp3Img?.setAttribute('src', '/typeTest_img/volume_off.png');
+        mp3Img?.setAttribute('src', '/typeTest_img/mp3off.png');
       }
       return true;
     } catch (err) {
-      mp3Img?.setAttribute('src', '/typeTest_img/volume_off.png');
+      mp3Img?.setAttribute('src', '/typeTest_img/mp3off.png');
       console.log('자동 재생이 차단되었습니다:', err);
       return false;
     }
@@ -68,7 +68,7 @@ window.addEventListener('beforeunload', () => {
     // 이전 페이지에서 off 상태이면 다음페이지 상태에서도 off 상태로 유지
     localStorage.setItem('isMuted', isMuted + '');
     if (localStorage.getItem('isMuted') === 'true') {
-      mp3Img?.setAttribute('src', '/typeTest_img/volume_off.png');
+      mp3Img?.setAttribute('src', '/typeTest_img/mp3off.png');
     }
   }
 });
