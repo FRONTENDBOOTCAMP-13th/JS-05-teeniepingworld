@@ -186,23 +186,42 @@ function getRandomTeeniepings(count: number): Teenieping[] {
 
   let selected: Teenieping[] = [];
 
+  //debug: check likelion status
+  const likelionStatus = getIsLikelionClicked();
+  console.log('[debug] Check likelion status', likelionStatus);
+
+  const allHiddenCharacterNumbers = ['134', '135'];
+
   //.likelion click 시, hidden character joined
-  if (getIsLikelionClicked()) {
+  if (likelionStatus) {
     const specialCharacters = getSpecialCharacters();
+    console.log(
+      '[debug] hidden 캐릭터 list',
+      specialCharacters.map((char) => char.name),
+    );
 
     //hidden character를 selected array에 우선 추가
     selected = [
       ...specialCharacters.map((char) => standardizeTeenieping(char)),
     ];
-    console.log('🦁 clicked, hidden teeniepings are coming!');
+
+    console.log('hidden teeniepings are coming!');
     console.log(
       '선택된 특별 캐릭터:',
       specialCharacters.map((char) => char.name),
     );
+  } else {
+    console.log('일반 캐릭터 반환');
   }
 
   // 남은 slot 계산
   const remainingCount = count - selected.length;
+  console.log(
+    '[debug] hidden ping 갯수:',
+    selected.length,
+    '남은 슬롯:',
+    remainingCount,
+  );
 
   // 요청 수가 히든 캐릭터 수보다 적거나 같으면 히든 캐릭터만으로 충분
   if (remainingCount <= 0) {
@@ -214,11 +233,13 @@ function getRandomTeeniepings(count: number): Teenieping[] {
     return result;
   }
 
-  // 일반 캐릭터들에서 남은 수만큼 랜덤 선택
-  const allCharacters = [...teeniepingData.result];
-  const shuffledCharacters = shuffleArray(allCharacters);
+  //일반 캐릭터들만 선택
+  const regularCharacters = teeniepingData.result.filter(
+    (char) => !allHiddenCharacterNumbers.includes(char.no.toString()),
+  );
+  const shuffledCharacters = shuffleArray(regularCharacters);
 
-  // 남은 수만큼 일반 캐릭터 추가
+  //남은 수만큼 일반 케릭터 추가
   for (let i = 0; i < remainingCount && i < shuffledCharacters.length; i++) {
     selected.push(standardizeTeenieping(shuffledCharacters[i]));
   }
@@ -226,9 +247,50 @@ function getRandomTeeniepings(count: number): Teenieping[] {
   // 최종 배열 셔플
   const finalResult = shuffleArray(selected);
   console.log(
-    '랜덤 선택된 캐릭터들:',
+    '최종 선택된 players:',
     finalResult.map((char) => char.name),
   );
+
+  //debug 중복 검사
+  const uniqueNumbers = new Set(finalResult.map((char) => char.no.toString()));
+  const hasDuplicates = uniqueNumbers.size !== finalResult.length;
+  console.log('[debug] 중복 캐릭터 존재 여부:', hasDuplicates);
+
+  //hidden 캐릭터 포함 여부 체크
+  const hasHiddenCharacters = finalResult.some((char) =>
+    allHiddenCharacterNumbers.includes(char.no.toString()),
+  );
+  console.log('[debug] hidden ping 포함 여부:', hasHiddenCharacters);
+
+  // likelion을 클릭하지 않았는데 히든 캐릭터가 포함된 경우 경고
+  if (!likelionStatus && hasHiddenCharacters) {
+    console.error(
+      '[ERROR] 라이키온을 클릭하지 않았는데 히든 캐릭터가 포함되었습니다!',
+    );
+    // 히든 캐릭터를 제거하고 다시 선택
+    const filteredResult = finalResult.filter(
+      (char) => !allHiddenCharacterNumbers.includes(char.no.toString()),
+    );
+
+    // 부족한 만큼 추가 선택
+    const needMore = count - filteredResult.length;
+    if (needMore > 0) {
+      const availableCharacters = shuffledCharacters.filter(
+        (char) => !filteredResult.some((selected) => selected.no === char.no),
+      );
+
+      for (let i = 0; i < needMore && i < availableCharacters.length; i++) {
+        filteredResult.push(standardizeTeenieping(availableCharacters[i]));
+      }
+    }
+
+    console.log(
+      '히든 캐릭터 제거 후 최종 결과:',
+      filteredResult.map((char) => char.name),
+    );
+    return shuffleArray(filteredResult);
+  }
+
   return finalResult;
 }
 
@@ -259,8 +321,6 @@ function standardizeTeenieping(teenieping: Teenieping): Teenieping {
  * @param roundCount 라운드 수 (8, 16, 32, 64)
  */
 async function startGame(roundCount: number): Promise<void> {
-  console.log(`${roundCount}강 게임을 시작합니다.`);
-
   // players 선택
   const selectedTeeniepings = getRandomTeeniepings(roundCount);
 

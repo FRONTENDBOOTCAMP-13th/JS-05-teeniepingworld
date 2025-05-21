@@ -50,7 +50,6 @@ let specialCharacters: Teenieping[] = [];
 /**
  * .likelion click event
  */
-
 function setupLikelionClickListener(): void {
   const likelionElement = document.querySelector('.likelion') as HTMLElement;
 
@@ -84,10 +83,26 @@ function getSpecialCharacters(): Teenieping[] {
 /**
  * .likelion click status 초기화 함수
  */
-function resetLikelionState(): Teenieping[] {
+function resetLikelionState(): void {
   isLikelionClicked = false;
   specialCharacters = [];
-  return specialCharacters;
+  console.log(
+    '[debug] Likelion 클릭 상태 - isClicked:',
+    isLikelionClicked,
+    'hidden캐릭터:',
+    specialCharacters.length,
+  );
+}
+
+/**
+ * 디버깅용 상태 확인 함수
+ */
+function debugLikelionState(): void {
+  console.log('[debug] - isLikelionClicked:', isLikelionClicked);
+  console.log(
+    '[debug] - specialCharacters:',
+    specialCharacters.map((char) => char.name),
+  );
 }
 
 export {
@@ -95,6 +110,7 @@ export {
   getIsLikelionClicked,
   getSpecialCharacters,
   resetLikelionState,
+  debugLikelionState,
 };
 
 export type { Teenieping };
