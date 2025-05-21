@@ -9,6 +9,7 @@ import {
 import { goToMainPage, openCubeAll, setStartRound } from './findGameDevTools';
 import { setContinueButtonDisabled, showGameConclusion } from './findGameUtils';
 
+const goToHomeBtn = document.querySelector<HTMLButtonElement>('.go-to-home');
 const continueStartBtn =
   document.querySelector<HTMLButtonElement>('.continue-game-btn');
 const gameStartBtn =
@@ -24,6 +25,10 @@ initTutorialDialog();
 goToMainPage();
 setStartRound();
 openCubeAll();
+
+goToHomeBtn?.addEventListener('click', () => {
+  location.href = './main.html';
+});
 
 // 게임 시작 (처음부터)
 gameStartBtn?.addEventListener('click', () => {

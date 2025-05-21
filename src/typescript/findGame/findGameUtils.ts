@@ -390,6 +390,9 @@ export function resetToStartScreen() {
   const gameDescription =
     document.querySelector<HTMLParagraphElement>('.game-description');
 
+  const goToHome = document.querySelector('.go-to-home');
+  const gameTitle = document.querySelector<HTMLHeadingElement>('.game-title');
+
   if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'flex';
   if (gameConclusion) gameConclusion.style.display = 'none';
   if (gameContainer) gameContainer.style.display = 'none';
@@ -401,6 +404,12 @@ export function resetToStartScreen() {
 
   gameRound?.setAttribute('hidden', '');
   setContinueButtonDisabled();
+
+  goToHome?.removeAttribute('hidden');
+  if (gameTitle?.style) {
+    gameTitle.style.flex = '6';
+    gameTitle.style.textAlign = 'center';
+  }
 }
 
 export function setContinueButtonDisabled() {
@@ -410,12 +419,12 @@ export function setContinueButtonDisabled() {
 
   if (continueStartBtn) {
     if (Number(history) < 2 || Number(history) > 10) {
-      continueStartBtn.style.backgroundColor = '#e0e0e0';
+      continueStartBtn.style.backgroundColor = 'var(--btn-disabled)';
       continueStartBtn.style.color = '#999';
       continueStartBtn.disabled = true;
       continueStartBtn.classList.remove('hovered');
     } else {
-      continueStartBtn.style.backgroundColor = '#ff9edb';
+      continueStartBtn.style.backgroundColor = 'var(--btn-bg)';
       continueStartBtn.style.color = 'white';
       continueStartBtn.disabled = false;
       continueStartBtn.classList.add('hovered');
