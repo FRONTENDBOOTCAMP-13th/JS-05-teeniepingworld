@@ -43,11 +43,13 @@ async function play(round: number, resolve: () => void) {
   // TODO 라운드에 따라 변경
   let teeniepingName: string = '루루핑';
   let teeniepingNameEng: string = 'ruru';
-  if (round >= 3) {
+  if (round === 3 || round === 4) {
     teeniepingName = '빤짝핑';
     teeniepingNameEng = 'bbanzzak';
+  } else if (round >= 5) {
+    teeniepingName = '빛나핑';
+    teeniepingNameEng = 'bitna';
   }
-
   // 큐브 세팅
   let cubeCount = 3;
   if (round >= 3) cubeCount++;

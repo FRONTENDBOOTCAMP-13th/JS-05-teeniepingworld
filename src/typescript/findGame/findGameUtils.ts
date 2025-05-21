@@ -79,7 +79,7 @@ export function insertTeenieping(
     targetDiv.appendChild(newImg);
 
     if (round >= 3 && round <= 4) {
-      newImg.style.transform = 'translateY(-20%)';
+      newImg.style.transform = 'translateY(-30%)';
     } else if (4 <= round) {
       newImg.style.transform = 'translateY(-20%)';
     } else if (6 <= round) {
