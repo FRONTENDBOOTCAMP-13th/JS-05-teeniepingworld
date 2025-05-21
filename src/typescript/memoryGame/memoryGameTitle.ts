@@ -59,7 +59,7 @@ if (levelBtns) {
 if (homeBtn) {
   homeBtn.addEventListener('click', function () {
     console.log('홈으로 이동합니다.');
-    window.location.href = '../../index.html';
+    window.location.href = './main.html';
   });
 }
 
@@ -68,6 +68,6 @@ if (startBtn) {
   startBtn.addEventListener('click', function () {
     console.log('게임을 시작합니다.');
     sessionStorage.setItem('level', level);
-    window.location.href = '../pages/memoryGameStart.html';
+    window.location.href = './memoryGameStart.html';
   });
 }

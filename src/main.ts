@@ -5,6 +5,8 @@ const memoryBtn = document.querySelector('.blue');
 const findBtn = document.querySelector('.green');
 const worldcupBtn = document.querySelector('.yellow');
 
+const bgm = document.getElementById('bgm') as HTMLAudioElement; //타이틀 bgm
+
 if (typeTestBtn) {
   typeTestBtn.addEventListener('click', function () {
     window.location.href = './typeTest.html';
@@ -40,9 +42,9 @@ const dismissedToday = () => {
   return storeDate === today();
 };
 
-if (dismissedToday()) {
+if (!dismissedToday()) {
   if (popupOverlay) {
-    popupOverlay.style.display = 'none';
+    popupOverlay.style.display = 'flex';
   }
 }
 
@@ -56,5 +58,7 @@ if (closeBtn) {
     if (popupOverlay) {
       popupOverlay.style.display = 'none';
     }
+    bgm.play();
+    bgm.volume = 0.01;
   });
 }
