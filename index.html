@@ -15,7 +15,7 @@
     <h1>Type<span>5</span>cript</h1>
     <nav>
       <ul>
-        <li><b>프로젝트 소개</b></li>
+        <li>프로젝트 소개</li>
         <li>미니게임 소개</li>
         <li>팀원 소개</li>
         <li>코딩/커밋 컨벤션</li>
@@ -111,7 +111,7 @@
                 <h3>오서현</h3>
               </div>
               <div class="card-back">
-                <p>Team Leader</p>
+                <p><strong>Team Leader</strong></p>
                 <p>티니핑 유형 테스트</p>
               </div>
             </div>
@@ -126,7 +126,7 @@
                 <h3>김재현</h3>
               </div>
               <div class="card-back">
-                <p>Scrum Master</p>
+                <p><strong>Scrum Master</strong></p>
                 <p>티니핑 카드게임</p>
               </div>
             </div>
@@ -141,7 +141,7 @@
                 <h3>김태우</h3>
               </div>
               <div class="card-back">
-                <p>Documentation</p>
+                <p><strong>Documentation</strong></p>
                 <p>티니핑 이상형 월드컵</p>
               </div>
             </div>
@@ -156,7 +156,7 @@
                 <h3>유시원</h3>
               </div>
               <div class="card-back">
-                <p>Documentation</p>
+                <p><strong>Documentation</strong></p>
                 <p>티니핑을 찾아라</p>
               </div>
             </div>
@@ -269,6 +269,10 @@
       menus.forEach((item, idx) => {
         item.addEventListener('click', () => {
           scrollToMenu(sections[idx]);
+          menus.forEach((item) => {
+            item.classList.remove('bold');
+          });
+          item.classList.add('bold');
         });
       });
 

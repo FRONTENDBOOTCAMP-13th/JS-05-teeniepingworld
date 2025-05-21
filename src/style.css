@@ -56,6 +56,10 @@ nav {
   }
 }
 
+.bold {
+  font-weight: 700;
+}
+
 .main-container {
   margin-top: 40px;
   margin-inline: auto;
