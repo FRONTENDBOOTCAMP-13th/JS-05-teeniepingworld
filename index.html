@@ -47,7 +47,7 @@
           />
         </div>
       </section>
-      <button>Teenieping World 바로가기</button>
+      <button id="go-to-main">Teenieping World 바로가기</button>
       <section class="mini-game section">
         <h2>미니게임 소개</h2>
         <p>티니핑 월드에서는 다음과 같은 4가지 미니게임을 즐길 수 있습니다:</p>
@@ -242,6 +242,12 @@
       </section>
     </div>
     <footer>
+      <!-- TODO -->
+      <li><a href="./src/pages/typeTest.html">시작</a></li>
+      <li><a href="./src/pages/memoryGame.html">메모리게임</a></li>
+      <li><a href="./src/pages/worldcupGame.html">월드컵 게임</a></li>
+      <li><a href="./src/pages/findGame.html">티니핑을 찾아라</a></li>
+
       <p>
         &copy; 2025 <strong>티니핑 월드</strong>. Crafted with by
         <span>type5cript</span> @ 멋쟁이사자처럼.
@@ -257,10 +263,9 @@
       const sections = document.querySelectorAll('.section');
       console.log(menus, sections);
 
-      function scrollToMenu(menu) {
-        const offset = window.matchMedia('(min-width: 640px)').matches
-          ? 98
-          : 64;
+      const offset = window.matchMedia('(min-width: 640px)').matches ? 98 : 60;
+
+      function scrollToMenu(offset, menu) {
         const offsetTop =
           menu.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: offsetTop, behavior: 'smooth' });
@@ -268,15 +273,25 @@
 
       menus.forEach((item, idx) => {
         item.addEventListener('click', () => {
-          scrollToMenu(sections[idx]);
-          menus.forEach((item) => {
-            item.classList.remove('bold');
-          });
-          item.classList.add('bold');
+          scrollToMenu(offset, sections[idx]);
         });
       });
 
-      // TODO 카드 뒤집기
+      window.addEventListener('scroll', () => {
+        menus.forEach((item, idx) => {
+          const rect = sections[idx].getBoundingClientRect();
+          const sectionTop = rect.top + window.pageYOffset;
+          const sectionBottom = rect.bottom + window.pageYOffset;
+          const offsetTop = window.pageYOffset + offset;
+
+          if (sectionBottom >= offsetTop && sectionTop <= offsetTop) {
+            item.classList.add('bold');
+          } else {
+            item.classList.remove('bold');
+          }
+        });
+      });
+
       const aboutMember = document.querySelector('.about-member');
       const cards = aboutMember.querySelectorAll('.card');
       console.log(cards);
@@ -284,6 +299,11 @@
         card.addEventListener('click', () => {
           card.classList.toggle('flip');
         });
+      });
+
+      const goToMainBtn = document.querySelector('#go-to-main');
+      goToMainBtn.addEventListener('click', () => {
+        location.assign('./src/pages/main.html');
       });
     </script>
   </body>

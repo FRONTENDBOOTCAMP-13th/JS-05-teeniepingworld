@@ -8,28 +8,29 @@
   </head>
   <body>
     <!-- http://localhost:5173/src/pages/findGame.html -->
+    <!-- <div class="top-buttons">
+      <span class="btn red"></span>
+      <span class="btn yellow"></span>
+      <input
+        type="number"
+        min="1"
+        max="10"
+        id="set-start-round"
+        class="hidden-toggle"
+      />
+      <span class="btn green"></span>
+    </div> -->
+
     <div class="main-container">
-      <div class="top-container">
-        <div class="top-buttons">
-          <span class="btn red"></span>
-          <span class="btn yellow"></span>
-          <input
-            type="number"
-            min="1"
-            max="10"
-            id="set-start-round"
-            class="hidden-toggle"
-          />
-          <span class="btn green"></span>
-        </div>
-        <div>
-          <button class="settings-btn">settings ⚙️</button>
-        </div>
-      </div>
       <div class="game-info-wrapper">
+        <button type="button" class="go-to-home">
+          <img src="/public/findgame_img/home.png" alt="" />
+        </button>
         <h1 class="game-title">숨은 티니핑을 찾아라</h1>
-        <div hidden class="game-round">
-          ROUND <span id="current-game-round">1</span>
+        <div class="round-container">
+          <div hidden class="game-round">
+            ROUND <span id="current-game-round">1</span>
+          </div>
         </div>
       </div>
 
@@ -61,6 +62,7 @@
         </div>
         <button class="restart-btn">다시 시작하기</button>
       </div>
+      <button class="settings-btn">⚙️</button>
     </div>
 
     <dialog class="result-dialog">
@@ -109,11 +111,8 @@
         <!-- (수정 가능) 티니핑 찾기 게임 화면, 메인 화면으로 이동 -->
         <!-- <button type="button" class="retry-btn">다시하기</button> -->
         <button type="button" class="go-start-btn">시작 화면</button>
+        <button type="button" class="go-home-btn">메인 화면</button>
       </div>
     </dialog>
-
-    <audio loop>
-      <source src="/public/findgame_bgm/findGameBGM.mp3" />
-    </audio>
   </body>
 </html>

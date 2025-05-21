@@ -42,7 +42,7 @@ nav {
     /* display: flex;
     flex-direction: row; */
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
 
     justify-content: space-between;
     max-width: 1200px;
@@ -61,8 +61,9 @@ nav {
 }
 
 .main-container {
-  margin-top: 40px;
-  margin-inline: auto;
+  /* margin-top: 40px;
+  margin-inline: auto; */
+  margin: 40px auto 800px auto;
   width: 80%;
   max-width: 1200px;
 }

@@ -73,15 +73,12 @@ export function insertTeenieping(
 
     const newImg = document.createElement('img');
     newImg.setAttribute('src', imgPath);
-    // newImg.setAttribute('src', `/src/assets/findgame_img/${name}Ping.WEBP`);
     newImg.setAttribute('alt', '티니핑');
     newImg.setAttribute('class', 'teenieping');
     targetDiv.appendChild(newImg);
 
     if (round >= 3 && round <= 4) {
-      newImg.style.transform = 'translateY(-20%)';
-    } else if (4 <= round) {
-      newImg.style.transform = 'translateY(-20%)';
+      newImg.style.transform = 'translateY(-30%)';
     } else if (6 <= round) {
       newImg.style.transform = 'translateY(-20%)';
     }
@@ -188,11 +185,10 @@ export function setRound(round: number) {
  * @param {boolean} result - 현재 라운드 성공 여부
  * @param {number} round - 현재 라운드 번호
  */
-export function showResult(
-  resolve: () => void,
+export async function getResult(
   result: boolean,
   round: number,
-) {
+): Promise<number> {
   const resultDialog = document.querySelector(
     '.result-dialog',
   ) as HTMLDialogElement;
@@ -206,26 +202,26 @@ export function showResult(
   const dialogBtn1 = resultDialog.querySelector('.dialog-btn1');
   const dialogBtn2 = resultDialog.querySelector('.dialog-btn2');
 
-  if (round === 10) {
+  if (result === true) {
     const imgPath = getImage(`ayaPingSuccess`);
 
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
     if (dialogImg?.src) dialogImg.src = imgPath;
-    if (dialogP?.textContent) dialogP.textContent = '모든 라운드에 성공했어요!';
-    if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
 
-    dialogBtn1?.setAttribute('hidden', '');
-    localStorage.setItem('history', '0');
-  } else if (result === true) {
-    const imgPath = getImage(`ayaPingSuccess`);
+    // localStorage에 라운드 저장
+    localStorage.setItem('history', JSON.stringify(++round));
 
-    if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
-    if (dialogImg?.src) dialogImg.src = imgPath;
-    if (dialogP?.textContent)
-      dialogP.textContent = '다음 라운드도 도전해보세요!';
-    dialogBtn1?.removeAttribute('hidden');
-
-    if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
+    if (round === 11) {
+      if (dialogP?.textContent)
+        dialogP.textContent = '모든 라운드에 성공했어요!';
+      dialogBtn1?.setAttribute('hidden', '');
+      if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
+    } else {
+      if (dialogP?.textContent)
+        dialogP.textContent = '다음 라운드도 도전해보세요!';
+      dialogBtn1?.removeAttribute('hidden');
+      if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
+    }
   } else {
     const imgPath = getImage(`ayaPingFail`);
 
@@ -233,18 +229,23 @@ export function showResult(
     if (dialogImg?.src) dialogImg.src = imgPath;
     if (dialogP?.textContent) dialogP.textContent = '다시 한 번 도전해보세요!!';
     dialogBtn1?.setAttribute('hidden', '');
+    if (dialogBtn2?.textContent) dialogBtn2.textContent = `결과보기`;
+
+    // localStorage에 라운드 저장
+    localStorage.setItem('history', JSON.stringify(round));
   }
 
   showDialog();
-
-  dialogBtn1?.addEventListener('click', () => {
-    closeDialog();
-    resolve();
-  });
-  dialogBtn2?.addEventListener('click', () => {
-    closeDialog();
-    // 결과보기
-    showGameConclusion(round);
+  return new Promise((resolve) => {
+    dialogBtn1?.addEventListener('click', () => {
+      closeDialog();
+      resolve(1);
+    });
+    dialogBtn2?.addEventListener('click', () => {
+      closeDialog();
+      // 결과보기
+      resolve(0);
+    });
   });
 }
 
@@ -345,7 +346,7 @@ export function changeLocation(cube1: HTMLElement, cube2: HTMLElement) {
   }
 }
 
-function showGameConclusion(round: number) {
+export function showGameConclusion(round: number) {
   const gameDescription =
     document.querySelector<HTMLParagraphElement>('.game-description');
   const gameContainer =
@@ -368,8 +369,9 @@ function showGameConclusion(round: number) {
   if (attemptCount) attemptCount.textContent = count;
 
   // 10라운드까지 성공하면 시도 횟수 초기화
-  if (round === 10) localStorage.setItem('attemptCount', '0');
-
+  if (round === 11) {
+    localStorage.setItem('attemptCount', '0');
+  }
   const restartBtn = document.querySelector('.restart-btn');
   restartBtn?.addEventListener('click', () => {
     resetToStartScreen();
@@ -388,6 +390,9 @@ export function resetToStartScreen() {
   const gameDescription =
     document.querySelector<HTMLParagraphElement>('.game-description');
 
+  const goToHome = document.querySelector('.go-to-home');
+  const gameTitle = document.querySelector<HTMLHeadingElement>('.game-title');
+
   if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'flex';
   if (gameConclusion) gameConclusion.style.display = 'none';
   if (gameContainer) gameContainer.style.display = 'none';
@@ -399,6 +404,12 @@ export function resetToStartScreen() {
 
   gameRound?.setAttribute('hidden', '');
   setContinueButtonDisabled();
+
+  goToHome?.removeAttribute('hidden');
+  if (gameTitle?.style) {
+    gameTitle.style.flex = '6';
+    gameTitle.style.textAlign = 'center';
+  }
 }
 
 export function setContinueButtonDisabled() {
@@ -407,13 +418,13 @@ export function setContinueButtonDisabled() {
     document.querySelector<HTMLButtonElement>('.continue-game-btn');
 
   if (continueStartBtn) {
-    if (Number(history) < 2) {
-      continueStartBtn.style.backgroundColor = '#e0e0e0';
+    if (Number(history) < 2 || Number(history) > 10) {
+      continueStartBtn.style.backgroundColor = 'var(--btn-disabled)';
       continueStartBtn.style.color = '#999';
       continueStartBtn.disabled = true;
       continueStartBtn.classList.remove('hovered');
     } else {
-      continueStartBtn.style.backgroundColor = '#ff9edb';
+      continueStartBtn.style.backgroundColor = 'var(--btn-bg)';
       continueStartBtn.style.color = 'white';
       continueStartBtn.disabled = false;
       continueStartBtn.classList.add('hovered');
