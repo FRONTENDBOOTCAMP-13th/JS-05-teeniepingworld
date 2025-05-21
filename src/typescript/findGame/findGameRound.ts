@@ -3,12 +3,12 @@ import {
   animateSwap,
   checkAnswer,
   closeCube,
+  getResult,
   handleSelection,
   insertTeenieping,
   setCube,
   setGameDescription,
   setRound,
-  showResult,
   waitDelay,
   waitForNextPaint,
 } from './findGameUtils.ts';
@@ -17,28 +17,18 @@ import {
  * 주어진 라운드를 실행하고 완료 시 Promise를 해결합니다.
  *
  * @param {number} round - 실행할 라운드 번호
- * @returns {Promise<void>} 라운드 실행 완료 시점에 완료되는 Promise
+ * @returns {Promise<number>} 라운드 실행 완료 시점에 완료되는 Promise
  */
-export function playOneRound(round: number) {
-  return new Promise<void>((resolve) => {
-    play(round, resolve);
-  });
-}
-
-/**
- * 한 라운드 게임 진행을 담당하는 비동기 함수입니다.
- *
- * @param {number} round - 현재 라운드 번호
- * @param {() => void} resolve - 라운드 종료 시 호출할 콜백 함수
- */
-async function play(round: number, resolve: () => void) {
+export async function play(round: number) {
   const gameContainer = document.querySelector<HTMLElement>('.game-container');
+
+  const getAllSets = gameContainer?.querySelectorAll('div');
+  getAllSets?.forEach((item) => {
+    item.remove();
+  });
 
   // 라운드 표시
   setRound(round);
-
-  // localStorage에 라운드 저장
-  localStorage.setItem('history', JSON.stringify(round));
 
   // TODO 라운드에 따라 변경
   let teeniepingName: string = '루루핑';
@@ -87,7 +77,7 @@ async function play(round: number, resolve: () => void) {
     Math.random() * findTeeniepingArr.length,
   );
   findTeeniepingArr[answerIdx].status = true;
-  console.log(answerIdx);
+  console.log(findTeeniepingArr);
 
   // TODO 특정 행동(티니핑 넣기) 구현
 
@@ -118,7 +108,7 @@ async function play(round: number, resolve: () => void) {
     result = true;
 
     await waitDelay(2000);
-    showResult(resolve, result, round);
+    return getResult(result, round);
   } else {
     // 정답 확인하기 틀린 경우만
     setGameDescription(`앗, 여긴 아니었네요!`);
@@ -126,6 +116,6 @@ async function play(round: number, resolve: () => void) {
     await checkAnswer(findTeeniepingArr, teeniepingName, teeniepingNameEng);
 
     await waitDelay(2000);
-    showResult(resolve, result, round);
+    return getResult(result, round);
   }
 }
