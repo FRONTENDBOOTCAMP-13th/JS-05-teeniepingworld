@@ -19,6 +19,18 @@
   winner: [] -> selected 객체를 담는 배열
   */
 
+import {
+  getIsLikelionClicked,
+  getSpecialCharacters,
+  resetLikelionState,
+} from './worldcupGame-likelion.ts';
+
+import {
+  showRankingPage,
+  shareResult,
+  setGameState,
+} from './worldcupGame-rank';
+
 // 티니핑 data type 정의
 interface Teenieping {
   no: number | string;
@@ -97,6 +109,26 @@ let gameState: GameState = {
   },
 };
 
+//게임 초기화
+resetLikelionState();
+console.log('New Game is Ready, All is set.');
+
+/**
+ * 배열 셔플 함수 (Fisher-Yates 알고리즘)
+ * @param array 셔플할 배열
+ * @returns 셔플된 배열
+ */
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled: T[] = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j: number = Math.floor(Math.random() * (i + 1));
+    const temp = shuffled[i];
+    shuffled[i] = shuffled[j];
+    shuffled[j] = temp;
+  }
+  return shuffled;
+}
+
 /**
  * 객체 랜덤 선택 함수
  * @param count 선택할 객체 수
@@ -109,26 +141,53 @@ function getRandomTeeniepings(count: number): Teenieping[] {
     return [];
   }
 
-  //원본 배열 복사
+  let selected: Teenieping[] = [];
+
+  //.likelion click 시, hidden character joined
+  if (getIsLikelionClicked()) {
+    const specialCharacters = getSpecialCharacters();
+
+    //hidden character를 selected array에 우선 추가
+    selected = [
+      ...specialCharacters.map((char) => standardizeTeenieping(char)),
+    ];
+
+    console.log('🦁 clicked, hidden teeniepings are coming!');
+    console.log(
+      '선택된 특별 캐릭터:',
+      specialCharacters.map((char) => char.name),
+    );
+  }
+
+  // 남은 slot 계산
+  const remainingCount = count - selected.length;
+
+  // 요청 수가 히든 캐릭터 수보다 적거나 같으면 히든 캐릭터만으로 충분
+  if (remainingCount <= 0) {
+    const result = shuffleArray(selected.slice(0, count));
+    console.log(
+      '히든 캐릭터만으로 구성:',
+      result.map((char) => char.name),
+    );
+    return result;
+  }
+
+  // 일반 캐릭터들에서 남은 수만큼 랜덤 선택
   const allCharacters = [...teeniepingData.result];
+  const shuffledCharacters = shuffleArray(allCharacters);
 
-  //요청 수가 전체 케릭터보다 많을 경우 전체 반환
-  if (count >= allCharacters.length) {
-    return allCharacters;
+  // 남은 수만큼 일반 캐릭터 추가
+  for (let i = 0; i < remainingCount && i < shuffledCharacters.length; i++) {
+    selected.push(standardizeTeenieping(shuffledCharacters[i]));
   }
 
-  //랜덤 선택
-  const selected: Teenieping[] = [];
-  for (let i = 0; i < count; i++) {
-    //남은 케릭터 중 랜덤 선택
-    const randomIndex = Math.floor(Math.random() * allCharacters.length);
-    const character = allCharacters.splice(randomIndex, 1)[0];
-
-    //배열에 표준화된 객체 추가
-    selected.push(standardizeTeenieping(character));
-  }
-  console.log({ ...selected });
-  return selected;
+  // 최종 배열 셔플
+  const finalResult = shuffleArray(selected);
+  console.log(
+    '랜덤 선택된 캐릭터들:',
+    finalResult.map((char) => char.name),
+  );
+  return finalResult;
 }
 
 /**
@@ -157,7 +216,7 @@ function standardizeTeenieping(teenieping: Teenieping): Teenieping {
  * 게임 시작 함수
  * @param roundCount 라운드 수 (8, 16, 32, 64)
  */
-function startGame(roundCount: number): void {
+async function startGame(roundCount: number): Promise<void> {
   console.log(`${roundCount}강 게임을 시작합니다.`);
 
   //게임 상태 초기화
@@ -207,22 +266,22 @@ function createGamePage(): void {
 
   //기본 구조 생성
   gamePage.innerHTML = `
-  <div class="game-page-title">
-        <h1 class="title-text">티니핑 이상형 월드컵</h1>
-        <ul class="text-wrapper">
-          <li class="sub-title">${gameState.totalRounds}강</li>
-          <li class="sub-info">(1/${gameState.totalRounds / 2})</li>
-        </ul>
-        <div class="progress-bar">
-          <div class="bg-bar"></div>
-          <div class="pg-bar" style="width: 10%"></div>
+    <div class="game-page-title">
+          <h1 class="title-text">티니핑 이상형 월드컵</h1>
+          <ul class="text-wrapper">
+            <li class="sub-title">${gameState.totalRounds}강</li>
+            <li class="sub-info">(1/${gameState.totalRounds / 2})</li>
+          </ul>
+          <div class="progress-bar">
+            <div class="bg-bar"></div>
+            <div class="pg-bar" style="width: 10%"></div>
+          </div>
         </div>
-      </div>
-
-      <div class="game-page-content">
-      <ul class="character-match"></ul>
-      </div>
-  `;
+  
+        <div class="game-page-content">
+        <ul class="character-match"></ul>
+        </div>
+    `;
 
   //페이지에 추가
   document.body.appendChild(gamePage);
@@ -236,6 +295,7 @@ function displayCurrentMatch(): void {
   if (gameState.matchIndex >= gameState.players.length / 2) {
     //next round 준비
     prepareNextRound();
+    // return 제거 - 다음 라운드 첫 매치를 바로 표시해야 함
   }
 
   //game 끝났는지 확인
@@ -243,14 +303,6 @@ function displayCurrentMatch(): void {
     displayWinner(gameState.winners[0]);
     return;
   }
-
-  /*
-  최종 우승자 결정되었는지 확인(winners에 하나만 남고 players가 비어 있을 때)
-  if (gameState.players.length === 1 && gameState.winners.length === 0) {
-    displayWinner(gameState.players[0]);
-    return;
-  }
-    */
 
   //마지막 라운드 마지막 매치 체크
   if (
@@ -264,14 +316,25 @@ function displayCurrentMatch(): void {
   //현재 match index 계산
   const idx = gameState.matchIndex * 2;
 
-  //배열 범위 체크 추가
+  //배열 범위 체크 및 안전 가드 추가
   if (idx + 1 >= gameState.players.length) {
     console.error('매치 인덱스 오류: 배열 범위 초과');
+    console.error('현재 players:', gameState.players);
+    console.error('matchIndex:', gameState.matchIndex);
+    console.error('idx:', idx);
     return;
   }
 
   const character1 = gameState.players[idx];
   const character2 = gameState.players[idx + 1];
+
+  // 캐릭터 유효성 검사 추가
+  if (!character1 || !character2) {
+    console.error('캐릭터가 undefined입니다:', { character1, character2 });
+    return;
+  }
+
+  console.log(`다음 매치 준비: ${character1.name} vs ${character2.name}`);
 
   //매치 ui 업데이트
   updateMatchUI(character1, character2);
@@ -291,19 +354,19 @@ function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
 
   // 케릭터 매치 UI 생성
   characterMatch.innerHTML = `
-  <li data-no="${character1.no}" class="character-option">
-      <figure>
-        <img class="cover-img" src="${character1.imgLink}" alt="${character1.name}" />
-        <figcaption class="content-text">${character1.name}</figcaption>
-      </figure>
-    </li>
-    <li data-no="${character2.no}" class="character-option">
-      <figure>
-        <img class="cover-img" src="${character2.imgLink}" alt="${character2.name}" />
-        <figcaption class="content-text">${character2.name}</figcaption>
-      </figure>
-    </li>
-    `;
+    <li data-no="${character1.no}" class="character-option">
+        <figure>
+          <img class="cover-img" src="${character1.imgLink}" alt="${character1.name}" />
+          <figcaption class="content-text">${character1.name}</figcaption>
+        </figure>
+      </li>
+      <li data-no="${character2.no}" class="character-option">
+        <figure>
+          <img class="cover-img" src="${character2.imgLink}" alt="${character2.name}" />
+          <figcaption class="content-text">${character2.name}</figcaption>
+        </figure>
+      </li>
+      `;
 
   //click event 추가
   const options = document.querySelectorAll('.character-option');
@@ -323,15 +386,37 @@ function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
 /**
  * 캐릭터 선택 처리 함수
  */
-
 function handleCharacterSelection(event: Event): void {
   const target = event.currentTarget as HTMLElement;
   const selectedNo = target.dataset.no;
 
+  if (!selectedNo) {
+    console.error('선택된 캐릭터 번호가 없습니다.');
+    return;
+  }
+
   //현재 매치 가져오기
   const idx = gameState.matchIndex * 2;
+
+  // 배열 범위 체크
+  if (idx + 1 >= gameState.players.length) {
+    console.error('배열 범위 초과:', {
+      idx,
+      playersLength: gameState.players.length,
+    });
+    return;
+  }
+
   const character1 = gameState.players[idx];
   const character2 = gameState.players[idx + 1];
+
+  // 캐릭터 유효성 검사
+  if (!character1 || !character2) {
+    console.error('캐릭터가 undefined입니다:', { character1, character2 });
+    return;
+  }
+
+  console.log(`매치: ${character1.name} vs ${character2.name}`);
 
   //선택된 캐릭터, 탈락 캐릭터 결정
   let winner: Teenieping, loser: Teenieping;
@@ -339,14 +424,22 @@ function handleCharacterSelection(event: Event): void {
   if (selectedNo === character1.no.toString()) {
     winner = character1;
     loser = character2;
-  } else {
+  } else if (selectedNo === character2.no.toString()) {
     winner = character2;
     loser = character1;
+  } else {
+    console.error('선택된 캐릭터를 찾을 수 없습니다:', selectedNo);
+    return;
   }
+
+  console.log(`승자: ${winner.name}, 패자: ${loser.name}`);
 
   //위너 배열에 추가
   gameState.winners.push(winner);
-  console.log(`winner: ${winner.name}`);
+  console.log(
+    `현재 winners 배열:`,
+    gameState.winners.map((w) => w.name),
+  );
 
   //게임 기록 업데이트
   gameState.gameHistory.matchups.push({
@@ -362,6 +455,10 @@ function handleCharacterSelection(event: Event): void {
   const isLastRound =
     gameState.totalRounds / Math.pow(2, gameState.currentRound - 1) === 2;
   const isLastMatch = gameState.matchIndex >= gameState.players.length / 2;
+
+  console.log(
+    `라운드 상태 - isLastRound: ${isLastRound}, isLastMatch: ${isLastMatch}, winners 수: ${gameState.winners.length}`,
+  );
 
   if (isLastRound && isLastMatch && gameState.winners.length === 1) {
     //최종 우승자 표시
@@ -399,12 +496,12 @@ function prepareNextRound(): void {
   //sub-info update
   const subInfo = document.querySelector('.sub-info') as HTMLElement;
   if (subInfo) {
-    const totalMatches = gameState.players.length / 2;
+    const totalMatches = gameState.winners.length / 2;
     subInfo.textContent = `(1/${totalMatches})`;
   }
 
-  //player 배열 업데이트
-  gameState.players = [...gameState.winners];
+  //player 배열 업데이트 (winners를 셔플해서 다음 라운드에 적용)
+  gameState.players = shuffleArray([...gameState.winners]);
   gameState.winners = [];
 
   //match index 초기화
@@ -464,51 +561,52 @@ function createWinnerPage(winner: Teenieping): void {
 
   //기본 구조 새성
   winnerPage.innerHTML = `
- <div class="winner-page-title">
-      <h1 class="title-text">티니핑 이상형 월드컵</h1>
-    </div>
-    <div class="winner-page-content">
-      <ul>
-        <li class="sub-title">💕💗 나의 최애 티니핑은.. 💗💕</li>
-        <li>
-          <figure>
-            <img class="cover-img" src="${winner.imgLink}" alt="${winner.name}" />
-            <figcaption class="content-text">${winner.name}</figcaption>
-          </figure>
-        </li>
-        <li class="character-info">
-          <p><span class="label">성별:</span> <span>${winner.gender}</span></p>
-          <p><span class="label">좋아하는 것:</span> <span>${likes}</span></p>
-          <p><span class="label">싫어하는 것:</span> <span>${dislikes}</span></p>
-        </li>
-      </ul>
-
-      <div class="button-group">
-        <button class="action-btn retry-btn" type="button">
-        <img src="/typeTest_img/repeat.png" alt="다시하기" />
-        <span>
-          다시 선택하기</span>
-        </button>
-        <button class="action-btn rank-btn" type="button">
-          <span><img src=".././assets/worldcupGame_img/rank.svg" alt="이상형 랭킹" /></span>
-          랭킹보기
-        </button>
-        <button class="action-btn share-btn sns-share-btn" type="button">
-          <span>🔗</span> 공유하기
-        </button>
-
-        <button class="action-btn share-btn fb-share-btn" type="button" onclick="shareFacebook()">
-          <span>facebook</span> 공유하기
-        </button>
+   <div class="winner-page-title">
+        <h1 class="title-text">티니핑 이상형 월드컵</h1>
       </div>
-    </div>
-    <button class="home-btn" type="button">이상형 월드컵으로 돌아가기</button>
-  `;
+      <div class="winner-page-content">
+        <ul>
+          <li class="sub-title">💕💗 나의 최애 티니핑은.. 💗💕</li>
+          <li>
+            <figure>
+              <img class="cover-img" src="${winner.imgLink}" alt="${winner.name}" />
+              <figcaption class="content-text">${winner.name}</figcaption>
+            </figure>
+          </li>
+          <li class="character-info">
+            <p><span class="label">성별:</span> <span>${winner.gender}</span></p>
+            <p><span class="label">좋아하는 것:</span> <span>${likes}</span></p>
+            <p><span class="label">싫어하는 것:</span> <span>${dislikes}</span></p>
+          </li>
+        </ul>
+  
+        <div class="button-group">
+          <button class="action-btn retry-btn" type="button">
+          <img src="/typeTest_img/repeat.png" alt="다시하기" />
+          <span>
+            다시 선택하기</span>
+          </button>
+          <button class="action-btn rank-btn" type="button">
+            <span><img src=".././assets/worldcupGame_img/rank.svg" alt="이상형 랭킹" /></span>
+            랭킹보기
+          </button>
+          <button class="action-btn share-btn sns-share-btn" type="button">
+            <span>🔗</span> 공유하기
+          </button>
+  
+          <button class="action-btn share-btn fb-share-btn" type="button" onclick="shareFacebook()">
+            <span>facebook</span> 공유하기
+          </button>
+        </div>
+      </div>
+      <button class="home-btn" type="button">이상형 월드컵으로 돌아가기</button>
+    `;
 
   //페이지에 추가
   document.body.appendChild(winnerPage);
 
-  //버튼 이벤트 리스너 추가
+  // gameState를 rank 파일로 전달 후 이벤트 리스너 추가
+  setGameState(gameState);
   addWinnerPageEventListeners();
 }
 
@@ -582,196 +680,18 @@ function saveGameResult(winner: Teenieping): void {
 }
 
 /**
- * 랭킹 페이지 표시 함수
- */
-function showRankingPage(): void {
-  //우승자 페이지 숨기기
-  const winnerPage = document.querySelector('.winner-page') as HTMLElement;
-  if (winnerPage) winnerPage.style.display = 'none';
-
-  //랭킹 데이터 계산
-  const rankingData = calculateRankingData();
-
-  //랭킹 페이지 생성
-  createRankingPage(rankingData);
-}
-
-/**
- * 랭킹 데이터 계산 함수
- * @returns 정렬된 랭킹 데이터
- */
-function calculateRankingData(): {
-  no: string | number;
-  name: string;
-  winCount: number;
-  winRate: number;
-  imgLink: string;
-}[] {
-  try {
-    //게임 결과 가져오기
-    const gameResults: GameResult[] = JSON.parse(
-      localStorage.getItem('teeniepingWorldcupResults') || '[]',
-    );
-
-    //캐릭터별 승리 횟수 및 총 매치 수 계산
-    const characterStats: {
-      [key: string]: {
-        wins: number;
-        matches: number;
-        name: string;
-        imgLink: string;
-      };
-    } = {};
-
-    //모든 티니핑 초기화
-    teeniepingData.result.forEach((character) => {
-      characterStats[character.no] = {
-        wins: 0,
-        matches: 0,
-        name: character.name,
-        imgLink: character.imgLink,
-      };
-    });
-    //우승 데이터 처리
-    gameResults.forEach((result) => {
-      if (characterStats[result.winner]) {
-        characterStats[result.winner].wins++;
-      }
-
-      //매치업 데이터 처리
-      result.matchups.forEach((matchup) => {
-        if (characterStats[matchup.winner]) {
-          characterStats[matchup.winner].matches++;
-        }
-        if (characterStats[matchup.loser]) {
-          characterStats[matchup.loser].matches++;
-        }
-      });
-    });
-
-    //랭킹 배열 생성 및 정렬
-    const rankingArray = Object.keys(characterStats).map((no) => {
-      const stats = characterStats[no];
-      return {
-        no,
-        name: stats.name,
-        winCount: stats.wins,
-        winRate: stats.matches > 0 ? (stats.wins / stats.matches) * 100 : 0,
-        imgLink: stats.imgLink,
-      };
-    });
-
-    //승리 횟수로 정렬
-    rankingArray.sort((a, b) => b.winCount - a.winCount);
-
-    return rankingArray;
-  } catch (error) {
-    console.error('랭킹 데이터 계산 오류:', error);
-    return [];
-  }
-}
-
-/**
- * 랭킹 페이지 생성 함수
- */
-function createRankingPage(
-  rankingData: {
-    no: string | number;
-    name: string;
-    winCount: number;
-    winRate: number;
-    imgLink: string;
-  }[],
-): void {
-  //랭킹 페이지 요소 생성
-  const rankPage = document.createElement('section');
-  rankPage.className = 'main-content rank-page';
-
-  //기본 구조 생성
-  rankPage.innerHTML = `
-  <div class="rank-page-title">
-      <h1 class="title-text">티니핑 이상형 월드컵 인기 랭킹</h1>
-    </div>
-    <div class="rank-page-content">
-      <table class="rank-table">
-        <thead>
-          <tr>
-            <th>순위</th>
-            <th>캐릭터</th>
-            <th>승리 횟수</th>
-            <th>승률</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${rankingData
-            .slice(0, 10)
-            .map(
-              (character, index) => `
-            <tr>
-              <td>${index + 1}</td>
-              <td>
-                <div class="character-cell">
-                  <img src="${character.imgLink}" alt="${character.name}" class="rank-img" />
-                  <span>${character.name}</span>
-                </div>
-              </td>
-              <td>${character.winCount}</td>
-              <td>${character.winRate.toFixed(1)}%</td>
-            </tr>
-          `,
-            )
-            .join('')}
-        </tbody>
-      </table>
-    </div>
-    <button class="home-btn" type="button">홈으로</button>
-  `;
-
-  //페이지에 추가
-  document.body.appendChild(rankPage);
-
-  //홈으로 버튼 이벤트 리스너 추가
-  const homeBtn = document.querySelector(
-    '.rank-page .home-btn',
-  ) as HTMLButtonElement;
-  if (homeBtn) {
-    homeBtn.addEventListener('click', goToHomePage);
-  }
-}
-
-/**
- * 결과 공유 함수
- */
-function shareResult(): void {
-  const winner = gameState.gameHistory.finalWinner;
-  if (!winner) return;
-
-  //현재 페이지 URL
-  const url = window.location.href;
-
-  //공유할 텍스트
-  const shareText = `티니핑 이상형 월드컵에서 내가 선택한 최애는 ${winner.name}~~!❤️`;
-
-  //클립보드에 복사
-  try {
-    navigator.clipboard.writeText(`${shareText} ${url}`).then(() => {
-      alert('클립보드에 복사되었습니다!');
-    });
-  } catch (error) {
-    console.error('공유하기 오류:', error);
-    alert('공유하기 기능을 사용할 수 없습니다.');
-  }
-}
-
-/**
  * 홈 페이지로 이동 함수
  */
-function goToHomePage(): void {
+export function goToHomePage(): void {
   //현재 열려있는 모든 페이지 제거
   const pages = document.querySelectorAll(
     '.winner-page, .rank-page, .game-page',
   );
   pages.forEach((page) => page.remove());
+
+  //게임 초기화
+  resetLikelionState();
+  console.log('Game Reseted');
 
   //메인 페이지 표시
   const mainPage = document.querySelector('.main-page') as HTMLElement;
@@ -779,5 +699,5 @@ function goToHomePage(): void {
 }
 
 //worldcupGameModal.ts에서 startGame 함수를 export
-export { startGame, calculateRankingData };
+export { startGame };
 export type { GameState, Teenieping };
