@@ -82,17 +82,6 @@ copyBtn?.addEventListener('click', () => {
   }
 }); // 결과 페이지의 전체 URL을 가져옴
 
-// //예전 브라우저 적용
-// copyBtn?.addEventListener('click', () => {
-//   if (shareLink) {
-//     shareLink.select();
-//     shareLink.setSelectionRange(0, 99999); // 모바일 대응
-//     document.execCommand('copy');
-//     alert('링크가 복사되었습니다!');
-//     console.log('링크 복사');
-//   }
-// });
-
 // 페이스북 공유
 const facebookBtn = document.querySelector('.facebook') as HTMLAnchorElement;
 const resultUrl = window.location.href;
