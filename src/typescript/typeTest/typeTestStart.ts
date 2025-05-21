@@ -1,4 +1,7 @@
 import { answerBtnData } from './fixData';
+import { playAudio } from './mainTypeTest';
+
+playAudio(true);
 
 // 각종 DOM 요소 선택
 const questionRate = document.querySelector('.question-rate'); // 질문 번호 표시 영역
