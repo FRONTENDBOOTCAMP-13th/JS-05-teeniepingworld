@@ -1,11 +1,12 @@
 @import url('/src/common/a11y.css');
 @import url('/src/common/modern-reset.css');
 @import url('/src/common/theme.css');
+@import url('/src/common/font.css');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'titleFont', sans-serif;
 }
 
 .container {
@@ -28,10 +29,11 @@ header {
 
 .main-name {
   background: linear-gradient(90deg, #ec4899 0%, #9333ea 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 36px;
+  font-weight: 800;
 }
 
 /* main */
@@ -90,6 +92,7 @@ main {
   font-weight: 700;
   text-align: center;
   margin: 40px 0;
+  letter-spacing: 1px;
 }
 
 .choice-btn {
