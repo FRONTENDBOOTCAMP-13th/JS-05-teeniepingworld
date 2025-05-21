@@ -20,6 +20,10 @@ export function openCubeAll() {
         const imgPath = getImage(`bbanzzakPingCubeOpen`);
         item?.setAttribute('src', imgPath);
       }
+      if (item?.src.includes('bitna')) {
+        const imgPath = getImage(`bitnaPingCubeOpen`);
+        item?.setAttribute('src', imgPath);
+      }
     });
   });
 }
