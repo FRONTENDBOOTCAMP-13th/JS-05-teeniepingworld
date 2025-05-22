@@ -26,12 +26,12 @@ export function initSettings() {
 
   bgmBtn?.addEventListener('click', () => {
     if (bgmToggle?.textContent) {
-      if (bgmToggle.textContent === '🔇') {
-        bgmToggle.textContent = '🔉';
-        audio?.play();
+      if (bgmToggle.textContent === 'OFF') {
+        bgmToggle.textContent = 'ON';
+        audio.play();
       } else {
-        bgmToggle.textContent = '🔇';
-        audio?.pause();
+        bgmToggle.textContent = 'OFF';
+        audio.pause();
       }
     }
   });

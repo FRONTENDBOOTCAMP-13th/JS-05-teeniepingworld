@@ -80,7 +80,7 @@ export function insertTeenieping(
     if (round >= 3 && round <= 4) {
       newImg.style.transform = 'translateY(-30%)';
     } else if (6 <= round) {
-      newImg.style.transform = 'translateY(-20%)';
+      newImg.style.transform = 'translateY(10%)';
     }
   }
 }
