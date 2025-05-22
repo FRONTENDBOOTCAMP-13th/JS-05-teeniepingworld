@@ -10,9 +10,9 @@
 티니핑 월드는 4개의 미니게임으로 구성된 웹 기반 게임 프로젝트입니다.  
 어린이와 가족 단위 사용자가 즐길 수 있는 인터랙티브한 콘텐츠를 제공합니다.
 
-<!-- ### 배포 사이트
+ ### 배포 사이트
 
-🎮 [Teenieping World 바로가기](https://teeniepingworld.netlify.app/) -->
+🎮 [Teenieping World 바로가기](https://teeniepingworld.netlify.app/) 
 
 ### 미니게임 구성
 
