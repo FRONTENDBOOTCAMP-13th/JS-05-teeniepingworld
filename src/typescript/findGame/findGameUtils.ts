@@ -203,6 +203,9 @@ export async function getResult(
   const dialogBtn2 = resultDialog.querySelector('.dialog-btn2');
 
   if (result === true) {
+    // 정답 확인하기 틀린 경우만
+    setSfx('6_1');
+
     const imgPath = getImage(`ayaPingSuccess`);
 
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 성공`;
@@ -223,6 +226,8 @@ export async function getResult(
       if (dialogBtn2?.textContent) dialogBtn2.textContent = `그만하기`;
     }
   } else {
+    setSfx('6_2');
+
     const imgPath = getImage(`ayaPingFail`);
 
     if (dialogH2?.textContent) dialogH2.textContent = `${round}ROUND 실패`;
@@ -446,4 +451,18 @@ export function getImage(imgName: string) {
 
 export function waitForNextPaint(): Promise<void> {
   return new Promise((resolve) => requestAnimationFrame(() => resolve()));
+}
+
+export function setSfx(audio_num: string) {
+  const audio = new Audio(`/findgame_bgm/findgame_${audio_num}.wav`);
+  const sfxToggle = document.querySelector<HTMLSpanElement>('.sfx-toggle');
+
+  if (sfxToggle?.textContent) {
+    if (sfxToggle.textContent === 'ON') {
+      audio.play();
+      audio.volume = 0.2;
+    } else {
+      audio.pause();
+    }
+  }
 }

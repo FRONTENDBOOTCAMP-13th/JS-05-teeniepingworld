@@ -11,6 +11,8 @@ export function initSettings() {
   );
   const bgmBtn = document.querySelector<HTMLButtonElement>('.bgm-btn');
   const bgmToggle = document.querySelector<HTMLSpanElement>('.bgm-toggle');
+  const sfxBtn = document.querySelector<HTMLButtonElement>('.sfx-btn');
+  const sfxToggle = document.querySelector<HTMLSpanElement>('.sfx-toggle');
   const goStartBtn = document.querySelector<HTMLButtonElement>('.go-start-btn');
   const goHomeBtn = document.querySelector<HTMLButtonElement>('.go-home-btn');
 
@@ -21,17 +23,28 @@ export function initSettings() {
     settingsDialog?.close();
   });
 
-  const audio = new Audio('/public/findgame_bgm/findGameBGM.mp3');
-  audio.volume = 0.2;
+  const audio = new Audio('/findgame_bgm/findGameBGM.mp3');
 
   bgmBtn?.addEventListener('click', () => {
     if (bgmToggle?.textContent) {
       if (bgmToggle.textContent === 'OFF') {
         bgmToggle.textContent = 'ON';
         audio.play();
+        audio.volume = 0.2;
+        console.log(audio.volume);
       } else {
         bgmToggle.textContent = 'OFF';
         audio.pause();
+      }
+    }
+  });
+
+  sfxBtn?.addEventListener('click', () => {
+    if (sfxToggle?.textContent) {
+      if (sfxToggle.textContent === 'OFF') {
+        sfxToggle.textContent = 'ON';
+      } else {
+        sfxToggle.textContent = 'OFF';
       }
     }
   });
