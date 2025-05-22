@@ -100,6 +100,18 @@ function nextpage(): void {
 
   // 선택 결과 콘솔 출력(디버깅용)
   console.log(resultArray);
+
+  // id가 1일 때 voice 클래스를 가진 오디오 재생
+  if (id === 1) {
+    const voiceAudio = document.querySelector('.voice') as HTMLAudioElement;
+    if (voiceAudio) {
+      voiceAudio.volume = 0.2;
+      voiceAudio.currentTime = 0; // 오디오 시작 위치 초기화
+      voiceAudio.play().catch((error) => {
+        console.log('자동 재생이 차단되었습니다:', error);
+      });
+    }
+  }
 }
 
 // 이전 버튼 클릭 시 동작
@@ -205,3 +217,5 @@ if (formatBtn) {
     window.location.href = './typeTest.html';
   });
 }
+
+//voice 자동 재생
