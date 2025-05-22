@@ -36,9 +36,15 @@ export async function play(round: number) {
   if (round === 3 || round === 4) {
     teeniepingName = '빤짝핑';
     teeniepingNameEng = 'bbanzzak';
-  } else if (round >= 5) {
+  } else if (round == 5 || round == 6) {
     teeniepingName = '빛나핑';
     teeniepingNameEng = 'bitna';
+  } else if (round == 7 || round == 8) {
+    teeniepingName = '오로라핑';
+    teeniepingNameEng = 'aurora';
+  } else if (round == 9 || round == 10) {
+    teeniepingName = '댄스핑';
+    teeniepingNameEng = 'sway';
   }
   // 큐브 세팅
   let cubeCount = 3;

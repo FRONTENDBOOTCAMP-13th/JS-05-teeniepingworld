@@ -20,7 +20,7 @@
         <li>팀원 소개</li>
         <li>코딩/커밋 컨벤션</li>
         <li>팀 규칙</li>
-        <li>회고</li>
+        <li>프로젝트 회고</li>
       </ul>
     </nav>
     <div class="main-container">
@@ -257,11 +257,13 @@
       const sections = document.querySelectorAll('.section');
       console.log(menus, sections);
 
-      const offset = window.matchMedia('(min-width: 640px)').matches ? 98 : 60;
+      const offset = window.matchMedia('(min-width: 640px)').matches ? 98 : 64;
+      console.log('offset', offset);
 
       function scrollToMenu(offset, menu) {
         const offsetTop =
           menu.getBoundingClientRect().top + window.pageYOffset - offset;
+        console.log('offsetTop', offset);
         window.scrollTo({ top: offsetTop, behavior: 'smooth' });
       }
 
@@ -278,7 +280,7 @@
           const sectionBottom = rect.bottom + window.pageYOffset;
           const offsetTop = window.pageYOffset + offset;
 
-          if (sectionBottom >= offsetTop && sectionTop <= offsetTop) {
+          if (sectionBottom >= offsetTop && sectionTop - 10 <= offsetTop) {
             item.classList.add('bold');
           } else {
             item.classList.remove('bold');
