@@ -67,7 +67,7 @@ nav {
 .main-container {
   /* margin-top: 40px;
   margin-inline: auto; */
-  margin: 40px auto 800px auto;
+  margin: 40px auto 200px auto;
   width: 80%;
   max-width: 1200px;
 }
@@ -107,29 +107,22 @@ button {
 }
 
 .about-project {
+  /* text-align: center; */
+
   div {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    justify-items: center;
+    display: flex;
 
     @media (max-width: 640px) {
-      grid-template-columns: 1fr;
+      flex-direction: column;
     }
 
     p {
       align-self: center;
+      flex: 1;
+      margin-left: 20px;
     }
-
-    .card {
-      transition: all 0.3s ease;
-      transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-      &:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        transition: all 0.6s ease;
-      }
+    img {
+      width: 200px;
     }
   }
 }
@@ -154,6 +147,16 @@ button {
       align-items: center;
       text-align: center;
 
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        transition: all 0.6s ease;
+      }
+
       img {
         width: 30%;
       }
@@ -167,18 +170,22 @@ button {
 .about-member {
   div {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 20px;
 
     @media (max-width: 640px) {
       grid-template-columns: 1fr;
     }
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 
     .card {
       margin-bottom: 0;
       justify-items: center;
       align-items: center;
+      padding: 1rem;
 
       transition: all 0.3s ease;
       transform: translateY(0);
@@ -187,12 +194,12 @@ button {
       perspective: 1000px;
       height: 300px;
 
-      img {
-        width: 50%;
+      /* .img-s {
+        width: 60%;
       }
-      h3 {
-        margin-block: 20px;
-      }
+      .img-j {
+        width: 70%;
+      } */
 
       &:hover {
         transform: translateY(-8px) scale(1.02);
@@ -206,6 +213,23 @@ button {
         height: 100%;
         transition: transform 0.6s;
         transform-style: preserve-3d;
+
+        .card-t {
+          background: url('/index_img/taewooPing.png') no-repeat center/contain;
+          aspect-ratio: 1;
+        }
+        .card-j {
+          background: url('/index_img/jaehyunPing.png') no-repeat center/contain;
+          aspect-ratio: 1;
+        }
+        .card-s {
+          background: url('/index_img/seohyunPing.png') no-repeat center/contain;
+          aspect-ratio: 1;
+        }
+        .card-w {
+          background: url('/index_img/siwonPing.png') no-repeat center/contain;
+          aspect-ratio: 1;
+        }
       }
     }
 
@@ -227,7 +251,7 @@ button {
 
       background-color: #fff;
 
-      padding: 2rem;
+      padding: 1rem;
       margin-bottom: 2rem;
 
       background: rgba(255, 255, 255, 0.25);
@@ -236,10 +260,8 @@ button {
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 1.5rem;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
 
-      h2 {
-        margin-block: 20px;
-      }
       img {
         width: 50%;
       }
@@ -262,6 +284,28 @@ button {
     pre {
       padding: 10px;
       background-color: #0000000d;
+    }
+  }
+}
+
+.project-retrospective {
+  details {
+    margin-block: 20px 0;
+    padding: 20px;
+    text-align: center;
+
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      transition: all 0.6s ease;
+    }
+
+    summary {
+      font-weight: bold;
     }
   }
 }
