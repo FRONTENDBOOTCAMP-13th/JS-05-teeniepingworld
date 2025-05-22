@@ -458,9 +458,9 @@ startGameBtn.addEventListener('click', () => {
   startBgm.volume = 0.3;
   startBgm.play();
   bgm.play();
-  bgm.volume = 0.01;
+  bgm.volume = 0.1;
   setTimeout(() => {
-    bgm.volume = 0.02;
+    bgm.volume = 0.2;
     timeId = startTimer(totalTime);
   }, 4500);
 

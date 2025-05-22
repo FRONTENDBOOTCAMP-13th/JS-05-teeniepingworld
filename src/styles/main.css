@@ -367,3 +367,10 @@ footer {
 .checkbox-wrapper input[type='checkbox']:checked::after {
   opacity: 1;
 }
+
+.mp3-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: none;
+}
