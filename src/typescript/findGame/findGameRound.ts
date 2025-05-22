@@ -9,6 +9,7 @@ import {
   setCube,
   setGameDescription,
   setRound,
+  setSfx,
   waitDelay,
   waitForNextPaint,
 } from './findGameUtils.ts';
@@ -30,7 +31,7 @@ export async function play(round: number) {
   // 라운드 표시
   setRound(round);
 
-  // TODO 라운드에 따라 변경
+  // 라운드에 따라 변경
   let teeniepingName: string = '루루핑';
   let teeniepingNameEng: string = 'ruru';
   if (round === 3 || round === 4) {
@@ -85,8 +86,6 @@ export async function play(round: number) {
   findTeeniepingArr[answerIdx].status = true;
   console.log(findTeeniepingArr);
 
-  // TODO 특정 행동(티니핑 넣기) 구현
-
   // 정답 인덱스에 티니핑 넣기
   insertTeenieping(findTeeniepingArr[answerIdx], teeniepingNameEng, round);
 
@@ -94,7 +93,8 @@ export async function play(round: number) {
   await waitDelay(2000);
   findTeeniepingArr.forEach((item) => closeCube(item, teeniepingNameEng));
 
-  setGameDescription(`빠르게 움직이는 큐브에 집중해주세요!`);
+  setSfx('3');
+  setGameDescription(`움직이는 큐브에 집중해주세요!`);
 
   await waitDelay(1000);
 
@@ -103,6 +103,7 @@ export async function play(round: number) {
     if (gameContainer) await animateSwap(1000 / round);
   }
 
+  setSfx('4');
   setGameDescription(`어느 큐브에 ${teeniepingName}이 숨어있을까요?`);
 
   // 클릭 이벤트 추기 (정답 맞추기)
@@ -110,6 +111,7 @@ export async function play(round: number) {
   let result = false;
 
   if (selectIdx === answerIdx) {
+    setSfx('5_1');
     setGameDescription(`숨어있는 ${teeniepingName}을 찾았어요!`);
     result = true;
 
@@ -117,6 +119,7 @@ export async function play(round: number) {
     return getResult(result, round);
   } else {
     // 정답 확인하기 틀린 경우만
+    setSfx('5_2');
     setGameDescription(`앗, 여긴 아니었네요!`);
 
     await checkAnswer(findTeeniepingArr, teeniepingName, teeniepingNameEng);

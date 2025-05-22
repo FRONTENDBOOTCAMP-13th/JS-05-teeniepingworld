@@ -7,7 +7,11 @@ import {
   showGameScreen,
 } from './findGameMainUI';
 import { goToMainPage, openCubeAll, setStartRound } from './findGameDevTools';
-import { setContinueButtonDisabled, showGameConclusion } from './findGameUtils';
+import {
+  setContinueButtonDisabled,
+  setSfx,
+  showGameConclusion,
+} from './findGameUtils';
 
 const goToHomeBtn = document.querySelector<HTMLButtonElement>('.go-to-home');
 const continueStartBtn =
@@ -32,6 +36,8 @@ goToHomeBtn?.addEventListener('click', () => {
 
 // 게임 시작 (처음부터)
 gameStartBtn?.addEventListener('click', () => {
+  setSfx('2');
+
   // 개발자 기능(시작 라운드 설정하기)
   const setStartRound =
     document.querySelector<HTMLInputElement>('#set-start-round');
@@ -56,15 +62,10 @@ continueStartBtn?.addEventListener('click', () => {
  * 실패 시 1라운드부터 다시 시작합니다.
  */
 async function playGame(startRound: number) {
-  // const gameContainer =
-  //   document.querySelector<HTMLDivElement>('.game-container');
-
   showGameScreen();
   saveGameAttempt();
 
   for (let round = startRound; round <= 10; round++) {
-    // 게임 화면 세팅
-
     // 라운드 실행 - 성공/실패 결과 반환
     const result = await play(round);
     console.log(result, round + 'round test');
