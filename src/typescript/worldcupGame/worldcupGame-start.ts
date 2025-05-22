@@ -402,13 +402,21 @@ function createGamePage(): void {
   //페이지에 추가
   document.body.appendChild(gamePage);
 
-  // BGM 버튼 추가
-  const titleElement = gamePage.querySelector(
-    '.game-page-title',
-  ) as HTMLElement;
-  if (titleElement) {
-    getBgmPlayer().addBgmButtonToGamePage(titleElement);
-  }
+  // BGM 버튼 추가 및 아이콘 동기화
+  setTimeout(() => {
+    const bgmPlayer = getBgmPlayer();
+    bgmPlayer.addBgmButtonToGamePage(gamePage);
+
+    // 다중 동기화 시도로 확실히 아이콘 맞추기
+    setTimeout(() => {
+      bgmPlayer.refreshBgmControls();
+      bgmPlayer.syncAllIcons();
+    }, 100);
+
+    setTimeout(() => {
+      bgmPlayer.syncAllIcons();
+    }, 300);
+  }, 50);
 }
 
 /**
@@ -799,13 +807,26 @@ function createWinnerPage(winner: Teenieping): void {
   //페이지에 추가
   document.body.appendChild(winnerPage);
 
-  // BGM 버튼 추가
-  const titleElement = winnerPage.querySelector(
-    '.winner-page-title',
-  ) as HTMLElement;
-  if (titleElement) {
-    getBgmPlayer().addBgmButtonToWinnerPage(titleElement);
-  }
+  // BGM 버튼 추가 및 아이콘 동기화
+  setTimeout(() => {
+    const titleElement = winnerPage.querySelector(
+      '.winner-page-title',
+    ) as HTMLElement;
+    if (titleElement) {
+      const bgmPlayer = getBgmPlayer();
+      bgmPlayer.addBgmButtonToWinnerPage(titleElement);
+
+      // 다중 동기화 시도로 확실히 아이콘 맞추기
+      setTimeout(() => {
+        bgmPlayer.refreshBgmControls();
+        bgmPlayer.syncAllIcons();
+      }, 100);
+
+      setTimeout(() => {
+        bgmPlayer.syncAllIcons();
+      }, 300);
+    }
+  }, 50);
 
   // gameState를 rank 파일로 전달 후 이벤트 리스너 추가
   setGameState(gameState);
@@ -827,6 +848,12 @@ function addWinnerPageEventListeners(): void {
       // 프리로드 캐시 초기화
       imageCache.clear();
 
+      // BGM 아이콘 동기화 후 게임 재시작
+      const bgmPlayer = getBgmPlayer();
+      setTimeout(() => {
+        bgmPlayer.syncAllIcons();
+      }, 100);
+
       //게임 다시 시작
       startGame(gameState.totalRounds);
     });
@@ -846,10 +873,16 @@ function addWinnerPageEventListeners(): void {
   //홈으로 버튼
   const homeBtn = document.querySelector('.home-btn') as HTMLButtonElement;
   if (homeBtn) {
-    homeBtn.addEventListener('click', goToHomePage);
+    homeBtn.addEventListener('click', () => {
+      // BGM 아이콘 동기화 후 홈으로 이동
+      const bgmPlayer = getBgmPlayer();
+      setTimeout(() => {
+        bgmPlayer.syncAllIcons();
+      }, 100);
 
-    // 프리로드 캐시 초기화
-    imageCache.clear();
+      goToHomePage();
+      imageCache.clear();
+    });
   }
 }
 
@@ -903,7 +936,21 @@ export function goToHomePage(): void {
 
   //메인 페이지 표시
   const mainPage = document.querySelector('.main-page') as HTMLElement;
-  if (mainPage) mainPage.style.display = 'block';
+  if (mainPage) {
+    mainPage.style.display = 'block';
+
+    // BGM 버튼 재설정
+    setTimeout(() => {
+      const bgmPlayer = getBgmPlayer();
+      bgmPlayer.reconnectMainPageButton();
+
+      // 추가 안전장치
+      setTimeout(() => {
+        bgmPlayer.refreshBgmControls();
+        bgmPlayer.syncAllIcons();
+      }, 200);
+    }, 100);
+  }
 }
 
 //worldcupGameModal.ts에서 startGame 함수를 export
