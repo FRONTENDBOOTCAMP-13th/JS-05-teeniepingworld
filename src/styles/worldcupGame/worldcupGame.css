@@ -78,8 +78,8 @@ body {
 .home-btn-icon {
   padding: 0;
   border-radius: 8px;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   transition: box-shadow 0.2s ease;
 
   /* background-image 속성들 */
@@ -93,10 +93,6 @@ body {
   display: block;
 }
 
-.home-btn-icon:hover {
-  box-shadow: 0 0 6px var(--yellow-dark);
-}
-
 .title-text {
   color: var(--yellow-dark);
   font-size: var(--text-5xl);
@@ -105,6 +101,11 @@ body {
   margin: 0;
   text-align: center;
   flex: 1;
+}
+
+.bgm-btn {
+  border: none;
+  background-color: transparent;
 }
 
 /* 게임 페이지와 겹치는 스타일 */
@@ -494,7 +495,8 @@ body {
   box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
-.sns-share-btn {
+.sns-share-btn,
+.fb-share-btn {
   display: none;
 }
 
