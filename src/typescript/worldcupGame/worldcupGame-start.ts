@@ -31,6 +31,8 @@ import {
   setGameState,
 } from './worldcupGame-rank';
 
+import { getBgmPlayer } from './worldcupGame-bgm';
+
 // 티니핑 data type 정의
 interface Teenieping {
   no: number | string;
@@ -188,40 +190,40 @@ function getRandomTeeniepings(count: number): Teenieping[] {
 
   //debug: check likelion status
   const likelionStatus = getIsLikelionClicked();
-  console.log('[debug] Check likelion status', likelionStatus);
+  // console.log('[debug] Check likelion status', likelionStatus);
 
   const allHiddenCharacterNumbers = ['134', '135'];
 
   //.likelion click 시, hidden character joined
   if (likelionStatus) {
     const specialCharacters = getSpecialCharacters();
-    console.log(
-      '[debug] hidden 캐릭터 list',
-      specialCharacters.map((char) => char.name),
-    );
+    // console.log(
+    //   '[debug] hidden 캐릭터 list',
+    //   specialCharacters.map((char) => char.name),
+    // );
 
     //hidden character를 selected array에 우선 추가
     selected = [
       ...specialCharacters.map((char) => standardizeTeenieping(char)),
     ];
 
-    console.log('hidden teeniepings are coming!');
-    console.log(
-      '선택된 특별 캐릭터:',
-      specialCharacters.map((char) => char.name),
-    );
+    // console.log('hidden teeniepings are coming!');
+    // console.log(
+    //   '선택된 특별 캐릭터:',
+    //   specialCharacters.map((char) => char.name),
+    // );
   } else {
-    console.log('일반 캐릭터 반환');
+    // console.log('일반 캐릭터 반환');
   }
 
   // 남은 slot 계산
   const remainingCount = count - selected.length;
-  console.log(
-    '[debug] hidden ping 갯수:',
-    selected.length,
-    '남은 슬롯:',
-    remainingCount,
-  );
+  // console.log(
+  //   '[debug] hidden ping 갯수:',
+  //   selected.length,
+  //   '남은 슬롯:',
+  //   remainingCount,
+  // );
 
   // 요청 수가 히든 캐릭터 수보다 적거나 같으면 히든 캐릭터만으로 충분
   if (remainingCount <= 0) {
@@ -252,15 +254,15 @@ function getRandomTeeniepings(count: number): Teenieping[] {
   );
 
   //debug 중복 검사
-  const uniqueNumbers = new Set(finalResult.map((char) => char.no.toString()));
-  const hasDuplicates = uniqueNumbers.size !== finalResult.length;
-  console.log('[debug] 중복 캐릭터 존재 여부:', hasDuplicates);
+  // const uniqueNumbers = new Set(finalResult.map((char) => char.no.toString()));
+  // const hasDuplicates = uniqueNumbers.size !== finalResult.length;
+  // console.log('[debug] 중복 캐릭터 존재 여부:', hasDuplicates);
 
   //hidden 캐릭터 포함 여부 체크
   const hasHiddenCharacters = finalResult.some((char) =>
     allHiddenCharacterNumbers.includes(char.no.toString()),
   );
-  console.log('[debug] hidden ping 포함 여부:', hasHiddenCharacters);
+  // console.log('[debug] hidden ping 포함 여부:', hasHiddenCharacters);
 
   // likelion을 클릭하지 않았는데 히든 캐릭터가 포함된 경우 경고
   if (!likelionStatus && hasHiddenCharacters) {
@@ -346,7 +348,7 @@ async function startGame(roundCount: number): Promise<void> {
 
   try {
     await preloadImages(imageUrls);
-    console.log('images loading finished');
+    // console.log('images loading finished');
   } catch (error) {
     console.warn('이미지 preload 중 일부 실패:', error);
   }
@@ -399,6 +401,14 @@ function createGamePage(): void {
 
   //페이지에 추가
   document.body.appendChild(gamePage);
+
+  // BGM 버튼 추가
+  const titleElement = gamePage.querySelector(
+    '.game-page-title',
+  ) as HTMLElement;
+  if (titleElement) {
+    getBgmPlayer().addBgmButtonToGamePage(titleElement);
+  }
 }
 
 /**
@@ -788,6 +798,14 @@ function createWinnerPage(winner: Teenieping): void {
 
   //페이지에 추가
   document.body.appendChild(winnerPage);
+
+  // BGM 버튼 추가
+  const titleElement = winnerPage.querySelector(
+    '.winner-page-title',
+  ) as HTMLElement;
+  if (titleElement) {
+    getBgmPlayer().addBgmButtonToWinnerPage(titleElement);
+  }
 
   // gameState를 rank 파일로 전달 후 이벤트 리스너 추가
   setGameState(gameState);

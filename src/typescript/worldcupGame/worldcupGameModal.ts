@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //게임 초기화
   resetLikelionState();
-  console.log('New Game is Ready');
+  // console.log('New Game is Ready');
 
   // 페이지 로드시 dialog close
   if (worldcupDialog) {
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       //로딩 표시
       showLoadingIndicator();
-      console.log(`${selectedRound}강 게임을 시작합니다.`);
+      // console.log(`${selectedRound}강 게임을 시작합니다.`);
 
       // 모듈 로드 확인 후 함수 호출
       if (typeof startGame === 'function') {
