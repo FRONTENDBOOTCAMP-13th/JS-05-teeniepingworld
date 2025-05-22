@@ -455,10 +455,10 @@ startGameBtn.addEventListener('click', () => {
   const bgm_str = bgmSrc[randomInt];
 
   startBgm.setAttribute('src', bgm_str);
-  startBgm.volume = 0.3;
   startBgm.play();
+  startBgm.volume = 1;
   bgm.play();
-  bgm.volume = 0.1;
+  bgm.volume = 0.05;
   setTimeout(() => {
     bgm.volume = 0.2;
     timeId = startTimer(totalTime);
