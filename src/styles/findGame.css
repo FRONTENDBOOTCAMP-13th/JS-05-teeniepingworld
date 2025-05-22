@@ -100,13 +100,8 @@ body {
       padding: 0;
 
       img {
-        height: 4.375rem;
-        aspect-ratio: 1/1;
-        scale: 1.2;
-
-        @media (min-width: 1500px) {
-          height: 6.25rem;
-        }
+        height: 70px;
+        width: 70px;
       }
     }
     .game-title {
