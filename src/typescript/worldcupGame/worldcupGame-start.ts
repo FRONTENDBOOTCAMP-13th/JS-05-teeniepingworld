@@ -31,6 +31,8 @@ import {
   setGameState,
 } from './worldcupGame-rank';
 
+import { getBgmPlayer } from './worldcupGame-bgm';
+
 // 티니핑 data type 정의
 interface Teenieping {
   no: number | string;
@@ -80,7 +82,22 @@ interface MatchupResult {
 
 // dataBase에서 티니핑 data 호출
 let teeniepingData: { properties: string[]; result: Teenieping[] };
+// game 상태 초기화
+let gameState: GameState = {
+  currentRound: 0,
+  totalRounds: 0,
+  matchIndex: 0,
+  players: [],
+  winners: [],
+  gameHistory: {
+    matchups: [],
+  },
+};
 
+//proload 이미지 저장소
+const imageCache: Map<string, HTMLImageElement> = new Map();
+
+//dataBase.ts load
 try {
   // 실무에서는 import, 혹은 fetch 사용 가능
   import('../dataBase.ts')
@@ -97,21 +114,49 @@ try {
   teeniepingData = { properties: [], result: [] };
 }
 
-// game 상태 초기화
-let gameState: GameState = {
-  currentRound: 0,
-  totalRounds: 0,
-  matchIndex: 0,
-  players: [],
-  winners: [],
-  gameHistory: {
-    matchups: [],
-  },
-};
+/**
+ * 이미지 preload function
+ */
+async function preloadImages(
+  imageUrls: string[],
+  onProgress?: (loaded: number, total: number) => void,
+): Promise<void> {
+  const total = imageUrls.length;
+  let loaded = 0;
 
-//게임 초기화
-resetLikelionState();
-console.log('New Game is Ready, All is set.');
+  const loadPromises = imageUrls.map((url) => {
+    return new Promise<void>((resolve) => {
+      //이미 preloaded 한 이미지인지 확인
+      if (imageCache.has(url)) {
+        loaded++;
+        onProgress?.(loaded, total);
+        resolve();
+        return;
+      }
+
+      const img = new Image();
+
+      img.onload = () => {
+        //성공 로드한 이미지 캐시에 저장
+        imageCache.set(url, img);
+        loaded++;
+        onProgress?.(loaded, total);
+        resolve();
+      };
+
+      img.onerror = () => {
+        console.warn(`이미지 로드 실패: ${url}`);
+        loaded++;
+        onProgress?.(loaded, total);
+        resolve();
+      };
+
+      img.src = url;
+    });
+  });
+
+  await Promise.all(loadPromises);
+}
 
 /**
  * 배열 셔플 함수 (Fisher-Yates 알고리즘)
@@ -143,24 +188,42 @@ function getRandomTeeniepings(count: number): Teenieping[] {
 
   let selected: Teenieping[] = [];
 
+  //debug: check likelion status
+  const likelionStatus = getIsLikelionClicked();
+  // console.log('[debug] Check likelion status', likelionStatus);
+
+  const allHiddenCharacterNumbers = ['134', '135'];
+
   //.likelion click 시, hidden character joined
-  if (getIsLikelionClicked()) {
+  if (likelionStatus) {
     const specialCharacters = getSpecialCharacters();
+    // console.log(
+    //   '[debug] hidden 캐릭터 list',
+    //   specialCharacters.map((char) => char.name),
+    // );
 
     //hidden character를 selected array에 우선 추가
     selected = [
       ...specialCharacters.map((char) => standardizeTeenieping(char)),
     ];
 
-    console.log('🦁 clicked, hidden teeniepings are coming!');
-    console.log(
-      '선택된 특별 캐릭터:',
-      specialCharacters.map((char) => char.name),
-    );
+    // console.log('hidden teeniepings are coming!');
+    // console.log(
+    //   '선택된 특별 캐릭터:',
+    //   specialCharacters.map((char) => char.name),
+    // );
+  } else {
+    // console.log('일반 캐릭터 반환');
   }
 
   // 남은 slot 계산
   const remainingCount = count - selected.length;
+  // console.log(
+  //   '[debug] hidden ping 갯수:',
+  //   selected.length,
+  //   '남은 슬롯:',
+  //   remainingCount,
+  // );
 
   // 요청 수가 히든 캐릭터 수보다 적거나 같으면 히든 캐릭터만으로 충분
   if (remainingCount <= 0) {
@@ -172,11 +235,13 @@ function getRandomTeeniepings(count: number): Teenieping[] {
     return result;
   }
 
-  // 일반 캐릭터들에서 남은 수만큼 랜덤 선택
-  const allCharacters = [...teeniepingData.result];
-  const shuffledCharacters = shuffleArray(allCharacters);
+  //일반 캐릭터들만 선택
+  const regularCharacters = teeniepingData.result.filter(
+    (char) => !allHiddenCharacterNumbers.includes(char.no.toString()),
+  );
+  const shuffledCharacters = shuffleArray(regularCharacters);
 
-  // 남은 수만큼 일반 캐릭터 추가
+  //남은 수만큼 일반 케릭터 추가
   for (let i = 0; i < remainingCount && i < shuffledCharacters.length; i++) {
     selected.push(standardizeTeenieping(shuffledCharacters[i]));
   }
@@ -184,9 +249,50 @@ function getRandomTeeniepings(count: number): Teenieping[] {
   // 최종 배열 셔플
   const finalResult = shuffleArray(selected);
   console.log(
-    '랜덤 선택된 캐릭터들:',
+    '최종 선택된 players:',
     finalResult.map((char) => char.name),
   );
+
+  //debug 중복 검사
+  // const uniqueNumbers = new Set(finalResult.map((char) => char.no.toString()));
+  // const hasDuplicates = uniqueNumbers.size !== finalResult.length;
+  // console.log('[debug] 중복 캐릭터 존재 여부:', hasDuplicates);
+
+  //hidden 캐릭터 포함 여부 체크
+  const hasHiddenCharacters = finalResult.some((char) =>
+    allHiddenCharacterNumbers.includes(char.no.toString()),
+  );
+  // console.log('[debug] hidden ping 포함 여부:', hasHiddenCharacters);
+
+  // likelion을 클릭하지 않았는데 히든 캐릭터가 포함된 경우 경고
+  if (!likelionStatus && hasHiddenCharacters) {
+    console.error(
+      '[ERROR] 라이키온을 클릭하지 않았는데 히든 캐릭터가 포함되었습니다!',
+    );
+    // 히든 캐릭터를 제거하고 다시 선택
+    const filteredResult = finalResult.filter(
+      (char) => !allHiddenCharacterNumbers.includes(char.no.toString()),
+    );
+
+    // 부족한 만큼 추가 선택
+    const needMore = count - filteredResult.length;
+    if (needMore > 0) {
+      const availableCharacters = shuffledCharacters.filter(
+        (char) => !filteredResult.some((selected) => selected.no === char.no),
+      );
+
+      for (let i = 0; i < needMore && i < availableCharacters.length; i++) {
+        filteredResult.push(standardizeTeenieping(availableCharacters[i]));
+      }
+    }
+
+    console.log(
+      '히든 캐릭터 제거 후 최종 결과:',
+      filteredResult.map((char) => char.name),
+    );
+    return shuffleArray(filteredResult);
+  }
+
   return finalResult;
 }
 
@@ -217,28 +323,41 @@ function standardizeTeenieping(teenieping: Teenieping): Teenieping {
  * @param roundCount 라운드 수 (8, 16, 32, 64)
  */
 async function startGame(roundCount: number): Promise<void> {
-  console.log(`${roundCount}강 게임을 시작합니다.`);
+  // players 선택
+  const selectedTeeniepings = getRandomTeeniepings(roundCount);
+
+  if (selectedTeeniepings.length < roundCount) {
+    console.error(`${roundCount}강을 위한 티니핑이 없습니다.`);
+    return;
+  }
 
   //게임 상태 초기화
   gameState = {
     currentRound: 1,
     totalRounds: roundCount,
     matchIndex: 0,
-    players: getRandomTeeniepings(roundCount),
+    players: selectedTeeniepings,
     winners: [],
     gameHistory: {
       matchups: [],
     },
   };
 
-  //플레이어 수 확인
-  if (gameState.players.length < roundCount) {
-    console.error(`${roundCount}강을 위한 충분한 케릭터가 없습니다.`);
-    return;
+  //image preload
+  const imageUrls = selectedTeeniepings.map((teenieping) => teenieping.imgLink);
+
+  try {
+    await preloadImages(imageUrls);
+    // console.log('images loading finished');
+  } catch (error) {
+    console.warn('이미지 preload 중 일부 실패:', error);
   }
 
   //게임화면 초기화 및 표시
   initializeGameUI();
+
+  //loading 완전 끝난 후 첫 매치 표시
+  displayCurrentMatch();
 }
 
 /**
@@ -251,9 +370,6 @@ function initializeGameUI(): void {
 
   //게임 페이지 생성 및 표시
   createGamePage();
-
-  //첫 매치 표시
-  displayCurrentMatch();
 }
 
 /**
@@ -285,6 +401,14 @@ function createGamePage(): void {
 
   //페이지에 추가
   document.body.appendChild(gamePage);
+
+  // BGM 버튼 추가
+  const titleElement = gamePage.querySelector(
+    '.game-page-title',
+  ) as HTMLElement;
+  if (titleElement) {
+    getBgmPlayer().addBgmButtonToGamePage(titleElement);
+  }
 }
 
 /**
@@ -352,15 +476,15 @@ function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
   ) as HTMLElement;
   if (!characterMatch) return;
 
-  // 케릭터 매치 UI 생성
+  //match UI 생성, - 강제로 숨김 상태로 시작
   characterMatch.innerHTML = `
-    <li data-no="${character1.no}" class="character-option">
+    <li data-no="${character1.no}" class="character-option character-hidden">
         <figure>
           <img class="cover-img" src="${character1.imgLink}" alt="${character1.name}" />
           <figcaption class="content-text">${character1.name}</figcaption>
         </figure>
       </li>
-      <li data-no="${character2.no}" class="character-option">
+      <li data-no="${character2.no}" class="character-option character-hidden">
         <figure>
           <img class="cover-img" src="${character2.imgLink}" alt="${character2.name}" />
           <figcaption class="content-text">${character2.name}</figcaption>
@@ -368,8 +492,62 @@ function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
       </li>
       `;
 
-  //click event 추가
+  //image preload 확인 후 표시
+  const images = characterMatch.querySelectorAll(
+    '.cover-img',
+  ) as NodeListOf<HTMLImageElement>;
   const options = document.querySelectorAll('.character-option');
+
+  //image loading Promise 배열 생성
+  const imageLoadPromises = Array.from(images).map((img) => {
+    return new Promise<void>((resolve) => {
+      //image가 loaded, 혹은 캐시에 있는 경우
+      if (img.complete && img.naturalHeight !== 0) {
+        resolve();
+        return;
+      }
+      //캐시에서 확인
+      if (imageCache.has(img.src)) {
+        resolve();
+        return;
+      }
+
+      //image load event 대기
+      const handleLoad = () => {
+        img.removeEventListener('load', handleLoad);
+        img.removeEventListener('error', handleError);
+        resolve();
+      };
+      const handleError = () => {
+        img.removeEventListener('load', handleLoad);
+        img.removeEventListener('error', handleError);
+        console.warn(`이미지 로드 실패: ${img.src}`);
+        resolve();
+      };
+
+      img.addEventListener('load', handleLoad);
+      img.addEventListener('error', handleError);
+
+      //image src가 설정 시, loading 이미 시작
+      //설정되어 있지 않을 시 재설정
+      if (!img.src) {
+        img.src = img.getAttribute('src') || '';
+      }
+    });
+  });
+
+  //모든 image 로딩 완료 후 캐릭터 표시
+  Promise.all(imageLoadPromises).then(() => {
+    setTimeout(() => {
+      showCharactersSequentially(options);
+
+      //게임 로딩 완료, 이벤트 발생
+      const gameReadyEvent = new CustomEvent('gameLoadingComplete');
+      document.dispatchEvent(gameReadyEvent);
+    }, 100);
+  });
+
+  //click event 추가
   options.forEach((option) => {
     option.addEventListener('click', handleCharacterSelection);
   });
@@ -381,6 +559,26 @@ function updateMatchUI(character1: Teenieping, character2: Teenieping): void {
       gameState.totalRounds / Math.pow(2, gameState.currentRound - 1) / 2;
     subInfo.textContent = `(${gameState.matchIndex + 1} / ${totalMatches})`;
   }
+}
+
+/**캐릭터 순차 표기 함수 */
+function showCharactersSequentially(options: NodeListOf<Element>): void {
+  options.forEach((option, index) => {
+    setTimeout(
+      () => {
+        const element = option as HTMLElement;
+        // opacity와 transform을 부드럽게 변경
+        element.style.transition =
+          'opacity 0.5s ease-out, transform 0.5s ease-out';
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+
+        element.classList.remove('character-hidden');
+        element.classList.add('character-visible');
+      },
+      index * 150 + 300,
+    );
+  });
 }
 
 /**
@@ -432,42 +630,39 @@ function handleCharacterSelection(event: Event): void {
     return;
   }
 
-  console.log(`승자: ${winner.name}, 패자: ${loser.name}`);
+  console.log(`승자: ${winner.name} 패자: ${loser.name}`);
 
-  //위너 배열에 추가
-  gameState.winners.push(winner);
-  console.log(
-    `현재 winners 배열:`,
-    gameState.winners.map((w) => w.name),
-  );
+  //딜레이 후 다음 매치 진행
+  setTimeout(() => {
+    //위너 배열에 추가
+    gameState.winners.push(winner);
+    console.log(
+      `현재 winners 배열:`,
+      gameState.winners.map((w) => w.name),
+    );
 
-  //게임 기록 업데이트
-  gameState.gameHistory.matchups.push({
-    round: gameState.currentRound,
-    winner,
-    loser,
-  });
+    //게임 기록 업데이트
+    gameState.gameHistory.matchups.push({
+      round: gameState.currentRound,
+      winner,
+      loser,
+    });
 
-  //다음 매치로 이동
-  gameState.matchIndex++;
+    //다음 매치로 이동
+    gameState.matchIndex++;
+    //현 round status 확인
+    const isLastRound =
+      gameState.totalRounds / Math.pow(2, gameState.currentRound - 1) === 2;
+    const isLastMatch = gameState.matchIndex >= gameState.players.length / 2;
 
-  //현 round status 확인
-  const isLastRound =
-    gameState.totalRounds / Math.pow(2, gameState.currentRound - 1) === 2;
-  const isLastMatch = gameState.matchIndex >= gameState.players.length / 2;
-
-  console.log(
-    `라운드 상태 - isLastRound: ${isLastRound}, isLastMatch: ${isLastMatch}, winners 수: ${gameState.winners.length}`,
-  );
-
-  if (isLastRound && isLastMatch && gameState.winners.length === 1) {
-    //최종 우승자 표시
-    displayWinner(gameState.winners[0]);
-    return;
-  }
-
-  //다음 매치 표시
-  displayCurrentMatch();
+    if (isLastRound && isLastMatch && gameState.winners.length === 1) {
+      //최종 우승자 표시
+      displayWinner(gameState.winners[0]);
+      return;
+    }
+    //다음 매치 표시
+    displayCurrentMatch();
+  }, 600); // 0.6초 딜레이
 }
 
 /**
@@ -559,7 +754,7 @@ function createWinnerPage(winner: Teenieping): void {
     ? winner.dislikes.join(', ')
     : winner.dislikes;
 
-  //기본 구조 새성
+  //기본 구조 생성
   winnerPage.innerHTML = `
    <div class="winner-page-title">
         <h1 class="title-text">티니핑 이상형 월드컵</h1>
@@ -582,7 +777,6 @@ function createWinnerPage(winner: Teenieping): void {
   
         <div class="button-group">
           <button class="action-btn retry-btn" type="button">
-          <img src="/typeTest_img/repeat.png" alt="다시하기" />
           <span>
             다시 선택하기</span>
           </button>
@@ -595,7 +789,7 @@ function createWinnerPage(winner: Teenieping): void {
           </button>
   
           <button class="action-btn share-btn fb-share-btn" type="button" onclick="shareFacebook()">
-            <span>facebook</span> 공유하기
+            이상형 공유하기
           </button>
         </div>
       </div>
@@ -604,6 +798,14 @@ function createWinnerPage(winner: Teenieping): void {
 
   //페이지에 추가
   document.body.appendChild(winnerPage);
+
+  // BGM 버튼 추가
+  const titleElement = winnerPage.querySelector(
+    '.winner-page-title',
+  ) as HTMLElement;
+  if (titleElement) {
+    getBgmPlayer().addBgmButtonToWinnerPage(titleElement);
+  }
 
   // gameState를 rank 파일로 전달 후 이벤트 리스너 추가
   setGameState(gameState);
@@ -621,6 +823,9 @@ function addWinnerPageEventListeners(): void {
       //우승자 페이지 제거
       const winnerPage = document.querySelector('.winner-page') as HTMLElement;
       if (winnerPage) winnerPage.remove();
+
+      // 프리로드 캐시 초기화
+      imageCache.clear();
 
       //게임 다시 시작
       startGame(gameState.totalRounds);
@@ -642,6 +847,9 @@ function addWinnerPageEventListeners(): void {
   const homeBtn = document.querySelector('.home-btn') as HTMLButtonElement;
   if (homeBtn) {
     homeBtn.addEventListener('click', goToHomePage);
+
+    // 프리로드 캐시 초기화
+    imageCache.clear();
   }
 }
 

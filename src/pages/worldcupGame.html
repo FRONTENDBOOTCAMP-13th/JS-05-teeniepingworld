@@ -16,6 +16,11 @@
       src="/src/typescript/worldcupGame/worldcupGameModal.ts"
       defer
     ></script>
+    <script
+      type="module"
+      src="/src/typescript/worldcupGame/worldcupGame-bgm.ts"
+      async
+    ></script>
     <script defer>
       // Facebook
       function shareFacebook() {
@@ -37,13 +42,16 @@
         <div class="main-page-left">
           <a
             class="home-btn-icon"
-            href="javascript:history.back()"
-            aria-label="이전 페이지로 이동"
+            href="./main.html"
+            aria-label="메인 페이지로 이동"
             tabindex="0"
           >
           </a>
         </div>
         <h1 class="title-text">티니핑 이상형 월드컵</h1>
+        <button type="button" class="bgm-btn">
+          <span class="bgm-toggle">🔇</span>
+        </button>
       </div>
 
       <div class="worldcup-content-section">
@@ -73,7 +81,7 @@
         <h2 id="modal-title" class="modal-title-text">티니핑 이상형 월드컵</h2>
         <div id="modal-content">
           <b id="modal-desc">총 라운드를 선택하세요.</b>
-          <!-- <div class="likelion">🦁</div> -->
+          <div class="likelion">🦁</div>
           <select name="round" id="월드컵 라운드 수 선택" class="modal-select">
             <option value="64">64강</option>
             <option value="32" selected>32강</option>
