@@ -113,7 +113,7 @@ if (kakaoBtn) {
         },
         buttons: [
           {
-            title: '나도 하러가기!',
+            title: '결과 확인 후 나도 하러가기!',
             link: {
               mobileWebUrl: window.location.href,
               webUrl: window.location.href,
