@@ -12,7 +12,7 @@
 
 <!-- ### 배포 사이트
 
-🎮 [Teenieping World 바로가기]() -->
+🎮 [Teenieping World 바로가기](https://teeniepingworld.netlify.app/) -->
 
 ### 미니게임 구성
 
