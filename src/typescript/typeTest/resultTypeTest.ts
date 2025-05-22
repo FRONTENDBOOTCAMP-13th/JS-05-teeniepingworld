@@ -1,5 +1,8 @@
 import { pingData, type TabContainer } from './pingData.ts';
 import { pingExpData } from './pingExpData.ts';
+import { playAudio } from './mainTypeTest';
+
+playAudio(true);
 
 // 다시테스트 하기 버튼 누르면 메인 화면으로 돌아가기
 const typeTestBtn = document.querySelector('.repeat-btn');

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/teeniepingworld.png" />
     <link rel="stylesheet" href="/src/styles/typeTestResult.css" />
     <script
       type="module"
@@ -10,12 +11,21 @@
     ></script>
     <script type="module" src="../typescript/typeTest/resultModal.ts"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script
+      type="module"
+      src="/src/typescript/typeTest/mainTypeTest.ts"
+    ></script>
     <title>typeTestResult</title>
   </head>
   <body>
     <div class="container">
       <header>
+        <a class="home-btn" href="../pages/main.html"></a>
         <h1 class="main-name">티니핑 성격 유형 테스트</h1>
+        <audio id="mp3" src="/typeTest_bgm/typetest.mp3" loop></audio>
+        <button class="mp3-button">
+          <img class="mp3-img" src="/typeTest_img/mp3on.png" alt="" />
+        </button>
       </header>
       <main>
         <p class="section-text">당신의 티니핑 캐릭터는...</p>
@@ -94,7 +104,7 @@
             </p>
             <img
               class="like-img"
-              src="/teenieping_img/smartPing.webp"
+              src="/public/teenieping_img/smartpping.webp"
               alt="똑똑핑"
             />
             <div class="like-mbti">ENTJ</div>
@@ -121,6 +131,7 @@
           </button>
         </section>
       </main>
+
       <!-- 결과 공유하기 모달창 -->
       <dialog class="share-modal">
         <div class="modal-content">

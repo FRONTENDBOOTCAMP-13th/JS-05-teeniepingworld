@@ -1,0 +1,376 @@
+@import '/src/common/modern-reset.css';
+@import '/src/common/font.css';
+
+:root {
+  --bg-color: #f0f0f0;
+  --text-color: #333;
+  --highlight: #ffcc00;
+
+  --pink-color: #db2777;
+  --blue-color: #2563eb;
+  --green-color: #16a34a;
+  --yellow-color: #ca8a04;
+
+  --pink-bg: linear-gradient(90deg, #f472b6 0%, #db2777 100%);
+  --pink-border: #f9a8d4;
+
+  --blue-bg: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+  --blue-border: #93c5fd;
+
+  --green-bg: linear-gradient(90deg, #4ade80 0%, #16a34a 100%);
+  --green-border: #86efac;
+
+  --yellow-bg: linear-gradient(90deg, #facc15 0%, #ca8a04 100%);
+  --yellow-border: #fde047;
+}
+
+body {
+  font-family: 'titleFont', sans-serif;
+  background: linear-gradient(145deg, #fff0f8 0%, #f4eeff 50%, #fdfdff 100%);
+  height: 100%;
+}
+
+header {
+  height: 20%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+
+  h1 {
+    font-size: 60px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ec4899 0%, #9333ea 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    font-size: 20px;
+    color: #7e22ce;
+    padding-inline: 15px;
+    text-align: center;
+  }
+
+  img {
+    width: 64px;
+    background-color: #ffc9e4;
+    border-radius: 50%;
+    padding: 8px;
+  }
+
+  div {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+main {
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 기본 2열 고정 */
+  gap: 30px;
+  padding: 40px 400px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1350px) {
+  main {
+    padding: 40px 200px;
+  }
+}
+
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: 1fr; /* 한 줄씩 쌓기 */
+    padding: 20px;
+  }
+}
+
+main section {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  height: 300px;
+  border-radius: 16px;
+  box-shadow:
+    0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  .img-contain {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+    border-radius: 16px 16px 0px 0px;
+    /* border: 4px solid #f581bd; */
+    border-width: 4px 4px 0px 4px;
+    border-style: solid;
+
+    /* background: linear-gradient(90deg, #f472b6 0%, #db2777 100%); */
+
+    img {
+      height: 90%;
+      background-color: #ffc9e4;
+      border-radius: 50%;
+      padding: 8px;
+    }
+  }
+
+  .game-context {
+    height: 35%;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+
+    /* color: var(--pink-color); */
+    border-radius: 0px 0px 16px 16px;
+    /* border: 4px solid #f581bd; */
+    border-width: 0px 4px 4px 4px;
+    border-style: solid;
+
+    p {
+      color: black;
+    }
+  }
+
+  .game-title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      border: none;
+      background-color: #fff;
+      /* color: var(--pink-color); */
+      font-weight: bold;
+    }
+  }
+
+  &.pink .img-contain {
+    background: var(--pink-bg);
+    border-color: var(--pink-border);
+  }
+
+  &.pink .game-context {
+    color: var(--pink-color);
+    border-color: var(--pink-border);
+  }
+
+  &.blue .img-contain {
+    background: var(--blue-bg);
+    border-color: var(--blue-border);
+  }
+
+  &.blue .game-context {
+    color: var(--blue-color);
+    border-color: var(--blue-border);
+  }
+
+  &.green .img-contain {
+    background: var(--green-bg);
+    border-color: var(--green-border);
+  }
+
+  &.green .game-context {
+    color: var(--green-color);
+    border-color: var(--green-border);
+  }
+
+  &.yellow .img-contain {
+    background: var(--yellow-bg);
+    border-color: var(--yellow-border);
+  }
+
+  &.yellow .game-context {
+    color: var(--yellow-color);
+    border-color: var(--yellow-border);
+  }
+}
+
+main section:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow:
+    0px 30px 35px -10px rgba(0, 0, 0, 0.15),
+    0px 12px 14px -8px rgba(0, 0, 0, 0.1);
+}
+
+.pink {
+  button {
+    color: var(--pink-color);
+  }
+  .img-contain {
+    img {
+      background-color: #fbb6ce;
+    }
+  }
+}
+.blue {
+  button {
+    color: var(--blue-color);
+  }
+  .img-contain {
+    img {
+      background-color: #bfdbfe;
+    }
+  }
+}
+.green {
+  button {
+    color: var(--green-color);
+  }
+  .img-contain {
+    img {
+      background-color: #a7f3d0;
+    }
+  }
+}
+.yellow {
+  button {
+    color: var(--yellow-color);
+  }
+  .img-contain {
+    img {
+      background-color: #fef9c3;
+    }
+  }
+}
+
+footer {
+  height: 10%;
+
+  margin-block: 50px;
+  /* border: 2px solid green; */
+  color: #7e22ce;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 25px;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+#popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-content {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  max-width: 500px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#popup-content h2 {
+  margin-bottom: 20px;
+  color: #9333ea;
+}
+
+.popup-footer {
+  margin-top: 30px;
+  position: relative;
+  text-align: center; /* 버튼을 가운데 정렬 */
+}
+
+#popup-close {
+  background-color: #db2777;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0px; /* 버튼 기준 아래로 살짝 내림 */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* 기본 체크박스 숨기기 */
+.checkbox-wrapper input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f472b6; /* 연핑크 테두리 */
+  border-radius: 6px;
+  background-color: #fff0f6;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 체크 시 스타일 */
+.checkbox-wrapper input[type='checkbox']:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(219, 39, 119, 0.3);
+}
+
+/* 체크 표시 (가상 요소 사용) */
+.checkbox-wrapper input[type='checkbox']::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* 체크되었을 때 */
+.checkbox-wrapper input[type='checkbox']:checked {
+  background-color: #db2777; /* 진한 핑크 배경 */
+  border-color: #db2777;
+}
+
+.checkbox-wrapper input[type='checkbox']:checked::after {
+  opacity: 1;
+}
+
+.mp3-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: none;
+}

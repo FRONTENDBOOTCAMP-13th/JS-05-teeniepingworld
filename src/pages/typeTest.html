@@ -4,12 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <link rel="icon" href="/teeniepingworld.png" />
     <link rel="stylesheet" href="/src/styles/typeTest.css" />
+    <script type="module">
+      import { playAudio } from '/src/typescript/typeTest/mainTypeTest.ts';
+      playAudio();
+    </script>
   </head>
   <body>
     <div class="container">
       <header>
+        <a class="home-btn" href="../pages/main.html"></a>
         <h1 class="main-name">티니핑 성격 유형 테스트</h1>
+
+        <!-- 노래 -->
+        <audio id="mp3" src="/typeTest_bgm/typetest.mp3" loop></audio>
+        <button class="mp3-button">
+          <img class="mp3-img" src="/typeTest_img/mp3on.png" alt="" />
+        </button>
       </header>
       <main>
         <section class="intro-section">
@@ -46,9 +58,5 @@
         </section>
       </main>
     </div>
-    <script
-      type="module"
-      src="/src/typescript/typeTest/mainTypeTest.ts"
-    ></script>
   </body>
 </html>

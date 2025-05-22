@@ -4,28 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>typeTestStart</title>
+    <link rel="icon" href="/teeniepingworld.png" />
     <link rel="stylesheet" href="/src/styles/typeTestStart.css" />
     <script
       type="module"
       src="/src/typescript/typeTest/typeTestStart.ts"
     ></script>
+    <script
+      type="module"
+      src="/src/typescript/typeTest/mainTypeTest.ts"
+    ></script>
   </head>
   <body>
-    <!-- TODO 맨 처음시작 -->
     <div class="container">
       <header>
         <h1 class="main-name">티니핑 성격 유형 테스트</h1>
+        <audio id="mp3" src="/typeTest_bgm/typetest.mp3" loop></audio>
+        <button class="mp3-button">
+          <img class="mp3-img" src="/typeTest_img/mp3on.png" alt="" />
+        </button>
+        <audio class="voice" src="/typeTest_bgm/voice.wav"></audio>
       </header>
       <main>
         <div class="progress-rate">
           <span class="question-rate">질문 1/12</span>
-          <!-- <span class="statistics">8%</span> -->
-           <button class="format">처음부터 다시하기</button>
+          <button class="format">처음부터 다시하기</button>
         </div>
         <section class="bar-container">
           <div class="bar"></div>
         </section>
-        <p class="section-text">프로젝트에서 갑자기 리더를 맡아달라는 말을 들었다. 당신의 속마음은?</p>
+        <p class="section-text">
+          프로젝트에서 갑자기 리더를 맡아달라는 말을 들었다. 당신의 속마음은?
+        </p>
         <section class="choice-btn">
           <button class="choice-first">
             왜 하필 나야..? 리더는 부담스러운데...😓
@@ -40,14 +50,13 @@
             <span>이전</span>
           </button>
           <div class="pagination-container">
-              <div class="dot active"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-            </div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
           </div>
         </section>
       </main>

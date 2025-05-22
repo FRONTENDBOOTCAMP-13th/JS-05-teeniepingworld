@@ -2,27 +2,329 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/teeniepingworld.png" />
+    <link rel="stylesheet" href="/src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Type5cript</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-    <h1>component</h1>
-    <li>
-      <a href="./src/component/typeTestComponent.html"
-        >티니핑유형테스트component</a
-      >
-    </li>
-    <h1>page</h1>
-    <li><a href="./src/pages/main.html">메인메이지</a></li>
-    <li><a href="./src/pages/typeTest.html">유형 테스트</a></li>
-    <li><a href="./src/pages/typeTestStart.html">유형 테스트 시작</a></li>
-    <li><a href="./src/pages/typeTestResult.html">유형 테스트 결과</a></li>
-    <li><a href="./src/pages/memoryGame.html">메모리 게임</a></li>
-    <li><a href="./src/pages/memoryGameStart.html">메모리 게임 시작</a></li>
-    <li><a href="./src/pages/worldcupGame.html">월드컵 게임</a></li>
-    <li><a href="./src/pages/findGame.html">티니핑 찾기</a></li>
+    <h1>Type<span>5</span>cript</h1>
+    <nav>
+      <ul>
+        <li>프로젝트 소개</li>
+        <li>미니게임 소개</li>
+        <li>팀원 소개</li>
+        <li>코딩/커밋 컨벤션</li>
+        <li>팀 규칙</li>
+        <li>프로젝트 회고</li>
+      </ul>
+    </nav>
+    <div class="main-container">
+      <section class="about-project section">
+        <h2>프로젝트 소개</h2>
+        <div>
+          <img src="/teeniepingworld.png" alt="하츄핑" />
+
+          <p>
+            티니핑 월드는 귀여운 티니핑 캐릭터를 테마로 한 웹 개발
+            프로젝트입니다.
+            <br />
+            사용자들에게 즐거운 경험을 제공하기 위해 4가지 미니게임을
+            개발했습니다.
+            <br />
+            이 프로젝트는 Typescript를 활용하여 개발되었으며,
+            <br />
+            사용자 친화적인 인터페이스와 귀여운 디자인을 통해 모든 연령대가 즐길
+            수 있는 웹 게임 플랫폼을 목표로 합니다.
+            <br />
+            티니핑 월드에서는 다양한 미니게임을 통해 재미와 도전을 경험할 수
+            있으며,
+            <br />
+            지속적인 업데이트를 통해 더 많은 콘텐츠를 제공할 예정입니다.
+          </p>
+          <!-- <img src="/teeniepingworld.png" alt="하츄핑" /> -->
+        </div>
+      </section>
+      <button id="go-to-main">Teenieping World 바로가기</button>
+      <section class="mini-game section">
+        <h2>미니게임 소개</h2>
+        <p>티니핑 월드에서는 다음과 같은 4가지 미니게임을 즐길 수 있습니다:</p>
+        <div>
+          <section class="type-test card">
+            <img src="/teenieping_img/hachuuping.png" alt="" />
+            <h3>티니핑 유형테스트</h3>
+            <p>
+              간단한 질문에 답하면 티니핑이 당신의 성향을 알려주는 게임입니다.
+              <br />티니핑과 함께 나를 알아가는 재미를 느껴보세요!
+            </p>
+          </section>
+          <section class="memory-game card">
+            <img src="/teenieping-local-img/67-okeydokeyping.webp" alt="" />
+            <h3>티니핑 카드게임</h3>
+            <p>
+              큐브 속에 숨은 티니핑을 추리해 맞히는 게임입니다.
+              <br />눈을 크게 뜨고, 숨어 있는 티니핑을 찾아보세요!
+            </p>
+          </section>
+          <section class="worldcup-game card">
+            <img src="/teenieping-local-img/58-memoping.webp" alt="" />
+
+            <h3>티니핑 이상형 월드컵</h3>
+            <p>
+              여러 티니핑 중 최애 캐릭터를 골라 토너먼트로 가리는 게임입니다.
+              <br />가장 마음에 드는 티니핑을 직접 뽑아보세요!
+            </p>
+          </section>
+          <section class="find-game card">
+            <img src="/teenieping-local-img/89-fluffyping.webp" alt="" />
+
+            <h3>티니핑을 찾아라</h3>
+            <p>
+              큐브 속에 숨은 티니핑을 추리해 맞히는 게임입니다.
+              <br />눈을 크게 뜨고, 숨어 있는 티니핑을 찾아보세요!
+            </p>
+          </section>
+        </div>
+      </section>
+      <section class="about-member section">
+        <h2>팀원 소개</h2>
+        <div>
+          <section class="find-game card">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-s"></div>
+
+                <h3>오서현</h3>
+              </div>
+              <div class="card-back">
+                <p><strong>Team Leader</strong></p>
+                <p>티니핑 유형 테스트</p>
+              </div>
+            </div>
+          </section>
+          <section class="find-game card">
+            <div class="card-inner">
+              <div class="card-front">
+                <!-- <img src="/index_img/jaehyunPing.png" class="img-j" alt="" /> -->
+                <div class="card-j"></div>
+
+                <h3>김재현</h3>
+              </div>
+              <div class="card-back">
+                <p><strong>Scrum Master</strong></p>
+                <p>티니핑 카드게임</p>
+              </div>
+            </div>
+          </section>
+          <section class="find-game card">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-t"></div>
+                <!-- <img src="/index_img/taewooPing.png" class="img-s" alt="" /> -->
+                <h3>김태우</h3>
+              </div>
+              <div class="card-back">
+                <p><strong>Documentation</strong></p>
+                <p>티니핑 이상형 월드컵</p>
+              </div>
+            </div>
+          </section>
+          <section class="find-game card">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-w"></div>
+                <h3>유시원</h3>
+              </div>
+              <div class="card-back">
+                <p><strong>Documentation</strong></p>
+                <p>티니핑을 찾아라</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section class="coding-commit-convention section">
+        <h2>코딩/커밋 컨벤션</h2>
+        <div>
+          <p>
+            프로젝트의 일관성과 품질을 유지하기 위해 다음과 같은 컨벤션을
+            준수합니다:
+          </p>
+          <ul>
+            <li>
+              - <strong>HTML/CSS 컨벤션</strong>: 클래스명은 kebab-case(예:
+              game-card)를 사용하고, 의미있는 태그와 구조를 유지합니다.
+            </li>
+            <li>
+              - <strong>들여쓰기</strong>: 2칸 들여쓰기를 사용하여 코드의
+              가독성을 높입니다. 주석: 주요 기능과 복잡한 로직에는 명확한 주석을
+              작성합니다.
+            </li>
+            <li>
+              - <strong>커밋 메시지</strong>: "커밋이모지 분류: 메인제목 -
+              세부사항(생략 가능)" 형식으로 작성합니다.
+              <pre>
+  ✅ Add or update tests: Add Test 
+  - test.js 테스트 파일 추가</pre
+              >
+            </li>
+            <li>
+              - <strong>브랜치 전략</strong>:
+              "feature/이슈번호-주제(기능)-이니셜" 형식으로 브랜치를 생성하고
+              작업합니다.
+              <pre>feature/43-teeniepinggame(UI)-000</pre>
+            </li>
+            <li>
+              - <strong>코드 리뷰</strong>: 모든 Pull Request는 최소 2명 이상의
+              팀원 리뷰를 받아야 합니다.
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="team-rules section">
+        <h2>팀 규칙</h2>
+        <div>
+          <p>
+            프로젝트의 일관성과 품질을 유지하기 위해 다음과 같은 컨벤션을
+            준수합니다:
+          </p>
+          <ul>
+            <li>
+              - <strong>데일리 스크럼</strong>: 매일 오전 9시에 데일리 스크럼을
+              진행합니다.
+            </li>
+            <li>
+              - <strong>작업 할당</strong>: 작업 시작 전 이슈를 생성하고
+              담당자를 지정합니다.
+            </li>
+            <li>
+              - <strong>마감일 준수</strong>: 할당된 작업은 기한 내 완료하고,
+              어려움이 있을 경우 미리 공유합니다. 지각, 조퇴, 결석은 미리
+              공유합니다.
+            </li>
+            <li>
+              - <strong>소통 채널</strong>: 디스코드 음성 채널 및 텍스트 채널을
+              통해 소통합니다. 진행 상황은 수시로 공유합니다.
+            </li>
+            <li>
+              - <strong>피드백</strong>: 건설적인 피드백을 주고받으며 서로
+              존중하는 문화를 유지합니다.
+            </li>
+            <li>
+              - <strong>문서화</strong>: 주요 결정사항과 변경사항은 문서로
+              기록하여 공유합니다.
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="project-retrospective section">
+        <h2>회고</h2>
+        <details>
+          <summary>오서현</summary>
+          🩷지금까지 같이 작업한 5팀 분들 너무 수고 많으셨습니다~!!🩷
+          <br />
+          하기 전에는 타입스크립트 쓰는 게 익숙하지 않고, 어렵다고 느껴졌었는데
+          <br />
+          프로젝트에 들어가니까 점점 익숙해지면서 사용할 수 있게 되었다!!
+          <br />
+          2주 동안 진짜 바쁘고 빡세게 하긴 했지만, 너무 뿌듯한 프로젝트였다. 💛
+        </details>
+        <details>
+          <summary>김재현</summary>
+          간단한 카드 게임이지만 직접 구현하며 생각보다 많은 요소들을 고민하게
+          됐습니다.
+          <br />
+          카드 셔플, 매칭 로직, 타이머 등 게임의 흐름을 직접 제어하면서 기능을
+          어떻게 나누고,
+          <br />
+          상태를 어떻게 관리할지에 대해 많이 배웠습니다.
+          <br />
+          개발뿐 아니라 커뮤니케이션과 협업의 중요성도 많이 느낀
+          프로젝트였습니다.
+        </details>
+        <details>
+          <summary>김태우</summary>
+          좋은 조원분들과 시간 가는 줄 모르고 즐겁게 프로젝트를 할 수
+          있었습니다.
+          <br />
+          프로젝트 진행하면서 많은 것을 느끼고 배울 수 있었고, 지금 했던
+          경험들이 앞으로도 큰 도움이 될 거 같습니다.
+          <br />
+          특히 티니핑들과 친해질 수 있어서 더 좋았습니다~!
+          <br /><br />
+          다들 수고했다핑~~👏👏👏 앞으로도 화이핑~~!💪💪💪
+        </details>
+        <details>
+          <summary>유시원</summary>
+          자바스크립트를 어떻게 적용해야 하는지 감이 잘 안 왔는데, 이번
+          프로젝트를 하며 많이 친해졌다(?).
+          <br />게임 로직을 구현하는 과정에서 비동기 흐름 처리, DOM 렌더링 지연
+          문제 등 배운게 많았다. <br />특히, 우리 팀원들이 모두 열심히 해주셔서
+          큰 문제 없이 잘 마무리했다. <br /><br />
+          💜 5팀 너무 수고 많았고 감사했습니다! 앞으로도 화이팅 💜
+        </details>
+      </section>
+    </div>
+    <footer>
+      <p>
+        &copy; 2025 <strong>티니핑 월드</strong>. Crafted with by
+        <span>type5cript</span> @ 멋쟁이사자처럼.
+      </p>
+      <p class="footer-sub">
+        이 프로젝트는 멋쟁이사자처럼 부트캠프의 팀 프로젝트로 제작되었습니다.
+      </p>
+    </footer>
+
+    <script>
+      const nav = document.querySelector('nav');
+      const menus = nav.querySelectorAll('li');
+      const sections = document.querySelectorAll('.section');
+      console.log(menus, sections);
+
+      const offset = window.matchMedia('(min-width: 640px)').matches ? 98 : 64;
+      console.log('offset', offset);
+
+      function scrollToMenu(offset, menu) {
+        const offsetTop =
+          menu.getBoundingClientRect().top + window.pageYOffset - offset;
+        console.log('offsetTop', offset);
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+
+      menus.forEach((item, idx) => {
+        item.addEventListener('click', () => {
+          scrollToMenu(offset, sections[idx]);
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        menus.forEach((item, idx) => {
+          const rect = sections[idx].getBoundingClientRect();
+          const sectionTop = rect.top + window.pageYOffset;
+          const sectionBottom = rect.bottom + window.pageYOffset;
+          const offsetTop = window.pageYOffset + offset;
+
+          if (sectionBottom >= offsetTop && sectionTop - 10 <= offsetTop) {
+            item.classList.add('bold');
+          } else {
+            item.classList.remove('bold');
+          }
+        });
+      });
+
+      const aboutMember = document.querySelector('.about-member');
+      const cards = aboutMember.querySelectorAll('.card');
+      console.log(cards);
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flip');
+        });
+      });
+
+      const goToMainBtn = document.querySelector('#go-to-main');
+      goToMainBtn.addEventListener('click', () => {
+        location.assign('./src/pages/main.html');
+      });
+    </script>
   </body>
 </html>

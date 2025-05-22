@@ -2,10 +2,10 @@
 @import '/src/common/font.css';
 
 body {
-  background-color: rgb(255, 211, 218);
+  background-color: #dbeafe;
   /* font-family: 'Noto Sans KR', sans-serif; */
   font-family: 'titleFont', sans-serif;
-  color: #e55982;
+  color: #1e3a8a;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -25,8 +25,9 @@ body {
 }
 
 .title-container {
+  position: relative;
   background-color: rgba(255, 255, 255, 0.5);
-  margin-top: 80px;
+  margin-top: 150px;
   padding: 40px 30px;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -76,7 +77,7 @@ h1 {
 
 .btn {
   padding: 8px 16px;
-  background-color: #ea5fa7;
+  background-color: #3b82f6;
   color: white;
   border: none;
   border-radius: 12px;
@@ -88,35 +89,57 @@ h1 {
 }
 
 .level-btn:hover {
-  background-color: #9e135b;
+  background-color: #1d4ed8;
 }
 
 /* 클릭했을때 호버효과가 유지되도록 하기 위한 css 추가 */
 .level-btn.active {
-  background-color: #9e135b;
+  background-color: #1d4ed8;
 }
 
 .start-btn {
-  background-color: #9e135b;
+  background-color: #1d4ed8;
   max-width: 400px;
 }
 
 .start-btn:hover {
-  background-color: #ea5fa7;
+  background-color: #3b82f6;
 }
 
-.home-btn {
+/* .home-btn {
   align-self: flex-start;
   margin-top: 20px;
   margin-left: 20px;
   background-color: white;
-  color: #ea5fa7;
-  border: 2px solid #ea5fa7;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
 }
 
 .home-btn:hover {
-  background-color: #ea5fa7;
+  background-color: #3b82f6;
   color: white;
+} */
+
+#home {
+  /* border: 1px solid red; */
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  left: 5px;
+  top: 20px;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+
+  img {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+  }
+}
+.top-contain {
+  margin-top: 50px;
+  /* border: 2px solid red; */
+  max-width: 1000px;
+  width: 80%;
 }
 
 /* 모바일 버전 */
@@ -125,9 +148,14 @@ h1 {
     font-size: 14px;
   }
 
+  .top-contain {
+    width: 95%;
+    margin-top: 0px;
+  }
+
   .title-container {
     padding: 20px 16px;
-    margin-top: 40px;
+    margin-top: 150px;
     width: 95%;
     gap: 20px;
 

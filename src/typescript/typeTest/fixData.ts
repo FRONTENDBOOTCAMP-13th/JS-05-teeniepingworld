@@ -31,7 +31,7 @@ export const answerBtnData: AnswerData[] = [
   {
     id: 2,
     question:
-      '프로젝트 조원이 갑자기 번개로 회식하자고 연락했다. 당신의 속마음은?',
+      '프로젝트 조원이 갑자기 번개로 회식하자고 연락했다. 당신의 속마음은 무엇인가요?',
     answerData: [
       {
         answer: '헉..나갈 준비도 안 했는데 나가야 하나?😅',
@@ -47,15 +47,15 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 3,
-    question: '새로운 취미로 그림을 그려보기로 했다. 당신의 속마음은?',
+    question: '노래를 들을 때 더 중요하게 여기는 것은 무엇인가요?',
     answerData: [
       {
-        answer: '잘 못 그리는데 괜히 시작한 거 아닐까?🎨',
+        answer: '가사보다는 멜로디지~ 🎶',
         type: 'first',
         personality: 'S',
       },
       {
-        answer: '그림 그리는 건 재밌지! 잘 그려보자!🖌️',
+        answer: '가사를 봐야 더 깊게 빠져드는 거 같아! 📝',
         type: 'second',
         personality: 'N',
       },
@@ -63,15 +63,16 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 4,
-    question: '좋아하는 사람이 카톡을 씹었다. 당신의 속마음은?',
+    question:
+      '열심히 준비했던 시험 결과 망쳤다. 그래서 기분 안 좋은 상황인데 누군가 옆에서 "그래도 노력 많이 했잖아 고생했어" 했다면 본인의 기분은?',
     answerData: [
       {
-        answer: '내가 뭔가 실수했나? 아 이 문자 괜히 보냈나..😔',
+        answer: '그렇지? 다음에 잘하면 되니까..! 🥰',
         type: 'first',
         personality: 'F',
       },
       {
-        answer: '바쁜가? 그냥 기다려보자!😌',
+        answer: '고마워 (결과 망했는데; 기분 여전히 안 좋아) 😔',
         type: 'second',
         personality: 'T',
       },
@@ -79,15 +80,16 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 5,
-    question: '기념일을 깜빡한 연인. 당신의 속마음은?',
+    question: '당신의 애정표현 방법은?',
     answerData: [
       {
-        answer: '그럴 수도 있지. 중요한 건 지금 이후의 행동이지.📆',
+        answer:
+          '왜? 그거 뭐야? 그걸 좋아하는 이유가 있어? 뭐 때문에 우울해? (질문형) 🤓',
         type: 'first',
         personality: 'T',
       },
       {
-        answer: '우리의 생일인데 안 소중해?(서운 MAX)😡',
+        answer: '오..귀엽다! 너는 그걸 좋아하는구나!! (리액션) 🫶',
         type: 'second',
         personality: 'F',
       },
@@ -95,15 +97,15 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 6,
-    question: '연인이 대화 중 자꾸 딴 얘기로 새버린다. 당신의 속마음은?',
+    question: '사과하면 떠오르는 이미지는 무엇인가요?',
     answerData: [
       {
-        answer: '지금 얘기부터 마무리하자. 흐름 끊기니까 집중하자!🧭',
+        answer: '빨간색, 맛있다, 아침에 먹는 사과가 금. 🍎',
         type: 'first',
         personality: 'S',
       },
       {
-        answer: '오히려 흘러가는 대로 얘기하는 게 더 재밌는걸?🌌',
+        answer: '백설 공주(독사과), 스티브 잡스, 맥북 사고 싶다. 💻',
         type: 'second',
         personality: 'N',
       },
@@ -111,15 +113,15 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 7,
-    question: '갑자기 내 냉장고가 나한테 잔소리를 시작한다면? 당신의 속마음은?',
+    question: '약속이 끝나고 아무도 없는 집에 혼자 있을 때, 드는 생각은?',
     answerData: [
       {
-        answer: '또 시작이네… 조용히 냉장고 말 듣지 말아야겠다🥲',
+        answer: '아싸~! 집에 아무도 없다! 😜',
         type: 'first',
         personality: 'I',
       },
       {
-        answer: '야 냉장고야, 네 잔소리 완전 웃기다! 계속 해봐😂',
+        answer: '하 외로워 ㅠㅠ 통화할 사람 없나? 🥲',
         type: 'second',
         personality: 'E',
       },
@@ -127,16 +129,15 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 8,
-    question: '하루 동안 내 몸이 갑자기 자동으로 움직인다면? 당신의 속마음은?',
+    question: '친구랑 내일 홍대에 있는 짬뽕 맛집을 가기로 했다. 이때 당신은?',
     answerData: [
       {
-        answer:
-          '몸이 맘대로 움직이면 위험해! 내가 통제하지 못하면 위험하니까 상황을 빨리 파악해야 해!🕹️',
+        answer: '아침은 가볍게 먹고, 한 10시쯤 나가서 2호선 열차 타야겠다! 🚝',
         type: 'first',
         personality: 'J',
       },
       {
-        answer: '재밌겠다! 무작정 몸이 가는 대로 놔둬봐야지!😆',
+        answer: '거기 짬뽕 맵지 않겠지?? 🥘',
         type: 'second',
         personality: 'P',
       },
@@ -161,15 +162,16 @@ export const answerBtnData: AnswerData[] = [
   {
     id: 10,
     question:
-      '한회당 500만원 주는 환승연애라는 프로에 출연하게 되었다! 당신의 속마음은?',
+      '연인이 한 회당 200만원 주는 환승연애라는 프로에 출연하게 되었다! 당신의 속마음은?',
     answerData: [
       {
-        answer: '그래도 전 남자친구랑은 아니지...😨',
+        answer: '그래도 전 애인이랑 나가는 건 아니지...😨',
         type: 'first',
         personality: 'I',
       },
       {
-        answer: '어차피 헤어진 사이..! 지금부터 예능감 발휘한다! 돈 벌자🔥📸',
+        answer:
+          '어차피 헤어진 사이..! 지금부터 예능감 발휘해서 돈 벌자~ 나랑 반띵해야 해!🔥📸',
         type: 'second',
         personality: 'E',
       },
@@ -193,15 +195,16 @@ export const answerBtnData: AnswerData[] = [
   },
   {
     id: 12,
-    question: '당신이 AI로 바뀌는 꿈을 꿨다! 눈 떴을 때 드는 생각은?',
+    question:
+      '추운 날씨, 친구와 둘이 있는데 뭐 가지러 밖에 나가야 하는 상황일 때, 나의 행동은?',
     answerData: [
       {
-        answer: '감정을 잃는다면… 나는 더 이상 내가 아닌 것 같아 😢',
+        answer: '추운데 나 혼자 갔다 올게. 넌 여기에 있어! 😜',
         type: 'first',
         personality: 'F',
       },
       {
-        answer: '좋은데? 감정 기복 없고 연산력 빠르면 인생 최적화 완료 🤖📈',
+        answer: '같이 가면 마음이 따듯하잖아... 같이 가자 😉',
         type: 'second',
         personality: 'T',
       },

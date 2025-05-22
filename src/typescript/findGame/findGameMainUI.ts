@@ -11,9 +11,10 @@ export function initSettings() {
   );
   const bgmBtn = document.querySelector<HTMLButtonElement>('.bgm-btn');
   const bgmToggle = document.querySelector<HTMLSpanElement>('.bgm-toggle');
-  // 오디오 태그
-  const audio = document.querySelector<HTMLAudioElement>('audio');
+  const sfxBtn = document.querySelector<HTMLButtonElement>('.sfx-btn');
+  const sfxToggle = document.querySelector<HTMLSpanElement>('.sfx-toggle');
   const goStartBtn = document.querySelector<HTMLButtonElement>('.go-start-btn');
+  const goHomeBtn = document.querySelector<HTMLButtonElement>('.go-home-btn');
 
   settingsBtn?.addEventListener('click', () => {
     settingsDialog?.showModal();
@@ -21,20 +22,40 @@ export function initSettings() {
   settingsCloseBtn?.addEventListener('click', () => {
     settingsDialog?.close();
   });
+
+  const audio = new Audio('/findgame_bgm/findGameBGM.mp3');
+
   bgmBtn?.addEventListener('click', () => {
     if (bgmToggle?.textContent) {
       if (bgmToggle.textContent === 'OFF') {
         bgmToggle.textContent = 'ON';
-        audio?.play();
+        audio.play();
+        audio.volume = 0.2;
+        console.log(audio.volume);
       } else {
         bgmToggle.textContent = 'OFF';
-        audio?.pause();
+        audio.pause();
       }
     }
   });
+
+  sfxBtn?.addEventListener('click', () => {
+    if (sfxToggle?.textContent) {
+      if (sfxToggle.textContent === 'OFF') {
+        sfxToggle.textContent = 'ON';
+      } else {
+        sfxToggle.textContent = 'OFF';
+      }
+    }
+  });
+
   goStartBtn?.addEventListener('click', () => {
     resetToStartScreen();
     settingsDialog?.close();
+  });
+
+  goHomeBtn?.addEventListener('click', () => {
+    location.assign('./main.html');
   });
 }
 
@@ -64,10 +85,18 @@ export function showGameScreen() {
   const gameStartBtnContainer = document.querySelector<HTMLDivElement>(
     '.game-start-btn-container',
   );
+  const goToHome = document.querySelector('.go-to-home');
+  const gameTitle = document.querySelector<HTMLHeadingElement>('.game-title');
 
   gameRound?.removeAttribute('hidden');
   if (gameContainer) gameContainer.style.display = 'flex';
   if (gameStartBtnContainer) gameStartBtnContainer.style.display = 'none';
+
+  goToHome?.setAttribute('hidden', '');
+  if (gameTitle?.style) {
+    gameTitle.style.flex = '3';
+    gameTitle.style.textAlign = 'left';
+  }
 }
 
 export function saveGameAttempt() {
